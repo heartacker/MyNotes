@@ -14,6 +14,14 @@
 % \usepackage[colorlinks=true]{hyperref}
 \usepackage{hyperref}
 
+
+% checkbox
+\usepackage{bbding}
+\usepackage{pifont}
+\usepackage{wasysym}
+\usepackage{amssymb}
+
+
 %**********************边距设置****************************************
 
 % \geometry{a4paper,scale=0.8}
@@ -40,8 +48,8 @@
     linkcolor   = blue,
     filecolor   = magenta,
     urlcolor    = cyan,
-    pdftitle    = {Overleaf Example},
-    pdfpagemode = FullScreen,
+    % pdftitle    = {Overleaf Example},
+    % pdfpagemode = FullScreen,
 }
 %***************
 \begin{document}
@@ -84,17 +92,17 @@
 \begin{table}[htbp]
     \centering
     \begin{tabular}{|c|c|c|c|c|}
-\hline
-层次深度&层次名          &book                      &report                   &article\\
-\hline
--1  &part         & $\backslash$part         & $\backslash$part        & \\
-0   &chapter      & $\backslash$chapter      & $\backslash$chapter     & $\backslash$part         \\
-1   &section      & $\backslash$section      & $\backslash$section     & $\backslash$section      \\
-2   &subsection   & $\backslash$subsection   & $\backslash$subsection  & $\backslash$subsection   \\
-3   &subsubsection& $\backslash$subsubsection&$\backslash$subsubsection&$\backslash$subsubsection\\
-4   &paragraph    & $\backslash$paragraph    & $\backslash$paragraph   & $\backslash$paragraph    \\
-5   &subparagraph & $\backslash$subparagraph & $\backslash$subparagraph& $\backslash$subparagraph \\
-    \hline
+        \hline
+        层次深度 & 层次名        & book                      & report                    & article                   \\
+        \hline
+        -1       & part          & $\backslash$part          & $\backslash$part          &                           \\
+        0        & chapter       & $\backslash$chapter       & $\backslash$chapter       & $\backslash$part          \\
+        1        & section       & $\backslash$section       & $\backslash$section       & $\backslash$section       \\
+        2        & subsection    & $\backslash$subsection    & $\backslash$subsection    & $\backslash$subsection    \\
+        3        & subsubsection & $\backslash$subsubsection & $\backslash$subsubsection & $\backslash$subsubsection \\
+        4        & paragraph     & $\backslash$paragraph     & $\backslash$paragraph     & $\backslash$paragraph     \\
+        5        & subparagraph  & $\backslash$subparagraph  & $\backslash$subparagraph  & $\backslash$subparagraph  \\
+        \hline
     \end{tabular}
     \caption{不同标准文类的章节命令与层次深度}
     \label{<label>}
@@ -105,8 +113,8 @@
 
 
 
-
-\section{\LaTeX 笔记}
+\newpage
+\section{\LaTeX 学习笔记}
 \label{sec:skillnotes}
 
 在基础知识\ref{sec:knowledge}里面提到。
@@ -115,6 +123,9 @@
 \subsection{如何生成目录}
 制作目录其实非常简单，只需要一个命令，就是 \verb!\tableofcontents! 。这个命令放在哪里，目录就会出现在哪里。和交叉引用相同的一个特点是，目录的排版也需要两次编译。一方面是因为其中涉及到页码，另一方面是涉及到各个章节的标题。
 
+\begin{quotation}
+    Tip: 只要生成了目录,之后生成的PDF 就会包含书签。
+\end{quotation}
 
 目录对于图表而言也是可以用的。如果你的文档中有很多图表，也可以专门为它们建目录。对应的命令是 \verb!\listoffigures! 和 \verb!\listoftables! 。它会收集对应图表中的标题来产生图表的目录。图表的插入我们将在下一期中介绍。
 
@@ -181,7 +192,7 @@
 
 
 \paragraph{Linking web addresses}
-For further references see \href{http://www.overleaf.com}{Something Linky} 
+For further references see \href{http://www.overleaf.com}{Something Linky}
 or go to the next url: \url{http://www.overleaf.com}
 
 \begin{lstlisting}
@@ -190,8 +201,8 @@ or go to the next url: \url{http://www.overleaf.com}
 \end{lstlisting}
 
 \paragraph{Linking local files}
-For further references see \href{http://www.overleaf.com}{Something Linky} 
-or go to the next url: \url{http://www.overleaf.com} or open the next 
+For further references see \href{http://www.overleaf.com}{Something Linky}
+or go to the next url: \url{http://www.overleaf.com} or open the next
 file \href{run:./file.txt}{File.txt}
 
 \begin{lstlisting}
@@ -201,10 +212,12 @@ file \href{run:./file.txt}{File.txt}
 \end{lstlisting}
 
 \paragraph{Linking web addresses}
-It's also possible to link directly any word 
+
+
+It's also possible to link directly any word
 or \hyperlink{thesentence}{any sentence} in you document.
 
-If you read this text, you will get no information.  Really?  
+If you read this text, you will get no information.  Really?
 Is there no information?
 
 For instance \hypertarget{thesentence}{this sentence}.
@@ -362,7 +375,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \item 文本中
 
           \begin{enumerate}
-              \item 使用\verb!\!verb!\verb!\!!，注意是"！！" 之间进行截止
+              \item 使用"\verb!\!verb!\verb!\!!"，注意是"！！" 之间进行截止
               \item 使用\verb!$\backslash$!
               \item 使用代码
                     \begin{lstlisting}{language=tex}
@@ -474,5 +487,55 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 
 \subsubsection{居中}
 有时候，用 \verb!\begin{center}-\end(center}! 来将表格整体居中，但它的居中只是 居中了 \verb!\begin{table}-\end{table}!；如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}-\end{tabular}! ，那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
+
+
+
+\newpage
+\section{\LaTeX 高级技巧}
+\subsection{我们如何知道需要引用什么宏呢？}
+当我们需要用什么东西的时候，我们该如何知道要引用什么？
+比如我们要用超链接，我们就需要引用 hyperref 这个宏包？那我该如何知道呢？
+
+% \usepackage{bbding}
+% \usepackage{pifont}
+% \usepackage{wasysym}
+% \usepackage{amssymb}
+
+
+% amssymb
+\checkmark
+
+% bbding
+\Checkmark
+\CheckmarkBold
+
+% pifont
+\ding{51}
+\ding{52}
+
+% wasysym
+\CheckedBox
+
+
+
+
+\subsection{如何对宏进行配置？}
+当我们引用一个宏的时候，我们如何知道怎么配置这个宏呢？
+比如我们引用 hyperref 宏的时候。我是如何知道我可以配置一下的这些东西呢？
+
+\begin{lstlisting}
+\hypersetup{
+    colorlinks  = true,
+    linkcolor   = blue,
+    filecolor   = magenta,
+    urlcolor    = cyan,
+    % pdftitle    = {Overleaf Example},
+    % pdfpagemode = FullScreen,
+}
+\end{lstlisting}
+
+
+
+
 
 \end{document}
