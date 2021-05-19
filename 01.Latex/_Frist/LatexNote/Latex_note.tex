@@ -11,8 +11,8 @@
 \usepackage{verbatim}  %显示原始字符
 \usepackage{cprotect}  % 在标题中显示原始字符
 
-\usepackage[colorlinks=true]{hyperref}
-% \usepackage{hyperref}
+% \usepackage[colorlinks=true]{hyperref}
+\usepackage{hyperref}
 
 %**********************边距设置****************************************
 
@@ -33,6 +33,15 @@
     showstringspaces    =   false,
     captionpos          =   t,                   % 这段代码的名字所呈现的位置，t指的是top上面
     frame               =   lrtb,                % 显示边框
+}
+%*************** 超链接设置***************
+\hypersetup{
+    colorlinks  = true,
+    linkcolor   = blue,
+    filecolor   = magenta,
+    urlcolor    = cyan,
+    pdftitle    = {Overleaf Example},
+    pdfpagemode = FullScreen,
 }
 %***************
 \begin{document}
@@ -56,7 +65,7 @@
 %表格的目录
 \listoftables
 
-\newpage
+\clearpage
 
 
 \section{\LaTeX 基础}
@@ -66,6 +75,34 @@
 但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。
 
 \subsection{\LaTeX 的结构}
+
+\LaTeX 有三种标准文类：book, report, article。中文是 ctexart。
+
+每种文类的章节命令和层次深度如下：
+
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+\hline
+层次深度&层次名          &book                      &report                   &article\\
+\hline
+-1  &part         & $\backslash$part         & $\backslash$part        & \\
+0   &chapter      & $\backslash$chapter      & $\backslash$chapter     & $\backslash$part         \\
+1   &section      & $\backslash$section      & $\backslash$section     & $\backslash$section      \\
+2   &subsection   & $\backslash$subsection   & $\backslash$subsection  & $\backslash$subsection   \\
+3   &subsubsection& $\backslash$subsubsection&$\backslash$subsubsection&$\backslash$subsubsection\\
+4   &paragraph    & $\backslash$paragraph    & $\backslash$paragraph   & $\backslash$paragraph    \\
+5   &subparagraph & $\backslash$subparagraph & $\backslash$subparagraph& $\backslash$subparagraph \\
+    \hline
+    \end{tabular}
+    \caption{不同标准文类的章节命令与层次深度}
+    \label{<label>}
+\end{table}
+
+
+
+
 
 
 
@@ -109,6 +146,18 @@
 
 目录的内容显示为红色，是因为 hyperref 宏包的 colorlinks 选项。我们以后将默认载入这个宏包，告诉大家这些红色的文字都是可以点击跳转的，这也是我非常喜欢的一个特性。
 
+当然也可以在配置里面进行配置。
+\begin{lstlisting}
+\hypersetup{
+    colorlinks  = true,
+    linkcolor   = blue,
+    filecolor   = magenta,
+    urlcolor    = cyan,
+    pdftitle    = {Overleaf Example},
+    pdfpagemode = FullScreen,
+}
+\end{lstlisting}
+
 \subsubsection{注意事项}
 
 1. 图、表建议添加"\verb!\label{标签}!"
@@ -117,13 +166,58 @@
 
 3. 之后就可以看到红色的引用标签了。
 
-4. 如,$\backslash$ref{sec:hyperreflink}：\ref{sec:hyperreflink}
+4. 如,$\backslash$ref\{sec:hyperreflink\}：\ref{sec:hyperreflink}
 
-5. 如果只想引用不想点击，可以$\backslash$ref*{sec:hyperreflink}：\ref*{sec:hyperreflink}
-
-
+5. 如果只想引用不想点击，可以$\backslash$ref*\{sec:hyperreflink\}：\ref*{sec:hyperreflink}
 
 
+
+
+\subsection{超链接}
+
+超链接分好几种。比如目录，比如图片引用等\ref{sec:hyperreflink}。
+
+这里着重讨论其他外部连接。
+
+
+\paragraph{Linking web addresses}
+For further references see \href{http://www.overleaf.com}{Something Linky} 
+or go to the next url: \url{http://www.overleaf.com}
+
+\begin{lstlisting}
+For further references see \href{http://www.overleaf.com}{Something Linky} 
+or go to the next url: \url{http://www.overleaf.com}
+\end{lstlisting}
+
+\paragraph{Linking local files}
+For further references see \href{http://www.overleaf.com}{Something Linky} 
+or go to the next url: \url{http://www.overleaf.com} or open the next 
+file \href{run:./file.txt}{File.txt}
+
+\begin{lstlisting}
+For further references see \href{http://www.overleaf.com}{Something Linky} 
+or go to the next url: \url{http://www.overleaf.com} or open the next 
+file \href{run:./file.txt}{File.txt}
+\end{lstlisting}
+
+\paragraph{Linking web addresses}
+It's also possible to link directly any word 
+or \hyperlink{thesentence}{any sentence} in you document.
+
+If you read this text, you will get no information.  Really?  
+Is there no information?
+
+For instance \hypertarget{thesentence}{this sentence}.
+
+\begin{lstlisting}
+It's also possible to link directly any word 
+or \hyperlink{thesentence}{any sentence} in you document.
+
+If you read this text, you will get no information.  Really?  
+Is there no information?
+
+For instance \hypertarget{thesentence}{this sentence}.
+\end{lstlisting}
 
 
 \subsection{如何在 \LaTeX 中插入代码} % (fold)
