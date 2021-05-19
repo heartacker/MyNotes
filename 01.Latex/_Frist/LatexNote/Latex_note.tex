@@ -415,7 +415,21 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
                     \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
           \end{enumerate}
     \item 效果不错
+    
 \end{enumerate}
+
+
+\subsubsection{页面边距设置概念}
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    %插入图片，[]中设置图片大小，{}中是图片文件名
+    \includegraphics[scale=0.75]{images/geometry.png}
+    \caption{页边距概念} %最终文档中希望显示的图片标题
+    \label{Fig.page_border} %用于文内引用的标签
+\end{figure}
+
+
 
 \cprotect\subsection{如何输出反斜杠"\verb!\!"?}
 要想打印 "\verb!\!" 比较麻烦。参考 https://blog.csdn.net/xovee/article/details/106728213
