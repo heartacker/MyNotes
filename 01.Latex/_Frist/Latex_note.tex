@@ -1,11 +1,14 @@
 \documentclass[UTF8]{ctexart}
+%! 请使用XeLaTex 进行排版
+%! 需要编译两次，才能更新 TOC 哦
+
 
 \usepackage[]{color}
 
 \usepackage{graphicx}     %插入图片的宏包
 \usepackage{float}        %设置图片浮动位置的宏包
 \usepackage{subfigure}    %插入多图时用子图显示的宏包
-\usepackage{listings} %代码
+\usepackage{listings}     %代码
 \usepackage{xcolor}       %代码高亮
 
 \usepackage{geometry}     %设置边距
@@ -92,7 +95,7 @@
 
 但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。
 
-\subsection{\LaTeX 的结构}
+\subsection{\LaTeX 文类层级}
 \label{sec:structure}
 %定义一个跳转地址
 \hypertarget{Levelofdepth}{\LaTeX} 有三种标准文类：book, report, article。中文是 ctexart。
@@ -121,7 +124,7 @@
 
 \subsection{\LaTeX 编码问题}
 % 引用一个跳转地址
-上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article，中文的话是ctexart。
+上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article，中文的article是ctexart。
 但是如果我们需要在西文中插入中文要如何弄呢？
 这就需要引用CKJ 包了。
 
@@ -138,6 +141,41 @@
     \item $\Box$ What is the difference between CJK and CJK-utf8?
 \end{enumerate}
 
+\subsection{\LaTeX 文档结构}
+\subsubsection{\LaTeX 的编写思路}
+要想写一个\LaTeX 的文档,其实很简单.
+
+\LaTeX 主要分为三部分。可以理解为我要写什么,我要开始写文档,我正在写文档.
+    \begin{enumerate}
+        \item  说明我要写说明文档,就是我要写什么;
+        
+        \begin{verbatim}
+% cjk 使用utf-8,中文文章使用`ctexart`,article,report,...
+% 大意就是说我要写什么
+\documentclass[UTF8]{ctexart}
+        \end{verbatim}
+        \item  说明我要用到的宏包,就是我要开始写;
+        
+        \begin{verbatim}
+% 宏包，意思是我要开始写文档了。我会用什么工具。只有加了宏包才能写公式，做表格，放图片
+% 常用的有mathtools，amsmath，graphicx，array，geometry
+\usepackage{mathtools,booktabs}
+        \end{verbatim}
+        \item  说明我要用到的环境,就是我正在写.
+
+        \begin{verbatim}
+% 这里是导言区
+\begin{document}% 这是一个文档的环境
+document
+\begin{figure}% 这是一个图片的环境
+图片配置
+\end{figure}
+\begin{table}% 这是一个表格的环境
+表格代码
+\end{table}
+\end{document}
+        \end{verbatim}
+    \end{enumerate}
 
 
 
@@ -175,7 +213,7 @@
 
 \subsection{如何让标题单独一个封面？}
 
-有些书籍封面是单独一个页面的，还配了图片。看起来非常少舒服，这个改如何处理呢？
+有些书籍封面是单独一个页面的，还配了图片。看起来非常舒服，这个改如何处理呢？
 
 \begin{lstlisting}
 %标题
@@ -292,7 +330,7 @@ For instance \hypertarget{thesentence}{this sentence}.
             code
             code
             ```
-        \end{verbatim}
+\end{verbatim}
 
 \LaTeX 可使用原始显示的方式进行快速标识。虽然效果看不出来是行内代码，但是效果还是不错的,主要是字体稍微有点差别：\verb!这是code~!。
 
@@ -316,9 +354,9 @@ For instance \hypertarget{thesentence}{this sentence}.
 \begin{enumerate}
     \item usepackage Listings
 
-          $\backslash$usepackage\{listingsutf8\}
+          \verb!\usepackage{listingsutf8}!
 
-    \item 设置代码的格式,暂时不错
+    \item 设置代码的格式,暂时不说。
     \item 在指定的位置插入一下例子
           \label{Code.Insert_pic}
           \begin{lstlisting}[language={tex}]
@@ -408,7 +446,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
           $\backslash$usepackage\{geometry\}
     \item 设置页边距
           \begin{enumerate}
-              \item 设置纸张大小
+              \item 设置纸张大小，也可以设置常用的a4paper之类的。
 
                     \verb!\geometry{papersize={20cm,15cm}}!
               \item 设置为缩放的形式

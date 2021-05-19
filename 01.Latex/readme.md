@@ -1,4 +1,5 @@
 ---
+marp: false
 tilte: How to use Latex to write an article?
 Author: dingxin
 email: heartacker@outlook.com
