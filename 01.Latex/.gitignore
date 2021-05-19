@@ -5,5 +5,12 @@
 **.bbl
 **.aux
 **.cpt
+# 目录
+**.toc 
+# 图
+**.lof
+# 表
+**.lot
 LaTeX_Docs_2014.zip
 MdNote/note.docx
+*.synctex(busy)
