@@ -2,14 +2,15 @@
 
 \usepackage[]{color}
 
-\usepackage{graphicx}  %插入图片的宏包
-\usepackage{float}     %设置图片浮动位置的宏包
-\usepackage{subfigure} %插入多图时用子图显示的宏包
-\usepackage{listingsutf8}   %代码
+\usepackage{graphicx}     %插入图片的宏包
+\usepackage{float}        %设置图片浮动位置的宏包
+\usepackage{subfigure}    %插入多图时用子图显示的宏包
+\usepackage{listings} %代码
+\usepackage{xcolor}       %代码高亮
 
-\usepackage{geometry}  %设置边距
-\usepackage{verbatim}  %显示原始字符
-\usepackage{cprotect}  % 在标题中显示原始字符
+\usepackage{geometry}     %设置边距
+\usepackage{verbatim}     %显示原始字符
+\usepackage{cprotect}     % 在标题中显示原始字符
 
 % \usepackage[colorlinks=true]{hyperref}
 \usepackage{hyperref}
@@ -56,13 +57,13 @@
 \title{\LaTeX 入门手册}
 \author{$\heartsuit$Liuding.xin$\heartsuit$}
 % \date{}
-\maketitle
 
-\begin{abstract}
-    本文是记录在学习\LaTeX 过程中遇到的问题和解决办法，并用\LaTeX 写出来。
 
-    真的好困难。希望大家在看到这个文档的时候，点个赞！$\heartsuit$
-\end{abstract}
+% 标题
+\begin{titlepage}
+    \maketitle %将title 编译进来
+    \includegraphics[scale=0.3,angle=-50]{images/1200px_LaTeX_project_logo_bird.svg.png}
+\end{titlepage}
 
 % 本文的目录
 \tableofcontents
@@ -75,6 +76,11 @@
 
 \clearpage
 
+\begin{abstract}
+    本文是记录在学习\LaTeX 过程中遇到的问题和解决办法，并用\LaTeX 写出来。
+
+    真的好困难。希望大家在看到这个文档的时候，点个赞！$\heartsuit$
+\end{abstract}
 
 \section{\LaTeX 基础}
 \label{sec:knowledge}
@@ -83,8 +89,9 @@
 但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。
 
 \subsection{\LaTeX 的结构}
-
-\LaTeX 有三种标准文类：book, report, article。中文是 ctexart。
+\label{sec:structure}
+%定义一个跳转地址
+\hypertarget{Levelofdepth}{\LaTeX} 有三种标准文类：book, report, article。中文是 ctexart。
 
 每种文类的章节命令和层次深度如下：
 
@@ -105,8 +112,27 @@
         \hline
     \end{tabular}
     \caption{不同标准文类的章节命令与层次深度}
-    \label{<label>}
+    \label{tab:typeoflatex}
 \end{table}
+
+\subsection{\LaTeX 编码问题}
+% 引用一个跳转地址
+上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article，中文的话是ctexart。
+但是如果我们需要在西文中插入中文要如何弄呢？
+这就需要引用CKJ 包了。
+
+\begin{enumerate}
+    \item \Checkmark 引用包\verb!usepackage{CJK}!
+    \item \Checkmark 在需要的写入中文的地方引用下面的代码。
+    
+        \begin{lstlisting}
+\begin{CJK}{UTF8}{gbsn}
+    你好
+\end{CJK}        
+        \end{lstlisting}
+    \item $\Box$ Why gbsn?
+    \item $\Box$ What is the difference between CJK and CJK-utf8?
+\end{enumerate}
 
 
 
@@ -120,7 +146,7 @@
 在基础知识\ref{sec:knowledge}里面提到。
 
 
-\subsection{如何生成目录}
+\subsection{如何生成目录?}
 制作目录其实非常简单，只需要一个命令，就是 \verb!\tableofcontents! 。这个命令放在哪里，目录就会出现在哪里。和交叉引用相同的一个特点是，目录的排版也需要两次编译。一方面是因为其中涉及到页码，另一方面是涉及到各个章节的标题。
 
 \begin{quotation}
@@ -143,6 +169,20 @@
           \verb!\listoftables!
 \end{enumerate}
 
+\subsection{如何让标题单独一个封面？}
+
+有些书籍封面是单独一个页面的，还配了图片。看起来非常少舒服，这个改如何处理呢？
+
+\begin{lstlisting}
+%标题
+\begin{titlepage}
+    \maketitle %将title 编译进来
+    \centering
+    \includegraphics[scale=1.5]{simaqian.png}
+\end{titlepage}
+\end{lstlisting}
+
+
 \subsection{如何使引用可以跳转？}
 \label{sec:hyperreflink}
 
@@ -158,7 +198,7 @@
 目录的内容显示为红色，是因为 hyperref 宏包的 colorlinks 选项。我们以后将默认载入这个宏包，告诉大家这些红色的文字都是可以点击跳转的，这也是我非常喜欢的一个特性。
 
 当然也可以在配置里面进行配置。
-\begin{lstlisting}
+\begin{lstlisting}[language=tex]
 \hypersetup{
     colorlinks  = true,
     linkcolor   = blue,
@@ -184,7 +224,7 @@
 
 
 
-\subsection{超链接}
+\subsection{如何插入超链接？}
 
 超链接分好几种。比如目录，比如图片引用等\ref{sec:hyperreflink}。
 
@@ -196,7 +236,7 @@ For further references see \href{http://www.overleaf.com}{Something Linky}
 or go to the next url: \url{http://www.overleaf.com}
 
 \begin{lstlisting}
-For further references see \href{http://www.overleaf.com}{Something Linky} 
+For further references see \href{http://www.overleaf.com}{Something Linky}
 or go to the next url: \url{http://www.overleaf.com}
 \end{lstlisting}
 
@@ -206,8 +246,8 @@ or go to the next url: \url{http://www.overleaf.com} or open the next
 file \href{run:./file.txt}{File.txt}
 
 \begin{lstlisting}
-For further references see \href{http://www.overleaf.com}{Something Linky} 
-or go to the next url: \url{http://www.overleaf.com} or open the next 
+For further references see \href{http://www.overleaf.com}{Something Linky}
+or go to the next url: \url{http://www.overleaf.com} or open the next
 file \href{run:./file.txt}{File.txt}
 \end{lstlisting}
 
@@ -222,11 +262,13 @@ Is there no information?
 
 For instance \hypertarget{thesentence}{this sentence}.
 
+这是一个文内的跳转方式。
+
 \begin{lstlisting}
-It's also possible to link directly any word 
+It's also possible to link directly any word
 or \hyperlink{thesentence}{any sentence} in you document.
 
-If you read this text, you will get no information.  Really?  
+If you read this text, you will get no information.  Really?
 Is there no information?
 
 For instance \hypertarget{thesentence}{this sentence}.
@@ -278,7 +320,7 @@ For instance \hypertarget{thesentence}{this sentence}.
           \begin{lstlisting}[language={tex}]
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
 \centering %图片居中
-\includegraphics[width=0.7\textwidth]{images/svn-model.png} 
+\includegraphics[width=0.7\textwidth]{images/svn-model.png}
 %插入图片，[]中设置图片大小，{}中是图片文件名
 \caption{集中化的版本控制系统} %最终文档中希望显示的图片标题
 \label{Fig.main2} %用于文内引用的标签
@@ -288,7 +330,13 @@ For instance \hypertarget{thesentence}{this sentence}.
 
 \end{enumerate}
 
-
+\begin{lstlisting}[language=c]
+    void mian(int argl,string[] args){
+        for(int i = 0;i<argl;)
+            cout<<args[i]<<cendl;// 输出
+    }
+\end{lstlisting}
+    
 \subsection{如何在\LaTeX 中插入图片？}
 \subsubsection{操作步骤}
 插入图片是比较麻烦的时候。不像Word文档那样所见所得。
@@ -414,7 +462,7 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 \begin{lstlisting}{language=LaTeX}
 \begin{table}[H]
     \centering
-    \caption{论文中常用符号释义} 
+    \caption{论文中常用符号释义}
     \label{编译器}
     \begin{tabular}{|c|l|r|}
         \hline
@@ -429,7 +477,7 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
         通用       & TeX Live & TeXworks  \\
         \hline
     \end{tabular}
-    
+
 \end{table}
 \end{lstlisting}
 
@@ -533,7 +581,6 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
     % pdfpagemode = FullScreen,
 }
 \end{lstlisting}
-
 
 
 
