@@ -91,9 +91,12 @@
 
 \section{\LaTeX 基础}
 \label{sec:knowledge}
-\LaTeX 是高老师编写的非常流行的排版软件。但是因为是一种markup语言进行编写，而不是类似$MicroSoft Word$ 那样所见即所得。因为门槛非常高。
+\LaTeX 是高老师编写的非常流行的排版软件。但是因为是一种markup语言进行编写，而不是类似$MicroSoft Word$ 那样所见即所得。所以门槛非常高。
+但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。正是因为门槛很高，导致学习非常陡峭。让很多人想入手都不知道如何入手。
 
-但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。
+本人也是折腾了很久之后，终于找到了学习方法和技巧。后续将会简单的给大家讲解如何上手。
+
+这里将会讲解非常简单的基础。
 
 \subsection{\LaTeX 文类层级}
 \label{sec:structure}
@@ -473,7 +476,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
 
 
-\cprotect\subsection{如何输出反斜杠"\verb!\!"?}
+\subsection{如何输出反斜杠“$\backslash$”?}
 要想打印 "\verb!\!" 比较麻烦。参考 https://blog.csdn.net/xovee/article/details/106728213
 \begin{enumerate}
     \item 文本中
@@ -491,19 +494,19 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
           \end{enumerate}
 
     \item 标题中
-
-          1. 引用 cprotect 宏
+    \begin{enumerate}
+          \item 引用 cprotect 宏
           \begin{lstlisting}
 \usepackage{cprotect}
 % 在标题中显示原始字符
             \end{lstlisting}
 
-          2. 在 标题中插入
+          \item 在 标题中插入
           \begin{lstlisting}
 \cprotect\section{This is a section heading with a verbatim \verb!\frac{1}{2}!}
 % 这是在标题中使用\verb
           \end{lstlisting}
-
+    \end{enumerate}
 \end{enumerate}
 
 
