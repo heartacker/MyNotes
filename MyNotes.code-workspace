@@ -6,5 +6,21 @@
 	],
 	"settings": {
 		"makefile.extensionOutputFolder": "./.vscode"
+	},
+	"extensions": {
+		"recommendations": [
+			"janjoerke.align-by-regex",
+			"coenraads.bracket-pair-colorizer-2",
+			"parthr2031.colorful-comments",
+			"intellsmi.comment-translate",
+			"yzhang.dictionary-completion",
+			"kisstkondoros.vscode-gutter-preview",
+			"james-yu.latex-workshop",
+			"shd101wyy.markdown-preview-enhanced",
+			"yzhang.markdown-all-in-one",
+			"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+			"cweijan.vscode-office",
+			"yutengjing.open-in-external-app"
+		]
 	}
 }
