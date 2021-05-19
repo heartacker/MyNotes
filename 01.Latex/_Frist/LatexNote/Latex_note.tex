@@ -62,7 +62,11 @@
 % 标题
 \begin{titlepage}
     \maketitle %将title 编译进来
-    \includegraphics[scale=0.3,angle=-50]{images/1200px_LaTeX_project_logo_bird.svg.png}
+    % todo 想知道如何设置为背景图
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[scale=0.4,angle=-50]{images/1200px_LaTeX_project_logo_bird.svg.png}
+    \end{figure}
 \end{titlepage}
 
 % 本文的目录
@@ -124,8 +128,8 @@
 \begin{enumerate}
     \item \Checkmark 引用包\verb!usepackage{CJK}!
     \item \Checkmark 在需要的写入中文的地方引用下面的代码。
-    
-        \begin{lstlisting}
+
+          \begin{lstlisting}
 \begin{CJK}{UTF8}{gbsn}
     你好
 \end{CJK}        
@@ -336,7 +340,7 @@ For instance \hypertarget{thesentence}{this sentence}.
             cout<<args[i]<<cendl;// 输出
     }
 \end{lstlisting}
-    
+
 \subsection{如何在\LaTeX 中插入图片？}
 \subsubsection{操作步骤}
 插入图片是比较麻烦的时候。不像Word文档那样所见所得。
@@ -415,7 +419,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
                     \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
           \end{enumerate}
     \item 效果不错
-    
+
 \end{enumerate}
 
 
