@@ -11,35 +11,153 @@
 \usepackage{verbatim}  %显示原始字符
 \usepackage{cprotect}  % 在标题中显示原始字符
 
+\usepackage[colorlinks=true]{hyperref}
+% \usepackage{hyperref}
+
 %**********************边距设置****************************************
 
 % \geometry{a4paper,scale=0.8}
 \geometry{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm}
 
-
+%********************代码设置******************************************
+% 用来设置附录中代码的样式
+\lstset{
+    basicstyle          =   \sffamily,           % 基本代码风格
+    keywordstyle        =   \bfseries,           % 关键字风格
+    commentstyle        =   \rmfamily\itshape,   % 注释的风格，斜体
+    stringstyle         =   \ttfamily,           % 字符串风格
+    flexiblecolumns,                             % 别问为什么，加上这个
+    numbers             =   left,                % 行号的位置在左边
+    showspaces          =   false,               % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \zihao{-5}\ttfamily, % 行号的样式，小五号，tt等宽字体
+    showstringspaces    =   false,
+    captionpos          =   t,                   % 这段代码的名字所呈现的位置，t指的是top上面
+    frame               =   lrtb,                % 显示边框
+}
+%***************
 \begin{document}
-\title{Git 入门手册}
-\author{Liuding.xin}
+\title{\LaTeX 入门手册}
+\author{$\heartsuit$Liuding.xin$\heartsuit$}
 % \date{}
 \maketitle
 
 \begin{abstract}
     本文是记录在学习\LaTeX 过程中遇到的问题和解决办法，并用\LaTeX 写出来。
-    真的好困难。
+
+    真的好困难。希望大家在看到这个文档的时候，点个赞！$\heartsuit$
 \end{abstract}
 
+% 本文的目录
+\tableofcontents
+
+%图标的目录
+\listoffigures
+
+%表格的目录
+\listoftables
 
 \newpage
 
 
+\section{\LaTeX 基础}
+\label{sec:knowledge}
+\LaTeX 是高老师编写的非常流行的排版软件。但是因为是一种markup语言进行编写，而不是类似$MicroSoft Word$ 那样所见即所得。因为门槛非常高。
 
+但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。
 
+\subsection{\LaTeX 的结构}
 
 
 
 \section{\LaTeX 笔记}
+\label{sec:skillnotes}
+
+在基础知识\ref{sec:knowledge}里面提到。
+
+
+\subsection{如何生成目录}
+制作目录其实非常简单，只需要一个命令，就是 \verb!\tableofcontents! 。这个命令放在哪里，目录就会出现在哪里。和交叉引用相同的一个特点是，目录的排版也需要两次编译。一方面是因为其中涉及到页码，另一方面是涉及到各个章节的标题。
+
+
+目录对于图表而言也是可以用的。如果你的文档中有很多图表，也可以专门为它们建目录。对应的命令是 \verb!\listoffigures! 和 \verb!\listoftables! 。它会收集对应图表中的标题来产生图表的目录。图表的插入我们将在下一期中介绍。
+
+注意，这回在目录下生成\verb!.toc!，\verb!.lof!， \verb!.lot!  文件，分别对应【目录】、【图像】、【表格】。
+
+\begin{enumerate}
+    \item 目录
+
+          \verb!\tableofcontents!
+    \item 图像
+
+          \verb!\listoffigures!
+    \item 表格
+
+          \verb!\listoftables!
+\end{enumerate}
+
+\subsection{如何使引用可以跳转？}
+\label{sec:hyperreflink}
+
+\subsubsection{操作}
+
+一般情况下，我们希望目录是可以跳转的，图片的引用是可以鼠标点击跳转的。为了实现这个功能。我们可以使用$hyperref$。
+操作方式：
+
+1. 显示红框，可以点击：\verb!\usepackage{hyperref}!
+
+2. 显示红色，可以点击：\verb!\usepackage[colorlinks=true]{hyperref}!
+
+目录的内容显示为红色，是因为 hyperref 宏包的 colorlinks 选项。我们以后将默认载入这个宏包，告诉大家这些红色的文字都是可以点击跳转的，这也是我非常喜欢的一个特性。
+
+\subsubsection{注意事项}
+
+1. 图、表建议添加"\verb!\label{标签}!"
+
+2. 在需要添加引用的地方，输入"$\backslash$ref\{标签\}"
+
+3. 之后就可以看到红色的引用标签了。
+
+4. 如,$\backslash$ref{sec:hyperreflink}：\ref{sec:hyperreflink}
+
+5. 如果只想引用不想点击，可以$\backslash$ref*{sec:hyperreflink}：\ref*{sec:hyperreflink}
+
+
+
+
+
+
 \subsection{如何在 \LaTeX 中插入代码} % (fold)
-\subsubsection{操作步骤} % (fold)
+
+\subsubsection{简单代码}
+就像markdown一样，
+
+1. 可以通过简单的\verb!`code`! 标记 来标识行内代码。
+
+2. 通过进行多行显示原始代码。
+\begin{verbatim}
+            ```
+            code
+            code
+            ```
+        \end{verbatim}
+
+\LaTeX 可使用原始显示的方式进行快速标识。虽然效果看不出来是行内代码，但是效果还是不错的,主要是字体稍微有点差别：\verb!这是code~!。
+
+\begin{enumerate}
+    \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
+    \item 使用 verbatim
+          \begin{lstlisting}
+        \begin{verbatim}
+            code
+        \end{verbatim}
+            \end{lstlisting}
+
+\end{enumerate}
+
+
+
+
+\subsubsection{多行代码} % (fold)
 
 % subsection  (end)
 \begin{enumerate}
@@ -49,7 +167,7 @@
 
     \item 设置代码的格式,暂时不错
     \item 在指定的位置插入一下例子
-    \label{Code.Insert_pic}
+          \label{Code.Insert_pic}
           \begin{lstlisting}[language={tex}]
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
 \centering %图片居中
@@ -61,7 +179,9 @@
           \end{lstlisting}
 
 
-        \end{enumerate}
+\end{enumerate}
+
+
 \subsection{如何在\LaTeX 中插入图片？}
 \subsubsection{操作步骤}
 插入图片是比较麻烦的时候。不像Word文档那样所见所得。
@@ -111,7 +231,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
     \item 引用图片
 
-    在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
+          在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
 
 \end{enumerate}
 
@@ -129,12 +249,15 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
           $\backslash$usepackage\{geometry\}
     \item 设置页边距
           \begin{enumerate}
+              \item 设置纸张大小
+
+                    \verb!\geometry{papersize={20cm,15cm}}!
               \item 设置为缩放的形式
 
-                    $\backslash$geometry\{a4paper,scale=0.8\}
+                    \verb!\geometry{a4paper,scale=0.8}!
               \item 设置为绝对距离
 
-                    $\backslash$geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}
+                    \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
           \end{enumerate}
     \item 效果不错
 \end{enumerate}
@@ -171,5 +294,91 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
           \end{lstlisting}
 
 \end{enumerate}
+
+
+
+
+\subsection{插入表格}
+
+tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
+
+\subsubsection{操作步骤}
+使用以下的代码。显示效果参考 表\ref{Table.Demo0}
+\begin{lstlisting}{language=LaTeX}
+\begin{table}[H]
+    \centering
+    \caption{论文中常用符号释义} 
+    \label{编译器}
+    \begin{tabular}{|c|l|r|}
+        \hline
+        操作系统   & 发行版   & 编辑器    \\
+        \hline
+        Windows    & MikTeX   & TexMakerX \\
+        % \hline
+        Unix/Linux & teTeX    & Kile      \\
+        % \hline
+        Mac OS     & MacTeX   & TeXShop   \\
+        % \hline
+        通用       & TeX Live & TeXworks  \\
+        \hline
+    \end{tabular}
+    
+\end{table}
+\end{lstlisting}
+
+\subsubsection{效果显示}
+
+\begin{table}[H]
+    \centering
+    \caption{表格demo}
+    \label{Table.Demo0}
+    \begin{tabular}{|c|l|r|}
+        \hline
+        操作系统   & 发行版   & 编辑器    \\
+        \hline
+        Windows    & MikTeX   & TexMakerX \\
+        % \hline
+        Unix/Linux & teTeX    & Kile      \\
+        % \hline
+        Mac OS     & MacTeX   & TeXShop   \\
+        % \hline
+        通用       & TeX Live & TeXworks  \\
+        \hline
+    \end{tabular}
+
+\end{table}
+
+
+
+
+
+% \begin{table}[H]
+% \centering
+% \caption{论文中常用符号释义\protect\footnotemark[1]}
+%     \begin{tabular}{rl}
+%     \hline
+%     \multicolumn{1}{l}{符号} & 含义 \bigstrut\\
+%     \hline
+%         $\bm{p}$  & 充电器依次经历的节点号，即充电器的移动路径 \bigstrut[t]\\
+%         $d(i,j)$ & 节点$i,j$之间的距离 \\
+%     $T$& 充电器往返充电一次，所花费的时间 \\
+%         $v$   & 充电器的移动速度 \\
+%         $R_i$  & 节点$i$的耗电速率 \\
+%         $r$  & 充电器的充电速率 \\
+%         $t_{rtes}$  & 充电器在路上损耗的时间 \\
+%         $t_{crg}$  & 充电器总的充电时间 \\
+%         $W_i^\prime$  & 节点$i$在充电时刻的剩余电量 \\
+%         $W_i$  & 节点$i$的电池容量 \\
+%         $Q_i$  & 节点$i$当前时的剩余电量 \\
+%         $\Delta t_i$  & 节点$i$充满电所需要的时间 \bigstrut[b]\\
+%     \hline
+%     \end{tabular}%
+% \label{tab:addlabel}%
+
+% \end{table}%
+% \footnotetext[1]{这里只展示论文的部分符号。符号首次出现时，本文将详细地说明其含义}
+
+\subsubsection{居中}
+有时候，用 \verb!\begin{center}-\end(center}! 来将表格整体居中，但它的居中只是 居中了 \verb!\begin{table}-\end{table}!；如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}-\end{tabular}! ，那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
 
 \end{document}
