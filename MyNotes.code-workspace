@@ -81,7 +81,7 @@
 				]
 			}
 		],
-		"latex-workshop.latex.autoBuild.run": "never"
+		"latex-workshop.latex.autoBuild.interval": 10000
 	},
 	"extensions": {
 		"recommendations": [
