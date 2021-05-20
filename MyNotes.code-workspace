@@ -8,13 +8,80 @@
 		"makefile.extensionOutputFolder": "./.vscode",
 		"latex-workshop.latex.recipe.default": "lastUsed",
 		"files.exclude": {
-			"**/**.aux": true,
-			"**/**.lof": true,
-			"**/**.lot": true,
-			"**/**.toc": true,
-			// "**/**.log": true,
-			"**/**.synctex**": true,
-		}
+			// "**/**.aux": true,
+			// "**/**.lof": true,
+			// "**/**.lot": true,
+			// "**/**.toc": true,
+			// // "**/**.log": true,
+			// "**/**.synctex**": true,
+		},
+		"latex-workshop.latex.autoClean.run": "onBuilt",
+		"latex-workshop.latex.recipes": [
+			{
+				"name": "xelatex × 2",
+				"tools": [
+					"xelatex",
+					"xelatex"
+				]
+			},
+			{
+				"name": "xelatex ➞ bibtex ➞ xelatex × 2",
+				"tools": [
+					"xelatex",
+					"bibtex",
+					"xelatex",
+					"xelatex"
+				]
+			},
+			{
+				"name": "latexmk 🔃",
+				"tools": [
+					"latexmk"
+				]
+			},
+			{
+				"name": "latexmk (latexmkrc)",
+				"tools": [
+					"latexmk_rconly"
+				]
+			},
+			{
+				"name": "latexmk (lualatex)",
+				"tools": [
+					"lualatexmk"
+				]
+			},
+			{
+				"name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+				"tools": [
+					"pdflatex",
+					"bibtex",
+					"pdflatex",
+					"pdflatex"
+				]
+			},
+			{
+				"name": "Compile Rnw files",
+				"tools": [
+					"rnw2tex",
+					"latexmk"
+				]
+			},
+			{
+				"name": "Compile Jnw files",
+				"tools": [
+					"jnw2tex",
+					"latexmk"
+				]
+			},
+			{
+				"name": "tectonic",
+				"tools": [
+					"tectonic"
+				]
+			}
+		],
+		"latex-workshop.latex.autoBuild.run": "never"
 	},
 	"extensions": {
 		"recommendations": [

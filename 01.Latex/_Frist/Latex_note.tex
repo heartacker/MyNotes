@@ -91,8 +91,8 @@
 
 \section{\LaTeX 基础}
 \label{sec:knowledge}
-\LaTeX 是高老师编写的非常流行的排版软件。但是因为是一种markup语言进行编写，而不是类似$MicroSoft Word$ 那样所见即所得。所以门槛非常高。
-但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。正是因为门槛很高，导致学习非常陡峭。让很多人想入手都不知道如何入手。
+TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之后，集合更多宏包的再发行版本。\LaTeX 更加简单更流行，但是还是很难入门，因为他们都是使用markup语言进行编写，而不是类似$MicroSoft Word$ 那样所见即所得。所以门槛非常高。
+但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。正是因为门槛很高，导致学习非常陡峭，让很多人想入手都不知道如何入手。
 
 本人也是折腾了很久之后，终于找到了学习方法和技巧。后续将会简单的给大家讲解如何上手。
 
@@ -144,29 +144,30 @@
     \item $\Box$ What is the difference between CJK and CJK-utf8?
 \end{enumerate}
 
+% \subsection{\LaTeX 文档结构}
 \subsection{\LaTeX 文档结构}
 \subsubsection{\LaTeX 的编写思路}
 要想写一个\LaTeX 的文档,其实很简单.
 
 \LaTeX 主要分为三部分。可以理解为我要写什么,我要开始写文档,我正在写文档.
-    \begin{enumerate}
-        \item  说明我要写说明文档,就是我要写什么;
+\begin{enumerate}
+    \item  说明我要写说明文档,就是我要写什么;
 
-        \begin{verbatim}
+          \begin{verbatim}
 % cjk 使用utf-8,中文文章使用`ctexart`,article,report,...
 % 大意就是说我要写什么
 \documentclass[UTF8]{ctexart}
         \end{verbatim}
-        \item  说明我要用到的宏包,就是我要开始写;
+    \item  说明我要用到的宏包,就是我要开始写;
 
-        \begin{verbatim}
+          \begin{verbatim}
 % 宏包，意思是我要开始写文档了。我会用什么工具。只有加了宏包才能写公式，做表格，放图片
 % 常用的有mathtools，amsmath，graphicx，array，geometry
 \usepackage{mathtools,booktabs}
         \end{verbatim}
-        \item  说明我要用到的环境,就是我正在写.
+    \item  说明我要用到的环境,就是我正在写.
 
-        \begin{verbatim}
+          \begin{verbatim}
 % 这里是导言区
 \begin{document}% 这是一个文档的环境
     document
@@ -178,13 +179,69 @@
     \end{table}
 \end{document}
         \end{verbatim}
-    \end{enumerate}
+\end{enumerate}
 
 
+\subsubsection{\LaTeX 的文件类型}
+\label{subsec:filetype}
+\url{https://blog.csdn.net/huitailangyz/article/details/99685683}{}
 
+tex: tex文件是最常见的latex文件，也是平时编写文章的文件
+
+cls: cls文件是latex的格式文件，规定了tex源文件的排版格局，称为类文件（class）
+
+一般使用\verb!\documentclass{}!导入
+
+sty: sty文件是宏包文件（package）
+
+一般使用\verb!\usepackage{}!导入
+
+bst: bst文件是参考文件的格式文件
+
+一般使用\verb!\bibliographystyle{}!导入
+
+bib: bib文件是参考文献的库
+
+一般使用\verb!\bibliography{}!导入
+
+bib文件一般如下：
+\begin{lstlisting}    
+    @article{XXX,
+        title={ABC},
+        author={A, B},
+        journal={XX},
+        year={20XX}
+    }
+    @inproceedings{YYY,
+        title={ABC},
+        author={A, B, C},
+        booktitle={YY},
+        pages={a--b},
+        year={20YY}
+    }
+\end{lstlisting}
+
+\subsubsection{\LaTeX 文件语法结构}
+
+假设在当前目录下有下列文件：main.tex、A.cls、B.sty、C.bst、D.bib,按照我们的文件格式\ref{subsec:filetype}。我们可以大致的了解真正的\LaTeX 的语法结构。
+
+\begin{lstlisting}
+%main.tex文件
+\documentclass{A}     % 或者不使用自定义的排版文件时，使用最普通的\documentclass{article}
+\usepackage{B}        % 以及导入一些其他常用的宏文件，如amsmath、amssymb、amsthm等数学相关的宏文件
+\begin{document}
+XXX
+XXX
+XXX
+% 正文结束
+\bibliography{D}      % 导入正文中引入文献的数据
+\bibliographystyle{C} % 导入参考文献的格式文件C.bst
+\end{document}
+\end{lstlisting}
 
 
 \newpage
+% \section{\LaTeX 学习笔记}
 \section{\LaTeX 学习笔记}
 \label{sec:skillnotes}
 
@@ -320,6 +377,9 @@ Is there no information?
 
 For instance \hypertarget{thesentence}{this sentence}.
 \end{lstlisting}
+
+
+\subsection{如何在缩进？} % (fold)
 
 
 \subsection{如何在 \LaTeX 中插入代码} % (fold)
@@ -496,20 +556,54 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
           \end{enumerate}
 
     \item 标题中(不建议使用这个方法。会搞乱目录和书签)
-    \begin{enumerate}
-          \item 引用 cprotect 宏
-          \begin{lstlisting}
+          \begin{enumerate}
+              \item 引用 cprotect 宏
+                    \begin{lstlisting}
 \usepackage{cprotect}
 % 在标题中显示原始字符
             \end{lstlisting}
 
-          \item 在 标题中插入
-          \begin{lstlisting}
+              \item 在 标题中插入
+                    \begin{lstlisting}
 \cprotect\section{This is a section heading with a verbatim \verb!\frac{1}{2}!}
 % 这是在标题中使用\verb
           \end{lstlisting}
-    \end{enumerate}
+          \end{enumerate}
 \end{enumerate}
+
+
+\subsection{其他特殊符号}
+
+除了 \verb!\! 之外，含有很多符号，其他特殊符号:
+
+\begin{verbatim}
+        #——\#
+        $——\$
+        %——\%
+        {——\{
+        }——\}
+        ~——\~{}
+        \——$\backslasb$
+        ^——\^{}
+\end{verbatim}
+
+\paragraph{空格\&换行}西文单词用空格隔开，TEX中的连续多个空格在编译排版时被看做一个空格。\\
+连续两个回车被看做是段落结束，可以使用\verb!\\!强制换行。
+
+\paragraph{连体号}
+在\LaTeX 中，把ff这样的字母组合，当成一个连体号排版出来的，而不是分开来的。如要将两者分开，应在两者中间加入“$\backslash$/”,即“\verb!f\/f!”，就可以显示“f\/f”,而不是“ff”。
+
+
+\paragraph{连字号、破折号}
+一个连字号"-"表示一个连字号\verb!“-”!。
+连续用两个连字号"--"表示数字范围符号\verb!“~”!。
+连续用三个连字号"---"表示西文破折号\verb!“——”!。
+（数学中的减号或者负号，需要输入\verb!$-$!）
+
+
+
+
+\paragraph{句号后面的空白} 句号圆点，可以表示句子结束，也可以表示缩写。在小写字母后面圆点表示句子结束，但是为了表示缩写，需在圆点后空格加上倒斜线，即“\verb!\!”，表示缩写后面可以分行;在Latex中，大写字母后的圆点看做是一个缩写而不是句号。有时大写字母后面圆点表示成句号，可以在圆点前加上\verb!\@!，即“\@.”
 
 
 
@@ -644,8 +738,106 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 \end{lstlisting}
 
 
-%*编译的过程
 
+%*编译的过程
+\subsection{\LaTeX 编译过程}
+\label{subsec:buildprocess}
+生成一个文档，需要使用排版软件进行编译生成，这就要涉及不同的步骤。
+
+附带参考文献的整个编译需要四步。
+
+\begin{lstlisting}    
+(xe/pdf)latex main.tex   # 表示使用 latex, pdflatex 或 xelatex 编译，下同
+bibtex main.aux
+(xe/pdf)latex main.tex
+(xe/pdf)latex main.tex
+\end{lstlisting}
+
+第一步后生成main.aux、main.log和main.pdf文件。其中aux是引用标记记录文件，用于再次编译时生成参考文献和超链接。此时的pdf文件中没有包含参考文件，在正文中的引用后为[?]。
+
+第二步后生成main.bbl和main.blg文件。blg为bibtex处理过程记录文件。
+
+第三步后更新了main.aux、main.log和main.pdf文件。此时的pdf文件的末尾已经有了参考文献列表，但是在正文中的引用后仍然为[?]。
+
+第四步同样更新了main.aux、main.log和main.pdf文件。并生成最终的pdf文件，此时正文中的引用后已经标记好了引用文献的序号[1]、[2]等。
+
+如果对这个编译流程非常熟悉的话，就可以自己编写脚本快速编译了。当然还是推荐使用 VSCode\ref{subsec:recipe}。
+\begin{lstlisting}
+    @compile.bat文件
+
+    @echo off
+    set CompileName="pdflatex"
+    for %%F in (*.tex) do (
+    set FileName=%%~nF
+    )
+    if not exist "./Tmp" (
+     md Tmp
+     )
+    
+    %CompileName% -output-directory=Tmp %FileName%
+    bibtex ./Tmp/%FileName%
+    %CompileName% -output-directory=Tmp %FileName%
+    %CompileName% -output-directory=Tmp %FileName%
+    
+    echo ------------------------------------------------
+    echo Compile  finished.
+    echo ------------------------------------------------
+    copy /Y ".\Tmp\%FileName%.pdf" ".\%FileName%.pdf"
+    start  " " /max "./%FileName%.pdf"
+\end{lstlisting}
+
+
+
+\subsection{什么是 recipe?}
+\label{subsec:recipe}
+% https://blog.csdn.net/qq_23599965/article/details/103022215
+
+通过上述编译流程\ref{subsec:buildprocess}, 对于简单的xeLaTeX 进行编译，只需要编译一次就够了。但是如果需要生成目录等文档，就需要使用xeLaTeX进行编译两次。如果还要使用bibTex 进行引用的话，还需要使用bibtex 进行编译，之后在用xeLaTeX进行编译两次。
+
+对于不同的编译流程，就是所谓的 recipe。不同的文档类型有不同的编译流程。
+
+因此我们需要根据自己的需求，自己定义这个编译流程。这也是\LaTeX 入手很难的原因之一。
+
+
+
+\subsubsection{使用VSCode+\LaTeX \space WorkShop 进行编译}
+
+
+一个 \LaTeX \space  recipe 是指在构建 \LaTeX \space 项目时，\LaTeX \space  Workshop 按顺序执行的一系列命令。它是由 latex-workshop.latex.recipes 定义的。默认情况下，\LaTeX \space  Workshop 包含由变量 latex-workshop.latex.recipes 和 latex-workshop.latex.tools 定义的两个基本 recipes。
+
+\paragraph*{latex-workshop.latex.recipes}
+用来定义编译流程。 您可以使用不同的工具创建多个 recipes。每个 recipe 都是配置列表中的一个对象，包含一个 name 字段和一个要在 recipe 中调用的 tools 列表。
+
+\paragraph*{latex-workshop.latex.tools}
+用来定义每个编译的参数。recipes 中的 tools 可以在 latex-workshop.latex.tools 中定义，其中每个命令都是一个 tool。每个工具都是一个对象，包括一个 name、要生成的一个 command、参数(args)和一些特定的环境变量(env)。env 条目是一个字典。假设您想要在您的home项目中使用一个 texmf 子目录，只需编写：
+
+\begin{lstlisting}
+"env": {
+    "TEXMFHOME": "%DIR%/texmf"
+}
+\end{lstlisting}
+
+
+\paragraph*{\LaTeX\space Workshop 参数}
+
+对于命令里面的参数，可以查看下表\ref{tab.latex_args}:
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|l|}
+        \hline
+        占位符      & 替换为                                        \\
+        \hline
+        \%DOC\%     & LaTeX根文件路径和名称，不带.tex扩展名         \\
+        \%DOCFILE\% & 不带.tex扩展名的LaTeX根文件名                 \\
+        \%DIR\%     & LaTeX根文件路径                               \\
+        \%TMPDIR\%  & 存储辅助文件的临时文件夹                      \\
+        \%OUTDIR\%  & 在latex-workshop.latex.outDir中配置的输出目录 \\
+        \hline
+    \end{tabular}
+    \caption{\LaTeX\space Workshop tool 参数占位符}
+    \label{tab.latex_args}
+\end{table}
 
 
 \end{document}
