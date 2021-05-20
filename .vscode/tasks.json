@@ -19,7 +19,11 @@
                 "--pdf-engine",
                 "xelatex"
             ],
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
