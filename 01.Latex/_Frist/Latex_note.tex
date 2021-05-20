@@ -1,4 +1,6 @@
-\documentclass[UTF8]{ctexart}
+% article,book,report
+% ctexart,ctexbook,ctexreport 中文
+\documentclass[UTF8,AutoFakeBold]{ctexart}
 %! 请使用XeLaTex 进行排版
 %! 需要编译两次，才能更新 TOC 哦
 
@@ -14,9 +16,12 @@
 \usepackage{geometry}     % 设置边距
 \usepackage{verbatim}     % 显示原始字符
 \usepackage{cprotect}     % 在标题中显示原始字符
+\usepackage{ulem}         % 删除线
 
 % \usepackage[colorlinks=true]{hyperref}
 \usepackage{hyperref}
+
+
 
 
 % checkbox
@@ -34,14 +39,15 @@
 %********************代码设置******************************************
 % 用来设置附录中代码的样式
 \lstset{
-    basicstyle          =   \sffamily,           % 基本代码风格
+    backgroundcolor     =   \color[RGB]{245,245,244},
+    basicstyle          =   \zihao{5}\ttfamily, % 基本代码风格
     keywordstyle        =   \bfseries,           % 关键字风格
     commentstyle        =   \rmfamily\itshape,   % 注释的风格，斜体
     stringstyle         =   \ttfamily,           % 字符串风格
     flexiblecolumns,                             % 别问为什么，加上这个
-    numbers             =   left,                % 行号的位置在左边
+    numbers             =   left,               % 行号的位置在左边
     showspaces          =   false,               % 是否显示空格，显示了有点乱，所以不现实了
-    numberstyle         =   \zihao{-5}\ttfamily, % 行号的样式，小五号，tt等宽字体
+    numberstyle         =   \zihao{5}\ttfamily, % 行号的样式，小5号，tt等宽字体
     showstringspaces    =   false,
     captionpos          =   t,                   % 这段代码的名字所呈现的位置，t指的是top上面
     frame               =   lrtb,                % 显示边框
@@ -55,7 +61,7 @@
     % pdftitle    = {Overleaf Example},
     % pdfpagemode = FullScreen,
 }
-%***************
+%******************************************************
 \begin{document}
 \title{\LaTeX 入门手册}
 \author{$\heartsuit$Liuding.xin$\heartsuit$}
@@ -93,7 +99,7 @@
 \label{sec:knowledge}
 
 \subsection{什么是\LaTeX？}
-TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之后，集合更多宏包的再发行版本。\LaTeX 更加简单更流行，但是还是很难入门，因为他们都是使用markup语言进行编写，而不是类似$MicroSoft Word$ 那样所见即所得。所以门槛非常高。
+TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之后，集合更多宏包的再发行版本。\LaTeX 更加简单更流行，但是还是很难入门，因为他们都是使用markup语言进行编写，而不是类似 $MicroSoft Word$ 那样所见即所得。所以门槛非常高。
 但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。正是因为门槛很高，导致学习非常陡峭，让很多人想入手都不知道如何入手。
 
 本人也是折腾了很久之后，终于找到了学习方法和技巧。后续将会简单的给大家讲解如何上手。
@@ -127,6 +133,14 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
     \item 仅流行于数学、物理、计算机等领域；
     \item 中文期刊的支持较差；
 \end{enumerate}
+
+\subsection{如何查询文档？}
+对于这种非常陌生羞涩难懂的软件。你会觉得连查文档都很困难。不过如果你想对某个模块阅读文档，可以通过下面的命令打开英文文档。
+
+\begin{lstlisting}
+> texdoc 模块的名字
+> texdoc lstlisting 
+\end{lstlisting}
 
 
 \subsection{\LaTeX 文类层级}
@@ -306,9 +320,8 @@ XXX
 
 \subsection{如何让标题单独一个封面？}
 
-有些书籍封面是单独一个页面的，还配了图片。看起来非常舒服，这个该如何处理呢？
+有些书籍封面是单独一个页面的，还配了图片。看起来非常舒服，这个该如何处理呢？可以参考以下代码:
 
-可以参考以下代码:
 \begin{lstlisting}
 %标题
 \begin{titlepage}
@@ -318,6 +331,55 @@ XXX
 \end{titlepage}
 \end{lstlisting}
 
+
+\subsection{基础字体样式调节}
+
+\subsubsection{常用样式}
+
+\emph{Italicized text} 斜体使用\verb!\emph{Italicized text}! 进行标记。
+
+\textbf{Bold text} 粗体使用\verb!\textbf{Bold text}! 进行标记。
+
+\underline{Underlined text} 下划线使用\verb!\underline{Underlined text}! 进行标记。
+
+\textit{Emphasising text} 强调使用\verb!\textit{Emphasising text}! 进行标记。
+
+\textbf{\textit{Combine text} \underline{当然也可以组合起来}}，\verb!\textbf{\textit{combine text}! 进行标记。
+
+\subsubsection{删除线}
+删除线比较复杂， 但是需要引用ulem的宏包。
+\begin{enumerate}
+
+
+    \item \verb!\usepackage{ulem}!;
+
+    \item 使用方法:
+          \begin{lstlisting}
+\sout{文字}   %删除线
+\uwave{文字}  %波浪线
+\xout{文字}   %斜删除线
+\uuline{文字} %双下划线
+\end{lstlisting}
+
+    \item 显示效果:
+          \begin{enumerate}
+              \item \sout{删除线}   %删除线
+              \item \uwave{波浪线}  %波浪线
+              \item \xout{斜删除线}   %斜删除线
+              \item \uuline{双下划线} %双下划线
+          \end{enumerate}
+\end{enumerate}
+
+
+\subsection{段落缩进}
+
+在中文文章中。使用 ctexart 是默认首行缩进的。可以通过 \verb!\noindent ! 取消缩进。
+但是，在英文下，是不会缩进的。就需要使用宏包进行解决。
+
+\begin{lstlisting}
+    \usepackage{indentfirst}    %引用宏包
+    \setlength{\parindent}{2em} %2em代表首行缩进两个字符
+\end{lstlisting}
 
 \subsection{如何使引用可以跳转？}
 \label{sec:hyperreflink}
@@ -411,164 +473,33 @@ For instance \hypertarget{thesentence}{this sentence}.
 \end{lstlisting}
 
 
-\subsection{如何进行缩进？} % (fold)
+\subsection{换行、换段、换页、首行缩进？} % (fold)
+
+\subsubsection{换行命令}
+
+\begin{quotation}
+    Tip: 换行和段落是有本质的区别的。换行只是当前段落，但是段落会对首字缩进等有影响！两个连续空行代表更换段落。
+\end{quotation}
+
+\verb!\\! : 换行。
+
+\verb!\\[offset]! : 换行，并且与下一行的行间距为原来行间距 + offset。
+
+\verb!\newline!  : 与\verb!\\!相同。
+
+\verb!\linebreak! : 强制换行，与\verb!\newline!的区别为:\verb!\linebreak!的当前行分散对齐。(就是说上一行会自动占满整整一行。)
 
 
-\subsection{如何在 \LaTeX 中插入代码} % (fold)
-
-\subsubsection{简单代码}
-就像markdown一样，
-
-1. 可以通过简单的\verb!`code`! 标记 来标识行内代码。
-
-2. 通过进行多行显示原始代码。
-\begin{verbatim}
-            ```
-            code
-            code
-            ```
-\end{verbatim}
-
-\LaTeX 可使用原始显示的方式进行快速标识。虽然效果看不出来是行内代码，但是效果还是不错的,主要是字体稍微有点差别：\verb!这是code~!。
-
-\begin{enumerate}
-    \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
-    \item 使用 verbatim
-          \begin{lstlisting}
-        \begin{verbatim}
-            code
-        \end{verbatim}
-            \end{lstlisting}
-
-\end{enumerate}
+\subsubsection{分段命令}
+\verb!\par!：分段。
 
 
+\subsubsection{分页命令}
+\verb!\newpage!: 换一页。
+
+\verb!\clearpage!：和 \verb!\newpage! 类似。我们在使用 CJK 环境时会加入 \verb!\clearpage! 在环境末尾。
 
 
-\subsubsection{多行代码} % (fold)
-
-% subsection  (end)
-\begin{enumerate}
-    \item usepackage Listings
-
-          \verb!\usepackage{listingsutf8}!
-
-    \item 设置代码的格式,暂时不说。
-    \item 在指定的位置插入以下例子:
-          \label{Code.Insert_pic}
-          \begin{verbatim}
-\begin{lstlisting}[language=c]
-    void mian(int argl,string[] args){
-        for(int i = 0;i<argl;)
-            cout<<args[i]<<cendl;// 输出
-    }
-\end{lstlisting}
-          \end{verbatim}
-
-    \item 渲染效果如下:
-
-          \begin{lstlisting}[language=c]
-    void mian(int argl,string[] args){
-        for(int i = 0;i<argl;)
-            cout<<args[i]<<cendl;// 输出
-    }
-\end{lstlisting}
-
-\end{enumerate}
-
-
-
-\subsection{如何在\LaTeX 中插入图片？}
-\subsubsection{操作步骤}
-插入图片是比较麻烦的时候。不像Word文档那样所见所得。
-
-参考：https://blog.csdn.net/chichoxian/article/details/52588833
-
-\begin{enumerate}
-    \item 插入代码，参考代码\ref{Code.Insert_pic}
-    \item 最终效果，图\ref{Fig.insert-one-png}
-          \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-              \centering %图片居中
-              \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
-              \caption{插入图片的demo} %最终文档中希望显示的图片标题
-              \label{Fig.insert-one-png} %用于文内引用的标签
-          \end{figure}
-
-    \item 双排设置
-          \begin{lstlisting}
-Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel demand of driving auto, and fig. \ref{Fig.sub.2} is the travel demand of park-and-ride.
-
-\begin{figure}[H]
-\centering  %图片全局居中
-\subfigure[name1]
-{
-    \label{Fig.sub.1}
-    \includegraphics[width=0.45\textwidth]{DV_demand}
-}
-\subfigure[name2]
-{
-    \label{Fig.sub.2}
-    \includegraphics[width=0.45\textwidth]{P+R_demand}
-}
-\caption{Main name}
-
-\label{Fig.main}
-\end{figure}
-        \end{lstlisting}
-
-    \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
-          \begin{figure}[H]
-              \centering
-              %插入图片，[]中设置图片大小，{}中是图片文件名
-              \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
-              \caption{并排插入两个图片的效果}
-              \label{Fig.Insert_two_pic_demo}
-          \end{figure}
-
-    \item 引用图片
-
-          在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
-
-\end{enumerate}
-
-
-
-
-
-
-
-
-\subsection{如何设置边距}
-\subsubsection{操作步骤}
-\begin{enumerate}
-    \item 引用geo 设置宏包
-          $\backslash$usepackage\{geometry\}
-    \item 设置页边距
-          \begin{enumerate}
-              \item 设置纸张大小，也可以设置常用的a4paper之类的。
-
-                    \verb!\geometry{papersize={20cm,15cm}}!
-              \item 设置为缩放的形式
-
-                    \verb!\geometry{a4paper,scale=0.8}!
-              \item 设置为绝对距离
-
-                    \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
-          \end{enumerate}
-    \item 效果不错
-
-\end{enumerate}
-
-
-\subsubsection{页面边距设置概念}
-
-\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-    \centering %图片居中
-    %插入图片，[]中设置图片大小，{}中是图片文件名
-    \includegraphics[scale=0.75]{images/geometry.png}
-    \caption{页边距概念} %最终文档中希望显示的图片标题
-    \label{Fig.page_border} %用于文内引用的标签
-\end{figure}
 
 
 
@@ -608,27 +539,29 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
 \subsection{其他特殊符号}
 
+\subsubsection{常见特殊符号}
+
 除了 \verb!\! 之外，含有很多符号，其他特殊符号:
 
 \begin{verbatim}
-        #——\#
-        $——\$
-        %——\%
-        {——\{
-        }——\}
-        ~——\~{}
-        \——$\backslasb$
-        ^——\^{}
+        #  ——  \#
+        $  ——  \$
+        %  ——  \%
+        {  ——  \{
+        }  ——  \}
+        ~  ——  \~{}
+        \  ——  $\backslasb$
+        ^  ——  \^{}
 \end{verbatim}
 
-\paragraph{空格\&换行}西文单词用空格隔开，TEX中的连续多个空格在编译排版时被看做一个空格。\\
-连续两个回车被看做是段落结束，可以使用\verb!\\!强制换行。
+\subsubsection{换行}
+连续两个回车被看做是段落结束，可以使用\verb!\\!强制换行而不是段落。
 
-\paragraph{连体号}
+\subsubsection{连体号}
 在\LaTeX 中，把ff这样的字母组合，当成一个连体号排版出来的，而不是分开来的。如要将两者分开，应在两者中间加入“$\backslash$/”,即“\verb!f\/f!”，就可以显示“f\/f”,而不是“ff”。
 
 
-\paragraph{连字号、破折号}
+\subsubsection{连字号、破折号}
 一个连字号"-"表示一个连字号\verb!“-”!。
 连续用两个连字号"--"表示数字范围符号\verb!“~”!。
 连续用三个连字号"---"表示西文破折号\verb!“——”!。
@@ -637,8 +570,51 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
 
 
-\paragraph{句号后面的空白} 句号圆点，可以表示句子结束，也可以表示缩写。在小写字母后面圆点表示句子结束，但是为了表示缩写，需在圆点后空格加上倒斜线，即“\verb!\!”，表示缩写后面可以分行;在Latex中，大写字母后的圆点看做是一个缩写而不是句号。有时大写字母后面圆点表示成句号，可以在圆点前加上\verb!\@!，即“\@.”
+\subsubsection{句号后面的空白}
+句号圆点，可以表示句子结束，也可以表示缩写。在小写字母后面圆点表示句子结束，但是为了表示缩写，需在圆点后空格加上倒斜线，即“\verb!\!”，表示缩写后面可以分行;在Latex中，大写字母后的圆点看做是一个缩写而不是句号。有时大写字母后面圆点表示成句号，可以在圆点前加上\verb!\@.!，即“\@.”
 
+\subsubsection{空格}
+
+使用一个“反斜杠+一个空格”（“\verb!\ !”）表示1个空\ 格，space \ space。 多个同理，但是不推荐这样使用。
+
+
+
+以下是空格大小的调整方式。
+\begin{table}[htbp]
+    \centering\begin{tabular}{|c|c|c|c|}
+        \hline
+        描述     & 符号                    & 渲染效果   & 宽度         \\\hline
+        quad空格 & \verb!a \qquad b! & a \qquad b & 两个m的宽度  \\
+        quad空格 & \verb!a \quad b! & a \quad b  & 一个m的宽度  \\
+        大空格   & \verb!a\ b! & a\ b       & 1/3m宽度     \\
+        中等空格 & \verb!a\;b! & a\;b       & 2/7m宽度     \\
+        小空格   & \verb!a\,b! & a\,b       & 1/6m宽度     \\
+        没有空格 & ab                      & ab         &              \\
+        紧贴     & a$\backslash$!b         & a\!b       & 缩进1/6m宽度 \\
+        \hline
+    \end{tabular}
+    \caption{空格大小的调整参考表}
+    \label{tab.space_size}
+\end{table}
+
+
+
+\begin{quotation}
+    Tip:
+
+    \textbf{西文}单词用空格隔开，\LaTeX 中的连续多个空格在编译排版时被看做一个空格。 但是“$\backslash$ ”一定会是认为一个空格。
+
+    \textbf{中文(cjk)}（\verb!ctexart!）中,空格不算空格。很奇怪！\verb!你 好! 会被渲染为“你 好”，而不是"你\ 好"。
+
+    另外，中英文混编:
+    \begin{enumerate}
+        \item 中文紧随着英文会自动添加一个空格。如你好hello！ “你好”和“hello”之间是有空格的。
+        \item 西文紧随中文也会添加空格。
+        \item 中文标点符号紧随的应为不会自动添加空格。如你好，hello！ “你好”和“hello”之间是没有有空格的。
+        \item 英文之间符合西文。就是一个或者多个算一个空格。hi  hello，hi和hello之间是有一个空格的。
+        \item \textbf{任意时候，中西文混编都推荐在中西文直接添加空格，这样是符合规范的}, “space 你好space你好 space”。
+    \end{enumerate}
+\end{quotation}
 
 
 
@@ -724,6 +700,172 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 
 \subsubsection{居中}
 有时候，用 \verb!\begin{center}-\end(center}! 来将表格整体居中，但它的居中只是 居中了 \verb!\begin{table}-\end{table}!；如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}-\end{tabular}! ，那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
+
+\subsection{如何在 \LaTeX 中插入代码} % (fold)
+
+\subsubsection{简单代码}
+就像markdown一样，
+
+1. 可以通过简单的\verb!`code`! 标记 来标识行内代码。
+
+2. 通过进行多行显示原始代码。
+\begin{verbatim}
+                ```
+                code
+                code
+                ```
+    \end{verbatim}
+
+\LaTeX 可使用原始显示的方式进行快速标识。虽然效果看不出来是行内代码，但是效果还是不错的,主要是字体稍微有点差别：\verb!这是code~!。
+
+\begin{enumerate}
+    \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
+    \item 使用 verbatim
+          \begin{lstlisting}
+            \begin{verbatim}
+                code
+            \end{verbatim}
+                \end{lstlisting}
+
+\end{enumerate}
+
+
+
+
+\subsubsection{多行代码} % (fold)
+
+% subsection  (end)
+\begin{enumerate}
+    \item usepackage Listings
+
+          \verb!\usepackage{listingsutf8}!
+
+    \item 设置代码的格式,暂时不说。
+    \item 在指定的位置插入以下例子:
+          \label{Code.Insert_pic}
+          \begin{verbatim}
+    \begin{lstlisting}[language=c]
+        void mian(int argl,string[] args){
+            for(int i = 0;i<argl;)
+                cout<<args[i]<<cendl;// 输出
+        }
+    \end{lstlisting}
+              \end{verbatim}
+
+    \item 渲染效果如下:
+
+          \begin{lstlisting}[language=c]
+        void mian(int argl,string[] args){
+            for(int i = 0;i<argl;)
+                cout<<args[i]<<cendl;// 输出
+        }
+    \end{lstlisting}
+
+\end{enumerate}
+
+
+
+\subsection{如何在\LaTeX 中插入图片？}
+\subsubsection{操作步骤}
+插入图片是比较麻烦的时候。不像Word文档那样所见所得。
+
+参考：https://blog.csdn.net/chichoxian/article/details/52588833
+
+\begin{enumerate}
+    \item 插入代码，参考代码
+
+    \begin{lstlisting}
+        \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+            \centering %图片居中
+            \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+            \caption{插入图片的demo} %最终文档中希望显示的图片标题
+            \label{Fig.insert-one-png} %用于文内引用的标签
+        \end{figure}
+    \end{lstlisting}
+
+    \item 最终效果，图\ref{Fig.insert-one-png}
+          \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+              \centering %图片居中
+              \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+              \caption{插入图片的demo} %最终文档中希望显示的图片标题
+              \label{Fig.insert-one-png} %用于文内引用的标签
+          \end{figure}
+
+    \item 双排设置
+          \begin{lstlisting}
+    Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel demand of driving auto, and fig. \ref{Fig.sub.2} is the travel demand of park-and-ride.
+
+    \begin{figure}[H]
+    \centering  %图片全局居中
+    \subfigure[name1]
+    {
+        \label{Fig.sub.1}
+        \includegraphics[width=0.45\textwidth]{DV_demand}
+    }
+    \subfigure[name2]
+    {
+        \label{Fig.sub.2}
+        \includegraphics[width=0.45\textwidth]{P+R_demand}
+    }
+    \caption{Main name}
+
+    \label{Fig.main}
+    \end{figure}
+            \end{lstlisting}
+
+    \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
+          \begin{figure}[H]
+              \centering
+              %插入图片，[]中设置图片大小，{}中是图片文件名
+              \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
+              \caption{并排插入两个图片的效果}
+              \label{Fig.Insert_two_pic_demo}
+          \end{figure}
+
+    \item 引用图片
+
+          在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+\subsection{如何设置边距}
+\subsubsection{操作步骤}
+\begin{enumerate}
+    \item 引用geo 设置宏包
+          $\backslash$usepackage\{geometry\}
+    \item 设置页边距
+          \begin{enumerate}
+              \item 设置纸张大小，也可以设置常用的a4paper之类的。
+
+                    \verb!\geometry{papersize={20cm,15cm}}!
+              \item 设置为缩放的形式
+
+                    \verb!\geometry{a4paper,scale=0.8}!
+              \item 设置为绝对距离
+
+                    \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
+          \end{enumerate}
+    \item 效果不错
+
+\end{enumerate}
+
+
+\subsubsection{页面边距设置概念}
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    %插入图片，[]中设置图片大小，{}中是图片文件名
+    \includegraphics[scale=0.75]{images/geometry.png}
+    \caption{页边距概念} %最终文档中希望显示的图片标题
+    \label{Fig.page_border} %用于文内引用的标签
+\end{figure}
 
 
 
