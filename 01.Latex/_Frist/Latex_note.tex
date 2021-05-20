@@ -51,7 +51,7 @@
     numberstyle         =   \zihao{5}\ttfamily, % 行号的样式，小5号，tt等宽字体
     showstringspaces    =   false,
     captionpos          =   t,                   % 这段代码的名字所呈现的位置，t指的是top上面
-    frame               =   lrtb,                % 显示边框
+    frame               =   none,%lrtb,                % 显示边框
 }
 %*************** 超链接设置***************
 \hypersetup{
@@ -181,7 +181,7 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
     \item \Checkmark 引用包\verb!usepackage{CJK}!
     \item \Checkmark 在需要的写入中文的地方引用下面的代码。
 
-\begin{lstlisting}
+          \begin{lstlisting}
 \begin{CJK}{UTF8}{gbsn}
     你好
 \end{CJK}
@@ -347,6 +347,19 @@ XXX
 
 \textbf{\textit{Combine text} \underline{当然也可以组合起来}}，\verb!\textbf{\textit{combine text}! 进行标记。
 
+\subsubsection{中文的加粗}
+也不知道什么原因,参考，hyperlink{https://www.zhihu.com/question/58456658}{xelatex编译加粗楷体为什么会失败？} 默认情况下，使用 \verb!\textbf{加粗}! 是不会加粗的。处理方法是，在启用 \verb!AutoFakeBold!。
+比如:
+\begin{lstlisting}
+% 在class 里面启用 AutoFakeBold
+\documentclass[UTF8,AutoFakeBold]{ctexart}
+
+% 或者
+
+\end{lstlisting}
+
+
+
 \subsubsection{删除线}
 删除线比较复杂， 但是需要引用ulem的宏包。
 \begin{enumerate}
@@ -479,7 +492,7 @@ For instance \hypertarget{thesentence}{this sentence}.
 \subsubsection{换行命令}
 
 \begin{quotation}
-    Tip: 换行和段落是有本质的区别的。换行只是当前段落，但是段落会对首字缩进等有影响！两个连续空行代表更换段落。
+    Tip: 换行和段落是有本质的区别的。换行只是当前段落换行而不是新起一个段落，但段落是有独立的排版特性的！两个连续空行代表更换段落。
 \end{quotation}
 
 \verb!\\! : 换行。
@@ -513,14 +526,14 @@ For instance \hypertarget{thesentence}{this sentence}.
               \item 使用"\verb!\!verb!\verb!\!!"，注意是"！！" 之间进行截止
               \item 使用\verb!$\backslash$!
               \item 使用代码
-              % 代码
+                    % 代码
                     \begin{lstlisting}{language=tex} 
 \usepackage{verbatim}
 \begin{verbatim} % 使用代码的的形式显示
     \
 \end{verbatim}
                     \end{lstlisting}
-                % 代码
+                    % 代码
           \end{enumerate}
 
     \item 标题中(不建议使用这个方法。会搞乱目录和书签)
@@ -645,19 +658,19 @@ For instance \hypertarget{thesentence}{this sentence}.
 
 渲染：
 \begin{enumerate}
-\item 第一个
-\item 嵌套
-\begin{enumerate}
-    \item 编号i
-    \item 编号ii
-\end{enumerate}
-\item 无序
-    \begin{itemize}
-        \item 第一个
-        \item second
-        \item 第三个
-    \end{itemize}
-\item ...
+    \item 第一个
+    \item 嵌套
+          \begin{enumerate}
+              \item 编号i
+              \item 编号ii
+          \end{enumerate}
+    \item 无序
+          \begin{itemize}
+              \item 第一个
+              \item second
+              \item 第三个
+          \end{itemize}
+    \item ...
 \end{enumerate}
 
 
@@ -684,16 +697,16 @@ For instance \hypertarget{thesentence}{this sentence}.
 \begin{itemize}
     \item 第一个
     \item second
-    \begin{itemize}
-        \item a
-        \begin{itemize}
-            \item apple
-            \item banner
-            \item pear
-        \end{itemize}
-        \item b
-        \item c
-    \end{itemize}
+          \begin{itemize}
+              \item a
+                    \begin{itemize}
+                        \item apple
+                        \item banner
+                        \item pear
+                    \end{itemize}
+              \item b
+              \item c
+          \end{itemize}
     \item 第三个
 \end{itemize}
 
