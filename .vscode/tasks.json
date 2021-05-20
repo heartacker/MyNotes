@@ -1,0 +1,25 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "LaTeX→Word(File)",
+            "type": "shell",
+            "command": "cd",
+            "args": [
+                "${fileDirname}",
+                "&&",
+                "pandoc",
+                "${file}",
+                "-o",
+                "${fileBasenameNoExtension}.docx",
+                "-w",
+                "docx",
+                "--pdf-engine",
+                "xelatex"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
