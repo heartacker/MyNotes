@@ -16,7 +16,8 @@
 \usepackage{geometry}     % 设置边距
 \usepackage{verbatim}     % 显示原始字符
 \usepackage{cprotect}     % 在标题中显示原始字符
-\usepackage{ulem}         % 删除线
+\usepackage{ulem}         % 删除
+
 
 % \usepackage[colorlinks=true]{hyperref}
 \usepackage{hyperref}
@@ -119,27 +120,27 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 
 \Checkmark 选择使用 TEX/LATEX 的理由包括：
 
-\begin{enumerate}
+\begin{itemize}
     \item 免费软件；
     \item 专业的排版效果；
     \item 是事实上的专业数学排版标准；
     \item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
-\end{enumerate}
+\end{itemize}
 
 \Checkmark 不选择使用 TEX/LATEX 的理由包括：
-\begin{enumerate}
+\begin{itemize}
     \item 需要相当精力学习；
     \item 图文混合排版能力弱；
     \item 仅流行于数学、物理、计算机等领域；
     \item 中文期刊的支持较差；
-\end{enumerate}
+\end{itemize}
 
 \subsection{如何查询文档？}
 对于这种非常陌生羞涩难懂的软件。你会觉得连查文档都很困难。不过如果你想对某个模块阅读文档，可以通过下面的命令打开英文文档。
 
 \begin{lstlisting}
 > texdoc 模块的名字
-> texdoc lstlisting 
+> texdoc lstlisting
 \end{lstlisting}
 
 
@@ -180,7 +181,7 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
     \item \Checkmark 引用包\verb!usepackage{CJK}!
     \item \Checkmark 在需要的写入中文的地方引用下面的代码。
 
-          \begin{lstlisting}
+\begin{lstlisting}
 \begin{CJK}{UTF8}{gbsn}
     你好
 \end{CJK}
@@ -512,12 +513,14 @@ For instance \hypertarget{thesentence}{this sentence}.
               \item 使用"\verb!\!verb!\verb!\!!"，注意是"！！" 之间进行截止
               \item 使用\verb!$\backslash$!
               \item 使用代码
-                    \begin{lstlisting}{language=tex}
+              % 代码
+                    \begin{lstlisting}{language=tex} 
 \usepackage{verbatim}
 \begin{verbatim} % 使用代码的的形式显示
     \
 \end{verbatim}
                     \end{lstlisting}
+                % 代码
           \end{enumerate}
 
     \item 标题中(不建议使用这个方法。会搞乱目录和书签)
@@ -616,7 +619,83 @@ For instance \hypertarget{thesentence}{this sentence}.
     \end{enumerate}
 \end{quotation}
 
+\subsection{有序和无序列表}
+\subsubsection{有序列表}
 
+使用 enumerate 可以 生成有序列表。
+% todo 为什么无法使用自定义编号
+代码：
+\begin{lstlisting}
+\begin{enumerate}
+    \item 第一个
+    \item 嵌套
+    \begin{enumerate}
+        \item 编号i
+        \item 编号ii
+    \end{enumerate}
+    \item 无序
+        \begin{itemize}
+            \item 第一个
+            \item second
+            \item 第三个
+        \end{itemize}
+    \item ...
+    \end{enumerate}
+\end{lstlisting}
+
+渲染：
+\begin{enumerate}
+\item 第一个
+\item 嵌套
+\begin{enumerate}
+    \item 编号i
+    \item 编号ii
+\end{enumerate}
+\item 无序
+    \begin{itemize}
+        \item 第一个
+        \item second
+        \item 第三个
+    \end{itemize}
+\item ...
+\end{enumerate}
+
+
+
+
+\subsubsection{无序列表}
+
+使用 itemize 可以生成序列表。
+代码：
+\begin{lstlisting}
+    \begin{itemize}
+        \item 第一个
+        \item second
+        \begin{itemize}
+            \item a
+            \item b
+            \item c
+        \end{itemize}
+        \item 第三个
+    \end{itemize}
+\end{lstlisting}
+
+渲染：
+\begin{itemize}
+    \item 第一个
+    \item second
+    \begin{itemize}
+        \item a
+        \begin{itemize}
+            \item apple
+            \item banner
+            \item pear
+        \end{itemize}
+        \item b
+        \item c
+    \end{itemize}
+    \item 第三个
+\end{itemize}
 
 \subsection{插入表格}
 
@@ -774,7 +853,7 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 \begin{enumerate}
     \item 插入代码，参考代码
 
-    \begin{lstlisting}
+          \begin{lstlisting}
         \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
             \centering %图片居中
             \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
