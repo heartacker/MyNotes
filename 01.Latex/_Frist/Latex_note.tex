@@ -5,14 +5,14 @@
 
 \usepackage[]{color}
 
-\usepackage{graphicx}     %插入图片的宏包
-\usepackage{float}        %设置图片浮动位置的宏包
-\usepackage{subfigure}    %插入多图时用子图显示的宏包
-\usepackage{listings}     %代码
-\usepackage{xcolor}       %代码高亮
+\usepackage{graphicx}     % 插入图片的宏包
+\usepackage{float}        % 设置图片浮动位置的宏包
+\usepackage{subfigure}    % 插入多图时用子图显示的宏包
+\usepackage{listings}     % 代码
+\usepackage{xcolor}       % 代码高亮
 
-\usepackage{geometry}     %设置边距
-\usepackage{verbatim}     %显示原始字符
+\usepackage{geometry}     % 设置边距
+\usepackage{verbatim}     % 显示原始字符
 \usepackage{cprotect}     % 在标题中显示原始字符
 
 % \usepackage[colorlinks=true]{hyperref}
@@ -138,7 +138,7 @@
           \begin{lstlisting}
 \begin{CJK}{UTF8}{gbsn}
     你好
-\end{CJK}        
+\end{CJK}
         \end{lstlisting}
     \item $\Box$ Why gbsn?
     \item $\Box$ What is the difference between CJK and CJK-utf8?
@@ -151,14 +151,14 @@
 \LaTeX 主要分为三部分。可以理解为我要写什么,我要开始写文档,我正在写文档.
     \begin{enumerate}
         \item  说明我要写说明文档,就是我要写什么;
-        
+
         \begin{verbatim}
 % cjk 使用utf-8,中文文章使用`ctexart`,article,report,...
 % 大意就是说我要写什么
 \documentclass[UTF8]{ctexart}
         \end{verbatim}
         \item  说明我要用到的宏包,就是我要开始写;
-        
+
         \begin{verbatim}
 % 宏包，意思是我要开始写文档了。我会用什么工具。只有加了宏包才能写公式，做表格，放图片
 % 常用的有mathtools，amsmath，graphicx，array，geometry
