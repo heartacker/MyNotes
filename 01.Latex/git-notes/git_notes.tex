@@ -1,4 +1,4 @@
-\documentclass[UTF8]{ctexart}
+\documentclass[UTF8,AutoFakeBold]{ctexart}
 
 \usepackage[]{color}
 
@@ -10,6 +10,8 @@
 \usepackage{geometry}  %设置边距
 \usepackage{verbatim}  %显示原始字符
 \usepackage{cprotect}  % 在标题中显示原始字符
+\usepackage[colorlinks=true]{hyperref}
+
 
 %**********************边距设置****************************************
 
@@ -19,7 +21,7 @@
 %********************代码设置******************************************
 % 用来设置附录中代码的样式
 \lstset{
-    basicstyle          =   \sffamily,           % 基本代码风格
+    basicstyle          =   \ttfamily,           % 基本代码风格
     keywordstyle        =   \bfseries,           % 关键字风格
     commentstyle        =   \rmfamily\itshape,   % 注释的风格，斜体
     stringstyle         =   \ttfamily,           % 字符串风格
@@ -29,15 +31,24 @@
     numberstyle         =   \zihao{-5}\ttfamily, % 行号的样式，小五号，tt等宽字体
     showstringspaces    =   false,
     captionpos          =   t,                   % 这段代码的名字所呈现的位置，t指的是top上面
-    frame               =   lrtb,                % 显示边框
+    frame               =   none,%lrtb,                % 显示边框
 }
 %**************************************************************
 
 \begin{document}
 \title{Git 入门手册}
-\author{Liuding.xin}
+\author{Liuding.xin$\heartsuit$}
 % \date{}
-\maketitle
+
+\begin{titlepage}
+    \maketitle
+\end{titlepage}
+
+
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
 
 \begin{abstract}
     当你在debug 程序的时候，不断的改来改去，终于搞好了，结果发现。代码已经变得面目全非了。这时候你一定会很崩溃。我究竟改了什么？我是改了什么才修复了这个bug的？我该如何恢复那些和bug无关的代码？
