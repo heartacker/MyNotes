@@ -5,7 +5,8 @@
 		}
 	],
 	"settings": {
-		"makefile.extensionOutputFolder": "./.vscode"
+		"makefile.extensionOutputFolder": "./.vscode",
+		"latex-workshop.latex.recipe.default": "lastUsed"
 	},
 	"extensions": {
 		"recommendations": [
