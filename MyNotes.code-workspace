@@ -6,7 +6,15 @@
 	],
 	"settings": {
 		"makefile.extensionOutputFolder": "./.vscode",
-		"latex-workshop.latex.recipe.default": "lastUsed"
+		"latex-workshop.latex.recipe.default": "lastUsed",
+		"files.exclude": {
+			"**/**.aux": true,
+			"**/**.lof": true,
+			"**/**.lot": true,
+			"**/**.toc": true,
+			// "**/**.log": true,
+			"**/**.synctex**": true,
+		}
 	},
 	"extensions": {
 		"recommendations": [
