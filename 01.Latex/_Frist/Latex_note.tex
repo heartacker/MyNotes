@@ -91,12 +91,43 @@
 
 \section{\LaTeX 基础}
 \label{sec:knowledge}
+
+\subsection{什么是\LaTeX？}
 TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之后，集合更多宏包的再发行版本。\LaTeX 更加简单更流行，但是还是很难入门，因为他们都是使用markup语言进行编写，而不是类似$MicroSoft Word$ 那样所见即所得。所以门槛非常高。
 但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。正是因为门槛很高，导致学习非常陡峭，让很多人想入手都不知道如何入手。
 
 本人也是折腾了很久之后，终于找到了学习方法和技巧。后续将会简单的给大家讲解如何上手。
 
 这里将会讲解非常简单的基础。
+
+当然入手难的问题实在是要靠自己去解决，所以不要认为最好的排版软件就是最适合自己的。你可以根据自己的需求选择不同的排版软件。
+
+比如:
+\begin{enumerate}
+    \item $Micro$ $Soft$ $Word$.
+    \item \LaTeX
+    \item $Markdown$
+\end{enumerate}
+
+但是如何选择可以参考：
+
+\Checkmark 选择使用 TEX/LATEX 的理由包括：
+
+\begin{enumerate}
+    \item 免费软件；
+    \item 专业的排版效果；
+    \item 是事实上的专业数学排版标准；
+    \item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
+\end{enumerate}
+
+\Checkmark 不选择使用 TEX/LATEX 的理由包括：
+\begin{enumerate}
+    \item 需要相当精力学习；
+    \item 图文混合排版能力弱；
+    \item 仅流行于数学、物理、计算机等领域；
+    \item 中文期刊的支持较差；
+\end{enumerate}
+
 
 \subsection{\LaTeX 文类层级}
 \label{sec:structure}
@@ -205,7 +236,7 @@ bib: bib文件是参考文献的库
 一般使用\verb!\bibliography{}!导入
 
 bib文件一般如下：
-\begin{lstlisting}    
+\begin{lstlisting}
     @article{XXX,
         title={ABC},
         author={A, B},
@@ -257,7 +288,7 @@ XXX
 
 目录对于图表而言也是可以用的。如果你的文档中有很多图表，也可以专门为它们建目录。对应的命令是 \verb!\listoffigures! 和 \verb!\listoftables! 。它会收集对应图表中的标题来产生图表的目录。图表的插入我们将在下一期中介绍。
 
-注意，这回在目录下生成\verb!.toc!，\verb!.lof!， \verb!.lot!  文件，分别对应【目录】、【图像】、【表格】。
+注意，这会在目录下生成\verb!.toc!，\verb!.lof!， \verb!.lot!  文件，分别对应【目录】、【图像】、【表格】。
 
 \begin{enumerate}
     \item 目录
@@ -275,14 +306,15 @@ XXX
 
 \subsection{如何让标题单独一个封面？}
 
-有些书籍封面是单独一个页面的，还配了图片。看起来非常舒服，这个改如何处理呢？
+有些书籍封面是单独一个页面的，还配了图片。看起来非常舒服，这个该如何处理呢？
 
+可以参考以下代码:
 \begin{lstlisting}
 %标题
 \begin{titlepage}
     \maketitle %将title 编译进来
     \centering
-    \includegraphics[scale=1.5]{simaqian.png}
+    \includegraphics[scale=1.5]{simaqian.png} % 顺便插入图片
 \end{titlepage}
 \end{lstlisting}
 
@@ -379,7 +411,7 @@ For instance \hypertarget{thesentence}{this sentence}.
 \end{lstlisting}
 
 
-\subsection{如何在缩进？} % (fold)
+\subsection{如何进行缩进？} % (fold)
 
 
 \subsection{如何在 \LaTeX 中插入代码} % (fold)
@@ -422,27 +454,29 @@ For instance \hypertarget{thesentence}{this sentence}.
           \verb!\usepackage{listingsutf8}!
 
     \item 设置代码的格式,暂时不说。
-    \item 在指定的位置插入一下例子
+    \item 在指定的位置插入以下例子:
           \label{Code.Insert_pic}
-          \begin{lstlisting}[language={tex}]
-\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-\centering %图片居中
-\includegraphics[width=0.7\textwidth]{images/svn-model.png}
-%插入图片，[]中设置图片大小，{}中是图片文件名
-\caption{集中化的版本控制系统} %最终文档中希望显示的图片标题
-\label{Fig.main2} %用于文内引用的标签
-\end{figure}
-          \end{lstlisting}
-
-
-\end{enumerate}
-
+          \begin{verbatim}
 \begin{lstlisting}[language=c]
     void mian(int argl,string[] args){
         for(int i = 0;i<argl;)
             cout<<args[i]<<cendl;// 输出
     }
 \end{lstlisting}
+          \end{verbatim}
+
+    \item 渲染效果如下:
+
+          \begin{lstlisting}[language=c]
+    void mian(int argl,string[] args){
+        for(int i = 0;i<argl;)
+            cout<<args[i]<<cendl;// 输出
+    }
+\end{lstlisting}
+
+\end{enumerate}
+
+
 
 \subsection{如何在\LaTeX 中插入图片？}
 \subsubsection{操作步骤}
@@ -746,7 +780,7 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 
 附带参考文献的整个编译需要四步。
 
-\begin{lstlisting}    
+\begin{lstlisting}
 (xe/pdf)latex main.tex   # 表示使用 latex, pdflatex 或 xelatex 编译，下同
 bibtex main.aux
 (xe/pdf)latex main.tex
@@ -773,12 +807,12 @@ bibtex main.aux
     if not exist "./Tmp" (
      md Tmp
      )
-    
+
     %CompileName% -output-directory=Tmp %FileName%
     bibtex ./Tmp/%FileName%
     %CompileName% -output-directory=Tmp %FileName%
     %CompileName% -output-directory=Tmp %FileName%
-    
+
     echo ------------------------------------------------
     echo Compile  finished.
     echo ------------------------------------------------
