@@ -39,20 +39,36 @@
 
 %********************代码设置******************************************
 % 用来设置附录中代码的样式
+
 \lstset{
     backgroundcolor     =   \color[RGB]{245,245,244},
-    basicstyle          =   \zihao{5}\ttfamily, % 基本代码风格
-    keywordstyle        =   \bfseries,           % 关键字风格
-    commentstyle        =   \rmfamily\itshape,   % 注释的风格，斜体
-    stringstyle         =   \ttfamily,           % 字符串风格
-    flexiblecolumns,                             % 别问为什么，加上这个
-    numbers             =   left,               % 行号的位置在左边
-    showspaces          =   false,               % 是否显示空格，显示了有点乱，所以不现实了
-    numberstyle         =   \zihao{5}\ttfamily, % 行号的样式，小5号，tt等宽字体
+    basicstyle          =   \zihao{5}\ttfamily,                % sf/tt基本代码风格
+    keywordstyle        =   \bfseries,                % 关键字风格
+    commentstyle        =   \rmfamily\itshape,        % 注释的风格，斜体
+    stringstyle         =   \ttfamily,                % 字符串风格
+    flexiblecolumns,                                  % 别问为什么，加上这个
+    numbers             =   left,                     % 行号的位置在左边
+    showspaces          =   false,                    % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \zihao{-5}\ttfamily,      % 行号的样式，小五号，tt等宽字体
     showstringspaces    =   false,
-    captionpos          =   t,                   % 这段代码的名字所呈现的位置，t指的是top上面
-    frame               =   none,%lrtb,                % 显示边框
+    captionpos          =   t,                        % 这段代码的名字所呈现的位置，t指的是top上面
+    frame               =  noen,% lrtb,                     % 显示边框
+    breaklines          =  true,
 }
+
+\lstdefinestyle{Python}{
+    language        =   Python,                       % 语言选Python
+    basicstyle      =   \zihao{-5}\ttfamily,
+    numberstyle     =   \zihao{-5}\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{red}\ttfamily,
+    breaklines      =   true,                         % 自动换行，建议不要写太长的行
+    columns         =   fixed,                        % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth       =   0.5em,
+}
+
 %*************** 超链接设置***************
 \hypersetup{
     colorlinks  = true,
@@ -230,7 +246,7 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 
 \subsubsection{\LaTeX 的文件类型}
 \label{subsec:filetype}
-\url{https://blog.csdn.net/huitailangyz/article/details/99685683}{}
+\url{https://blog.csdn.net/huitailangyz/article/details/99685683}{VSCode 的配置过程}
 
 tex: tex文件是最常见的latex文件，也是平时编写文章的文件
 
@@ -285,6 +301,103 @@ XXX
 \end{document}
 \end{lstlisting}
 
+
+\subsection{常用的工具和资源链接}
+
+\subsubsection{一些入门网站}
+
+入门书籍。建议先看: \href{{https://github.com/heartacker/MyNotes/blob/master/01.Latex/LaTeX_Docs_2014/04%20电子书/LaTeX入门（刘海洋）.pdf}{LaTeX入门（刘海洋）.pdf}
+
+TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安装指南}
+
+软件配置教程: \href{https://blog.csdn.net/qq_23599965/article/details/103022215}{用于 Visual Studio Code 的 LaTeX Workshop}
+
+手写识别: \href{http://detexify.kirelabs.org/classify.html}{手写体符号识别工具}。
+
+在线公式编辑器: \href{https://latexlive.com/}{在线\LaTeX 公式编辑器}, 支持导出多个格式。
+
+插入代码： \href{https://zhuanlan.zhihu.com/p/65441079}{LaTeX 里「添加程序代码」的完美解决方案}
+
+学习入门总结: \href{https://www.cnblogs.com/zyg123/p/10499744.html}{LaTeX学习系列之---LaTeX的总结}
+
+
+
+\subsubsection{常用宏包}
+
+
+常见的宏包推荐。
+来源：\href{https://www.zhihu.com/question/26421957/answer/32801779}{zhihu\@ 孟晨}
+
+首先是国外用户写的一篇文档。
+\href{http://www.howtotex.com/packages/9-essential-latex-packages-everyone-should-use/}{9 essential LaTeX packages everyone should us},Elegant LaTeX Team 有翻译。
+
+
+\textbf{中文支持。}
+
+ctex - 封装好的中文支持和版式调整工具，定义了许多方便的工具
+
+xeCJK - XeLaTeX 下的中文字体选择和禁则、压缩的处理
+
+fontspec - XeLaTeX 下的西文字体选择
+
+
+\textbf{页面布局类。}
+
+geometry - 调整页面大小、页边距等尺寸
+
+fancyhdr - 设计页眉页脚
+
+titlesec - 设计章节标题格式
+
+titletoc - 设计目录格式
+
+
+\textbf{超链接和PDF 的各种功能。}
+
+hyperref - 超链接，PDF 书签，PDF 表单，PDF 元信息……
+
+media9 - 插入 Flash、视频等
+
+
+\textbf{图表和浮动体。}
+
+graphicx - 插图
+
+xcolor - 颜色
+
+tikz - 绘图
+
+booktabs - 三线表
+
+multirow - 列合并单元格（cell）
+
+makecell - 在单元格内手动换行
+
+longtable - 换页表格
+
+tabu - 封装了各种接口的表格宏包，制表强烈推荐
+
+threeparttable - 在表格中使用脚标，和 tabu 有冲突，补丁：https://gist.github.com/157a703e0ed8804e7696
+
+diagbox - 斜线表头（作者： @刘海洋）
+
+float - 提供了 H 选项，禁止浮动体浮动（除非必要，不建议这么干）
+
+placeins - 提供了 \verb!\FloatBarrier! 命令，限制浮动体浮动范围
+
+\textbf{列表环境。}
+
+enumitem - 修改列表环境的各种间距、label 样式等的不二法门
+
+\textbf{其他一些工具。}
+
+nag - 检查你是否使用了过时的宏包和命令的宏包
+
+etoolbox - 主要是针对宏包和文档类开发者，不过提供了一些对环境的钩子，有时候很有用
+
+xpatch - 修补命令用的
+
+environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了一些花括号不匹配导致的问题
 
 \newpage
 % \section{\LaTeX 学习笔记}
@@ -967,6 +1080,10 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 当我们需要用什么东西的时候，我们该如何知道要引用什么？
 比如我们要用超链接，我们就需要引用 hyperref 这个宏包？那我该如何知道呢？
 
+知乎讨论: \href{https://www.zhihu.com/question/26421957}{用 TeX 编辑论文时，如何选择合适的 Packages ？}
+
+CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的名字应该能看出来。一般来说，如果有作者写了一个宏包，自觉还挺有价值，测试之后与常用宏包没有发现冲突，就会考虑上传到 CTAN 这个网站。CTAN 网站经过收集、整合、分类，给广大 TeX 用户提供了方便的检索系统：\href{http://www.ctan.org/ctan-portal/search/?ext=true/}{CTAN: Search}。 具体的用法可以参见页面当中的 Search Tips。
+
 % \usepackage{bbding}
 % \usepackage{pifont}
 % \usepackage{wasysym}
@@ -1058,7 +1175,6 @@ bibtex main.aux
 
 \subsection{什么是 recipe?}
 \label{subsec:recipe}
-\href{https://blog.csdn.net/qq_23599965/article/details/103022215}{用于 Visual Studio Code 的 LaTeX Workshop}
 
 \href{https://blog.csdn.net/qysh123/article/details/11833649}{PDFLaTeX和XeLaTeX有什么区别？}
 
@@ -1128,7 +1244,7 @@ latex命令：tex命令加上某一个选项使用，就会用LaTeX 格式进行
 $\varepsilon$-TeX 程序：Knuth TeX程序的一个扩展，也是一个程序，一般写成 eTeX。增加了少量的几个命令，但一般来说是与Knuth TeX程序没有太多区别的。
 
 \begin{quote}
-实现：在文中的意思就是指“程序”的意思。如文中：eTeX 程序和 Knuth TeX 都是TeX语言的一个实现（也就是说，eTeX 程序和 Knuth TeX 都是把TeX语言转换为排版的程序。程序作用于tex文本文件，把tex文件编译成dvi文件）。
+    实现：在文中的意思就是指“程序”的意思。如文中：eTeX 程序和 Knuth TeX 都是TeX语言的一个实现（也就是说，eTeX 程序和 Knuth TeX 都是把TeX语言转换为排版的程序。程序作用于tex文本文件，把tex文件编译成dvi文件）。
 \end{quote}
 
 pdfTeX程序：Tex语言的又一个实现，也就是把Tex语言转换为排版的又一个程序。它会把 TeX 语言写的代码直接编译成 PDF 文件。
