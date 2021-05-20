@@ -169,13 +169,13 @@
         \begin{verbatim}
 % 这里是导言区
 \begin{document}% 这是一个文档的环境
-document
-\begin{figure}% 这是一个图片的环境
-图片配置
-\end{figure}
-\begin{table}% 这是一个表格的环境
-表格代码
-\end{table}
+    document
+    \begin{figure}% 这是一个图片的环境
+        图片配置
+    \end{figure}
+    \begin{table}% 这是一个表格的环境
+        表格代码
+    \end{table}
 \end{document}
         \end{verbatim}
     \end{enumerate}
@@ -213,6 +213,8 @@ document
 
           \verb!\listoftables!
 \end{enumerate}
+
+不过，需要注意的是，在编译的时候，需要使用编译工具进行编译两次。第一次是初步编译，生成目录等临时文件，之后在将临时文件编译进去。比如第一次编译之后，生成的PDF文件是看不到目录的，之后再次编译，就可以把 .toc、.lof、.lot编译进去。
 
 \subsection{如何让标题单独一个封面？}
 
@@ -625,7 +627,7 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 
 
 
-
+%*如何对宏进行配置？
 \subsection{如何对宏进行配置？}
 当我们引用一个宏的时候，我们如何知道怎么配置这个宏呢？
 比如我们引用 hyperref 宏的时候。我是如何知道我可以配置一下的这些东西呢？
@@ -641,6 +643,8 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 }
 \end{lstlisting}
 
+
+%*编译的过程
 
 
 
