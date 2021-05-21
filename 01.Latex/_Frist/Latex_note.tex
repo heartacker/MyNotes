@@ -543,8 +543,39 @@ quote 是无参数的环境。
 
 这就是分组和环境的效果。
 
+\subsection{公式}
+
+\LaTeX 对数学和科学支持最好的排班系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。
+
+\subsubsection{行内公式}
+
+行内公式叫做 $inline formula$， 只需要 \$\ \$ 括起来，就是一个公式环境，比如\verb!$a+b$! 会得到 $a+b$，而不是a+b。
+
+\subsubsection{列表公式}
+较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 $displayed formula$。使用 equation 环境方便输出。
+
+\begin{lstlisting}
+    \begin{equation}
+        f(x)= \int_a^b x dx
+    \end{equation}
+\end{lstlisting}
+
+渲染效果:
+
+
+\begin{equation}
+    f(x)= \int_a^b x dx\\
+    % 度数竟然没有专门的符号^\circ
+    \angle CAB = 90^\circ =\pi / 2
+\end{equation}
+
+
+
+
+
+
 \newpage
-% \section{\LaTeX 学习笔记}
+%* \section{\LaTeX 学习笔记}
 \section{\LaTeX 学习笔记}
 \label{sec:skillnotes}
 
