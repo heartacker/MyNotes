@@ -413,8 +413,11 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 在基础知识\ref{sec:knowledge}里面提到。
 
 
+%*\subsection{如何生成目录?}
 \subsection{如何生成目录?}
 制作目录其实非常简单，只需要一个命令，就是 \verb!\tableofcontents! 。这个命令放在哪里，目录就会出现在哪里。和交叉引用相同的一个特点是，目录的排版也需要两次编译。一方面是因为其中涉及到页码，另一方面是涉及到各个章节的标题。
+
+\subsubsection{内置目录}
 
 \begin{quotation}
     Tip: 只要生成了目录,之后生成的PDF 就会包含书签。
@@ -437,6 +440,13 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 \end{enumerate}
 
 不过，需要注意的是，在编译的时候，需要使用编译工具进行编译两次。第一次是初步编译，生成目录等临时文件，之后在将临时文件编译进去。比如第一次编译之后，生成的PDF文件是看不到目录的，之后再次编译，就可以把 .toc、.lof、.lot编译进去。
+
+
+\subsubsection{如何对某个定义对象进行编号?}
+% todo
+如，代码，摘要，附录。
+todo
+
 
 \subsection{如何让标题单独一个封面？}
 
