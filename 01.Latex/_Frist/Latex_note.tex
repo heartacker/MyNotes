@@ -23,6 +23,7 @@
 % \usepackage[colorlinks=true]{hyperref}
 \usepackage{hyperref}
 
+\usepackage[nottoc]{tocbibind} % 增加目录的项目
 
 
 
@@ -570,16 +571,48 @@ quote 是无参数的环境。
 \end{equation}
 
 
+\subsection{文章结构设计及模板}
 
+如果我们按照基本格式。按部就班的写文档。这是没有问题的。
 
+但是，TeX 的精神是精益求精的。也不要枉费高老师\footnote{高老师为了有一个美好的排版，中间花费了很多时间开发排版软件，中止写书。直到接近10年之后，才回来重新写书} 为
+大家做出来的努力。
 
+LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，都需要精益求精。
+优秀的结构设计，让文档排版事半功倍。
+
+\subsubsection{导言区}
+
+绝大多数排版是是到导言区之前使用 命令定义 和参数设定 来对排版进行调整的。
+比如页边距。
+
+\begin{lstlisting}
+\usepackage{geometry}
+\geometry{a4paper, scale=0.8}
+
+% 增加目录的项目，使用tocbibind  讲目录添加到目录本身。
+\usepackage[nottoc]{tocbibind} 
+\end{lstlisting}
+
+\subsubsection{自定义环境}
+
+对于大部分同类的块，我们一般都有固定的格式。
+就以 quote 为例，我们在每个 quote 里面都进行调整格式是非常不方便的。
+我们可以自定义个环境。
+\begin{lstlisting}
+    \newenvironment{myquote}
+        {begin{quote}\zihao{5}\kaishu}
+        {\end{quote}}
+\end{lstlisting}
+
+% TODO 自定义环境
 
 \newpage
 %* \section{\LaTeX 学习笔记}
 \section{\LaTeX 学习笔记}
 \label{sec:skillnotes}
 
-在基础知识\ref{sec:knowledge}里面提到。
+在基础知识\ref{sec:knowledge} 里面提到。
 
 
 %*\subsection{如何生成目录?}
@@ -1073,7 +1106,7 @@ Latex在默认情况下，Figure图像的编号是从Figure 1, Figure 2, Figure 
 \end{enumerate}
 
 
-\subsubsection{自动插入表@图？}
+\subsubsection{自动插入表图到引用？}
 
 % todo
 todo
@@ -1081,16 +1114,22 @@ todo
 % *\subsection{插入表格}
 \subsection{插入表格}
 
-tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
+tabular 环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
+
+一般情况下，tabular 会嵌入到 table 的环境中。
+
+table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tabular 进行绘制。
 
 \subsubsection{操作步骤}
+
+
 使用以下的代码。显示效果参考 表\ref{Table.Demo0}
 \begin{lstlisting}{language=LaTeX}
 \begin{table}[H]
     \centering
     \caption{论文中常用符号释义}
     \label{编译器}
-    \begin{tabular}{|c|l|r|}
+    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
         \hline
         操作系统   & 发行版   & 编辑器    \\
         \hline
@@ -1103,17 +1142,20 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
         通用       & TeX Live & TeXworks  \\
         \hline
     \end{tabular}
+    \qquad
+    不同的操作系统和编辑器之间很多是通用的。
 
 \end{table}
 \end{lstlisting}
 
 \subsubsection{效果显示}
 
+显示效果:
 \begin{table}[H]
     \centering
     \caption{表格demo}
     \label{Table.Demo0}
-    \begin{tabular}{|c|l|r|}
+    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
         \hline
         操作系统   & 发行版   & 编辑器    \\
         \hline
@@ -1126,11 +1168,17 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
         通用       & TeX Live & TeXworks  \\
         \hline
     \end{tabular}
+    \qquad
+    不同的操作系统和编辑器之间很多是通用的。
+    推荐使用 TeX Live.
 
 \end{table}
 
+效果显示完毕。
 
-
+\begin{quotation}    
+    \zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!）。
+\end{quotation}
 
 
 % \begin{table}[H]
@@ -1160,7 +1208,11 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 % \footnotetext[1]{这里只展示论文的部分符号。符号首次出现时，本文将详细地说明其含义}
 
 \subsubsection{居中}
-有时候，用 \verb!\begin{center}-\end(center}! 来将表格整体居中，但它的居中只是 居中了 \verb!\begin{table}-\end{table}!；如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}-\end{tabular}! ，那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
+有时候，用 \verb!\begin{center}-\end(center}! 来将 table 整体居中，
+但它的居中只是 居中了 \verb!\begin{table}-\end{table}!；
+
+如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}-\end{tabular}! ，
+那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
 
 \subsection{如何在 \LaTeX 中插入代码} % (fold)
 
