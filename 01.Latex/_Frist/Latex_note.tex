@@ -405,6 +405,101 @@ xpatch - 修补命令用的
 
 environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了一些花括号不匹配导致的问题
 
+
+
+
+\subsection{TeX 的环境的命令环境和参数}
+\subsubsection{什么是 TeX 的环境？}
+
+以常见的文章结构为例:
+
+\begin{lstlisting}
+    \begin{document}
+    % 这里是 document 的环境
+
+        \begin{abstract}
+        % 这里是 abstract 的环境
+        \end{abstract}
+
+        \begin{section}
+        % 这里是 section 的环境
+        \end{section}
+
+    % 这里依旧是 document 环境。
+    \end{document}
+\end{lstlisting}
+
+\subsubsection{什么是命令？}
+
+上面以$\backslash$ 开头的代码。就是 TeX 命令。
+
+一个 TeX 命令（也就是所谓的宏）的格式为：
+
+\begin{itemize}
+    \item 无参数: \textbf{$\backslash$command}
+    \item 有参数: \textbf{$\backslash$command}<arg1><arg2>...<argn>
+    \item 无参数: \textbf{$\backslash$command[}<arg$_{opt}$ >\textbf{]} <arg1><arg2>...<argn>
+\end{itemize}
+
+
+
+\subsubsection{命令的参数？}
+
+先看这个代码：
+
+\begin{lstlisting}
+\begin{quote}
+孔子曰：人之初，性本善。
+\end{quote}
+
+\end{lstlisting}
+
+渲染效果：
+
+\begin{quote}
+    孔子曰：人之初，性本善。
+\end{quote}
+
+
+这是一个引用，但是你会发现字号上面的都没有变。
+
+\begin{lstlisting}
+    \begin{quote}
+    \zihao{-5} 孔子曰：人之初，性本善。
+    \end{quote}
+
+\end{lstlisting}
+
+渲染效果：
+
+\begin{quote}
+    \zihao{-5}\kaishu 孔子曰：人之初，性本善。
+\end{quote}
+
+可以看到，我们添加 \verb!\zihao{-5}! 改变了这个 quote 内部的字体。
+
+上面我们知道。\verb!\footnote{内容}! 只改变了"内容"，但是为什么 \verb!\zihao{-5}! 改变了 quote 的所有内容呢？
+
+我们将类似\verb!\zihao{-5}! 这类命名称作声明(declaration)。但是分组限定了声明的范围。
+
+一个 \LaTeX 换进自然就是一个分组（Group），因此，前面的 \verb!\zihao{-5}! 会影响 quote 换进。其中，最大分组就是 document 了。不过也可以用 \{\ \} 产生一个分组。
+
+\LaTeX 的换进一般格式为：
+
+\begin{lstlisting}
+    \begin{<环境的名字>}
+        环境的里面的内容。
+    \end{<环境的名字>}
+
+    % 带参数的环境
+    \begin{<环境的名字>}[<可选参数>]<参数>
+        环境的里面的内容。
+    \end{<环境的名字>}
+
+\end{lstlisting}
+
+quote 是无参数的环境。
+
 \newpage
 % \section{\LaTeX 学习笔记}
 \section{\LaTeX 学习笔记}
@@ -626,7 +721,7 @@ For instance \hypertarget{thesentence}{this sentence}.
 除外）(hanzi
 chuwai)
 
-\begin{lstlisting} 
+\begin{lstlisting}
 % 上述最后的原始代码，可以看出对比。
 单个换行相当于一个西文的空格。（汉字
 除外）(hanzi
@@ -675,7 +770,7 @@ chuwai)
               \item 使用\verb!$\backslash$!
               \item 使用代码
                     % 代码
-                    \begin{lstlisting}{language=tex} 
+                    \begin{lstlisting}{language=tex}
 \usepackage{verbatim}
 \begin{verbatim} % 使用代码的的形式显示
     \
@@ -792,8 +887,8 @@ chuwai)
 注脚\footnote{这是注脚的注脚}是很常用的功能\footnote[1]{这是第二个带号码的注脚}。
 
 
-\begin{lstlisting}  
-    %代码  
+\begin{lstlisting}
+    %代码
     注脚\footnote{这是注脚的注脚}是很常用的
     功能\footnote[1]{这是第二个带号码的注脚}。
 \end{lstlisting}
@@ -896,7 +991,7 @@ Latex在默认情况下，Figure图像的编号是从Figure 1, Figure 2, Figure 
 \begin{enumerate}
     \item 引用宏包 \verb!\usepackage{amsmath}!
     \item 在\ document 之前添加这行代码。
-          \begin{lstlisting}    
+          \begin{lstlisting}
     % https://blog.csdn.net/Canhui_WANG/article/details/87364800
     \numberwithin{figure}{section}   %对应图
     \numberwithin{table}{section}    %对应表
