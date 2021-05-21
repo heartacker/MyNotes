@@ -606,7 +606,26 @@ For instance \hypertarget{thesentence}{this sentence}.
 \end{lstlisting}
 
 
-\subsection{换行、换段、换页、首行缩进？} % (fold)
+\subsection{空格、换行、换段、换页、首行缩进？} % (fold)
+
+\subsubsection{空格}
+
+\textbf{通常汉字后面的空格会被忽略，其他的符号后的面的空格则保留。}
+
+所以，“左\ 右 ” 会被渲染为“左 右”，“zuo you” 则依旧正常显示“zuo you” 。同时，单个换行相当于一个西文的空格。（汉字
+除外）(hanzi
+chuwai)
+
+\begin{lstlisting} 
+% 上述最后的原始代码，可以看出对比。
+单个换行相当于一个西文的空格。（汉字
+除外）(hanzi
+chuwai)
+\end{lstlisting}
+
+使用 xelatex 编译文档的时候，ctexart 文档类会调用 xeCJK 宏包，自动处理汉字于其他符号之间的距离，无论你有没有在他上面加上正确的空格。这是非常方便的。
+
+但是你想要一定加一个空格。参见\ref{subsubsec:space}。
 
 \subsubsection{换行命令}
 
@@ -708,13 +727,16 @@ For instance \hypertarget{thesentence}{this sentence}.
 \subsubsection{句号后面的空白}
 句号圆点，可以表示句子结束，也可以表示缩写。在小写字母后面圆点表示句子结束，但是为了表示缩写，需在圆点后空格加上倒斜线，即“\verb!\!”，表示缩写后面可以分行;在Latex中，大写字母后的圆点看做是一个缩写而不是句号。有时大写字母后面圆点表示成句号，可以在圆点前加上\verb!\@.!，即“\@.”
 
+\label{subsubsec:space}
 \subsubsection{空格}
 
 使用一个“反斜杠+一个空格”（“\verb!\ !”）表示1个空\ 格，space \ space。 多个同理，但是不推荐这样使用。
 
 
 
-以下是空格大小的调整方式。
+表\ref{tab.space_size} 是空格大小的调整方式。
+
+
 \begin{table}[htbp]
     \centering\begin{tabular}{|c|c|c|c|}
         \hline
@@ -839,7 +861,7 @@ Latex在默认情况下，Figure图像的编号是从Figure 1, Figure 2, Figure 
 \begin{enumerate}
     \item 引用宏包 \verb!\usepackage{amsmath}!
     \item 在\ document 之前添加这行代码。
-\begin{lstlisting}    
+          \begin{lstlisting}    
     % https://blog.csdn.net/Canhui_WANG/article/details/87364800
     \numberwithin{figure}{section}   %对应图
     \numberwithin{table}{section}    %对应表
