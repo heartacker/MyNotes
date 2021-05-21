@@ -18,6 +18,7 @@
 \usepackage{cprotect}     % 在标题中显示原始字符
 \usepackage{ulem}         % 删除
 
+\usepackage{amsmath}      % 图表添加章节编号
 
 % \usepackage[colorlinks=true]{hyperref}
 \usepackage{hyperref}
@@ -78,7 +79,12 @@
     % pdftitle    = {Overleaf Example},
     % pdfpagemode = FullScreen,
 }
-%******************************************************
+%**Latex技巧：在图表序号中加入章节号（实现诸如“图1.1.2”这样的图表序号）*******************************
+% https://blog.csdn.net/Canhui_WANG/article/details/87364800
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+%****************************
 \begin{document}
 \title{\LaTeX 入门手册}
 \author{$\heartsuit$Liuding.xin$\heartsuit$}
@@ -822,6 +828,24 @@ For instance \hypertarget{thesentence}{this sentence}.
           \end{itemize}
     \item 第三个
 \end{itemize}
+
+
+\subsection{如果在表格和图标之间插入章节信息。}
+
+如何插入表格和图片还没有讲解。但是这里先教一下如何插入章节信息在图表中。
+
+Latex在默认情况下，Figure图像的编号是从Figure 1, Figure 2, Figure 3, …, Figure N顺序递增的。虽然在文章只有一个章节的情况下，这种简单的顺序递增的Figure图像编号没有问题。但是当文章涉及到多个章节的时候，这种顺序递增的Figure图像编号就不符合文章排版规范。举个例子，第三章的第一个Figure图按照排版规范，应该编号为Figure 3.1，但是默认的Latex的Figure图像编号却将它编号为Figure 1。
+
+\begin{enumerate}
+    \item 引用宏包 \verb!\usepackage{amsmath}!
+    \item 在\ document 之前添加这行代码。
+\begin{lstlisting}    
+    % https://blog.csdn.net/Canhui_WANG/article/details/87364800
+    \numberwithin{figure}{section}   %对应图
+    \numberwithin{table}{section}    %对应表
+\end{lstlisting}
+\end{enumerate}
+
 
 \subsection{插入表格}
 
