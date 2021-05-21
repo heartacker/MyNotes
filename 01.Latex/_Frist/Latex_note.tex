@@ -1226,8 +1226,25 @@ tabular环境提供了最简单的表格功能。它用\verb!\hline!命令表示
 
 
 
+%* \subsection{如何在\LaTeX 中插入图片？}
 \subsection{如何在\LaTeX 中插入图片？}
-\subsubsection{操作步骤}
+
+\subsubsection{行内图片}
+
+一般情况下，很少在行内插入图片。
+行内插入图片会和文字混
+\includegraphics[width=5cm]{images/pic_inline.png}
+合在一起。
+
+上面的代码：
+
+\begin{lstlisting}
+行内插入图片会和文字混
+\includegraphics[width=5cm]{images/pic_inline.png}
+合在一起。
+\end{lstlisting}
+
+\subsubsection{图片环境}
 插入图片是比较麻烦的时候。不像Word文档那样所见所得。
 
 参考：https://blog.csdn.net/chichoxian/article/details/52588833
