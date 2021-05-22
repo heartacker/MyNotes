@@ -109,12 +109,12 @@
 
 % 标题
 \begin{titlepage}
-    \maketitle %将title 编译进来
-    % todo 想知道如何设置为背景图
-    \begin{figure}[htbp]
-        \centering
-        \includegraphics[scale=0.4,angle=-50]{images/1200px_LaTeX_project_logo_bird.svg.png}
-    \end{figure}
+	\maketitle %将title 编译进来
+	% todo 想知道如何设置为背景图
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.4,angle=-50]{images/1200px_LaTeX_project_logo_bird.svg.png}
+	\end{figure}
 \end{titlepage}
 
 % 本文的目录
@@ -129,9 +129,9 @@
 \clearpage
 
 \begin{abstract}
-    本文是记录在学习\LaTeX 过程中遇到的问题和解决办法，并用\LaTeX 写出来。
+	本文是记录在学习\LaTeX 过程中遇到的问题和解决办法，并用\LaTeX 写出来。
 
-    真的好困难。希望大家在看到这个文档的时候，点个赞！$\heartsuit$$\heartsuit$$\heartsuit$
+	真的好困难。希望大家在看到这个文档的时候，点个赞！$\heartsuit$$\heartsuit$$\heartsuit$
 \end{abstract}
 
 \section{\LaTeX 基础}
@@ -149,9 +149,9 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 
 比如:
 \begin{enumerate}
-    \item $Micro$ $Soft$ $Word$.
-    \item \LaTeX
-    \item $Markdown$
+	\item $Micro$ $Soft$ $Word$.
+	\item \LaTeX
+	\item $Markdown$
 \end{enumerate}
 
 但是如何选择可以参考：
@@ -159,18 +159,18 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 \Checkmark 选择使用 TEX/LATEX 的理由包括：
 
 \begin{itemize}
-    \item 免费软件；
-    \item 专业的排版效果；
-    \item 是事实上的专业数学排版标准；
-    \item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
+	\item 免费软件；
+	\item 专业的排版效果；
+	\item 是事实上的专业数学排版标准；
+	\item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
 \end{itemize}
 
 \Checkmark 不选择使用 TEX/LATEX 的理由包括：
 \begin{itemize}
-    \item 需要相当精力学习；
-    \item 图文混合排版能力弱；
-    \item 仅流行于数学、物理、计算机等领域；
-    \item 中文期刊的支持较差；
+	\item 需要相当精力学习；
+	\item 图文混合排版能力弱；
+	\item 仅流行于数学、物理、计算机等领域；
+	\item 中文期刊的支持较差；
 \end{itemize}
 
 \subsection{如何查询文档？}
@@ -191,22 +191,22 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 
 
 \begin{table}[htbp]
-    \centering
-    \begin{tabular}{|c|c|c|c|c|}
-        \hline
-        层次深度 & 层次名        & book                      & report                    & article                   \\
-        \hline
-        -1       & part          & $\backslash$part          & $\backslash$part          &                           \\
-        0        & chapter       & $\backslash$chapter       & $\backslash$chapter       & $\backslash$part          \\
-        1        & section       & $\backslash$section       & $\backslash$section       & $\backslash$section       \\
-        2        & subsection    & $\backslash$subsection    & $\backslash$subsection    & $\backslash$subsection    \\
-        3        & subsubsection & $\backslash$subsubsection & $\backslash$subsubsection & $\backslash$subsubsection \\
-        4        & paragraph     & $\backslash$paragraph     & $\backslash$paragraph     & $\backslash$paragraph     \\
-        5        & subparagraph  & $\backslash$subparagraph  & $\backslash$subparagraph  & $\backslash$subparagraph  \\
-        \hline
-    \end{tabular}
-    \caption{不同标准文类的章节命令与层次深度}
-    \label{tab:typeoflatex}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		层次深度 & 层次名        & book                      & report                    & article                   \\
+		\hline
+		-1       & part          & $\backslash$part          & $\backslash$part          &                           \\
+		0        & chapter       & $\backslash$chapter       & $\backslash$chapter       & $\backslash$part          \\
+		1        & section       & $\backslash$section       & $\backslash$section       & $\backslash$section       \\
+		2        & subsection    & $\backslash$subsection    & $\backslash$subsection    & $\backslash$subsection    \\
+		3        & subsubsection & $\backslash$subsubsection & $\backslash$subsubsection & $\backslash$subsubsection \\
+		4        & paragraph     & $\backslash$paragraph     & $\backslash$paragraph     & $\backslash$paragraph     \\
+		5        & subparagraph  & $\backslash$subparagraph  & $\backslash$subparagraph  & $\backslash$subparagraph  \\
+		\hline
+	\end{tabular}
+	\caption{不同标准文类的章节命令与层次深度}
+	\label{tab:typeoflatex}
 \end{table}
 
 \subsection{\LaTeX 编码问题}
@@ -216,10 +216,10 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 这就需要引用xeCKJ 包了。 参考\href{https://liam.page/2017/09/17/LaTeX-multi-lingual/}{如何书写多国语言}。
 
 \begin{enumerate}
-    \item \Checkmark 引用包\verb!usepackage{exCJK}!
-    \item \Checkmark 在需要的写入中文就好。
+	\item \Checkmark 引用包\verb!usepackage{exCJK}!
+	\item \Checkmark 在需要的写入中文就好。
 
-          \begin{lstlisting}
+	      \begin{lstlisting}
 \documentclass{article}
 \usepackage{xeCJK}
 \begin{document}
@@ -230,8 +230,8 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 这是中文
 \end{document}
         \end{lstlisting}
-    \item $\Box$ Why gbsn?
-    \item $\Box$ What is the difference between CJK and CJK-utf8?
+	\item $\Box$ Why gbsn?
+	\item $\Box$ What is the difference between CJK and CJK-utf8?
 \end{enumerate}
 
 \subsection{TeX源代码编码格式 和 LaTeX 的编码}
@@ -263,23 +263,23 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 
 \LaTeX 主要分为三部分。可以理解为我要写什么,我要开始写文档,我正在写文档.
 \begin{enumerate}
-    \item  说明我要写说明文档,就是我要写什么;
+	\item  说明我要写说明文档,就是我要写什么;
 
-          \begin{verbatim}
+	      \begin{verbatim}
 % cjk 使用utf-8,中文文章使用`ctexart`,article,report,...
 % 大意就是说我要写什么
 \documentclass[UTF8]{ctexart}
         \end{verbatim}
-    \item  说明我要用到的宏包,就是我要开始写;
+	\item  说明我要用到的宏包,就是我要开始写;
 
-          \begin{verbatim}
+	      \begin{verbatim}
 % 宏包，意思是我要开始写文档了。我会用什么工具。只有加了宏包才能写公式，做表格，放图片
 % 常用的有mathtools，amsmath，graphicx，array，geometry
 \usepackage{mathtools,booktabs}
         \end{verbatim}
-    \item  说明我要用到的环境,就是我正在写.
+	\item  说明我要用到的环境,就是我正在写.
 
-          \begin{verbatim}
+	      \begin{verbatim}
 % 这里是导言区
 \begin{document}% 这是一个文档的环境
     document
@@ -480,9 +480,9 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 一个 TeX 命令（也就是所谓的宏）的格式为：
 
 \begin{itemize}
-    \item 无参数: \textbf{$\backslash$command}
-    \item 有参数: \textbf{$\backslash$command}<arg1><arg2>...<argn>
-    \item 无参数: \textbf{$\backslash$command[}<arg$_{opt}$ >\textbf{]} <arg1><arg2>...<argn>
+	\item 无参数: \textbf{$\backslash$command}
+	\item 有参数: \textbf{$\backslash$command}<arg1><arg2>...<argn>
+	\item 无参数: \textbf{$\backslash$command[}<arg$_{opt}$ >\textbf{]} <arg1><arg2>...<argn>
 \end{itemize}
 
 
@@ -501,7 +501,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 渲染效果：
 
 \begin{quote}
-    孔子曰：人之初，性本善。
+	孔子曰：人之初，性本善。
 \end{quote}
 
 
@@ -517,7 +517,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 渲染效果：
 
 \begin{quote}
-    \zihao{-5}\kaishu 孔子曰：人之初，性本善。
+	\zihao{-5}\kaishu 孔子曰：人之初，性本善。
 \end{quote}
 
 可以看到，我们添加 \verb!\zihao{-5}! 改变了这个 quote 内部的字体。
@@ -573,12 +573,12 @@ quote 是无参数的环境。
 效果：
 
 \begin{thm}[勾股定义]
-    直角三角形的斜边的平方等于两腰的平方和。
-    可以用符号语言表述为...
+	直角三角形的斜边的平方等于两腰的平方和。
+	可以用符号语言表述为...
 \end{thm}
 
 \begin{thm}[等边三角形状]
-    等边三角形的三边边长是相等。
+	等边三角形的三边边长是相等。
 \end{thm}
 
 可以看到，文本不但添加了定理，还自动编号。对名字添加了括号。
@@ -608,9 +608,9 @@ quote 是无参数的环境。
 
 
 \begin{gather}
-    f(x)= \int_a^b x dx    \notag \\
-    % 度数竟然没有专门的符号^\circ
-    \angle CAB = 90^\circ =\pi / 2
+	f(x)= \int_a^b x dx    \notag \\
+	% 度数竟然没有专门的符号^\circ
+	\angle CAB = 90^\circ =\pi / 2
 \end{gather}
 
 参考：
@@ -718,7 +718,7 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \end{lstlisting}
 这是渲染效果。
 \begin{myquote}
-    这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+	这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
 \end{myquote}
 之后只需要对myquote 进行设置就可以设置quote 的格式了。
 
@@ -740,7 +740,7 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 
 
 \begin{myquote}
-    Tip: 理解这个环境，我们应该有所了解，我们不应该在正文中过多使用字体，字号，对齐，缩进等等。让这些排版交给环境就好。我们只需要在正确的环境中编写内容，并对环境进行配置来调整格式，做到让编写文档和格式调整分离。这样不但让自己的文档结构清晰。还能提高效率。这种我们叫做 “ What you think is what you want ”。
+	Tip: 理解这个环境，我们应该有所了解，我们不应该在正文中过多使用字体，字号，对齐，缩进等等。让这些排版交给环境就好。我们只需要在正确的环境中编写内容，并对环境进行配置来调整格式，做到让编写文档和格式调整分离。这样不但让自己的文档结构清晰。还能提高效率。这种我们叫做 “ What you think is what you want ”。
 \end{myquote}
 % TODO 自定义环境
 
@@ -760,7 +760,7 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \subsubsection{内置目录}
 
 \begin{quotation}
-    \zihao{5}\kaishu Tip: 只要生成了目录,之后生成的PDF 就会包含书签。
+	\zihao{5}\kaishu Tip: 只要生成了目录,之后生成的PDF 就会包含书签。
 \end{quotation}
 
 目录对于图表而言也是可以用的。如果你的文档中有很多图表，也可以专门为它们建目录。对应的命令是 \verb!\listoffigures! 和 \verb!\listoftables! 。它会收集对应图表中的标题来产生图表的目录。图表的插入我们将在下一期中介绍。
@@ -768,15 +768,15 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 注意，这会在目录下生成\verb!.toc!，\verb!.lof!， \verb!.lot!  文件，分别对应【目录】、【图像】、【表格】。
 
 \begin{enumerate}
-    \item 目录
+	\item 目录
 
-          \verb!\tableofcontents!
-    \item 图像
+	      \verb!\tableofcontents!
+	\item 图像
 
-          \verb!\listoffigures!
-    \item 表格
+	      \verb!\listoffigures!
+	\item 表格
 
-          \verb!\listoftables!
+	      \verb!\listoftables!
 \end{enumerate}
 
 不过，需要注意的是，在编译的时候，需要使用编译工具进行编译两次。第一次是初步编译，生成目录等临时文件，之后在将临时文件编译进去。比如第一次编译之后，生成的PDF文件是看不到目录的，之后再次编译，就可以把 .toc、.lof、.lot编译进去。
@@ -834,23 +834,23 @@ todo
 \begin{enumerate}
 
 
-    \item \verb!\usepackage{ulem}!;
+	\item \verb!\usepackage{ulem}!;
 
-    \item 使用方法:
-          \begin{lstlisting}
+	\item 使用方法:
+	      \begin{lstlisting}
 \sout{文字}   %删除线
 \uwave{文字}  %波浪线
 \xout{文字}   %斜删除线
 \uuline{文字} %双下划线
 \end{lstlisting}
 
-    \item 显示效果:
-          \begin{enumerate}
-              \item \sout{删除线}   %删除线
-              \item \uwave{波浪线}  %波浪线
-              \item \xout{斜删除线}   %斜删除线
-              \item \uuline{双下划线} %双下划线
-          \end{enumerate}
+	\item 显示效果:
+	      \begin{enumerate}
+		      \item \sout{删除线}   %删除线
+		      \item \uwave{波浪线}  %波浪线
+		      \item \xout{斜删除线}   %斜删除线
+		      \item \uuline{双下划线} %双下划线
+	      \end{enumerate}
 \end{enumerate}
 
 
@@ -980,7 +980,7 @@ chuwai)
 \subsubsection{换行命令}
 
 \begin{quotation}
-    \zihao{5}\kaishu Tip: 换行和段落是有本质的区别的。换行只是当前段落换行而不是新起一个段落，但段落是有独立的排版特性的！两个连续空行代表更换段落。
+	\zihao{5}\kaishu Tip: 换行和段落是有本质的区别的。换行只是当前段落换行而不是新起一个段落，但段落是有独立的排版特性的！两个连续空行代表更换段落。
 \end{quotation}
 
 \verb!\\! : 换行。
@@ -1008,36 +1008,36 @@ chuwai)
 \subsection{如何输出反斜杠“$\backslash$”?}
 要想打印 "\verb!\!" 比较麻烦。参考 https://blog.csdn.net/xovee/article/details/106728213
 \begin{enumerate}
-    \item 文本中
+	\item 文本中
 
-          \begin{enumerate}
-              \item 使用"\verb!\!verb!\verb!\!!"，注意是"！！" 之间进行截止
-              \item 使用\verb!$\backslash$!
-              \item 使用代码
-                    % 代码
-                    \begin{lstlisting}{language=tex}
+	      \begin{enumerate}
+		      \item 使用"\verb!\!verb!\verb!\!!"，注意是"！！" 之间进行截止
+		      \item 使用\verb!$\backslash$!
+		      \item 使用代码
+		            % 代码
+		            \begin{lstlisting}{language=tex}
 \usepackage{verbatim}
 \begin{verbatim} % 使用代码的的形式显示
     \
 \end{verbatim}
                     \end{lstlisting}
-                    % 代码
-          \end{enumerate}
+		            % 代码
+	      \end{enumerate}
 
-    \item 标题中(不建议使用这个方法。会搞乱目录和书签)
-          \begin{enumerate}
-              \item 引用 cprotect 宏
-                    \begin{lstlisting}
+	\item 标题中(不建议使用这个方法。会搞乱目录和书签)
+	      \begin{enumerate}
+		      \item 引用 cprotect 宏
+		            \begin{lstlisting}
 \usepackage{cprotect}
 % 在标题中显示原始字符
             \end{lstlisting}
 
-              \item 在 标题中插入
-                    \begin{lstlisting}
+		      \item 在 标题中插入
+		            \begin{lstlisting}
 \cprotect\section{This is a section heading with a verbatim \verb!\frac{1}{2}!}
 % 这是在标题中使用\verb
           \end{lstlisting}
-          \end{enumerate}
+	      \end{enumerate}
 \end{enumerate}
 
 
@@ -1088,39 +1088,39 @@ chuwai)
 
 
 \begin{table}[htbp]
-    \centering\begin{tabular}{|c|c|c|c|}
-        \hline
-        描述     & 符号                    & 渲染效果   & 宽度         \\\hline
-        quad空格 & \verb!a \qquad b! & a \qquad b & 两个m的宽度  \\
-        quad空格 & \verb!a \quad b! & a \quad b  & 一个m的宽度  \\
-        大空格   & \verb!a\ b! & a\ b       & 1/3m宽度     \\
-        中等空格 & \verb!a\;b! & a\;b       & 2/7m宽度     \\
-        小空格   & \verb!a\,b! & a\,b       & 1/6m宽度     \\
-        没有空格 & ab                      & ab         &              \\
-        紧贴     & a$\backslash$!b         & a\!b       & 缩进1/6m宽度 \\
-        \hline
-    \end{tabular}
-    \caption{空格大小的调整参考表}
-    \label{tab.space_size}
+	\centering\begin{tabular}{|c|c|c|c|}
+		\hline
+		描述     & 符号                    & 渲染效果   & 宽度         \\\hline
+		quad空格 & \verb!a \qquad b! & a \qquad b & 两个m的宽度  \\
+		quad空格 & \verb!a \quad b! & a \quad b  & 一个m的宽度  \\
+		大空格   & \verb!a\ b! & a\ b       & 1/3m宽度     \\
+		中等空格 & \verb!a\;b! & a\;b       & 2/7m宽度     \\
+		小空格   & \verb!a\,b! & a\,b       & 1/6m宽度     \\
+		没有空格 & ab                      & ab         &              \\
+		紧贴     & a$\backslash$!b         & a\!b       & 缩进1/6m宽度 \\
+		\hline
+	\end{tabular}
+	\caption{空格大小的调整参考表}
+	\label{tab.space_size}
 \end{table}
 
 
 
 \begin{quotation}
-    \zihao{5}\kaishu Tip:
+	\zihao{5}\kaishu Tip:
 
-    \textbf{西文}单词用空格隔开，\LaTeX 中的连续多个空格在编译排版时被看做一个空格。 但是“$\backslash$ ”一定会是认为一个空格。
+	\textbf{西文}单词用空格隔开，\LaTeX 中的连续多个空格在编译排版时被看做一个空格。 但是“$\backslash$ ”一定会是认为一个空格。
 
-    \textbf{中文(cjk)}（\verb!ctexart!）中,空格不算空格。很奇怪！\verb!你 好! 会被渲染为“你 好”，而不是"你\ 好"。
+	\textbf{中文(cjk)}（\verb!ctexart!）中,空格不算空格。很奇怪！\verb!你 好! 会被渲染为“你 好”，而不是"你\ 好"。
 
-    另外，中英文混编:
-    \begin{enumerate}
-        \item 中文紧随着英文会自动添加一个空格。如你好hello！ “你好”和“hello”之间是有空格的。
-        \item 西文紧随中文也会添加空格。
-        \item 中文标点符号紧随的应为不会自动添加空格。如你好，hello！ “你好”和“hello”之间是没有有空格的。
-        \item 英文之间符合西文。就是一个或者多个算一个空格。hi  hello，hi和hello之间是有一个空格的。
-        \item \textbf{任意时候，中西文混编都推荐在中西文直接添加空格，这样是符合规范的}, “space 你好space你好 space”。
-    \end{enumerate}
+	另外，中英文混编:
+	\begin{enumerate}
+		\item 中文紧随着英文会自动添加一个空格。如你好hello！ “你好”和“hello”之间是有空格的。
+		\item 西文紧随中文也会添加空格。
+		\item 中文标点符号紧随的应为不会自动添加空格。如你好，hello！ “你好”和“hello”之间是没有有空格的。
+		\item 英文之间符合西文。就是一个或者多个算一个空格。hi  hello，hi和hello之间是有一个空格的。
+		\item \textbf{任意时候，中西文混编都推荐在中西文直接添加空格，这样是符合规范的}, “space 你好space你好 space”。
+	\end{enumerate}
 \end{quotation}
 
 
@@ -1172,19 +1172,19 @@ Todo
 
 渲染：
 \begin{enumerate}
-    \item 第一个
-    \item 嵌套
-          \begin{enumerate}
-              \item 编号i
-              \item 编号ii
-          \end{enumerate}
-    \item 无序
-          \begin{itemize}
-              \item 第一个
-              \item second
-              \item 第三个
-          \end{itemize}
-    \item ...
+	\item 第一个
+	\item 嵌套
+	      \begin{enumerate}
+		      \item 编号i
+		      \item 编号ii
+	      \end{enumerate}
+	\item 无序
+	      \begin{itemize}
+		      \item 第一个
+		      \item second
+		      \item 第三个
+	      \end{itemize}
+	\item ...
 \end{enumerate}
 
 
@@ -1209,19 +1209,19 @@ Todo
 
 渲染：
 \begin{itemize}
-    \item 第一个
-    \item second
-          \begin{itemize}
-              \item a
-                    \begin{itemize}
-                        \item apple
-                        \item banner
-                        \item pear
-                    \end{itemize}
-              \item b
-              \item c
-          \end{itemize}
-    \item 第三个
+	\item 第一个
+	\item second
+	      \begin{itemize}
+		      \item a
+		            \begin{itemize}
+			            \item apple
+			            \item banner
+			            \item pear
+		            \end{itemize}
+		      \item b
+		      \item c
+	      \end{itemize}
+	\item 第三个
 \end{itemize}
 
 
@@ -1237,9 +1237,9 @@ Todo
 Latex在默认情况下，Figure图像的编号是从Figure 1, Figure 2, Figure 3, …, Figure N顺序递增的。虽然在文章只有一个章节的情况下，这种简单的顺序递增的Figure图像编号没有问题。但是当文章涉及到多个章节的时候，这种顺序递增的Figure图像编号就不符合文章排版规范。举个例子，第三章的第一个Figure图按照排版规范，应该编号为Figure 3.1，但是默认的Latex的Figure图像编号却将它编号为Figure 1。
 
 \begin{enumerate}
-    \item 引用宏包 \verb!\usepackage{amsmath}!
-    \item 在\ document 之前添加这行代码。
-          \begin{lstlisting}
+	\item 引用宏包 \verb!\usepackage{amsmath}!
+	\item 在\ document 之前添加这行代码。
+	      \begin{lstlisting}
     % https://blog.csdn.net/Canhui_WANG/article/details/87364800
     \numberwithin{figure}{section}   %对应图
     \numberwithin{table}{section}    %对应表
@@ -1293,32 +1293,32 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 显示效果:
 \begin{table}[H]
-    \centering
-    \caption{表格demo}
-    \label{Table.Demo0}
-    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
-        \hline
-        操作系统   & 发行版   & 编辑器    \\
-        \hline
-        Windows    & MikTeX   & TexMakerX \\
-        % \hline
-        Unix/Linux & teTeX    & Kile      \\
-        % \hline
-        Mac OS     & MacTeX   & TeXShop   \\
-        % \hline
-        通用       & TeX Live & TeXworks  \\
-        \hline
-    \end{tabular}
-    \qquad
-    不同的操作系统和编辑器之间很多是通用的。
-    推荐使用 TeX Live.
+	\centering
+	\caption{表格demo}
+	\label{Table.Demo0}
+	\begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
+		\hline
+		操作系统   & 发行版   & 编辑器    \\
+		\hline
+		Windows    & MikTeX   & TexMakerX \\
+		% \hline
+		Unix/Linux & teTeX    & Kile      \\
+		% \hline
+		Mac OS     & MacTeX   & TeXShop   \\
+		% \hline
+		通用       & TeX Live & TeXworks  \\
+		\hline
+	\end{tabular}
+	\qquad
+	不同的操作系统和编辑器之间很多是通用的。
+	推荐使用 TeX Live.
 
 \end{table}
 
 效果显示完毕。
 
 \begin{quotation}
-    \zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!）。
+	\zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!）。
 \end{quotation}
 
 
@@ -1373,9 +1373,9 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \LaTeX 可使用原始显示的方式进行快速标识。虽然效果看不出来是行内代码，但是效果还是不错的,主要是字体稍微有点差别：\verb!这是code~!。
 
 \begin{enumerate}
-    \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
-    \item 使用 verbatim
-          \begin{lstlisting}
+	\item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
+	\item 使用 verbatim
+	      \begin{lstlisting}
             \begin{verbatim}
                 code
             \end{verbatim}
@@ -1390,14 +1390,14 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 % subsection  (end)
 \begin{enumerate}
-    \item usepackage Listings
+	\item usepackage Listings
 
-          \verb!\usepackage{listingsutf8}!
+	      \verb!\usepackage{listingsutf8}!
 
-    \item 设置代码的格式,暂时不说。
-    \item 在指定的位置插入以下例子:
-          \label{Code.Insert_pic}
-          \begin{verbatim}
+	\item 设置代码的格式,暂时不说。
+	\item 在指定的位置插入以下例子:
+	      \label{Code.Insert_pic}
+	      \begin{verbatim}
     \begin{lstlisting}[language=c]
         void mian(int argl,string[] args){
             for(int i = 0;i<argl;)
@@ -1406,9 +1406,9 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
     \end{lstlisting}
               \end{verbatim}
 
-    \item 渲染效果如下:
+	\item 渲染效果如下:
 
-          \begin{lstlisting}[language=c]
+	      \begin{lstlisting}[language=c]
         void mian(int argl,string[] args){
             for(int i = 0;i<argl;)
                 cout<<args[i]<<cendl;// 输出
@@ -1443,9 +1443,9 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 参考：https://blog.csdn.net/chichoxian/article/details/52588833
 
 \begin{enumerate}
-    \item 插入代码，参考代码
+	\item 插入代码，参考代码
 
-          \begin{lstlisting}
+	      \begin{lstlisting}
         \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
             \centering %图片居中
             \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
@@ -1454,16 +1454,16 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
         \end{figure}
     \end{lstlisting}
 
-    \item 最终效果，图\ref{Fig.insert-one-png}
-          \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-              \centering %图片居中
-              \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
-              \caption{插入图片的demo} %最终文档中希望显示的图片标题
-              \label{Fig.insert-one-png} %用于文内引用的标签
-          \end{figure}
+	\item 最终效果，图\ref{Fig.insert-one-png}
+	      \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+		      \centering %图片居中
+		      \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+		      \caption{插入图片的demo} %最终文档中希望显示的图片标题
+		      \label{Fig.insert-one-png} %用于文内引用的标签
+	      \end{figure}
 
-    \item 双排设置
-          \begin{lstlisting}
+	\item 双排设置
+	      \begin{lstlisting}
     Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel demand of driving auto, and fig. \ref{Fig.sub.2} is the travel demand of park-and-ride.
 
     \begin{figure}[H]
@@ -1484,18 +1484,18 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
     \end{figure}
             \end{lstlisting}
 
-    \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
-          \begin{figure}[H]
-              \centering
-              %插入图片，[]中设置图片大小，{}中是图片文件名
-              \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
-              \caption{并排插入两个图片的效果}
-              \label{Fig.Insert_two_pic_demo}
-          \end{figure}
+	\item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
+	      \begin{figure}[H]
+		      \centering
+		      %插入图片，[]中设置图片大小，{}中是图片文件名
+		      \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
+		      \caption{并排插入两个图片的效果}
+		      \label{Fig.Insert_two_pic_demo}
+	      \end{figure}
 
-    \item 引用图片
+	\item 引用图片
 
-          在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
+	      在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
 
 \end{enumerate}
 
@@ -1509,21 +1509,21 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsection{如何设置边距}
 \subsubsection{操作步骤}
 \begin{enumerate}
-    \item 引用geo 设置宏包
-          $\backslash$usepackage\{geometry\}
-    \item 设置页边距
-          \begin{enumerate}
-              \item 设置纸张大小，也可以设置常用的a4paper之类的。
+	\item 引用geo 设置宏包
+	      $\backslash$usepackage\{geometry\}
+	\item 设置页边距
+	      \begin{enumerate}
+		      \item 设置纸张大小，也可以设置常用的a4paper之类的。
 
-                    \verb!\geometry{papersize={20cm,15cm}}!
-              \item 设置为缩放的形式
+		            \verb!\geometry{papersize={20cm,15cm}}!
+		      \item 设置为缩放的形式
 
-                    \verb!\geometry{a4paper,scale=0.8}!
-              \item 设置为绝对距离
+		            \verb!\geometry{a4paper,scale=0.8}!
+		      \item 设置为绝对距离
 
-                    \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
-          \end{enumerate}
-    \item 效果不错
+		            \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
+	      \end{enumerate}
+	\item 效果不错
 
 \end{enumerate}
 
@@ -1531,11 +1531,11 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsubsection{页面边距设置概念}
 
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-    \centering %图片居中
-    %插入图片，[]中设置图片大小，{}中是图片文件名
-    \includegraphics[scale=0.75]{images/geometry.png}
-    \caption{页边距概念} %最终文档中希望显示的图片标题
-    \label{Fig.page_border} %用于文内引用的标签
+	\centering %图片居中
+	%插入图片，[]中设置图片大小，{}中是图片文件名
+	\includegraphics[scale=0.75]{images/geometry.png}
+	\caption{页边距概念} %最终文档中希望显示的图片标题
+	\label{Fig.page_border} %用于文内引用的标签
 \end{figure}
 
 
@@ -1639,7 +1639,7 @@ bibtex main.aux
 
 
 
-\subsection{什么是 recipe?}
+\subsection{什么是 Recipe?}
 \label{subsec:recipe}
 
 \href{https://blog.csdn.net/qysh123/article/details/11833649}{PDFLaTeX和XeLaTeX有什么区别？}
@@ -1677,21 +1677,69 @@ bibtex main.aux
 对于命令里面的参数，可以查看下表\ref{tab.latex_args}:
 
 \begin{table}[htbp]
-    \centering
-    \begin{tabular}{|c|l|}
-        \hline
-        占位符      & 替换为                                        \\
-        \hline
-        \%DOC\%     & LaTeX根文件路径和名称，不带.tex扩展名         \\
-        \%DOCFILE\% & 不带.tex扩展名的LaTeX根文件名                 \\
-        \%DIR\%     & LaTeX根文件路径                               \\
-        \%TMPDIR\%  & 存储辅助文件的临时文件夹                      \\
-        \%OUTDIR\%  & 在latex-workshop.latex.outDir中配置的输出目录 \\
-        \hline
-    \end{tabular}
-    \caption{\LaTeX\space Workshop tool 参数占位符}
-    \label{tab.latex_args}
+	\centering
+	\begin{tabular}{|c|l|}
+		\hline
+		占位符      & 替换为                                        \\
+		\hline
+		\%DOC\%     & LaTeX根文件路径和名称，不带.tex扩展名         \\
+		\%DOCFILE\% & 不带.tex扩展名的LaTeX根文件名                 \\
+		\%DIR\%     & LaTeX根文件路径                               \\
+		\%TMPDIR\%  & 存储辅助文件的临时文件夹                      \\
+		\%OUTDIR\%  & 在latex-workshop.latex.outDir中配置的输出目录 \\
+		\hline
+	\end{tabular}
+	\caption{\LaTeX\space Workshop tool 参数占位符}
+	\label{tab.latex_args}
 \end{table}
+
+
+\subsubsection{VSCode LaTeX Workshop 插件关键两个配置}
+对于中文而言，大部分使用的是 xeLaTeX，但是这个插件默认没有把它添加到工具链中。对于大部分中文用户。则使用这两个居多。
+
+第一步，在在工具链添加这个工具（latex-workshop.latex.tools），第二步中会调用这个命令。
+\begin{lstlisting}    
+{
+    "name": "xelatex",
+    "command": "xelatex",
+    "args": [
+      "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "%DOC%"
+    ],
+    "env": {}
+}
+\end{lstlisting}
+
+第二步，在recipes 添加这个组合（latex-workshop.latex.recipes）
+\begin{lstlisting}
+    // 针对有目录没bit引用的  
+    {
+        "name": "xelatex`×2",
+        "tools": [
+        "xelatex",
+        "xelatex"
+        ]
+    },
+    // 针对有引用的  
+    {
+    "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+    "tools": [
+        "xelatex",
+        "bibtex",
+        "xelatex",
+        "xelatex"
+        ]
+    }
+\end{lstlisting}
+
+
+之后就可以愉快地进行中文的编译了。
+
+理解了编译过程，其实很好理解上面两个是干嘛的。
+
+
 
 \subsection{Lex, LaTex, pdflatex, xelatex, xetex等的区别和关系}
 
@@ -1710,7 +1758,7 @@ latex命令：tex命令加上某一个选项使用，就会用LaTeX 格式进行
 $\varepsilon$-TeX 程序：Knuth TeX程序的一个扩展，也是一个程序，一般写成 eTeX。增加了少量的几个命令，但一般来说是与Knuth TeX程序没有太多区别的。
 
 \begin{quote}
-    \zihao{5}\kaishu \textit{实现}：在文中的意思就是指“程序”的意思。如文中：eTeX 程序和 Knuth TeX 都是TeX语言的一个实现（也就是说，eTeX 程序和 Knuth TeX 都是把TeX语言转换为排版的程序。程序作用于tex文本文件，把tex文件编译成dvi文件）。
+	\zihao{5}\kaishu \textit{实现}：在文中的意思就是指“程序”的意思。如文中：eTeX 程序和 Knuth TeX 都是TeX语言的一个实现（也就是说，eTeX 程序和 Knuth TeX 都是把TeX语言转换为排版的程序。程序作用于tex文本文件，把tex文件编译成dvi文件）。
 \end{quote}
 
 pdfTeX程序：Tex语言的又一个实现，也就是把Tex语言转换为排版的又一个程序。它会把 TeX 语言写的代码直接编译成 PDF 文件。
