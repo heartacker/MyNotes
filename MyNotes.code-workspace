@@ -5,8 +5,6 @@
 		}
 	],
 	"settings": {
-		"makefile.extensionOutputFolder": "./.vscode",
-		"latex-workshop.latex.recipe.default": "lastUsed",
 		"files.exclude": {
 			// "**/**.aux": true,
 			// "**/**.lof": true,
@@ -15,6 +13,9 @@
 			// // "**/**.log": true,
 			// "**/**.synctex**": true,
 		},
+		"makefile.extensionOutputFolder": "./.vscode",
+		"latex-workshop.latex.recipe.default": "lastUsed",
+		"latex-workshop.latex.autoBuild.interval": 10000,
 		"latex-workshop.latex.autoClean.run": "onBuilt",
 		"latex-workshop.latex.tools": [
 			{
@@ -24,8 +25,9 @@
 					"-synctex=1",
 					"-interaction=nonstopmode",
 					"-file-line-error",
-					"%DOCFILE%"
-				]
+					"%DOC%"
+				],
+				"env": {}
 			},
 			{
 				"name": "latexmk",
@@ -183,7 +185,6 @@
 				]
 			}
 		],
-		"latex-workshop.latex.autoBuild.interval": 10000
 	},
 	"extensions": {
 		"recommendations": [
