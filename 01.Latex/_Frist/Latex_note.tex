@@ -5,6 +5,8 @@
 %! 需要编译两次，才能更新 TOC 哦
 
 
+\usepackage{xeCJK}        % 在 article,book,report 支持 CJK 编码
+
 \usepackage[]{color}
 
 \usepackage{graphicx}     % 插入图片的宏包
@@ -213,20 +215,48 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 % 引用一个跳转地址
 上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article，中文的article是ctexart。
 但是如果我们需要在西文中插入中文要如何弄呢？
-这就需要引用CKJ 包了。
+这就需要引用xeCKJ 包了。 参考\href{https://liam.page/2017/09/17/LaTeX-multi-lingual/}{如何书写多国语言}。
 
 \begin{enumerate}
-    \item \Checkmark 引用包\verb!usepackage{CJK}!
-    \item \Checkmark 在需要的写入中文的地方引用下面的代码。
+    \item \Checkmark 引用包\verb!usepackage{exCJK}!
+    \item \Checkmark 在需要的写入中文就好。
 
           \begin{lstlisting}
-\begin{CJK}{UTF8}{gbsn}
-    你好
-\end{CJK}
+\documentclass{article}
+\usepackage{xeCJK}
+\begin{document}
+    \title{这是使用 xeLaTeX 进行编写的的 英文article}
+\maketitle
+
+\section{测试}
+这是中文
+\end{document}
         \end{lstlisting}
     \item $\Box$ Why gbsn?
     \item $\Box$ What is the difference between CJK and CJK-utf8?
 \end{enumerate}
+
+\subsection{TeX源代码编码格式 和 LaTeX 的编码}
+
+源代码的文件编码是指这个tex的源代码是用什么编码保存的。和你要输出什么文档是没有关系的。
+比如你可以完全用ascii的编码写 article 的源代码。但是你也可以用 utf-8 的编码进行编辑只有ascii 字符的文章。
+
+前者代表当前的文档是用什么格式保存源代码。后者是指生成的文档里面有什么编码的问题。
+一开始 TeX 是只支持 ascii 编码的原代码的。也就是说，你在原代码你面写一个中文的注释， TeX 编译器是无法识别这个中文注释的。
+
+但是随着 pdfLaTeX 和xeLaTeX 等采用 UTF-8 进行开发，对中文和其他多字节字符的编码已经完全支持。你能看到这个中文文档，说明这个文档的原代码里面肯定有中文。那么这个原代码肯定不是ascii的编码。编译器也需要认识我这个原代码的内容。
+
+
+而上一章节 说的编码，是指文档内容的编码。 默认情况下 book, report, article 是不支持CJK 编码内容存在的。可以通过引用xeCJK 进行扩充。
+
+另外，随着文件编码的支持，其实我们完全可以在原代码中输入某个符号对饮的字符。但是渲染出来不一定是一样的。
+
+比如，这是 $\rightleftharpoons$ 和 ⇌ 。大家看出区别了吗？大家可能看不到后面那个符号。
+
+其实原代码是：
+\includegraphics[scale=0.7]{images/unicode_demo.png} 。
+
+
 
 % \subsection{\LaTeX 文档结构}
 \subsection{\LaTeX 文档结构}
