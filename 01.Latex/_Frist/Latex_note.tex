@@ -87,6 +87,19 @@
 
 \newtheorem{thm}{定理}
 
+%~ 定义一个环境
+\newenvironment{myquote}
+    {\begin{quote}
+        % 这里我该如何设置和可以设置什么呢？
+            \zihao{5}\kaishu} 
+    {\end{quote}}
+
+%~ 定义一个命令    
+\newcommand\degree{^\circ}
+
+
+
+
 %**********导言区******************
 \begin{document}
 \title{\LaTeX 入门手册}
@@ -599,12 +612,47 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 对于大部分同类的块，我们一般都有固定的格式。
 就以 quote 为例，我们在每个 quote 里面都进行调整格式是非常不方便的。
 我们可以自定义个环境。
+
 \begin{lstlisting}
-    \newenvironment{myquote}
-        {begin{quote}\zihao{5}\kaishu}
-        {\end{quote}}
+%将这个放在导言区之前
+\newenvironment{myquote}
+    {begin{quote}\zihao{5}\kaishu}
+    {\end{quote}}
 \end{lstlisting}
 
+之后我们就可以使用这个环境进行编写了。
+
+\begin{lstlisting}
+    \begin{myquote}
+        这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+    \end{myquote}
+\end{lstlisting}
+这是渲染效果。
+\begin{myquote}
+    这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+\end{myquote}
+之后只需要对myquote 进行设置就可以设置quote 的格式了。
+
+\subsubsection{自定义命令}
+类似的，比如公式的角度，我们输出比较麻烦，\verb!^\circ! 也很不直观。我们就可以使用 \verb!\newcommand{}{}! 进行定义。
+
+\begin{lstlisting}
+    \newcommand\degree{^\circ}
+\end{lstlisting}
+
+之后使用 \verb!$\degree$! 替代 \verb!$^\circ$!，显示效果是 $\degree$ 和 $^\circ$
+
+自定义环境在一两页的文档中，可能大家看不出效果和必要性，但是当你在维护几十到几百页的文章的时候，就可以看到这个代码的优越性。
+
+\subsubsection{模板}
+
+另外，我们经常说用模板，其实很多也是这样做的。限定各种命令和环境。你只要套用就好了。做到格式和风格统一。
+之前所有的努力都能得到回报。
+
+
+\begin{myquote}
+    Tip: 理解这个环境，我们应该有所了解，我们不应该在正文中过多使用字体，字号，对齐，缩进等等。让这些排版交给环境就好。我们只需要在正确的环境中编写内容，并对环境进行配置来调整格式，做到让编写文档和格式调整分离。这样不但让自己的文档结构清晰。还能提高效率。这种我们叫做 “ What you think is what you want ”。
+\end{myquote}
 % TODO 自定义环境
 
 \newpage
@@ -1180,7 +1228,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 效果显示完毕。
 
-\begin{quotation}    
+\begin{quotation}
     \zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!）。
 \end{quotation}
 
