@@ -187,13 +187,16 @@
     \item 中文期刊的支持较差；
 \end{itemize}
 
-\subsection{如何查询文档？}
+\subsection{如何查询文档和学习？}
 对于这种非常陌生羞涩难懂的软件。你会觉得连查文档都很困难。不过如果你想对某个模块阅读文档，可以通过下面的命令打开英文文档。
 
 \begin{lstlisting}
 > texdoc 模块的名字
 > texdoc lstlisting
 \end{lstlisting}
+
+本文虽然只是给你讲解一些快速入门的东西。但是如果你想真正的学习好\LaTeX 那么，看一本书籍是必备的。
+推荐这本入门书籍\cite{latex_start} 。建议先看: \href{https://github.com/heartacker/MyNotes/blob/master/01.Latex/LaTeX_Docs_2014/04%20%E7%94%B5%E5%AD%90%E4%B9%A6/LaTeX%E5%85%A5%E9%97%A8%EF%BC%88%E5%88%98%E6%B5%B7%E6%B4%8B%EF%BC%89.pdf}{LaTeX入门（刘海洋）.pdf}
 
 
 \subsection{\LaTeX 文类层级}
@@ -601,116 +604,8 @@ quote 是无参数的环境。
 
 这就是分组和环境的效果。
 
-\subsection{公式}
-
-\LaTeX 对数学和科学支持最好的排班系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。
-
-\subsubsection{行内公式}
-
-行内公式叫做 inline formula， 只需要 \$\ \$ 括起来，就是一个公式环境，比如\verb!$a+b$! 会得到 $a+b$，而不是a+b。
-
-\subsubsection{列表公式}
-较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 displayed formula。使用 equation （单行） 和gather\footnote{需要引用amsmath 宏包} （多行） 等环境方便输出。参考 \href{https://matnoble.me/tech/latex/multi-line-equations/}{各种样子的对齐编码}。
-
-\begin{lstlisting}
-    \begin{gather}
-        f(x)= \int_a^b x dx    \notag \\ % \notag 代表不编号
-        % 度数竟然没有专门的符号^\circ
-        \angle CAB = 90^\circ =\pi / 2
-    \end{gather}
-\end{lstlisting}
-
-渲染效果:
-\begin{gather}
-    f(x)= \int_a^b x dx    \notag \\
-    % 度数竟然没有专门的符号^\circ
-    \angle CAB = 90^\circ =\pi / 2
-\end{gather}
-
-\subsubsection{常用数学宏 amsmath 推荐}
-
-数学公式的编辑，一定离不开这个宏。我这里找了一个关于 amsmath 的\href{http://math.ecnu.edu.cn/~jypan/Latex/lect/lect06mathB.pdf}{PPT介绍}。\footnote{来自华东师范大学数学系潘建瑜老师的课程。}
-
-amsmath 这个宏包的作用如下。
-\begin{enumerate}
-    \item 提供更多的数学符号和数学函数
-    \item 提供了除了 equation 之外的其他几个常用的数据环境。 gather、 align、flalign、 alignat、 multiline、subsequent。
-          \begin{quote}
-              Split 和 gathered 、aligned、alignated 则不会进入数学环境。
-          \end{quote}
-    \item 提供各种数学矩阵，如 matrix ， pmatrix ， bmatrix ， Bmatrix ， Vmatrix ， smallmatrix。
-\end{enumerate}
-
-引用参数：
-\begin{lstlisting}
-\usepackage[选项]{amsmath}
-% 选项：其中前者是默认的参数
-% centertags 或者 tabtags， split 环境种公式的编号的位置，左首右末
-% sumlimits 或者 nosumlimits，求和符号上下限位置
-% nointlimits 或者 inlimits，积分符号上下限位置
-% namelimits 或者 nonameinlimits，积分符号上下限位置
-% reqno 或者leqno。公式编号位置
-% flenq， 行间公式居左对齐，默认是剧中对其。
-\end{lstlisting}
-
-参考下面的代码：
-\begin{lstlisting}
-\documentclass{article}
-
-\usepackage{ctex}
-\usepackage{amsmath}
-\usepackage{amssymb}%花体字符
 
 
-\begin{document}
-
-
-\begin{gather}%会产生编号
-    a+b=b+a\\
-    ab=ba
-\end{gather}
-
-\begin{gather*}%不会产生编号
-a \times b=b \times a\\
-ab=ba
-\end{gather*}
-
-\begin{gather}%会编号
-a+b=b+a \notag \\%\notag阻止编号
-ab=ba   \notag %\notag阻止编号
-\end{gather}
-
-
-
-%align和align*环境（用$对齐）
-\begin{align}
-    x &= t + \cos t + 1\\
-    y &= 2\sin t
-\end{align}
-
-
-%split环境（用$对齐）(一个公式分为多行排版)
-\begin{equation}
-    \begin{split}
-    \cos 2x &= \cos^2 x - \sin^2 x\\
-    &= 2\cos^2 x - 1
-    \end{split}
-\end{equation}
-
-
-%case环境
-%每行公式使用&分割成两部分
-%通常表示值和后面的条件
-\begin{equation}
-    D(x) = \begin{cases}
-    1, &\text{如果} x \in \mathbb{Q}\\%mathbb花体字符
-    0, &\text{如果} x \in \mathbb{R}\setminus\mathbb{Q}
-           \end{cases}%\text是为了在数学公式中处理中文
-\end{equation}
-
-
-\end{document}
-\end{lstlisting}
 
 
 \subsection{文章结构设计及模板}
@@ -1454,12 +1349,127 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 % \footnotetext[1]{这里只展示论文的部分符号。符号首次出现时，本文将详细地说明其含义}
 
 \subsubsection{居中}
-有时候，用 \verb!\begin{center}-\end(center}! 来将 table 整体居中，
+有时候，用 \verb!\begin{center}-\end{center}! 来将 table 整体居中，
 但它的居中只是 居中了 \verb!\begin{table}-\end{table}!；
 
 如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}-\end{tabular}! ，
 那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
 
+
+\subsection{如何插入数学公式}
+
+\LaTeX 对数学和科学支持最好的排班系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。
+
+\subsubsection{行内公式}
+
+行内公式叫做 inline formula， 只需要 \$\ \$ 括起来，就是一个公式环境，比如\verb!$a+b$! 会得到 $a+b$，而不是a+b。
+
+\subsubsection{列表公式}
+较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 displayed formula。使用 equation （单行） 和gather\footnote{需要引用amsmath 宏包} （多行） 等环境方便输出。参考 \href{https://matnoble.me/tech/latex/multi-line-equations/}{各种样子的对齐编码}。
+
+\begin{lstlisting}
+    \begin{gather}
+        f(x)= \int_a^b x dx    \notag \\ % \notag 代表不编号
+        % 度数竟然没有专门的符号^\circ
+        \angle CAB = 90^\circ =\pi / 2
+    \end{gather}
+\end{lstlisting}
+
+渲染效果:
+\begin{gather}
+    f(x)= \int_a^b x dx    \notag \\
+    % 度数竟然没有专门的符号^\circ
+    \angle CAB = 90^\circ =\pi / 2
+\end{gather}
+
+\subsubsection{常用数学宏 amsmath 推荐}
+
+数学公式的编辑，一定离不开这个宏。我这里找了一个关于 amsmath 的\href{http://math.ecnu.edu.cn/~jypan/Latex/lect/lect06mathB.pdf}{PPT介绍}。\footnote{来自华东师范大学数学系潘建瑜老师的课程。}
+
+amsmath 这个宏包的作用如下。
+\begin{enumerate}
+    \item 提供更多的数学符号和数学函数
+    \item 提供了除了 equation 之外的其他几个常用的数据环境。 gather、 align、flalign、 alignat、 multiline、subsequent。
+          \begin{quote}
+              Split 和 gathered 、aligned、alignated 则不会进入数学环境。
+          \end{quote}
+    \item 提供各种数学矩阵，如 matrix ， pmatrix ， bmatrix ， Bmatrix ， Vmatrix ， smallmatrix。
+\end{enumerate}
+
+引用参数：
+\begin{lstlisting}
+\usepackage[选项]{amsmath}
+% 选项：其中前者是默认的参数
+% centertags 或者 tabtags， split 环境种公式的编号的位置，左首右末
+% sumlimits 或者 nosumlimits，求和符号上下限位置
+% nointlimits 或者 inlimits，积分符号上下限位置
+% namelimits 或者 nonameinlimits，积分符号上下限位置
+% reqno 或者leqno。公式编号位置
+% flenq， 行间公式居左对齐，默认是剧中对其。
+\end{lstlisting}
+
+参考下面的代码：
+\begin{lstlisting}
+\documentclass{article}
+
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{amssymb}%花体字符
+
+
+\begin{document}
+
+
+\begin{gather}%会产生编号
+    a+b=b+a\\
+    ab=ba
+\end{gather}
+
+\begin{gather*}%不会产生编号
+a \times b=b \times a\\
+ab=ba
+\end{gather*}
+
+\begin{gather}%会编号
+a+b=b+a \notag \\%\notag阻止编号
+ab=ba   \notag %\notag阻止编号
+\end{gather}
+
+
+
+%align和align*环境（用$对齐）
+\begin{align}
+    x &= t + \cos t + 1\\
+    y &= 2\sin t
+\end{align}
+
+
+%split环境（用$对齐）(一个公式分为多行排版)
+\begin{equation}
+    \begin{split}
+    \cos 2x &= \cos^2 x - \sin^2 x\\
+    &= 2\cos^2 x - 1
+    \end{split}
+\end{equation}
+
+
+%case环境
+%每行公式使用&分割成两部分
+%通常表示值和后面的条件
+\begin{equation}
+    D(x) = \begin{cases}
+    1, &\text{如果} x \in \mathbb{Q}\\%mathbb花体字符
+    0, &\text{如果} x \in \mathbb{R}\setminus\mathbb{Q}
+            \end{cases}%\text是为了在数学公式中处理中文
+\end{equation}
+
+
+\end{document}
+\end{lstlisting}
+
+
+
+% * \subsection{如何在 \LaTeX 中插入代码} % (fold)
 \subsection{如何在 \LaTeX 中插入代码} % (fold)
 
 \subsubsection{简单代码}
