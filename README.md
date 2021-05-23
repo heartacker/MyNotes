@@ -13,7 +13,7 @@
 
 ## 学习LaTeX
 
-**LaTeX** 是一个非常优秀的排版系统。我把我从零开始学习的笔记放在了 `0.Latex\_Frist\` 文件夹。如果你有兴趣可以到 [releases](https://github.com/heartacker/MyNotes/releases) 下载 `Latex_note.pdf` 查阅。
+**LaTeX** 是一个非常优秀的排版系统。我把我从零开始学习的笔记放在了 `01.Latex\_Frist\` 文件夹。如果你有兴趣可以到 [releases](https://github.com/heartacker/MyNotes/releases) 下载 `Latex_note.pdf` 查阅。
 
 
 ## 学习Verilog
