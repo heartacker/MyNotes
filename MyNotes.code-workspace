@@ -191,6 +191,7 @@
 				]
 			}
 		],
+		"latex-workshop.bibtex-format.trailingComma": true,
 	},
 	"extensions": {
 		"recommendations": [
