@@ -908,9 +908,7 @@ todo
 
 用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即说得的理念，让会让放弃探究背后机理和秘密。可以这么说，那时候对 Word 本身也不是很熟悉，而且也没有模板。另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。这也是 word 文档进行排版很烦恼的因素之一。
 
-言归正传，我们在这里说论文参考文档的的事情。
-
-其实很简单。我们可以这样理解：
+言归正传，我们在这里说论文参考文档的的事情。其实很简单。我们可以这样理解：
 \begin{enumerate}
     \item 我们要引用参考文章。
     \item 我已经准备好了参考文档的信息。
@@ -918,6 +916,55 @@ todo
     \item 我要在什么地方显示参考信息。
     \item 好了，我都准备好了，请编译到文章里面去。
 \end{enumerate}
+
+\subsubsection{如何设置}
+按照这个步骤，我们可以开始去做，步骤可以参考\cite{latex_start}。
+
+第一步，创建一个 frist.bib 的文件。内容如下：
+\begin{lstlisting}
+% encoding: UTF8
+
+% editor    = {高洪霞},
+@book{latex_start,
+    author    = {刘海洋},
+    title     = {{\LaTeX} 入门},
+    publisher = {电子工业出版社},
+    year      = {2013-6}
+}
+\end{lstlisting}
+
+第二步，引用在文档末尾设置引用论文的格式和论文的数据库\footnote{第一步创建的frist.bib的文件}。
+
+\begin{lstlisting}
+
+% 如何隐藏格式 设置
+% plain 格式按照作者 日期 标题排序
+% unset 不排序
+% alpha 使用一种三字母的方式编号并按照作者排序
+% abbrv 与alpha 基本相同，知识定义了一些缩写
+\bibliographystyle{plain}
+
+% 使用那个数据库
+\bibliography{frist.bib}
+
+% 注意是文档末尾
+\end{document} 
+
+\end{lstlisting}
+
+第三步，在需要与引用参考文章的地方。添加$\backslash cite$\{数据编号\}，
+其中数据名字就是第一步创建的数据库里面的项目名字\textbf{$latex_start$}。
+% 为什么直接书写bib的名字会报错呢？
+
+\begin{lstlisting}
+    .......按照这个步骤，我们可以开始去做，步骤可以参考\cite{latex_start}。
+    这本书 讲解的非常详细。值得大学习。
+\end{lstlisting}
+
+第四步，使用\textbf{bibtex}进行编译。\ref{subsec:buildprocess}。
+一般情况下。中文文档需要使用xelate $\rightarrow$ bibtex $\rightarrow$ xelatex $\rightarrow$ xelatex 就可以编译完成。也就是比其他的多了一个xelatex 和 bibtex。
+
+第五步，显示效果, 直接看论文最后的参考文献 \ref{endofdocument}。
 
 
 
@@ -1847,5 +1894,5 @@ xelatex命令：XeTeX程序中的命令，用来编译用LaTeX格式写的tex文
 % abbrv 与alpha 基本相同，知识定义了一些缩写
 \bibliographystyle{plain}
 \bibliography{Latex_note.bib}
-
+\label{endofdocument}
 \end{document}
