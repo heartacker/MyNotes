@@ -1,13 +1,13 @@
 <div align=center>
 
-# $\hearts$定心的学习笔记$\hearts$
+# ❤️的菜鸟历程
 </div>
 
-## 学习$\LaTeX$
+本项目是我学习和发布笔记的地方。当然这也是一个菜鸟历程。如果你也是刚刚入门，也刚刚好看到我这个项目，也刚刚好你也有兴趣阅读，那么感谢你。希望大家一起进步。
 
-$\LaTeX$
+## 学习LaTeX
 
-$TeX$
+**LaTeX** 是一个非常优秀的排版系统。我把我从零开始学习的笔记放在了 `0.Latex\_Frist\` 文件夹。如果你有兴趣可以到 [releases](https://github.com/heartacker/MyNotes/releases) 下载 `Latex_note.pdf` 查阅。
 
 
 ## 学习Verilog
