@@ -130,13 +130,13 @@
 
 \section*{前言}
 
-无论是你在哪里看到我做个文档，其实我不是跟你教学 \LaTeX ，我不是专业的 \LaTeX 高手，我这个文档也不是为专业的用户而写。
+无论你是在哪里看到我做个文档，其实我都不是跟你教学 \LaTeX ，我不是专业的 \LaTeX 高手，我这个文档也不是为专业的用户而写。
 
 在作为一个门外汉，我在接触 Markdown 写公式之后，感受到 \LaTeX 对数学的强大的支持，就觉得有必要学习这个专业的排版系统，感受他的魅力。因此从零开始折腾，从入门知识，到开始写文档，添加各种内容，使用各种环境，开始对对细节进行调整和把控。 我这里只是给你一个最简单最基础的入门。 让你能做出最简单的文档，让你能够在学习过程中，知道该如何入门学习，该如何去找资料看，该怎么样让环境工作起来，让你能够提笔写东西的时候，能生成一个最基础的文档，而不是这里查查，那儿看看，最后连环境都无法编译起来，甚至不知道该如何下手，进而导致放弃的念头。
 
-我这里的基础知识很多东西都是非常简陋的，很多是摘抄自刘海洋老师的书籍 \cite{latex_start}。一来，我本来不是很专业的作者，二来是我就是为了入门才，刚好也可以把自己的学习过程记录下来。本人记录了我的陡峭的学习过程和学习遇到的困难。 但你在看到我这个文档时候， 我已经完成了蜕变。 恭喜我自己，也恭喜你，我们一直在进步。
+我这里的基础知识很多东西都是非常简陋的，很多是摘抄自刘海洋老师的书籍 \cite{latex_start}。一来，我本身不是很专业的作者，二来是我就是为了入门，刚好也可以把自己的学习过程记录下来。本文记录了我的陡峭的学习过程和学习遇到的困难。 但你在看到我这个文档时候， 我已经完成了蜕变。 恭喜我自己，也恭喜你，我们一直在进步。
 
- 整个过程，最终来看，我前前后后并没有花很长时间就入门了。 所以加油吧。其实不难。
+整个过程，最终来看，我前前后后并没有花很长时间就入门了。 所以加油吧。其实不难。
 \clearpage
 
 
@@ -151,8 +151,8 @@
 \label{sec:knowledge}
 
 \subsection{什么是\LaTeX？}
-TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之后，集合更多宏包的再发行版本。\LaTeX 更加简单更流行，但是还是很难入门，因为他们都是使用markup语言进行编写，而不是类似 $MicroSoft Word$ 那样所见即所得。所以门槛非常高。
-但是一旦学习并熟悉，对论文的编写是非常有用的。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。正是因为门槛很高，导致学习非常陡峭，让很多人想入手都不知道如何入手。
+\TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 \TeX 之后，集合更多宏包的再发行版本。\LaTeX 更加简单更流行，但是还是很难入门，因为他们都是使用markup语言进行编写，而不是类似 MicroSoft Word 那样所见即所得。所以门槛非常高。
+但是一旦学习并熟悉，\emph{对论文的编写是非常有用的}。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。正是因为门槛很高，导致学习非常陡峭，让很多人想入手都不知道如何入手。
 
 本人也是折腾了很久之后，终于找到了学习方法和技巧。后续将会简单的给大家讲解如何上手。
 
@@ -170,7 +170,7 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 
 但是如何选择可以参考：
 
-\Checkmark 选择使用 TEX/LATEX 的理由包括：
+\Checkmark 选择使用 \TeX /\LaTeX 的理由包括：
 
 \begin{itemize}
     \item 免费软件；
@@ -179,7 +179,7 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
     \item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
 \end{itemize}
 
-\Checkmark 不选择使用 TEX/LATEX 的理由包括：
+\Checkmark 不选择使用 \TeX/\LaTeX 的理由包括：
 \begin{itemize}
     \item 需要相当精力学习；
     \item 图文混合排版能力弱；
@@ -288,7 +288,7 @@ TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 Tex 之�
 
           \begin{verbatim}
 % 宏包，意思是我要开始写文档了。我会用什么工具。只有加了宏包才能写公式，做表格，放图片
-% 常用的有mathtools，amsmath，graphicx，array，geometry
+% 常用的有mathtools， amsmath， graphicx， array， geometry
 \usepackage{mathtools,booktabs}
         \end{verbatim}
     \item  说明我要用到的环境,就是我正在写.
@@ -356,9 +356,10 @@ bib文件一般如下：
 \documentclass{A}     % 或者不使用自定义的排版文件时，使用最普通的\documentclass{article}
 \usepackage{B}        % 以及导入一些其他常用的宏文件，如amsmath、amssymb、amsthm等数学相关的宏文件
 \begin{document}
-XXX
-XXX
-XXX
+this is document
+this is document
+this is document
+this is document
 % 正文结束
 \bibliography{D}      % 导入正文中引入文献的数据
 \bibliographystyle{C} % 导入参考文献的格式文件C.bst
@@ -378,11 +379,12 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
 
 手写识别: \href{http://detexify.kirelabs.org/classify.html}{手写体符号识别工具}。
 
-在线公式编辑器: \href{https://latexlive.com/}{在线\LaTeX 公式编辑器}, 支持导出多个格式。
+在线公式编辑器: \href{https://latexlive.com/}{在线 \LaTeX 公式编辑器}, 支持导出多个格式。
 
-插入代码： \href{https://zhuanlan.zhihu.com/p/65441079}{LaTeX 里「添加程序代码」的完美解决方案}
+插入代码： \href{https://zhuanlan.zhihu.com/p/65441079}{\LaTeX 里「添加程序代码」的完美解决方案}
 
-学习入门总结: \href{https://www.cnblogs.com/zyg123/p/10499744.html}{LaTeX学习系列之---LaTeX的总结}
+学习入门总结: \href{https://www.cnblogs.com/zyg123/p/10499744.html}{\LaTeX 学习系列之---\LaTeX 的总结}
+
 
 
 
@@ -605,10 +607,10 @@ quote 是无参数的环境。
 
 \subsubsection{行内公式}
 
-行内公式叫做 $inline formula$， 只需要 \$\ \$ 括起来，就是一个公式环境，比如\verb!$a+b$! 会得到 $a+b$，而不是a+b。
+行内公式叫做 inline formula， 只需要 \$\ \$ 括起来，就是一个公式环境，比如\verb!$a+b$! 会得到 $a+b$，而不是a+b。
 
 \subsubsection{列表公式}
-较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 $displayed formula$。使用 equation 环境方便输出。参考 \href{https://matnoble.me/tech/latex/multi-line-equations/}{各种样子的对齐编码}。
+较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 displayed formula。使用 equation （单行） 和gather\footnote{需要引用amsmath 宏包} （多行） 等环境方便输出。参考 \href{https://matnoble.me/tech/latex/multi-line-equations/}{各种样子的对齐编码}。
 
 \begin{lstlisting}
     \begin{gather}
@@ -619,15 +621,39 @@ quote 是无参数的环境。
 \end{lstlisting}
 
 渲染效果:
-
-
 \begin{gather}
     f(x)= \int_a^b x dx    \notag \\
     % 度数竟然没有专门的符号^\circ
     \angle CAB = 90^\circ =\pi / 2
 \end{gather}
 
-参考：
+\subsubsection{常用数学宏 amsmath 推荐}
+
+数学公式的编辑，一定离不开这个宏。我这里找了一个关于 amsmath 的\href{http://math.ecnu.edu.cn/~jypan/Latex/lect/lect06mathB.pdf}{PPT介绍}。\footnote{来自华东师范大学数学系潘建瑜老师的课程。}
+
+amsmath 这个宏包的作用如下。
+\begin{enumerate}
+    \item 提供更多的数学符号和数学函数
+    \item 提供了除了 equation 之外的其他几个常用的数据环境。 gather、 align、flalign、 alignat、 multiline、subsequent。
+          \begin{quote}
+              Split 和 gathered 、aligned、alignated 则不会进入数学环境。
+          \end{quote}
+    \item 提供各种数学矩阵，如 matrix ， pmatrix ， bmatrix ， Bmatrix ， Vmatrix ， smallmatrix。
+\end{enumerate}
+
+引用参数：
+\begin{lstlisting}
+\usepackage[选项]{amsmath}
+% 选项：其中前者是默认的参数
+% centertags 或者 tabtags， split 环境种公式的编号的位置，左首右末
+% sumlimits 或者 nosumlimits，求和符号上下限位置
+% nointlimits 或者 inlimits，积分符号上下限位置
+% namelimits 或者 nonameinlimits，积分符号上下限位置
+% reqno 或者leqno。公式编号位置
+% flenq， 行间公式居左对齐，默认是剧中对其。
+\end{lstlisting}
+
+参考下面的代码：
 \begin{lstlisting}
 \documentclass{article}
 
@@ -880,7 +906,7 @@ todo
 
 \subsection{如果设置参考文档（论文必备）？}
 
-用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即说得的理念，让会让放弃探究背后机理和秘密。可以这么说，那时候对 Word 本身也不是很熟悉，而且也没有模板。另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。这也是 word 文档进行排版很烦恼的因素之一。 
+用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即说得的理念，让会让放弃探究背后机理和秘密。可以这么说，那时候对 Word 本身也不是很熟悉，而且也没有模板。另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。这也是 word 文档进行排版很烦恼的因素之一。
 
 言归正传，我们在这里说论文参考文档的的事情。
 
@@ -1729,7 +1755,7 @@ bibtex main.aux
 \subsubsection{VSCode LaTeX Workshop 插件关键两个配置}
 对于中文而言，大部分使用的是 xeLaTeX，但是这个插件默认没有把它添加到工具链中。对于大部分中文用户。则使用这两个居多。
 
-第一步，在在工具链添加这个工具（latex-workshop.latex.tools），第二步中会调用这个命令。
+第一步，在工具链添加这个工具（latex-workshop.latex.tools）\footnote{第二步中会调用这个命令。}
 \begin{lstlisting}    
 {
     "name": "xelatex",
