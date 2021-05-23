@@ -15,6 +15,8 @@
 
 **LaTeX** 是一个非常优秀的排版系统。我把我从零开始学习的笔记放在了 `01.Latex\_Frist\` 文件夹。如果你有兴趣可以到 [releases](https://github.com/heartacker/MyNotes/releases) 下载 `Latex_note.pdf` 查阅。
 
+>注意，如果你要编译的话，请使用xelatex -> bibtex -> xelatex -> xelatex进行编译。因为使用了bib引用。否则可以直接使用 xelatex x2 编译。
+
 
 ## 学习Verilog
 ```verilog
