@@ -16,7 +16,7 @@
 		"makefile.extensionOutputFolder": "./.vscode",
 		"latex-workshop.latex.recipe.default": "lastUsed",
 		"latex-workshop.latex.autoBuild.interval": 10000,
-		"latex-workshop.latex.autoClean.run": "onBuilt",
+		// "latex-workshop.latex.autoClean.run": "onBuilt", 务必要删除，只会导致编译变慢
 		"latex-workshop.latex.tools": [
 			{
 				"name": "xelatex",
