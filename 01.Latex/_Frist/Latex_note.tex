@@ -556,42 +556,24 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 \subsubsection{命令的参数？}
 
-先看这个代码：
-
-\begin{lstlisting}
-\begin{quote}
-孔子曰：人之初，性本善。
-\end{quote}
-
-\end{lstlisting}
-
-渲染效果：
-
-\begin{quote}
-    孔子曰：人之初，性本善。
-\end{quote}
-
-
-这是一个引用，但是你会发现字号上面的都没有变。
-
-\begin{lstlisting}
+先看这个代码：这是一个引用，但是你会发现字号等等看起来和正文没有什么区别和变化。
+\begin{example}    
     \begin{quote}
-    \zihao{-5} 孔子曰：人之初，性本善。
+        孔子曰：人之初，性本善。
     \end{quote}
+\end{example}
 
-\end{lstlisting}
 
-渲染效果：
-
-\begin{quote}
-    \zihao{-5}\kaishu 孔子曰：人之初，性本善。
-\end{quote}
-
-可以看到，我们添加 \verb!\zihao{-5}! 改变了这个 quote 内部的字体。
+再来看看这个代码。可以看到，我们添加 \verb!\zihao{-5}! 改变了这个 quote 内部的字体大小。
+\begin{example}        
+    \begin{quote}
+        \zihao{-5} 孔子曰：人之初，性本善。
+    \end{quote}
+\end{example}
 
 上面我们知道。\verb!\footnote{内容}! 只改变了"内容"，但是为什么 \verb!\zihao{-5}! 改变了 quote 的所有内容呢？
 
-我们将类似\verb!\zihao{-5}! 这类命名称作声明(declaration)。但是分组限定了声明的范围。
+我们将类似\verb!\zihao{-5}! 这类命名称作声明(declaration)。其中 \textbf{分组} 限定了声明的范围。
 
 \subsubsection{分组}
 
@@ -725,15 +707,15 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \end{myquote}
 
 
-\subsection{Lex, LaTex, pdflatex, xelatex, xetex等的区别和关系}
+\subsection{\TeX, \LaTeX, pdflatex, xelatex, xetex等的区别和关系}
 
-TeX：一种宏语言。
+\TeX：一种宏语言。
 
 Plain Tex： Tex中的一个最基本的宏集合与TeX的基础语言构成的一种格式。
 
-LaTex： Tex中的一个宏集合，构成一种与 Plain TeX 不一样的格式。
+\LaTeX ： Tex中的一个宏集合，构成一种与 Plain TeX 不一样的格式。
 
-Tex程序：把Tex语言转换为排版的程序，也叫Tex。为区别，称这个 TeX 程序叫Knuth TeX。
+\TeX 程序：把Tex语言转换为排版的程序，也叫Tex。为区别，称这个 TeX 程序叫Knuth TeX。
 
 tex命令：Tex程序中的编译命令。tex命令默认用Plain TeX格式进行排版。也就是说tex命令后面默认跟的tex文件应该是用Plain Tex格式写的。
 
