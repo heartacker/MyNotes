@@ -34,6 +34,20 @@
 \usepackage{amssymb}
 
 
+% ********************对比环境***************
+\usepackage{tcolorbox}
+\usepackage{minted}
+\tcbuselibrary{minted, skins}
+
+% 重定义环境用 \renewtcblisting
+\newtcblisting{example}{
+  skin=empty,
+  borderline horizontal={.4pt}{0pt}{black},
+  sidebyside
+}
+
+
+
 %**********************边距设置****************************************
 
 % \geometry{a4paper,scale=0.8}
@@ -54,7 +68,7 @@
     numberstyle         =   \zihao{-5}\ttfamily,      % 行号的样式，小五号，tt等宽字体
     showstringspaces    =   false,
     captionpos          =   t,                        % 这段代码的名字所呈现的位置，t指的是top上面
-    frame               =  ltb,% lrtb,                     % 显示边框
+    frame               =  lrtb,% lrtb,                     % 显示边框
     breaklines          =  true,
 }
 
@@ -98,7 +112,10 @@
 %~ 定义一个命令
 \newcommand\degree{^\circ}
 
+% 定义一个颜色
+\definecolor{codebg}{RGB}{250,240,235}
 
+%^ \renewcommand\listoflistingscaption{List of source codes}
 
 %**********导言区******************
 \begin{document}
@@ -125,6 +142,8 @@
 
 %表格的目录
 \listoftables
+
+%^ \listoflistingscaption
 
 \clearpage
 
@@ -407,6 +426,7 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
 
 学习入门总结: \href{https://www.cnblogs.com/zyg123/p/10499744.html}{\LaTeX 学习系列之---\LaTeX 的总结}
 
+论坛社区： \href{https://latexstudio.net/}{\LaTeX{}工作室}
 
 \subsubsection{编写、编译环境的安装准备步骤}
 
@@ -970,20 +990,52 @@ todo
 \end{titlepage}
 \end{lstlisting}
 
+% *\subsection{如果创建对比和渲染效果的"example" 环境?}
+\subsection{如果创建对比和渲染效果的 "example" 环境?}
 
+作为一个教学文章， 那么有例子和渲染对比，可以更加清晰明了的向读者阐明要点， 让读者一目了然的的知道代码和渲染效果对比。这也是我一开始就说这个很有难度的环境的原因之一。
+
+\subsubsection{使用tcolorbox}
+参考文档：
+
+https://liam.page/2016/07/22/using-the-tcolorbox-package-to-create-a-new-theorem-environment/
+
+https://github.com/CTeX-org/forum/issues/113\#issuecomment-621120169
+
+https://tex.stackexchange.com/questions/124657/combine-minted-and-tcolorbox
+
+先来看看效果。
+
+\begin{example}
+    \begin{equation}
+        % notag 代码不添加tag
+        E=MC^2\notag
+    \end{equation}
+    \begin{equation}
+        E=MC^2
+    \end{equation}
+\end{example}
+
+
+\subsubsection{使用 showexpl}
+
+https://latexstudio.net/index/details/index/mid/1275
+
+
+%* \subsection{基础字体样式调节}
 \subsection{基础字体样式调节}
 
 \subsubsection{常用样式}
 
-\emph{Italicized text} 斜体使用\verb!\emph{Italicized text}! 进行标记。
+\begin{example}
+\emph{Italicized text} 斜体使用\\
+\textbf{Bold text} 粗体使用\\
+\underline{Underlined text} 下划线使用\\
+\textit{Emphasising text} 强调使用\\
+\textbf{\textit{Combine text} \underline{当然也可以组合起来}}
+\end{example}
 
-\textbf{Bold text} 粗体使用\verb!\textbf{Bold text}! 进行标记。
 
-\underline{Underlined text} 下划线使用\verb!\underline{Underlined text}! 进行标记。
-
-\textit{Emphasising text} 强调使用\verb!\textit{Emphasising text}! 进行标记。
-
-\textbf{\textit{Combine text} \underline{当然也可以组合起来}}，\verb!\textbf{\textit{combine text}! 进行标记。
 
 \subsubsection{中文的加粗}
 也不知道什么原因,参考，\href{https://www.zhihu.com/question/58456658}{xelatex编译加粗楷体为什么会失败？} 默认情况下，使用 \verb!\textbf{加粗}! 是不会加粗的。处理方法是，在启用 \verb!AutoFakeBold!。
@@ -1005,23 +1057,15 @@ todo
 
     \item \verb!\usepackage{ulem}!;
 
-    \item 使用方法:
-          \begin{lstlisting}
-\sout{文字}   %删除线
-\uwave{文字}  %波浪线
-\xout{文字}   %斜删除线
-\uuline{文字} %双下划线
-\end{lstlisting}
+    \item 使用方法和显示效果
+\begin{example}
+\sout{删除线}\\   %删除线
+\uwave{波浪线}\\  %波浪线
+\xout{斜删除线}\\   %斜删除线
+\uuline{双下划线}\\ %双下划线
+\end{example}
 
-    \item 显示效果:
-          \begin{enumerate}
-              \item \sout{删除线}   %删除线
-              \item \uwave{波浪线}  %波浪线
-              \item \xout{斜删除线}   %斜删除线
-              \item \uuline{双下划线} %双下划线
-          \end{enumerate}
 \end{enumerate}
-
 
 \subsection{段落缩进}
 
@@ -1305,39 +1349,39 @@ chuwai)
     \textit{不过中文还是建议使用中文符号。}
 
     逗号，
-    
+
     句号。
-    
+
     顿号、
-    
+
     问号？
-    
+
     感叹号！
-    
+
     波浪号~
-    
+
     冒号：
-    
+
     省略号……
-    
+
     分号；
-    
+
     双引号“
-    
+
     单引号‘
-    
+
     双书名《》
-    
+
     破折号——
-    
+
     方括号 [ ]\footnote{参考 https://www.zhihu.com/question/19710761 }
-    
+
     花括号 { }
-    
+
     方头括号【】
-    
+
     空心方头括号〖〗
-    
+
     六角括号〔〕
 
     圆括号 ( )
@@ -1436,6 +1480,10 @@ chuwai)
 \end{quotation}
 
 
+% *\subsection{颜色}
+\subsection{颜色}
+多彩的世界，确实五彩斑斓的渲染。 参考： \href{https://www.overleaf.com/learn/latex/Using\_colours\_in\_LaTeX}{xcolor的教学}
+
 %************** footnote-----------
 \subsection{注脚}
 
@@ -1464,7 +1512,8 @@ Todo
 使用 enumerate 可以 生成有序列表。
 % todo 为什么无法使用自定义编号
 代码：
-\begin{lstlisting}
+
+\begin{example}
 \begin{enumerate}
     \item 第一个
     \item 嵌套
@@ -1480,33 +1529,14 @@ Todo
         \end{itemize}
     \item ...
     \end{enumerate}
-\end{lstlisting}
-
-渲染：
-\begin{enumerate}
-    \item 第一个
-    \item 嵌套
-          \begin{enumerate}
-              \item 编号i
-              \item 编号ii
-          \end{enumerate}
-    \item 无序
-          \begin{itemize}
-              \item 第一个
-              \item second
-              \item 第三个
-          \end{itemize}
-    \item ...
-\end{enumerate}
-
-
+\end{example}
 
 
 \subsubsection{无序列表}
 
 使用 itemize 可以生成序列表。
 代码：
-\begin{lstlisting}
+\begin{example}
     \begin{itemize}
         \item 第一个
         \item second
@@ -1516,25 +1546,12 @@ Todo
             \item c
         \end{itemize}
         \item 第三个
+        \begin{enumerate}
+            \item number
+            \item number
+        \end{enumerate}
     \end{itemize}
-\end{lstlisting}
-
-渲染：
-\begin{itemize}
-    \item 第一个
-    \item second
-          \begin{itemize}
-              \item a
-                    \begin{itemize}
-                        \item apple
-                        \item banner
-                        \item pear
-                    \end{itemize}
-              \item b
-              \item c
-          \end{itemize}
-    \item 第三个
-\end{itemize}
+\end{example}
 
 
 % *\subsection{如果在表格和图标之间插入章节信息。}
@@ -1721,17 +1738,11 @@ amsmath 这个宏包的作用如下。
 \end{lstlisting}
 
 参考下面的代码：
-\begin{lstlisting}
-\documentclass{article}
+\begin{example}
 
-\usepackage{ctex}
-\usepackage{amsmath}
-\usepackage{amssymb}%花体字符
-
-
-\begin{document}
-
-
+% \usepackage{amsmath}
+% \usepackage{amssymb}%花体字符
+% \begin{document}
 \begin{gather}%会产生编号
     a+b=b+a\\
     ab=ba
@@ -1747,14 +1758,11 @@ a+b=b+a \notag \\%\notag阻止编号
 ab=ba   \notag %\notag阻止编号
 \end{gather}
 
-
-
 %align和align*环境（用$对齐）
 \begin{align}
     x &= t + \cos t + 1\\
     y &= 2\sin t
 \end{align}
-
 
 %split环境（用$对齐）(一个公式分为多行排版)
 \begin{equation}
@@ -1763,7 +1771,6 @@ ab=ba   \notag %\notag阻止编号
     &= 2\cos^2 x - 1
     \end{split}
 \end{equation}
-
 
 %case环境
 %每行公式使用&分割成两部分
@@ -1774,76 +1781,142 @@ ab=ba   \notag %\notag阻止编号
     0, &\text{如果} x \in \mathbb{R}\setminus\mathbb{Q}
             \end{cases}%\text是为了在数学公式中处理中文
 \end{equation}
-
-
-\end{document}
-\end{lstlisting}
+% \end{document}
+\end{example}
 
 
 
 % * \subsection{如何在 \LaTeX 中插入代码} % (fold)
 \subsection{如何在 \LaTeX 中插入代码} % (fold)
 
-\subsubsection{简单代码}
+
 就像markdown一样，
 
 1. 可以通过简单的\verb!`code`! 标记 来标识行内代码。
 
 2. 通过进行多行显示原始代码。
 \begin{verbatim}
-                ```
-                code
-                code
-                ```
-    \end{verbatim}
+```
+code
+code
+```
+\end{verbatim}
 
+
+
+
+
+
+\subsubsection{简单代码(适合非常简单的原始代码)}
 \LaTeX 可使用原始显示的方式进行快速标识。虽然效果看不出来是行内代码，但是效果还是不错的,主要是字体稍微有点差别：\verb!这是code~!。
 
 \begin{enumerate}
     \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
     \item 使用 verbatim
-          \begin{lstlisting}
-            \begin{verbatim}
-                code
-            \end{verbatim}
-                \end{lstlisting}
+\begin{example}
+
+\begin{verbatim}
+%this is code
+%very simple code
+\end{verbatim}
+
+\end{example}
 
 \end{enumerate}
 
 
 
 
-\subsubsection{多行代码} % (fold)
+\subsubsection{初级的多行代码} % (fold)
 
 % subsection  (end)
 \begin{enumerate}
-    \item usepackage Listings
+    \item usepackage Listings： \verb!\usepackage{listingsutf8}!
+    \item 设置代码的格式
+    \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+%********************代码设置******************************************
+% 用来设置附录中代码的样式
 
-          \verb!\usepackage{listingsutf8}!
+% step 1： 引用颜色宏
+\usepackage{xcolor}
 
-    \item 设置代码的格式,暂时不说。
-    \item 在指定的位置插入以下例子:
-          \label{Code.Insert_pic}
-          \begin{verbatim}
+% step 2： 设置宏的参数
+\lstset{
+    backgroundcolor     =   \color[RGB]{250,240,235},    %代码款的背景颜色
+    basicstyle          =   \zihao{5}\ttfamily,                % sf/tt基本代码风格
+    keywordstyle        =   \bfseries,                % 关键字风格
+    commentstyle        =   \rmfamily\itshape,        % 注释的风格，斜体
+    stringstyle         =   \ttfamily,                % 字符串风格
+    flexiblecolumns,                                  % 别问为什么，加上这个
+    numbers             =   left,                     % 行号的位置在左边
+    showspaces          =   false,                    % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \zihao{-5}\ttfamily,      % 行号的样式，小五号，tt等宽字体
+    showstringspaces    =   false,
+    captionpos          =   t,                        % 这段代码的名字所呈现的位置，t指的是top上面
+    frame               =  lrtb,% lrtb,                     % 显示边框
+    breaklines          =  true,
+}
+    \end{minted}
+
+    \item \label{Code.Insert_pic} 在指定的位置插入例子，可以看到有行号，有方框，有背景颜色。
+    \begin{example}
 \begin{lstlisting}[language=c]
-    void mian(int argl,string[] args){
-        for(int i = 0;i<argl;)
-            cout<<args[i]<<cendl;// 输出
-    }
-\end{lstlisting}
-            \end{verbatim}
-
-    \item 渲染效果如下:
-
-        \begin{lstlisting}[language=c]
 void mian(int argl,string[] args){
     for(int i = 0;i<argl;)
         cout<<args[i]<<cendl;// 输出
 }
-        \end{lstlisting}
+\end{lstlisting}
+    \end{example}
 
 \end{enumerate}
 
+\subsubsection{终极代码显示和高亮}
+参考此文档： \href{https://blog.csdn.net/u014454538/article/details/104283898}{vscode配置latex的代码高亮（minted）} 。
+
+参考Overleaf的教学： \href{https://www.overleaf.com/learn/latex/Code\_Highlighting\_with\_minted}{Overleaf 使用minted 高亮代码}
+
+
+
+\begin{enumerate}
+    \item 引用 minted 包。\verb!\usepackage{minted}!。
+    \item 在xelatex 里面添加 \verb!--shell-escape! 参数。
+    
+如何添加编译参数呢？大家还记得之前设置的Tool \ref{subsec:recipe} 吗？也就是在工具链里面，添加参数。
+
+\begin{minted}[frame=lines, bgcolor=codebg, linenos]{json}
+
+"latex-workshop.latex.tools": [
+    {
+        "name": "xelatex",
+        "command": "xelatex",
+        "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            //0$需要添加的参数$
+            "-shell-escape",
+            "%DOC%"
+        ],
+        "env": {}
+    },
+    .
+    ..
+]
+\end{minted}
+
+
+
+\item 显示效果。
+\begin{example}    
+\begin{minted}[frame=lines, bgcolor=codebg, linenos]{c++}
+int main() {
+    printf("hello, world");
+    return 0;
+}
+\end{minted}
+\end{example}
+
+\end{enumerate}
 
 
 %* \subsection{如何在\LaTeX 中插入图片？}
