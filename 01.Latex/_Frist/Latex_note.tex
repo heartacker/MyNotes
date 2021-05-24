@@ -1,5 +1,5 @@
 % article,book,report
-% ctexart,ctexbook,ctexreport 中文
+% ctexart,ctexbook,ctexrep 中文
 \documentclass[UTF8,AutoFakeBold]{ctexart}
 %! 请使用XeLaTex 进行排版
 %! 需要编译两次，才能更新 TOC 哦
@@ -205,7 +205,7 @@
 \subsection{\LaTeX 文类层级}
 \label{sec:structure}
 %定义一个跳转地址
-\hypertarget{Levelofdepth}{\LaTeX} 有三种标准文类：book, report, article。中文是 ctexart。
+\hypertarget{Levelofdepth}{\LaTeX} 有三种标准文类：book， report， article。 中文是 ctexbook， ctexrep ， ctexart。
 
 每种文类的章节命令和层次深度如下：
 
@@ -231,7 +231,7 @@
 
 \subsection{\LaTeX 编码问题}
 % 引用一个跳转地址
-上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article，中文的article是ctexart。
+上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article（中文是 ctexbook， ctexrep ， ctexart。）。
 但是如果我们需要在西文中插入中文要如何弄呢？
 这就需要引用xeCKJ 包了。 参考\href{https://liam.page/2017/09/17/LaTeX-multi-lingual/}{如何书写多国语言}。
 
@@ -816,6 +816,7 @@ todo
     \setlength{\parindent}{2em} %2em代表首行缩进两个字符
 \end{lstlisting}
 
+%* \subsection{如果设置参考文档（论文必备）？}
 \subsection{如果设置参考文档（论文必备）？}
 
 用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即说得的理念，让会让放弃探究背后机理和秘密。可以这么说，那时候对 Word 本身也不是很熟悉，而且也没有模板。另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。这也是 word 文档进行排版很烦恼的因素之一。
@@ -878,6 +879,11 @@ todo
 
 第五步，显示效果, 直接看论文最后的参考文献 \ref{endofdocument}。
 
+%* \subsection{如何使设置页眉页脚？}
+\subsection{如何使设置页眉页脚？}
+
+页眉页脚也是论文编写操作比较多的一点。
+%todo 页眉页脚 fancyhdr
 
 
 % * \subsection{如何使引用可以跳转？}
@@ -1244,9 +1250,9 @@ Todo
 
 % *\subsection{如果在表格和图标之间插入章节信息。}
 \label{sec:insert_section_info}
-\subsection{如果在表格和图标之间插入章节信息。}
+\subsection{如何在表格和图标之间插入章节信息。}
 
-\href{https://www.cnblogs.com/yifdu25/p/8330911.html}{参考一} 。
+可以参考： \href{https://www.cnblogs.com/yifdu25/p/8330911.html}{Latex技巧：在图表序号中加入章节号（实现诸如“图1.1.2”这样的图表序号）} 。
 
 \subsubsection{插入章节编号}
 如何插入表格和图片还没有讲解。但是这里先教一下如何插入章节信息在图表中。
