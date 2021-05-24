@@ -694,15 +694,219 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \begin{myquote}
     Tip: 理解这个环境，我们应该有所了解，我们不应该在正文中过多使用字体，字号，对齐，缩进等等。让这些排版交给环境就好。我们只需要在正确的环境中编写内容，并对环境进行配置来调整格式，做到让编写文档和格式调整分离。这样不但让自己的文档结构清晰。还能提高效率。这种我们叫做 “ What you think is what you want ”。
 \end{myquote}
-% TODO 自定义环境
+
+
+\subsection{Lex, LaTex, pdflatex, xelatex, xetex等的区别和关系}
+
+TeX：一种宏语言。
+
+Plain Tex： Tex中的一个最基本的宏集合与TeX的基础语言构成的一种格式。
+
+LaTex： Tex中的一个宏集合，构成一种与 Plain TeX 不一样的格式。
+
+Tex程序：把Tex语言转换为排版的程序，也叫Tex。为区别，称这个 TeX 程序叫Knuth TeX。
+
+tex命令：Tex程序中的编译命令。tex命令默认用Plain TeX格式进行排版。也就是说tex命令后面默认跟的tex文件应该是用Plain Tex格式写的。
+
+latex命令：tex命令加上某一个选项使用，就会用LaTeX 格式进行排版，也就是说此时后面跟的tex文件应该是用LaTex格式写的。为方便，就把tex 命令与对应编译选项合成为一个命令，叫latex命令。
+
+$\varepsilon$-TeX 程序：Knuth TeX程序的一个扩展，也是一个程序，一般写成 eTeX。增加了少量的几个命令，但一般来说是与Knuth TeX程序没有太多区别的。
+
+\begin{myquote}
+    \textit{实现}：在文中的意思就是指“程序”的意思。如文中：eTeX 程序和 Knuth TeX 都是TeX语言的一个实现（也就是说，eTeX 程序和 Knuth TeX 都是把TeX语言转换为排版的程序。程序作用于tex文本文件，把tex文件编译成dvi文件）。
+\end{myquote}
+
+pdfTeX程序：Tex语言的又一个实现，也就是把Tex语言转换为排版的又一个程序。它会把 TeX 语言写的代码直接编译成 PDF 文件。
+
+pdftex命令：pdfTex程序中的命令，用来编译用Plain TeX格式写的tex文件。
+
+pdflatex命令：pdfTex程序中的命令，用来编译用LaTeX格式写的tex文件。
+
+XeTeX程序：TeX语言的新的实现，即把Tex语言转换为排版的一个新程序。支持Unicode 编码和直接访问操作系统字体。
+
+xetex命令：XeTeX程序中的命令，用来编译用Plain TeX格式写的tex文件。
+
+xelatex命令：XeTeX程序中的命令，用来编译用LaTeX格式写的tex文件。
+
+其中“实现”这个概念比较别扭，不知是不是计算机中的概念，反正非计算机专业的人读起来不知道“实现”是什么意思，不知道“TeX语言的一个实现”是什么意思。如果把“TeX语言的一个实现”写成是把TeX语言转换为排版的一个程序，这个程序作用于tex文本文件，把tex文件编译成某些文件，如dvi，pdf文件（比如pdfTex程序把tex文件编译成pdf文件）。那就好理解多了。
+
+不知道上述理解对不对。如有错误，还请各位指点。
+
+另外，我觉得，介绍概念时可以采用数学上的定义的方法，单独列出来每个概念的定义，每个概念的定义中不能含有前面没有定义的概念。这样就会让人好理解的多。上面我写的摘要就是这样做的。
+
+%*编译的过程
+\subsection{\LaTeX 编译过程}
+\label{subsec:buildprocess}
+生成一个文档，需要使用排版软件进行编译生成，这就要涉及不同的步骤。
+
+附带参考文献的整个编译需要四步。
+
+\begin{lstlisting}
+(xe/pdf)latex main.tex   # 表示使用 latex, pdflatex 或 xelatex 编译，下同
+bibtex main.aux
+(xe/pdf)latex main.tex
+(xe/pdf)latex main.tex
+\end{lstlisting}
+
+第一步后生成main.aux、main.log和main.pdf文件。其中aux是引用标记记录文件，用于再次编译时生成参考文献和超链接。此时的pdf文件中没有包含参考文件，在正文中的引用后为[?]。
+
+第二步后生成main.bbl和main.blg文件。blg为bibtex处理过程记录文件。
+
+第三步后更新了main.aux、main.log和main.pdf文件。此时的pdf文件的末尾已经有了参考文献列表，但是在正文中的引用后仍然为[?]。
+
+第四步同样更新了main.aux、main.log和main.pdf文件。并生成最终的pdf文件，此时正文中的引用后已经标记好了引用文献的序号[1]、[2]等。
+
+如果对这个编译流程非常熟悉的话，就可以自己编写脚本快速编译了。当然还是推荐使用 VSCode\ref{subsec:recipe}。
+\begin{lstlisting}
+    @compile.bat文件
+
+    @echo off
+    set CompileName="pdflatex"
+    for %%F in (*.tex) do (
+    set FileName=%%~nF
+    )
+    if not exist "./Tmp" (
+     md Tmp
+     )
+
+    %CompileName% -output-directory=Tmp %FileName%
+    bibtex ./Tmp/%FileName%
+    %CompileName% -output-directory=Tmp %FileName%
+    %CompileName% -output-directory=Tmp %FileName%
+
+    echo ------------------------------------------------
+    echo Compile  finished.
+    echo ------------------------------------------------
+    copy /Y ".\Tmp\%FileName%.pdf" ".\%FileName%.pdf"
+    start  " " /max "./%FileName%.pdf"
+\end{lstlisting}
+
+
+
+\subsection{使用VSCode+\LaTeX \space WorkShop 进行编译}
+\label{subsec:recipe}
+
+\href{https://blog.csdn.net/qysh123/article/details/11833649}{PDFLaTeX和XeLaTeX有什么区别？}
+
+\href{https://www.zhihu.com/question/31850346}{\LaTeX （\LaTeXe ）写的文档如何一键转为word？}
+
+通过上述编译流程\ref{subsec:buildprocess}, 对于简单的xeLaTeX 进行编译，只需要编译一次就够了。但是如果需要生成目录等文档，就需要使用xeLaTeX进行编译两次。如果还要使用bibTex 进行引用的话，还需要使用bibtex 进行编译，之后在用xeLaTeX进行编译两次。
+
+对于不同的编译流程，就是所谓的 recipe。不同的文档类型有不同的编译流程。
+
+因此我们需要根据自己的需求，自己定义这个编译流程。这也是\LaTeX 入手很难的原因之一。
+
+
+
+\subsubsection{什么是 Recipe?}
+
+
+一个 \LaTeX \space  recipe 是指在构建 \LaTeX \space 项目时，\LaTeX \space  Workshop 按顺序执行的一系列命令。它是由 latex-workshop.latex.recipes 定义的。默认情况下，\LaTeX \space  Workshop 包含由变量 latex-workshop.latex.recipes 和 latex-workshop.latex.tools 定义的两个基本 recipes。
+
+\paragraph*{latex-workshop.latex.recipes}
+用来定义编译流程。 您可以使用不同的工具创建多个 recipes。每个 recipe 都是配置列表中的一个对象，包含一个 name 字段和一个要在 recipe 中调用的 tools 列表。
+
+\paragraph*{latex-workshop.latex.tools}
+用来定义每个编译的参数。recipes 中的 tools 可以在 latex-workshop.latex.tools 中定义，其中每个命令都是一个 tool。每个工具都是一个对象，包括一个 name、要生成的一个 command、参数(args)和一些特定的环境变量(env)。env 条目是一个字典。假设您想要在您的home项目中使用一个 texmf 子目录，只需编写：
+
+\begin{lstlisting}
+"env": {
+    "TEXMFHOME": "%DIR%/texmf"
+}
+\end{lstlisting}
+
+
+\subsubsection{VSCode LaTeX Workshop 插件关键两个配置}
+对于中文而言，大部分使用的是 xeLaTeX，但是这个插件默认没有把它添加到工具链中。对于大部分中文用户。则使用这两个居多。
+
+第一步，在工具链添加这个工具（latex-workshop.latex.tools）\footnote{第二步中会调用这个命令。}
+\begin{lstlisting}
+{
+    "name": "xelatex",
+    "command": "xelatex",
+    "args": [
+      "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "%DOC%"
+    ],
+    "env": {}
+}
+\end{lstlisting}
+
+第二步，在recipes 添加这个组合（latex-workshop.latex.recipes）
+\begin{lstlisting}
+    // 针对有目录没bit引用的
+    {
+        "name": "xelatex`×2",
+        "tools": [
+        "xelatex",
+        "xelatex"
+        ]
+    },
+    // 针对有引用的
+    {
+    "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+    "tools": [
+        "xelatex",
+        "bibtex",
+        "xelatex",
+        "xelatex"
+        ]
+    }
+\end{lstlisting}
+\paragraph*{\LaTeX\space Workshop 参数}
+
+对于命令里面的参数，可以查看下表\ref{tab.latex_args}:
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|l|}
+        \hline
+        占位符      & 替换为                                        \\
+        \hline
+        \%DOC\%     & LaTeX根文件路径和名称，不带.tex扩展名         \\
+        \%DOCFILE\% & 不带.tex扩展名的LaTeX根文件名                 \\
+        \%DIR\%     & LaTeX根文件路径                               \\
+        \%TMPDIR\%  & 存储辅助文件的临时文件夹                      \\
+        \%OUTDIR\%  & 在latex-workshop.latex.outDir中配置的输出目录 \\
+        \hline
+    \end{tabular}
+    \caption{\LaTeX\space Workshop tool 参数占位符}
+    \label{tab.latex_args}
+\end{table}
+
+
+
+\subsubsection{最终效果}
+
+理解了编译过程，其实很好理解上面是干嘛的了。
+
+安装好了 TexLive 并配置好VSCode之后，结合上面几个描述，很快你就可以使用VSCode 进行编译了。下图就是配置好之后最终的效果。
+
+只要打开 \TeX 源代码，就可以在左边看到相关的 Build 的 操作。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{images/latex-workshop-demo-build.png}
+    \caption{VSCode Latex WorkShop Demo}
+    \label{Fig:VScode_with_latex_demo}
+\end{figure}
+
+可以看到，这里支持多种 build 的形式。
+\begin{itemize}
+    \item 简单的中文可以直接使用 xelatex。
+    \item 如果包含目录，可以选择 xelate $\times$ 2。
+    \item 如果包含目录、参考文档，就需要使用 xelatex $\rightarrow$ bibtex $\rightsquigarrow$ xelatex $\times$ 2。
+\end{itemize}
+
 
 \newpage
 %* \section{\LaTeX 学习笔记}
 \section{\LaTeX 学习笔记}
 \label{sec:skillnotes}
 
-在基础知识\ref{sec:knowledge} 里面提到。
-
+学习完 基础知识\ref{sec:knowledge} 之后， 相信对 \LaTeX 有一定的了解。 相信你也成功的使用 VSCode + TeXLive + \LaTeX \ Workshop 完成了一个最基本的编译。 很快就可以开始下面的学习啦。 接下来，只要按照每个章节。按部就班的操作一遍，就可以完成学习啦。
 
 %*\subsection{如何生成目录?}
 \subsection{如何生成目录?}
@@ -1728,194 +1932,9 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 
 
 
-%*编译的过程
-\subsection{\LaTeX 编译过程}
-\label{subsec:buildprocess}
-生成一个文档，需要使用排版软件进行编译生成，这就要涉及不同的步骤。
-
-附带参考文献的整个编译需要四步。
-
-\begin{lstlisting}
-(xe/pdf)latex main.tex   # 表示使用 latex, pdflatex 或 xelatex 编译，下同
-bibtex main.aux
-(xe/pdf)latex main.tex
-(xe/pdf)latex main.tex
-\end{lstlisting}
-
-第一步后生成main.aux、main.log和main.pdf文件。其中aux是引用标记记录文件，用于再次编译时生成参考文献和超链接。此时的pdf文件中没有包含参考文件，在正文中的引用后为[?]。
-
-第二步后生成main.bbl和main.blg文件。blg为bibtex处理过程记录文件。
-
-第三步后更新了main.aux、main.log和main.pdf文件。此时的pdf文件的末尾已经有了参考文献列表，但是在正文中的引用后仍然为[?]。
-
-第四步同样更新了main.aux、main.log和main.pdf文件。并生成最终的pdf文件，此时正文中的引用后已经标记好了引用文献的序号[1]、[2]等。
-
-如果对这个编译流程非常熟悉的话，就可以自己编写脚本快速编译了。当然还是推荐使用 VSCode\ref{subsec:recipe}。
-\begin{lstlisting}
-    @compile.bat文件
-
-    @echo off
-    set CompileName="pdflatex"
-    for %%F in (*.tex) do (
-    set FileName=%%~nF
-    )
-    if not exist "./Tmp" (
-     md Tmp
-     )
-
-    %CompileName% -output-directory=Tmp %FileName%
-    bibtex ./Tmp/%FileName%
-    %CompileName% -output-directory=Tmp %FileName%
-    %CompileName% -output-directory=Tmp %FileName%
-
-    echo ------------------------------------------------
-    echo Compile  finished.
-    echo ------------------------------------------------
-    copy /Y ".\Tmp\%FileName%.pdf" ".\%FileName%.pdf"
-    start  " " /max "./%FileName%.pdf"
-\end{lstlisting}
 
 
 
-\subsection{什么是 Recipe?}
-\label{subsec:recipe}
-
-\href{https://blog.csdn.net/qysh123/article/details/11833649}{PDFLaTeX和XeLaTeX有什么区别？}
-
-\href{https://www.zhihu.com/question/31850346}{\LaTeX （\LaTeXe ）写的文档如何一键转为word？}
-
-通过上述编译流程\ref{subsec:buildprocess}, 对于简单的xeLaTeX 进行编译，只需要编译一次就够了。但是如果需要生成目录等文档，就需要使用xeLaTeX进行编译两次。如果还要使用bibTex 进行引用的话，还需要使用bibtex 进行编译，之后在用xeLaTeX进行编译两次。
-
-对于不同的编译流程，就是所谓的 recipe。不同的文档类型有不同的编译流程。
-
-因此我们需要根据自己的需求，自己定义这个编译流程。这也是\LaTeX 入手很难的原因之一。
-
-
-
-\subsubsection{使用VSCode+\LaTeX \space WorkShop 进行编译}
-
-
-一个 \LaTeX \space  recipe 是指在构建 \LaTeX \space 项目时，\LaTeX \space  Workshop 按顺序执行的一系列命令。它是由 latex-workshop.latex.recipes 定义的。默认情况下，\LaTeX \space  Workshop 包含由变量 latex-workshop.latex.recipes 和 latex-workshop.latex.tools 定义的两个基本 recipes。
-
-\paragraph*{latex-workshop.latex.recipes}
-用来定义编译流程。 您可以使用不同的工具创建多个 recipes。每个 recipe 都是配置列表中的一个对象，包含一个 name 字段和一个要在 recipe 中调用的 tools 列表。
-
-\paragraph*{latex-workshop.latex.tools}
-用来定义每个编译的参数。recipes 中的 tools 可以在 latex-workshop.latex.tools 中定义，其中每个命令都是一个 tool。每个工具都是一个对象，包括一个 name、要生成的一个 command、参数(args)和一些特定的环境变量(env)。env 条目是一个字典。假设您想要在您的home项目中使用一个 texmf 子目录，只需编写：
-
-\begin{lstlisting}
-"env": {
-    "TEXMFHOME": "%DIR%/texmf"
-}
-\end{lstlisting}
-
-
-\paragraph*{\LaTeX\space Workshop 参数}
-
-对于命令里面的参数，可以查看下表\ref{tab.latex_args}:
-
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{|c|l|}
-        \hline
-        占位符      & 替换为                                        \\
-        \hline
-        \%DOC\%     & LaTeX根文件路径和名称，不带.tex扩展名         \\
-        \%DOCFILE\% & 不带.tex扩展名的LaTeX根文件名                 \\
-        \%DIR\%     & LaTeX根文件路径                               \\
-        \%TMPDIR\%  & 存储辅助文件的临时文件夹                      \\
-        \%OUTDIR\%  & 在latex-workshop.latex.outDir中配置的输出目录 \\
-        \hline
-    \end{tabular}
-    \caption{\LaTeX\space Workshop tool 参数占位符}
-    \label{tab.latex_args}
-\end{table}
-
-
-\subsubsection{VSCode LaTeX Workshop 插件关键两个配置}
-对于中文而言，大部分使用的是 xeLaTeX，但是这个插件默认没有把它添加到工具链中。对于大部分中文用户。则使用这两个居多。
-
-第一步，在工具链添加这个工具（latex-workshop.latex.tools）\footnote{第二步中会调用这个命令。}
-\begin{lstlisting}
-{
-    "name": "xelatex",
-    "command": "xelatex",
-    "args": [
-      "-synctex=1",
-      "-interaction=nonstopmode",
-      "-file-line-error",
-      "%DOC%"
-    ],
-    "env": {}
-}
-\end{lstlisting}
-
-第二步，在recipes 添加这个组合（latex-workshop.latex.recipes）
-\begin{lstlisting}
-    // 针对有目录没bit引用的
-    {
-        "name": "xelatex`×2",
-        "tools": [
-        "xelatex",
-        "xelatex"
-        ]
-    },
-    // 针对有引用的
-    {
-    "name": "xelatex ➞ bibtex ➞ xelatex`×2",
-    "tools": [
-        "xelatex",
-        "bibtex",
-        "xelatex",
-        "xelatex"
-        ]
-    }
-\end{lstlisting}
-
-
-之后就可以愉快地进行中文的编译了。
-
-理解了编译过程，其实很好理解上面两个是干嘛的。
-
-
-
-\subsection{Lex, LaTex, pdflatex, xelatex, xetex等的区别和关系}
-
-TeX：一种宏语言。
-
-Plain Tex： Tex中的一个最基本的宏集合与TeX的基础语言构成的一种格式。
-
-LaTex： Tex中的一个宏集合，构成一种与 Plain TeX 不一样的格式。
-
-Tex程序：把Tex语言转换为排版的程序，也叫Tex。为区别，称这个 TeX 程序叫Knuth TeX。
-
-tex命令：Tex程序中的编译命令。tex命令默认用Plain TeX格式进行排版。也就是说tex命令后面默认跟的tex文件应该是用Plain Tex格式写的。
-
-latex命令：tex命令加上某一个选项使用，就会用LaTeX 格式进行排版，也就是说此时后面跟的tex文件应该是用LaTex格式写的。为方便，就把tex 命令与对应编译选项合成为一个命令，叫latex命令。
-
-$\varepsilon$-TeX 程序：Knuth TeX程序的一个扩展，也是一个程序，一般写成 eTeX。增加了少量的几个命令，但一般来说是与Knuth TeX程序没有太多区别的。
-
-\begin{quote}
-    \zihao{5}\kaishu \textit{实现}：在文中的意思就是指“程序”的意思。如文中：eTeX 程序和 Knuth TeX 都是TeX语言的一个实现（也就是说，eTeX 程序和 Knuth TeX 都是把TeX语言转换为排版的程序。程序作用于tex文本文件，把tex文件编译成dvi文件）。
-\end{quote}
-
-pdfTeX程序：Tex语言的又一个实现，也就是把Tex语言转换为排版的又一个程序。它会把 TeX 语言写的代码直接编译成 PDF 文件。
-
-pdftex命令：pdfTex程序中的命令，用来编译用Plain TeX格式写的tex文件。
-
-pdflatex命令：pdfTex程序中的命令，用来编译用LaTeX格式写的tex文件。
-
-XeTeX程序：TeX语言的新的实现，即把Tex语言转换为排版的一个新程序。支持Unicode 编码和直接访问操作系统字体。
-
-xetex命令：XeTeX程序中的命令，用来编译用Plain TeX格式写的tex文件。
-
-xelatex命令：XeTeX程序中的命令，用来编译用LaTeX格式写的tex文件。
-
-其中“实现”这个概念比较别扭，不知是不是计算机中的概念，反正非计算机专业的人读起来不知道“实现”是什么意思，不知道“TeX语言的一个实现”是什么意思。如果把“TeX语言的一个实现”写成是把TeX语言转换为排版的一个程序，这个程序作用于tex文本文件，把tex文件编译成某些文件，如dvi，pdf文件（比如pdfTex程序把tex文件编译成pdf文件）。那就好理解多了。
-
-不知道上述理解对不对。如有错误，还请各位指点。
-
-另外，我觉得，介绍概念时可以采用数学上的定义的方法，单独列出来每个概念的定义，每个概念的定义中不能含有前面没有定义的概念。这样就会让人好理解的多。上面我写的摘要就是这样做的。
 
 
 
