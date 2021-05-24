@@ -262,7 +262,7 @@
 前者代表当前的文档是用什么格式保存源代码。后者是指生成的文档里面有什么编码的问题。
 一开始 TeX 是只支持 ascii 编码的原代码的。也就是说，你在原代码你面写一个中文的注释， TeX 编译器是无法识别这个中文注释的。
 
-但是随着 pdfLaTeX 和xeLaTeX 等采用 UTF-8 进行开发，对中文和其他多字节字符的编码已经完全支持。你能看到这个中文文档，说明这个文档的原代码里面肯定有中文。那么这个原代码肯定不是ascii的编码。编译器也需要认识我这个原代码的内容。（再次说明，原代码里面中文，不代表就是支持中文的。）
+但是随着 pdfLaTeX 和 xeLaTeX 等采用 UTF-8 进行开发，对中文和其他多字节字符的编码已经完全支持。你能看到这个中文文档，说明这个文档的原代码里面肯定有中文。那么这个原代码肯定不是ascii的编码。编译器也需要认识我这个原代码的内容。（再次说明，原代码里面中文，不代表就是支持中文的。）
 
 
 而上一章节 说的编码，是指文档内容的编码。 默认情况下 book, report, article 是不支持CJK 编码内容存在的。可以通过引用xeCJK 进行扩充。
@@ -741,7 +741,13 @@ xelatex命令：XeTeX程序中的命令，用来编译用LaTeX格式写的tex文
 
 不知道上述理解对不对。如有错误，还请各位指点。
 
-另外，我觉得，介绍概念时可以采用数学上的定义的方法，单独列出来每个概念的定义，每个概念的定义中不能含有前面没有定义的概念。这样就会让人好理解的多。上面我写的摘要就是这样做的。
+另外，我觉得，介绍概念时可以采用数学上的定义的方法，单独列出来每个概念的定义，每个概念的定义中不能含有前面没有定义的概念。这样就会让人好理解的多。
+
+
+\begin{myquote}
+    \href{https://blog.csdn.net/qysh123/article/details/11833649}{PDFLaTeX和XeLaTeX有什么区别？}
+    两者最大的区别是： XeLaTeX 对应的 XeTeX 对字体的支持更好，允许用户使用操作系统字体来代替 TeX 的标准字体，而且对非拉丁字体的支持更好。详情请查看这里的解释： http://stackoverflow.com/questions/15796519/difference-between-xelatex-and-pdflatex  。 但是凡事有利就有弊，我在实际使用过程中发现，使用 XeLaTeX 编译，如果说论文中有很图片或者其他元素没有嵌入字体的话，生成的PDF文件也会有些字体没有嵌入。相反，由于 PDFLaTeX 使用的是 TeX 的标准字体，所以生成PDF时，会将所有的非TeX标准字体进行替换。所以，使用 PDFLaTeX 生成的PDF文件默认嵌入所有字体，这给我们的论文排版带来了极大的方便。建议大家根据自己的需要选择合适的程序。
+\end{myquote}
 
 %*编译的过程
 \subsection{\LaTeX 编译过程}
@@ -794,8 +800,6 @@ bibtex main.aux
 
 \subsection{使用VSCode+\LaTeX \space WorkShop 进行编译}
 \label{subsec:recipe}
-
-\href{https://blog.csdn.net/qysh123/article/details/11833649}{PDFLaTeX和XeLaTeX有什么区别？}
 
 \href{https://www.zhihu.com/question/31850346}{\LaTeX （\LaTeXe ）写的文档如何一键转为word？}
 
