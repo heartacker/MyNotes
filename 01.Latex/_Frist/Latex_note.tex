@@ -446,10 +446,10 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
 
 \subsubsection{编写、编译环境的安装准备步骤}
 
-这里就不做过多的描述了。无法就是按照以下面的步骤操作。 相关的具体步骤，可以参考上上一节。
+这里就不做过多的描述了。无非就是按照以下面的步骤操作。 相关的具体步骤，可以参考上上一节。
 
 \begin{itemize}
-    \item 安装 TexLive，安装时间挺久的。
+    \item 安装 TexLive \footnote{安装时间挺久的}。
     \item 安装 VSCode。
     \item 在 VSCode 插件市场 安装\LaTeX \ Workshop 插件。
     \item 按照 label{subsec:recipe} 配置插件。
@@ -558,9 +558,9 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 \subsubsection{什么是命令？}
 
-上面以$\backslash$ 开头的代码。就是 TeX 命令。
+上面以$\backslash$ 开头的代码。就是 \TeX 命令。
 
-一个 TeX 命令（也就是所谓的宏）的格式为：
+一个 \TeX 命令（也就是所谓的宏）的格式为：
 
 \begin{itemize}
     \item 无参数: \textbf{$\backslash$command}
@@ -571,6 +571,10 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 
 \subsubsection{命令的参数？}
+先看一个
+\begin{example}
+    这是一个 \textbf{加粗}效果。
+\end{example}
 
 先看这个代码：这是一个引用，但是你会发现字号等等看起来和正文没有什么区别和变化。
 \begin{example}
@@ -587,14 +591,14 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
     \end{quote}
 \end{example}
 
-上面我们知道。\verb!\footnote{内容}! 只改变了"内容"，但是为什么 \verb!\zihao{-5}! 改变了 quote 的所有内容呢？
+上面我们知道。\verb!\textbf{加粗}! 只改变了"加粗"，但是为什么 \verb!\zihao{-5}! 改变了 quote 的所有内容呢？
 
 我们将类似\verb!\zihao{-5}! 这类命名称作声明(declaration)。其中 \textbf{分组} 限定了声明的范围。
 
 \subsubsection{分组}
 
 
-一个 \LaTeX 环境自然就是一个分组（Group），因此，前面的 \verb!\zihao{-5}! 会影响 quote 换进。 其中，最大分组就是 document 了。不过也可以用 \{\ \} 产生一个分组。
+一个 \LaTeX 环境自然就是一个分组（Group），因此，前面的 \verb!\zihao{-5}! 会影响 quote 缩进。 其中，最大分组就是 document 了。不过也可以用 \{\ \} 产生一个分组。
 
 \LaTeX 的换进一般格式为：
 
@@ -956,7 +960,7 @@ start  " " /max "./%FileName%.pdf"
 \section{\LaTeX 学习笔记}
 \label{sec:skillnotes}
 
-学习完 基础知识\ref{sec:knowledge} 之后， 相信对 \LaTeX 有一定的了解。 相信你也成功的使用 VSCode + TeXLive + \LaTeX \ Workshop 完成了一个最基本的编译。 很快就可以开始下面的学习啦。 接下来，只要按照每个章节。按部就班的操作一遍，就可以完成学习啦。
+学习完 基础知识\ref{sec:knowledge} 之后， 相信对 \LaTeX 有一定的了解。 相信你也成功的使用 VSCode + TeXLive + \LaTeX \ Workshop 完成了一个最基本的编译。 很快就可以开始下面的学习啦。 接下来，只要按照每个章节，按部就班的操作一遍，就可以完成学习啦。 \textbf{ 注意，一定要将每个步骤都用代码写一遍，才能理解，否则，仅仅是看看这个文档，是无法入门的。切记。}
 
 %*\subsection{如何生成目录?}
 \subsection{如何生成目录?}
@@ -1007,8 +1011,8 @@ todo
 \end{titlepage}
 \end{minted}
 
-% *\subsection{如果创建对比和渲染效果的"example" 环境?}
-\subsection{如果创建对比和渲染效果的 "example" 环境?}
+% *\subsection{如何创建对比和渲染效果的"example" 环境?}
+\subsection{如何创建对比和渲染效果的 "example" 环境?}
 
 作为一个教学文章， 那么有例子和渲染对比，可以更加清晰明了的向读者阐明要点， 让读者一目了然的的知道代码和渲染效果对比。这也是我一开始就说这个很有难度的环境的原因之一。
 
@@ -1092,8 +1096,8 @@ https://latexstudio.net/index/details/index/mid/1275
 \setlength{\parindent}{2em} %2em代表首行缩进两个字符
 \end{minted}
 
-%* \subsection{如果设置参考文档（论文必备）？}
-\subsection{如果设置参考文档（论文必备）？}
+%* \subsection{如何设置参考文档（论文必备）？}
+\subsection{如何设置参考文档（论文必备）？}
 
 用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即说得的理念，让会让放弃探究背后机理和秘密。可以这么说，那时候对 Word 本身也不是很熟悉，而且也没有模板。另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。这也是 word 文档进行排版很烦恼的因素之一。
 
@@ -1106,7 +1110,7 @@ https://latexstudio.net/index/details/index/mid/1275
     \item 好了，我都准备好了，请编译到文章里面去。
 \end{enumerate}
 
-\subsubsection{如何设置}
+\subsubsection{如何设置？}
 按照这个步骤，我们可以开始去做，步骤可以参考\cite{latex_start}。
 
 第一步，创建一个 frist.bib 的文件。内容如下：
