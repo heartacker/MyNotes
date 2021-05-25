@@ -25,7 +25,7 @@
 					"-synctex=1",
 					"-interaction=nonstopmode",
 					"-file-line-error",
-					"-shell-escape",
+					"-shell-escape", //*针对 调用外部脚本的功能,pygments
 					"%DOC%"
 				],
 				"env": {}
@@ -124,6 +124,15 @@
 		],
 		"latex-workshop.latex.recipes": [
 			{
+				"name": "xelatex ➞ bibtex ➞ xelatex × 2",
+				"tools": [
+					"xelatex",
+					"bibtex",
+					"xelatex",
+					"xelatex"
+				]
+			},
+			{
 				"name": "xelatex × 2",
 				"tools": [
 					"xelatex",
@@ -134,15 +143,6 @@
 				"name": "xelatex ",
 				"tools": [
 					"xelatex",
-				]
-			},
-			{
-				"name": "xelatex ➞ bibtex ➞ xelatex × 2",
-				"tools": [
-					"xelatex",
-					"bibtex",
-					"xelatex",
-					"xelatex"
 				]
 			},
 			{
