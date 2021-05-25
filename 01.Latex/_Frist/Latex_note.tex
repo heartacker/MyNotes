@@ -36,6 +36,12 @@
 
 % ********************对比环境***************
 \usepackage{tcolorbox}
+
+%& 使用showe_example
+\usepackage{showexpl}
+
+
+%& 使用 minnted
 % \usepackage{minted}
 % \tcbuselibrary{minted, skins}
 
@@ -46,11 +52,8 @@
 %   sidebyside
 % }
 
-\newenvironment{example}
-    {\begin{lstlisting}}
-        {\end{lstlisting}}
-
-
+% 定义一个颜色
+\definecolor{codebg}{RGB}{250,250,250}
 
 %**********************边距设置****************************************
 
@@ -61,7 +64,7 @@
 % 用来设置附录中代码的样式
 
 \lstset{
-    backgroundcolor     =   \color[RGB]{250,240,235},
+    backgroundcolor     =   \color[RGB]{250,250,250},
     basicstyle          =   \zihao{5}\ttfamily,                % sf/tt基本代码风格
     keywordstyle        =   \bfseries,                % 关键字风格
     commentstyle        =   \rmfamily\itshape,        % 注释的风格，斜体
@@ -69,7 +72,7 @@
     flexiblecolumns,                                  % 别问为什么，加上这个
     numbers             =   left,                     % 行号的位置在左边
     showspaces          =   false,                    % 是否显示空格，显示了有点乱，所以不现实了
-    numberstyle         =   \zihao{-5}\ttfamily,      % 行号的样式，小五号，tt等宽字体
+    numberstyle         =   \zihao{5}\ttfamily,      % 行号的样式，小五号，tt等宽字体
     showstringspaces    =   false,
     captionpos          =   t,                        % 这段代码的名字所呈现的位置，t指的是top上面
     frame               =  lrtb,% lrtb,                     % 显示边框
@@ -116,8 +119,7 @@
 %~ 定义一个命令
 \newcommand\degree{^\circ}
 
-% 定义一个颜色
-\definecolor{codebg}{RGB}{250,250,250}
+
 
 %^ \renewcommand\listoflistingscaption{List of source codes}
 
@@ -224,7 +226,6 @@
 对于这种非常陌生羞涩难懂的软件。你会觉得连查文档都很困难。不过如果你想对某个模块阅读文档，可以通过下面的命令打开英文文档。
 
 \begin{lstlisting}
-
 > texdoc 模块的名字
 > texdoc lstlisting
 \end{lstlisting}
@@ -271,7 +272,6 @@
     \item \Checkmark 在需要的写入中文就好。
 
           \begin{lstlisting}
-
 \documentclass{article}
 \usepackage{xeCJK}
 \begin{document}
@@ -325,7 +325,6 @@
     \item  说明我要用到的宏包,就是我要开始写;
 
           \begin{lstlisting}
-
 % 宏包，意思是我要开始写文档了。我会用什么工具。只有加了宏包才能写公式，做表格，放图片
 % 常用的有mathtools， amsmath， graphicx， array， geometry
 \usepackage{mathtools,booktabs}
@@ -576,24 +575,24 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 \subsubsection{命令的参数？}
 先看一个
-\begin{example}
-    这是一个 \textbf{加粗}效果。
-\end{example}
+\begin{LTXexample}
+这是一个 \textbf{加粗}效果。
+\end{LTXexample}
 
 先看这个代码：这是一个引用，但是你会发现字号等等看起来和正文没有什么区别和变化。
-\begin{example}
-    \begin{quote}
-        孔子曰：人之初，性本善。
-    \end{quote}
-\end{example}
+\begin{LTXexample}
+\begin{quote}
+    孔子曰：人之初，性本善。
+\end{quote}
+\end{LTXexample}
 
 
-再来看看这个代码。可以看到，我们添加 \verb!\zihao{-5}! 改变了这个 quote 内部的字体大小。
-\begin{example}
-    \begin{quote}
-        \zihao{-5} 孔子曰：人之初，性本善。
-    \end{quote}
-\end{example}
+再来看看这个代码。可以看到，我们添加 \verb!\zihao{-5}\kaishu! 改变了这个 quote 内部的字体大小和字体。
+\begin{LTXexample}
+\begin{quote}
+\zihao{-5}\kaishu 孔子曰：人之初，性本善。
+\end{quote}
+\end{LTXexample}
 
 上面我们知道。\verb!\textbf{加粗}! 只改变了"加粗"，但是为什么 \verb!\zihao{-5}! 改变了 quote 的所有内容呢？
 
@@ -607,7 +606,6 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 \LaTeX 的换进一般格式为：
 
 \begin{lstlisting}
-
 \begin{<环境的名字>}
     环境的里面的内容。
 \end{<环境的名字>}
@@ -628,19 +626,16 @@ quote 是无参数的环境。
 在导言区域做定义：
 
 \begin{lstlisting}
-
 \newtheorem{thm}{定理}
 \begin{document}
 \end{lstlisting}
 
 在需要的地方使用这个环境。
 \begin{lstlisting}
-
 \begin{thm}[勾股定义]
     直角三角形的斜边的平方等于两腰的平方和。
     可以用符号语言表述为...
 \end{thm}
-
 \end{lstlisting}
 
 
@@ -686,6 +681,7 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \usepackage[nottoc]{tocbibind}
 \end{lstlisting}
 
+
 \subsubsection{自定义环境}
 
 对于大部分同类的块，我们一般都有固定的格式。
@@ -701,14 +697,15 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 
 之后我们就可以使用这个环境进行编写了。
 
-\begin{example}
-    \begin{myquote}
-        这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
-    \end{myquote}
-\end{example}
+\begin{LTXexample}
+\begin{myquote}
+这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+\end{myquote}
+\end{LTXexample}
+
 这是渲染效果:
 \begin{myquote}
-    这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
 \end{myquote}
 之后只需要对myquote 进行设置就可以设置quote 的格式了。
 
@@ -726,9 +723,9 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \end{docCommand}
 \end{lstlisting}
 
-\begin{example}
-    之后使用 $\degree$ 替代 $^\circ$ 了。
-\end{example}
+\begin{LTXexample}
+之后使用 $\degree$ 替代 $^\circ$ 了。
+\end{LTXexample}
 
 \par
 
@@ -863,7 +860,6 @@ start  " " /max "./%FileName%.pdf"
 用来定义每个编译的参数。recipes 中的 tools 可以在 latex-workshop.latex.tools 中定义，其中每个命令都是一个 tool。每个工具都是一个对象，包括一个 name、要生成的一个 command、参数(args)和一些特定的环境变量(env)。env 条目是一个字典。假设您想要在您的home项目中使用一个 texmf 子目录，只需编写：
 
 \begin{lstlisting}
-
 "env": {
     "TEXMFHOME": "%DIR%/texmf"
 }
@@ -1031,15 +1027,15 @@ https://tex.stackexchange.com/questions/124657/combine-minted-and-tcolorbox
 
 先来看看效果。
 
-\begin{example}
-    \begin{equation}
-        % notag 代码不添加tag
-        E=MC^2\notag
-    \end{equation}
-    \begin{equation}
-        E=MC^2
-    \end{equation}
-\end{example}
+\begin{LTXexample}
+\begin{equation}
+    % notag 代码不添加tag
+    E=MC^2\notag
+\end{equation}
+\begin{equation}
+    E=MC^2
+\end{equation}
+\end{LTXexample}
 
 
 \subsubsection{使用 showexpl}
@@ -1052,13 +1048,13 @@ https://latexstudio.net/index/details/index/mid/1275
 
 \subsubsection{常用样式}
 
-\begin{example}
-    \emph{Italicized text} 斜体使用\\
-    \textbf{Bold text} 粗体使用\\
-    \underline{Underlined text} 下划线使用\\
-    \textit{Emphasising text} 强调使用\\
-    \textbf{\textit{Combine text} \underline{当然也可以组合起来}}
-\end{example}
+\begin{LTXexample}
+\emph{Italicized text} 斜体使用\\
+\textbf{Bold text} 粗体使用\\
+\underline{Underlined text} 下划线使用\\
+\textit{Emphasising text} 强调使用\\
+\textbf{\textit{Combine text} \underline{当然也可以组合起来}}
+\end{LTXexample}
 
 
 
@@ -1080,13 +1076,13 @@ https://latexstudio.net/index/details/index/mid/1275
     \item \verb!\usepackage{ulem}!;
 
     \item 使用方法和显示效果
-          \begin{example}
-              \sout{删除线}\\   %删除线
-              \uwave{波浪线}\\  %波浪线
-              \xout{斜删除线}\\   %斜删除线
-              \uuline{双下划线}\\ %双下划线
-          \end{example}
-
+          \begin{LTXexample}
+\sout{删除线}\\   %删除线
+\uwave{波浪线}\\  %波浪线
+\xout{斜删除线}\\   %斜删除线
+\uuline{双下划线}\\ %双下划线
+          \end{LTXexample}
+          
 \end{enumerate}
 
 \subsection{段落缩进}
@@ -1095,7 +1091,6 @@ https://latexstudio.net/index/details/index/mid/1275
 但是，在英文下，是不会缩进的。就需要使用宏包进行解决。
 
 \begin{lstlisting}
-
 \usepackage{indentfirst}    %引用宏包
 \setlength{\parindent}{2em} %2em代表首行缩进两个字符
 \end{lstlisting}
@@ -1133,7 +1128,6 @@ https://latexstudio.net/index/details/index/mid/1275
 第二步，引用在文档末尾设置引用论文的格式和论文的数据库\footnote{第一步创建的frist.bib的文件}。
 
 \begin{lstlisting}
-
 % 如何隐藏格式 设置
 % plain 格式按照作者 日期 标题排序
 % unset 不排序
@@ -1153,12 +1147,12 @@ https://latexstudio.net/index/details/index/mid/1275
 其中数据名字就是第一步创建的数据库里面的项目名字\textbf{$latex\_start$}。
 % 为什么直接书写bib的名字会报错呢？
 
-\begin{example}
+% \begin{LTXexample}
 
-    .......按照这个步骤，我们可以开始去做，步骤可以参考\cite{latex_start}。
-    这本书 讲解的非常详细。值得大学习。
+% .......按照这个步骤，我们可以开始去做，步骤可以参考\cite\{latex_start\}。
+% 这本书 讲解的非常详细。值得大学习。
 
-\end{example}
+% \end{LTXexample}
 
 第四步，使用\textbf{bibtex}进行编译。\ref{subsec:buildprocess}。
 一般情况下。中文文档需要使用xelate $\rightarrow$ bibtex $\rightarrow$ xelatex $\rightarrow$ xelatex 就可以编译完成。也就是比其他的多了一个xelatex 和 bibtex。
@@ -1223,35 +1217,34 @@ https://latexstudio.net/index/details/index/mid/1275
 
 \textbf{Linking web addresses}
 
-\begin{example}
-    For further references see \href{http://www.overleaf.com}{Something Linky}
-    or go to the next url: \url{http://www.overleaf.com}
-\end{example}
+\begin{LTXexample}
+For further references see \href{http://www.overleaf.com}{Something Linky}
+or go to the next url: \url{http://www.overleaf.com}
+\end{LTXexample}
 
 \par
 
 \textbf{Linking local files}
-\begin{example}
-    For further references see \href{http://www.overleaf.com}{Something Linky}
-    or go to the next url: \url{http://www.overleaf.com} or open the next
-    file \href{run:./file.txt}{File.txt}
-\end{example}
+\begin{LTXexample}
+For further references see \href{http://www.overleaf.com}{Something Linky}
+or go to the next url: \url{http://www.overleaf.com} or open the next
+file \href{run:./file.txt}{File.txt}
+\end{LTXexample}
 
 \par
 \textbf{Linking context addresses}
 
 这是一个文内的跳转方式。
 
-\begin{example}
+\begin{LTXexample}
+It's also possible to link directly any word
+or \hyperlink{thesentence}{any sentence} in you document.
 
-    It's also possible to link directly any word
-    or \hyperlink{thesentence}{any sentence} in you document.
+If you read this text, you will get no information.  Really?
+Is there no information?
 
-    If you read this text, you will get no information.  Really?
-    Is there no information?
-
-    For instance \hypertarget{thesentence}{this sentence}.
-\end{example}
+For instance \hypertarget{thesentence}{this sentence}.
+\end{LTXexample}
 
 
 \subsection{空格、换行、换段、换页、首行缩进？} % (fold)
@@ -1314,7 +1307,6 @@ chuwai)
               \item 使用代码
                     % 代码
                     \begin{lstlisting}
-
 \usepackage{verbatim}
 \begin{verbatim} % 使用代码的的形式显示
     \
@@ -1327,14 +1319,12 @@ chuwai)
           \begin{enumerate}
               \item 引用 cprotect 宏
               \begin{lstlisting}
-
 \usepackage{cprotect}
 % 在标题中显示原始字符
             \end{lstlisting}
 
               \item 在 标题中插入
                 \begin{lstlisting}
-
 \cprotect\section{This is a section heading with a verbatim \verb!\frac{1}{2}!}
 % 这是在标题中使用\verb
                 \end{lstlisting}
@@ -1426,11 +1416,11 @@ chuwai)
 不同的字体不一样。 有些专业的字体会有很多，如 \verb!fb,fh,fj,ffb,ffh,ffj,ffk,ct,st,sp,Th,fi,fl! 等。具体看当时的编排效果。
 
 \subsubsection{省略号}
-\begin{example}
+\begin{LTXexample}
 英文文中。使用 i$\ldots$you.
 
 英文句尾，使用 i amd you \ldots.
-\end{example}
+\end{LTXexample}
 
 
 
@@ -1533,45 +1523,45 @@ Todo
 % todo 为什么无法使用自定义编号
 代码：
 
-\begin{example}
-    \begin{enumerate}
-        \item 第一个
-        \item 嵌套
-              \begin{enumerate}
-                  \item 编号i
-                  \item 编号ii
-              \end{enumerate}
-        \item 有序中无序
-              \begin{itemize}
-                  \item 第一个
-                  \item second
-                  \item 第三个
-              \end{itemize}
-        \item ...
-    \end{enumerate}
-\end{example}
+\begin{LTXexample}
+\begin{enumerate}
+    \item 第一个
+    \item 嵌套
+            \begin{enumerate}
+                \item 编号i
+                \item 编号ii
+            \end{enumerate}
+    \item 有序中无序
+            \begin{itemize}
+                \item 第一个
+                \item second
+                \item 第三个
+            \end{itemize}
+    \item ...
+\end{enumerate}
+\end{LTXexample}
 
 
 \subsubsection{无序列表}
 
 使用 itemize 可以生成序列表。
 代码：
-\begin{example}
-    \begin{itemize}
-        \item 第一个
-        \item second
-              \begin{itemize}
-                  \item a
-                  \item b
-                  \item c
-              \end{itemize}
-        \item 无序中有序
-              \begin{enumerate}
-                  \item number
-                  \item number
-              \end{enumerate}
-    \end{itemize}
-\end{example}
+\begin{LTXexample}
+\begin{itemize}
+    \item 第一个
+    \item second
+            \begin{itemize}
+                \item a
+                \item b
+                \item c
+            \end{itemize}
+    \item 无序中有序
+            \begin{enumerate}
+                \item number
+                \item number
+            \end{enumerate}
+\end{itemize}
+\end{LTXexample}
 
 
 % *\subsection{如果在表格和图标之间插入章节信息。}
@@ -1716,13 +1706,13 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsubsection{列表公式}
 较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 displayed formula。使用 equation （单行） 和gather\footnote{需要引用amsmath 宏包} （多行） 等环境方便输出。参考 \href{https://matnoble.me/tech/latex/multi-line-equations/}{各种样子的对齐数学公式的编写}。
 
-\begin{example}
-    \begin{gather}
-        f(x)= \int_a^b x dx    \notag \\ % \notag 代表不编号
-        % 度数竟然没有专门的符号^\circ
-        \angle CAB = 90^\circ =\pi / 2
-    \end{gather}
-\end{example}
+\begin{LTXexample}
+\begin{gather}
+    f(x)= \int_a^b x dx    \notag \\ % \notag 代表不编号
+    % 度数竟然没有专门的符号^\circ
+    \angle CAB = 90^\circ =\pi / 2
+\end{gather}
+\end{LTXexample}
 
 
 \subsubsection{常用数学宏 amsmath 推荐}
@@ -1752,8 +1742,7 @@ amsmath 这个宏包的作用如下。
 \end{lstlisting}
 
 参考下面的代码：
-\begin{example}
-
+\begin{lstlisting}
     % \usepackage{amsmath}
     % \usepackage{amssymb}%花体字符
     % \begin{document}
@@ -1795,8 +1784,8 @@ amsmath 这个宏包的作用如下。
             0, & \text{如果} x \in \mathbb{R}\setminus\mathbb{Q}
         \end{cases}%\text是为了在数学公式中处理中文
     \end{equation}
-    % \end{document}
-\end{example}
+
+\end{lstlisting}
 
 
 
@@ -1827,14 +1816,14 @@ code
 \begin{enumerate}
     \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
     \item 使用 verbatim
-        \begin{example}
+        % \begin{LTXexample}
 
 \begin{verbatim}
 %this is code
 %very simple code
 \end{verbatim}
 
-        \end{example}
+        % \end{LTXexample}
 
 \end{enumerate}
 
@@ -1873,14 +1862,15 @@ code
     \end{lstlisting}
 
     \item \label{Code.Insert_pic} 在指定的位置插入例子，可以看到有行号，有方框，有背景颜色。
-          \begin{example}
+
+        %   \begin{LTXexample}
 \begin{lstlisting}[language=c]
-void mian(int argl,string[] args){
+void main(int argl,string[] args){
     for(int i = 0;i<argl;)
         cout<<args[i]<<cendl;// 输出
 }
 \end{lstlisting}
-          \end{example}
+        %   \end{LTXexample}
 
 \end{enumerate}
 
@@ -1898,7 +1888,6 @@ void mian(int argl,string[] args){
           如何添加编译参数呢？大家还记得之前设置的Tool \ref{subsec:recipe} 吗？也就是在工具链里面，添加参数。
 
           \begin{lstlisting}
-
 "latex-workshop.latex.tools": [
     {
         "name": "xelatex",
@@ -1916,19 +1905,19 @@ void mian(int argl,string[] args){
     .
     ..
 ]
-\end{lstlisting}
+        \end{lstlisting}
 
 
 
     \item 显示效果。
-          \begin{example}
-\begin{lstlisting}
+        %   \begin{LTXexample}
+\begin{lstlisting}[language=c]
 int main() {
     printf("hello, world");
     return 0;
 }
 \end{lstlisting}
-          \end{example}
+        %   \end{LTXexample}
 
 \end{enumerate}
 
