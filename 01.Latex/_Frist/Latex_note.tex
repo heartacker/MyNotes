@@ -36,15 +36,19 @@
 
 % ********************对比环境***************
 \usepackage{tcolorbox}
-\usepackage{minted}
-\tcbuselibrary{minted, skins}
+% \usepackage{minted}
+% \tcbuselibrary{minted, skins}
 
 % 重定义环境用 \renewtcblisting
-\newtcblisting{example}{
-  skin=empty,
-  borderline horizontal={.4pt}{0pt}{black},
-  sidebyside
-}
+% \newtcblisting{example}{
+%   skin=empty,
+%   borderline horizontal={.4pt}{0pt}{black},
+%   sidebyside
+% }
+
+\newenvironment{example}
+    {\begin{lstlisting}}
+        {\end{lstlisting}}
 
 
 
