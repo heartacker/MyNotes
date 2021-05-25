@@ -134,6 +134,13 @@
     \end{figure}
 \end{titlepage}
 
+\section*{版权声明}
+
+本文大部分内容、图案、文档、代码等来自互联网或者相关书籍，如有侵犯他人的权益，请及时联系本人修改，修正。
+
+本作品开放源代码，但作者保留所有的版权、内容相关的权益。 本文可以任意传播，但未经本作者同意，不得修改再版。 本文属于个人作品，任何内容仅供学习和研究所用，如将其作为商业用途，并因为本文的错误等任何原因导致的损失，本作者不负责任何责任。 有任何问题可以本作者联系。
+\clearpage
+
 % 本文的目录
 \tableofcontents
 
@@ -423,7 +430,9 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
     \label{Fig:install_tex_live_tip}
 \end{figure}
 
-软件配置教程: \href{https://blog.csdn.net/qq_23599965/article/details/103022215}{用于 Visual Studio Code 的 LaTeX Workshop}
+软件配置教程: \href{https://zhuanlan.zhihu.com/p/38178015}{使用VSCode编写LaTeX}
+
+软件配置教程2: \href{https://blog.csdn.net/qq_23599965/article/details/103022215}{用于 Visual Studio Code 的 LaTeX Workshop}
 
 手写识别: \href{http://detexify.kirelabs.org/classify.html}{手写体符号识别工具}。
 
@@ -864,7 +873,8 @@ start  " " /max "./%FileName%.pdf"
     "args": [
       "-synctex=1",
       "-interaction=nonstopmode",
-      "-file-line-error",
+      "-file-line-error",  //*针对 调用外部脚本的功能，比如pygment
+      "-shell-escape",
       "%DOC%"
     ],
     "env": {}
@@ -1480,7 +1490,11 @@ chuwai)
 
 % *\subsection{颜色}
 \subsection{颜色}
-多彩的世界，确实五彩斑斓的渲染。 参考： \href{https://www.overleaf.com/learn/latex/Using\_colours\_in\_LaTeX}{xcolor的教学}
+多彩的世界，需要五彩斑斓的渲染。
+t彩的世界，需要五彩斑斓的渲染。 box
+% todo xcolor
+% todo tcolorbox
+参考： \href{https://www.overleaf.com/learn/latex/Using\_colours\_in\_LaTeX}{xcolor的教学}
 
 %************** footnote-----------
 \subsection{注脚}
@@ -1519,7 +1533,7 @@ Todo
                   \item 编号i
                   \item 编号ii
               \end{enumerate}
-        \item 无序
+        \item 有序中无序
               \begin{itemize}
                   \item 第一个
                   \item second
@@ -1543,7 +1557,7 @@ Todo
                   \item b
                   \item c
               \end{itemize}
-        \item 第三个
+        \item 无序中有序
               \begin{enumerate}
                   \item number
                   \item number
