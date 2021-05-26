@@ -230,8 +230,9 @@
 
 
 但是如何选择可以参考：
-
-\Checkmark 选择使用 \TeX /\LaTeX 的理由包括：
+% bbding
+\begin{itemize}
+    \item \Checkmark 选择使用 \TeX /\LaTeX 的理由包括：
 
 \begin{itemize}
     \item 免费软件；
@@ -240,12 +241,13 @@
     \item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
 \end{itemize}
 
-\Checkmark 不选择使用 \TeX/\LaTeX 的理由包括：
+\item \Checkmark 不选择使用 \TeX/\LaTeX 的理由包括：
 \begin{itemize}
     \item 需要相当精力学习；
     \item 图文混合排版能力弱；
     \item 仅流行于数学、物理、计算机等领域；
     \item 中文期刊的支持较差；
+\end{itemize}
 \end{itemize}
 
 \subsection{如何查询文档和学习？}
@@ -290,22 +292,10 @@
     \label{tab:typeoflatex}
 \end{table}
 
-\paragraph{段落1} 段落1
-
-\subparagraph{子段落1} 子段落1
-
-\subparagraph{子段落2} 子段落2
-
-\paragraph{段落2} 段落2
-
-\subparagraph{子段落2} 子段落2
-
-
-
 
 \subsubsection{article 渲染效果}
 
-使用 ctexart 文档内心进行渲染。
+使用 ctexart 文档类型进行渲染。
 \begin{lstlisting}
     \documentclass[UTF8]{ctexart}
 \end{lstlisting}
@@ -325,7 +315,7 @@
 
 \subsubsection{ctexart 渲染效果}
 
-使用 ctexart 文档内心进行渲染。
+使用 ctexart 文档类型进行渲染。
 \begin{lstlisting}
     \documentclass[UTF8]{ctexart}
 \end{lstlisting}
@@ -346,7 +336,26 @@
 
 对比两者可以看到。 ctexart 针对缩进做了更改。而 article 只有 subparagraph 做了缩进， 但 ctexart paragraph竟然是不缩进的。需要注意。
 
+\subsubsection{段落渲染}
 
+\paragraph{段落1} 段落1
+
+\subparagraph{子段落1} 子段落1
+
+\subparagraph{子段落2} 子段落2
+
+\paragraph{段落2} 段落2
+
+\subparagraph{子段落2} 子段落2
+
+
+% todo THIS IS 如何是下面的列表（任何其他而不仅仅是enumerate）。缩进更多？ 类似word 文档的 添加缩进
+% \begin{enumerate}
+%     \item 1
+%     \item 1
+%     \item 3
+%     \item 1
+% \end{enumerate}
 
 %* \subsection{\LaTeX 编码问题}
 \subsection{\LaTeX 编码问题}
