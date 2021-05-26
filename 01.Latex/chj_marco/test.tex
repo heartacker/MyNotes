@@ -1,12 +1,15 @@
 \documentclass[utf-8,a4paper,11pt]{article}
 
 \usepackage{xeCJK}
-\usepackage[top=1in, bottom=1in, left=1.00cm, right=1.00cm]{geometry}
+\usepackage[top=1in, bottom=1in, left=2.00cm, right=2.00cm]{geometry}
 \title{菜鸟也学\LaTeX}
 \author{保密}
 \date{2021-8-8}
 
 \usepackage{amsmath}
+\usepackage{cases}
+\usepackage{empheq}
+
 \usepackage{listings}
 
 \usepackage{hyperref}
@@ -23,17 +26,23 @@
 \LaTeX 的使用方法
 
 \section{LaTeX的使用方法section}
-section下面的文字
+section下面的文字,section下面的文字,section下面的文字,section下面的文字,section下面的文字,section下面的文字,section下面的文字,section下面的文字,
+
 \subsection{LaTeX的使用方法subsection}
-subsection下面的文字
+subsection下面的文字。subsection下面的文字。subsection下面的文字。subsection下面的文字。subsection下面的文字。subsection下面的文字。
+
 \subsubsection{LaTeX的使用方法subsubsection}
-subsubsection下面的文字
+subsubsection下面的文字。subsubsection下面的文字。subsubsection下面的文字。subsubsection下面的文字。subsubsection下面的文字。subsubsection下面的文字。
+
 \paragraph{\LaTeX{}的使用方法paragraph}
-paragraph 下面的文字
+paragraph 下面的文字。paragraph 下面的文字。paragraph 下面的文字。paragraph 下面的文字。paragraph 下面的文字。
+
+\subparagraph{\LaTeX{} 的使用方法subparagraph}
+subparagraph 下面的文字。subparagraph 下面的文字。subparagraph 下面的文字。subparagraph 下面的文字。subparagraph 下面的文字。subparagraph 下面的文字。
+
 \subparagraph{\LaTeX{} 的使用方法subparagraph}
 subparagraph 下面的文字
-\subparagraph{\LaTeX{} 的使用方法subparagraph}
-subparagraph 下面的文字
+
 \subparagraph{\LaTeX{} 的使用方法subparagraph}
 subparagraph 下面的文字
 
@@ -77,6 +86,8 @@ subparagraph 下面的文字
 
 多行公式是必备的。以下是常用的例子。参考： \href{https://matnoble.me/tech/latex/multi-line-equations/}{公式}
 
+主要注意的是： 不想加 tag 可以添加 \verb!\notag! 的标记。当然。任何不加*的环境是不会添加 tag 的。 这个和\LaTeX 的其他环境一样。
+
 \subsubsection{写不完的多行}
 
 一行写不下的，要写多行的用multiline
@@ -113,7 +124,148 @@ subparagraph 下面的文字
 
 分别交叉引用，依旧是使用label。式 (\ref{eq:eq1}) 和式 (\ref{eq:eq2}) 采用 align 对齐环境。 使用notag取消编号。
 
+\subsubsection{多列对齐 align}
 
+\begin{LTXexample}
+\begin{align*} 
+  a &=1 & b &=2 & c &=3 \\ 
+  d &=-1 & e &=-2 & f &=-5 
+\end{align*}
+\end{LTXexample}
+
+
+\subsubsection{不对齐 gather}
+
+\begin{LTXexample}
+  \begin{gather} 
+    a = b + c \\ 
+    d = e + f + g \\ 
+    h + i = j + k \notag \\ 
+    l + m = n 
+  \end{gather}
+\end{LTXexample}
+
+\subsubsection{统一编号 equation}
+
+使用 aligned / gathered 环境，并且依赖 \verb!\begin{equation} \end{equation}!，若不须加编号则使用\verb!\begin{equation*} \end{equation*}!，或者\verb!\[ \]!包裹。
+
+\begin{LTXexample}
+\begin{equation}
+  \begin{aligned} 
+      a &= b + c \\
+      d &= e + f + g \\
+      h + i &= j + k \\
+      l + m &= n
+  \end{aligned}
+\end{equation}
+
+\begin{equation*}
+  \begin{aligned} 
+      a &= b + c \\
+      d &= e + f + g \\
+      h + i &= j + k \\
+      l + m &= n
+  \end{aligned}
+\end{equation*}
+
+\[
+  \begin{gathered}
+      a = b + c \\
+      d = e + f + g \\
+      h + i = j + k \\
+      l + m = n
+  \end{gathered}
+\]
+\end{LTXexample}
+
+\subsubsection{限定符}
+
+\begin{LTXexample}
+  \begin{equation}
+    \left\{
+      \begin{gathered}
+          a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+          \\[3pt]
+          a_{21} x_{1} + a_{22} x_{3} + a_{23} x_{3} = b_{2}
+      \end{gathered}
+    \right.
+  \end{equation}
+  
+  \begin{equation*}
+      \left\{
+        \begin{aligned}
+            a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+            \\[3pt]
+            a_{22} x_{3} + a_{23} x_{3} = b_{2}
+        \end{aligned}
+      \right.
+   \end{equation*}
+\end{LTXexample}
+
+\subsubsection{array 环境}
+
+\begin{LTXexample}
+\[
+  |x| = \left\{
+    \begin{array}{rl}
+      -x & \mbox{if } x < 0,\\ 
+      0 & \mbox{if } x = 0,\\ 
+      x & \mbox{if } x > 0. 
+    \end{array} \right.
+\]
+\end{LTXexample}
+
+\subsubsection{case 环境}
+
+统一编号：
+\begin{LTXexample}
+  \begin{equation} |x| =
+    \begin{cases}
+        -x & \mbox{if } x < 0,\\
+        0 & \mbox{if } x = 0,\\
+        x & \mbox{if } x > 0.
+    \end{cases}
+  \end{equation}
+\end{LTXexample}
+
+
+分别编号：
+需要在导言区载入 cases 宏包 usepackage{cases}，并且放在 amsmath 之后
+\begin{LTXexample}
+\begin{numcases} {|x| =}
+  -x & \mbox{if } x < 0 \label{eq:eq41},\\
+  0 & \mbox{if } x = 0,\\
+  x & \mbox{if } x > 0.
+\end{numcases}
+
+\begin{subnumcases} {\label{eq:eq42} |x| =}
+    -x & \mbox{if } x < 0,\\
+    0 & \mbox{if } x = 0\label{eq:eq43},\\
+    x & \mbox{if } x > 0.
+\end{subnumcases}
+\end{LTXexample}
+式 (\ref{eq:eq41}) 和 式 (\ref{eq:eq42}) 和 式 (\ref{eq:eq43})
+
+
+\subsubsection{empheq 环境}
+其与之前的都不同，它可以从整个公式(组)四周加载定界符。从左端、从右端，甚至是用一个盒子包住整个公式(组)
+
+首先在 导言区 载入 usepackage{empheq}。使用它的框架是这样:
+\begin{lstlisting}
+\usepackage{empheq}
+\begin{empheq}[markup instructions]{AMS env name}
+  < content AMS environment >
+\end{empheq}
+\end{lstlisting}
+
+
+\begin{LTXexample}
+\begin{empheq}[left=\empheqlbrace]{align*}
+  E & =mc^2
+  \\[3pt]
+  Y & = \sum_{n=1}^\infty \frac{1}{n^2}
+\end{empheq}
+\end{LTXexample}
 
 
 % 方法一：
