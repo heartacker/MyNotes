@@ -54,6 +54,8 @@
 %   borderline horizontal={.4pt}{0pt}{black},
 %   sidebyside
 % }
+\usepackage{enumitem}
+\AddEnumerateCounter{\chinese}{\chinese}{}
 
 % 定义一个颜色
 \definecolor{codebg}{RGB}{240,240,240}
@@ -1124,14 +1126,14 @@ start  " " /max "./%FileName%.pdf"
 
 作为一个教学文章， 那么有例子和渲染对比，可以更加清晰明了的向读者阐明要点， 让读者一目了然的的知道代码和渲染效果对比。这也是我一开始就说这个很有难度的环境的原因之一。
 
-\subsubsection{使用tcolorbox}
-参考文档：
+% \subsubsection{使用tcolorbox}
+% 参考文档：
 
-https://liam.page/2016/07/22/using-the-tcolorbox-package-to-create-a-new-theorem-environment/
+% https://liam.page/2016/07/22/using-the-tcolorbox-package-to-create-a-new-theorem-environment/
 
-https://github.com/CTeX-org/forum/issues/113\#issuecomment-621120169
+% https://github.com/CTeX-org/forum/issues/113\#issuecomment-621120169
 
-https://tex.stackexchange.com/questions/124657/combine-minted-and-tcolorbox
+% https://tex.stackexchange.com/questions/124657/combine-minted-and-tcolorbox
 
 先来看看效果。
 
@@ -1148,8 +1150,8 @@ https://tex.stackexchange.com/questions/124657/combine-minted-and-tcolorbox
 
 \subsubsection{使用 showexpl}
 
-https://latexstudio.net/index/details/index/mid/1275
-
+如果有命令“和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对LATEX代码和格式化输出进行比较。
+showexpl 是一个用于进行比较的包，它基于包列表， 该列表提供了良好的排版源代码， 强调了关键字等等。
 
 %* \subsection{基础字体样式调节}
 \subsection{基础字体样式调节}
@@ -1630,16 +1632,27 @@ Todo
 \subsubsection{有序列表}
 
 使用 enumerate 可以 生成有序列表。
-% todo 为什么无法使用自定义编号
 代码：
-
+\label{expl:enumerate}
 \begin{LTXexample}
 \begin{enumerate}
     \item 第一个
     \item 嵌套
-            \begin{enumerate}
-                \item 编号i
-                \item 编号ii
+            \begin{enumerate}[label = \chinese*、]
+                \item 中
+
+                    \begin{enumerate}
+                        \item 编号i
+                        \item 编号ii
+                    \end{enumerate}
+                \item 文
+
+                    \begin{enumerate}[label = \chinese*.]
+                        \item 编号i
+                        \item 编号ii
+                    \end{enumerate}
+                \item 编
+                \item 号
             \end{enumerate}
     \item 有序中无序
             \begin{itemize}
@@ -1651,6 +1664,7 @@ Todo
 \end{enumerate}
 \end{LTXexample}
 
+大家看看到没，其实还有中文编码的。 中文下一步还是会切换成英文。
 
 \subsubsection{无序列表}
 
@@ -1674,6 +1688,9 @@ Todo
 \end{itemize}
 \end{LTXexample}
 
+\subsubsection{如何自定义编号和中文编号?}
+
+这属于高级技巧。 参考章节 \ref{sec:redefine_item}
 
 % *\subsection{如果在表格和图标之间插入章节信息。}
 \label{sec:insert_section_info}
@@ -2582,17 +2599,32 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 参考： \href{https://yuxtech.club/2019/09/09/table/}{双栏模板下插入通栏公式和图片}
 
 在\LaTeX{}中，有三个命令\verb!\tableofcontents，\listoftables，\listoffigures!， 别用来生成章节目录，表格目录和插图目录。但有时候我们需要生成其他目录，比如书籍中的例题目录，这个时候我们可以利用tocloft包自定义一个例题目录。tocloft包提供了\verb!\newlistof! 命令，其格式如下：
-
+%todo 如何添加自定义类型目录
 \begin{lstlisting}
     \newlistof[已有计数器count1]{计数器count2}{扩展名}{目录名称}
 \end{lstlisting}
 
 
+\subsection{如何自定义系列标头？}
+\label{sec:redefine_item}
 
+编号是需要计数器的，在标准的计数器中，只有\verb!\roman、\Roman、\arabic、\alph、\Alph!以及\verb!\fnsymbol!，其输出格式分别为i,ii、I,II、1,2、a,b、A,B、花体符号，现在如果需要输出一、二这种类型的编号，可以使用enumitem包提供的\verb!\AddEnumerateCounter!命令，同时利用ctex包提供的\verb!\chinese! 命令即可，一个minimal working example如下\footnote{https://yuxtech.club/2021/01/18/enumerate/}：
+\begin{LTXexample}
+\documentclass{ctexart}
+\usepackage[showframe]{geometry}
+\usepackage{enumitem}
+\AddEnumerateCounter{\chinese}{\chinese}{}
 
+\begin{document}
+\begin{enumerate}[label = \chinese*、]
+  \item 第一行
+  \item 第二行
+\end{enumerate}
+\end{document}
+\end{LTXexample}
+中文嵌套效果，可以看\ref{expl:enumerate}。
 
-
-
+\newpage
 
 % 如何隐藏格式 设置
 % plain 格式按照作者 日期 标题排序
