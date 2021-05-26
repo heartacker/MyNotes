@@ -110,6 +110,14 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
+% *   目录
+% https://zhuanlan.zhihu.com/p/32712209
+\usepackage{titlesec} %自定义多级标题格式的宏包
+% \titleformat{\section}[block]{\LARGE\bfseries}{Sec.\arabic{section}}{1em}{Hello: }[]
+% \titleformat{\subsection}[block]{\Large\itshape\mdseries}{\arabic{section}.\arabic{subsection}}{1em}{}[]
+% \titleformat{\subsubsection}[block]{\normalsize\bfseries}{\arabic{subsection}-\alph{subsubsection}}{1em}{}[]
+\titleformat{\paragraph}[block]{\small\bfseries}{[\arabic{paragraph}]}{1em}{}[]
+
 \newtheorem{thm}{定理}
 
 %~ 定义一个环境
@@ -264,13 +272,26 @@
     \label{tab:typeoflatex}
 \end{table}
 
+\paragraph{段落1} 段落1
+
+\subparagraph{子段落1} 子段落1
+
+\subparagraph{子段落2} 子段落2
+
+\paragraph{段落2} 段落2
+
+\subparagraph{子段落2} 子段落2
+
+
+
+
 \subsubsection{article 渲染效果}
 
 使用 ctexart 文档内心进行渲染。
 \begin{lstlisting}
     \documentclass[UTF8]{ctexart}
 \end{lstlisting}
-\begin{center} 
+\begin{center}
 \begin{figure}[H]
     \centering
     \setlength{\fboxrule}{1pt}
@@ -435,6 +456,9 @@ bib文件一般如下：
     year={20YY}
 }
 \end{lstlisting}
+
+如何组织自己的源代码可以参考：
+\href{https://blog.csdn.net/simple_the_best/article/details/52710688}{https://blog.csdn.net/simple_the_best/article/details/52710688}
 
 \subsubsection{\LaTeX 文件语法结构}
 
@@ -2280,7 +2304,7 @@ int main() {
     \end{lstlisting}
 
     \item 最终效果，图\ref{Fig.insert-one-png}
-\begin{center}  
+\begin{center}
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
     \centering %图片居中
     \setlength{\fboxrule}{1pt}
@@ -2315,7 +2339,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \end{lstlisting}
 
     \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
-\begin{center}  
+\begin{center}
 \begin{figure}[H]
     \centering
     \setlength{\fboxrule}{1pt}
@@ -2327,7 +2351,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \caption{并排插入两个图片的效果}
     \label{Fig.Insert_two_pic_demo}
 \end{figure}
-\end{center}  
+\end{center}
     \item 引用图片
 
           在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
