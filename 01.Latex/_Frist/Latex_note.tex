@@ -270,7 +270,7 @@
 \begin{lstlisting}
     \documentclass[UTF8]{ctexart}
 \end{lstlisting}
-
+\begin{center} 
 \begin{figure}[H]
     \centering
     \setlength{\fboxrule}{1pt}
@@ -281,6 +281,7 @@
     \caption{article 渲染效果}
     \label{Fig:article_render}
 \end{figure}
+\end{center}
 
 
 \subsubsection{ctexart 渲染效果}
@@ -290,6 +291,7 @@
     \documentclass[UTF8]{ctexart}
 \end{lstlisting}
 
+\begin{center}
 \begin{figure}[H]
     \centering
     \setlength{\fboxrule}{1pt}
@@ -300,6 +302,7 @@
     \caption{ctexart 渲染效果}
     \label{Fig:ctexart_render}
 \end{figure}
+\end{center}
 
 
 对比两者可以看到。 ctexart 针对缩进做了更改。而 article 只有 subparagraph 做了缩进， 但 ctexart paragraph竟然是不缩进的。需要注意。
@@ -2277,7 +2280,7 @@ int main() {
     \end{lstlisting}
 
     \item 最终效果，图\ref{Fig.insert-one-png}
-
+\begin{center}  
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
     \centering %图片居中
     \setlength{\fboxrule}{1pt}
@@ -2288,7 +2291,7 @@ int main() {
     \caption{插入图片的demo} %最终文档中希望显示的图片标题
     \label{Fig.insert-one-png} %用于文内引用的标签
 \end{figure}
-
+\end{center}
     \item 双排设置
           \begin{lstlisting}
 Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel demand of driving auto, and fig. \ref{Fig.sub.2} is the travel demand of park-and-ride.
@@ -2312,7 +2315,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \end{lstlisting}
 
     \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
-
+\begin{center}  
 \begin{figure}[H]
     \centering
     \setlength{\fboxrule}{1pt}
@@ -2324,7 +2327,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \caption{并排插入两个图片的效果}
     \label{Fig.Insert_two_pic_demo}
 \end{figure}
-
+\end{center}  
     \item 引用图片
 
           在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
