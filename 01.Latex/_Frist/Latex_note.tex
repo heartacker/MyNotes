@@ -72,9 +72,10 @@
     breaklines      = true,                % 自动换行
     numbers         = left,                % 行号的位置在左边
     basicstyle      = \zihao{-5}\ttfamily, % sf/tt基本代码风格
-    frame           = B,                   % 边框。lrbt，大写的则是双边框
+    frame           = LtBr,                % 边框。lrbt，大写的则是双边框
     framesep        = 1pt,                 % 代码和边框之间的margin
-    % rulesep         = 1pt, %双框距离
+    rulesep         = 6pt, %双框距离
+    % todo 解决边框问题
 }
 
 
@@ -1091,8 +1092,9 @@ start  " " /max "./%FileName%.pdf"
 
 
 \subsubsection{如何对某个定义对象进行编号并生成目录?}
-% todo
-如除了表格。图片之外的部分，如代码，showexpl。
+
+
+除了表格。图片之外， 如何制作目录， 请参考\ref{subsec:insert_toc_of_define}。
 
 
 \subsection{如何让标题单独一个封面？}
@@ -2154,7 +2156,7 @@ D(x) = \begin{cases}
 
 
 % * \subsection{如何在 \LaTeX 中插入代码} % (fold)
-\subsection{如何在 \LaTeX 中插入代码？} % (fold)
+\subsection{如何插入代码？} % (fold)
 
 
 就像markdown一样，
@@ -2213,9 +2215,9 @@ code
     breaklines      = true,                % 自动换行
     numbers         = left,                % 行号的位置在左边
     basicstyle      = \zihao{-5}\ttfamily, % sf/tt基本代码风格
-    frame           = B,                   % 边框。lrbt，大写的则是双边框
+    frame           = LtBr,                   % 边框。lrbt，大写的则是双边框
     framesep        = 1pt,                 % 代码和边框之间的margin
-    % rulesep       = 1pt, %双框距离
+    rulesep         = 6pt, %双框距离
 }
     \end{lstlisting}
 
@@ -2371,7 +2373,7 @@ int main() {
 
 
 %* \subsection{如何在\LaTeX 中插入图片？}
-\subsection{如何在\LaTeX 中插入图片？}
+\subsection{如何在中插入图片？}
 
 \subsubsection{行内图片}
 
@@ -2561,7 +2563,8 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 
 
 
-\subsection{在LaTeX中自定义新目录}
+\subsection{如何添加自定义类型目录?}
+\label{subsec:insert_toc_of_define}
 
 参考： \href{https://yuxtech.club/2019/09/09/table/}{双栏模板下插入通栏公式和图片}
 
