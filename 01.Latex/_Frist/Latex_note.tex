@@ -73,7 +73,7 @@
     backgroundcolor = \color[RGB]{240,240,240},
     breaklines      = true,                % 自动换行
     numbers         = left,                % 行号的位置在左边
-    basicstyle      = \zihao{-5}\ttfamily, % sf/tt基本代码风格
+    basicstyle      = \zihao{-5}\ttfamily, % rm/sf/tt基本代码风格
     frame           = LtBr,                % 边框。lrbt，大写的则是双边框
     framesep        = 1pt,                 % 代码和边框之间的margin
     rulesep         = 6pt, %双框距离
@@ -1156,16 +1156,57 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 %* \subsection{基础字体样式调节}
 \subsection{基础字体样式调节}
 
+西文中。预定义的字体族有3种： 罗马字体族（roman family，rmfamily）， 无衬字体族（sans serif，sf\/family），打字机字体族（typewriter family，ttfamily）。
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{l|l|l|l}
+    字体族 & 带参数命令             & 声明命令               & 效果               \\
+    \hline
+    罗马   & \verb!\textrm{罗马}! & \verb!\rmfamily! & \textrm{roman 罗马}        \\
+    无衬线 & \verb!\textsf{无衬线}! & \verb!\sffamily! & \textsf{sans serif 无衬线} \\
+    打字机 & \verb!\texttt{打字机}! & \verb!\ttfamily! & \texttt{typewrite 打字机}
+\end{tabular}
+\caption{基本字体的渲染}
+\label{tab:font_sender}
+\end{table}
+
 \subsubsection{常用样式}
 
 \begin{LTXexample}
-\emph{Italicized text} 斜体使用\\
-\textbf{Bold text} 粗体使用\\
-\underline{Underlined text} 下划线使用\\
-\textit{Emphasising text} 强调使用\\
-\textbf{\textit{Combine text} \underline{当然也可以组合起来}}
+\textup{up shape} 直立（roman shape）使用（upshape）\\
+\textsl{Italicized shape} 斜体使用（slshape）\\
+\textit{Italic shape}  意大利体  （itshape） \\
+\textsc{Small capital} 小型大写（scshape）      \\
+\\
+\textbf{Bold text} 粗体使用（bfseries）      \\
+\textmd{Medium series} 中等加宽（mdseries）  \\
+\underline{Underlined text} 下划线使用      \\
+\emph{Emphasising} 强调使用                \\
+\textbf{\textit{Combine text} \underline{当然也可以组合起来}}\\
+{\bfseries this is \textnormal{normal} text}\\
+{\ttfamily this is \normalfont{normal} font}
 \end{LTXexample}
 
+其中 textnormal 和 normalfont 可以恢复默认的字体和样式。
+
+\begin{LTXexample}
+{\heiti 这是黑体\normalfont{取消}}  \\
+{\kaishu 这是楷书{\normalfont{取消}}}
+\end{LTXexample}
+
+中文没有过多复杂的变体。主要是不同的字体族进行区分。
+
+中文的字体族根据不同的系统各有不同。Windows Ctex 默认情况下有四种字体族。分别是 song{\songti 宋体}， hei{\heiti 黑体}， kai{\kaishu 楷书}， fs{\fangsong 仿宋}。
+
+\begin{LTXexample}
+    song{\songti 宋体}、hei{\heiti 黑体}，kai{\kaishu 楷书}， fs{\fangsong 仿宋}。
+\end{LTXexample}
+
+另外，
+\begin{LTXexample}
+\rmfamily 西文的 rmfamily (罗马体家族) 正常对应的分别是\textnormal{宋体}:{\songti 宋体},加粗则是\textbf{黑体}：{\heiti 黑体}， 意大利则对应 \textit{楷书}：{\kaishu 楷书}。
+\end{LTXexample}
 
 
 \subsubsection{中文的加粗}
@@ -1529,8 +1570,7 @@ chuwai)
 \subsubsection{省略号}
 
 \begin{LTXexample}
-英文文中。使用 i$\ldots$you.
-
+英文文中。使用 i$\ldots$you.    \\
 英文句尾，使用 i amd you \ldots.
 \end{LTXexample}
 
@@ -1929,6 +1969,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 使用 aligned / gathered 环境，并且依赖 \verb!\begin{equation} \end{equation}!，\\若不须加编号则使用\verb!\begin{equation*} \end{equation*}!，或者\verb!\[ \]!包裹。
 
+\paragraph{equation}
 \begin{LTXexample}
 \begin{equation}
   \begin{aligned}
@@ -1938,7 +1979,10 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
       l + m &= n
   \end{aligned}
 \end{equation}
+\end{LTXexample}
 
+\paragraph{equation*}
+\begin{LTXexample}
 \begin{equation*}
   \begin{aligned}
       a &= b + c \\
@@ -1947,7 +1991,10 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
       l + m &= n
   \end{aligned}
 \end{equation*}
+\end{LTXexample}
 
+\paragraph{$\backslash$[}
+\begin{LTXexample}
 \[
   \begin{gathered}
       a = b + c \\
