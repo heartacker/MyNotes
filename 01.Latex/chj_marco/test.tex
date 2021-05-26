@@ -47,6 +47,9 @@ subparagraph 下面的文字
 subparagraph 下面的文字
 
 \section{公式}
+
+需要注意的是： 不想加 tag 可以添加 \verb!\notag! 的标记。当然。任何不加*的环境是不会添加 tag 的。 这个和\LaTeX 的其他环境一样。
+
 \subsection{公式的环境}
 \begin{itemize}
     \item 行内公式
@@ -65,10 +68,10 @@ subparagraph 下面的文字
 
                     也可以使用equation。 但是他会自动带tag
                     \begin{lstlisting}
-        \begin{equation}
-            \frac{a}{b}=c/d
-        \end{quotation}
-    \end{lstlisting}
+\begin{equation}
+    \frac{a}{b}=c/d
+\end{quotation}
+                    \end{lstlisting}
 
                     如:
                     \begin{equation}
@@ -86,7 +89,7 @@ subparagraph 下面的文字
 
 多行公式是必备的。以下是常用的例子。参考： \href{https://matnoble.me/tech/latex/multi-line-equations/}{公式}
 
-主要注意的是： 不想加 tag 可以添加 \verb!\notag! 的标记。当然。任何不加*的环境是不会添加 tag 的。 这个和\LaTeX 的其他环境一样。
+
 
 \subsubsection{写不完的多行}
 
