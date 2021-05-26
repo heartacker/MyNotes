@@ -929,12 +929,14 @@ start  " " /max "./%FileName%.pdf"
 \subsubsection{什么是 Recipe?}
 
 
-一个 \LaTeX \space  recipe 是指在构建 \LaTeX \space 项目时，\LaTeX \space  Workshop 按顺序执行的一系列命令。它是由 latex-workshop.latex.recipes 定义的。默认情况下，\LaTeX \space  Workshop 包含由变量 latex-workshop.latex.recipes 和 latex-workshop.latex.tools 定义的两个基本 recipes。
+一个 \LaTeX \space  recipe 是指在构建 \LaTeX \space 项目时，\LaTeX \space  Workshop 按顺序执行的一系列命令。
 
-\paragraph*{latex-workshop.latex.recipes}
+它是由 \textbf{latex-workshop.latex.recipes} 定义的。
+
+\paragraph{latex-workshop.latex.recipes}
 用来定义编译流程。 您可以使用不同的工具创建多个 recipes。每个 recipe 都是配置列表中的一个对象，包含一个 name 字段和一个要在 recipe 中调用的 tools 列表。
 
-\paragraph*{latex-workshop.latex.tools}
+\paragraph{latex-workshop.latex.tools}
 用来定义每个编译的参数。recipes 中的 tools 可以在 latex-workshop.latex.tools 中定义，其中每个命令都是一个 tool。每个工具都是一个对象，包括一个 name、要生成的一个 command、参数(args)和一些特定的环境变量(env)。env 条目是一个字典。假设您想要在您的home项目中使用一个 texmf 子目录，只需编写：
 
 \begin{lstlisting}
@@ -2382,7 +2384,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
                     \verb!\geometry{a4paper,scale=0.8}!
               \item 设置为绝对距离
 
-                    \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
+                    \verb!\geometry{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm}!
           \end{enumerate}
     \item 效果不错
 
