@@ -37,7 +37,8 @@
 
 
 % ********************对比环境***************
-\usepackage{tcolorbox}
+\usepackage[listings]{tcolorbox}
+% 在tcolorbox 可选listing 或者 \tcbuselibrary{listings}
 
 %& 使用showe_example
 \usepackage{showexpl}
@@ -2218,65 +2219,155 @@ code
 }
     \end{lstlisting}
 
-    \item \label{Code.Insert_pic} 在指定的位置插入例子，可以看到有行号，有方框，有背景颜色。
+    \item \label{lst:tcbdemo} 在指定的位置插入例子
 
-        %   \begin{LTXexample}
-\begin{lstlisting}[language=c]
-void main(int argl,string[] args){
-    for(int i = 0;i<argl;)
-        cout<<args[i]<<cendl;// 输出
-}
-\end{lstlisting}
-        %   \end{LTXexample}
-
-\end{enumerate}
-
-\subsubsection{终极代码显示和高亮}
-参考此文档： \href{https://blog.csdn.net/u014454538/article/details/104283898}{vscode配置latex的代码高亮（minted）} 。
-
-参考Overleaf的教学： \href{https://www.overleaf.com/learn/latex/Code\_Highlighting\_with\_minted}{Overleaf 使用minted 高亮代码}
-
-
-
-\begin{enumerate}
-    \item 引用 minted 包。\verb!\usepackage{minted}!。
-    \item 在xelatex 里面添加 \verb!--shell-escape! 参数。
-
-          如何添加编译参数呢？大家还记得之前设置的Tool \ref{subsec:recipe} 吗？也就是在工具链里面，添加参数。
-
-          \begin{lstlisting}
-"latex-workshop.latex.tools": [
-    {
-        "name": "xelatex",
-        "command": "xelatex",
-        "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            //0$需要添加的参数$
-            "-shell-escape",
-            "%DOC%"
-        ],
-        "env": {}
-    },
-    .
-    ..
-]
-        \end{lstlisting}
-
-
-
-    \item 显示效果。
-        %   \begin{LTXexample}
-\begin{lstlisting}[language=c]
+\begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+\begin{lstlisting}[language=C,frame=single]
 int main() {
     printf("hello, world");
     return 0;
 }
 \end{lstlisting}
-        %   \end{LTXexample}
+\end{tcblisting}
+
+    \item  可以看到有行号，有方框，有背景颜色。
+    \begin{lstlisting}[language=C,frame=single]
+int main() {
+    printf("hello, world");
+    return 0;
+}
+    \end{lstlisting}
 
 \end{enumerate}
+
+
+
+\subsubsection{解决listing 嵌套的问题}
+
+参考：\href{https://yuxtech.club/2019/07/30/listings/}{解决listing 嵌套的问题}
+
+\paragraph{实现原理}
+
+如果使用两个lstlisting环境嵌套，会使得第一个\verb!\begin{lstlisting}!匹配到第一个\verb!\end{lstlisting}!而使得第二个报错。比较不错的解决方法就是把外层的摘录环境换成verbatim。
+
+\sout{不过由于个人比较喜欢listings包的风格，所以}这里采用tcolorbox包的listings库提供的tcblisting环境。tcblisting环境其实就是调用的listings包，它一方面接受listings包的设置，另一方面还接受tcolorbox包的设置，简直一举两得。默认情况下，摘录的同时还执行摘录的代码，所以这里添加了listing only选项，仅仅作摘录使用。 \footnote{https://yuxtech.club/2019/07/30/listings/}
+
+\paragraph{实现步骤}
+
+\subparagraph{宏包引用}
+\begin{lstlisting}
+    \usepackage[listings]{tcolorbox}
+    % 或者 \tcbuselibrary{listings}    
+\end{lstlisting}
+
+
+\subparagraph{使用tcblisting包围}
+
+\begin{verbatim}
+\begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+    \begin{lstlisting}[language=Fortran,frame=single]
+        program main
+        implicit none
+        real(kind=8):: em,rmax,rkmax
+        end
+    \end{lstlisting}
+\end{tcblisting}
+\end{verbatim}
+
+显示效果参考\ref{lst:tcbdemo}
+
+
+% *************DEMO *********
+% \documentclass{ctexart}
+% \usepackage{tcolorbox}
+% \tcbuselibrary{listings}
+% \lstdefinestyle{mystyle}{
+%   basicstyle=%
+%     \ttfamily
+%     \lst@ifdisplaystyle\small\fi
+% }
+
+% \lstset{basicstyle=\ttfamily,style=mystyle}
+
+% \definecolor{structurecolor}{RGB}{0,120,2}%
+% \definecolor{winered}{rgb}{0.5,0,0}
+% \definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+% \definecolor{frenchplum}{RGB}{190,20,83}
+% \lstset{language=[LaTeX]TeX,
+% 	texcsstyle=*\color{winered},
+% 	numbers=none,
+% 	breaklines=true,
+% 	keywordstyle=\color{winered},
+% 	commentstyle=\color{gray},
+% 	emph={main,none,fontenc,fontspec,xeCJK,FiraMono,xunicode,newtxmath,figure,fig,image,img,table,itemize,enumerate,newtxtext,newtxtt,ctex,microtype,description,times,newtx,booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,color,mode,lang,amsthm,tcolorbox,titlestyle,cite,marginnote,ctex,listings},
+% 	emphstyle={\color{frenchplum}},
+% 	morekeywords={main,DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont ,setCJKmainfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,hypersetup,mainmatter,tableofcontents,elegantpar,numbers,authoryear,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote},
+% 	frame=single,
+% 	tabsize=2,
+% 	rulecolor=\color{structurecolor},
+% 	framerule=0pt,
+% 	columns=flexible,
+% 	% backgroundcolor=\color{lightgrey}
+% }
+% \begin{document}
+% \begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+% \begin{lstlisting}[language=Fortran,frame=single]
+% program main
+% implicit none
+% real(kind=8):: em,rmax,rkmax
+% end
+% \end{lstlisting}
+% \end{tcblisting}
+% \end{document}
+
+
+% * deprecated
+% \subsubsection{终极代码显示和高亮}
+% 参考此文档： \href{https://blog.csdn.net/u014454538/article/details/104283898}{vscode配置latex的代码高亮（minted）} 。
+
+% 参考Overleaf的教学： \href{https://www.overleaf.com/learn/latex/Code\_Highlighting\_with\_minted}{Overleaf 使用minted 高亮代码}
+
+
+
+% \begin{enumerate}
+%     \item 引用 minted 包。\verb!\usepackage{minted}!。
+%     \item 在xelatex 里面添加 \verb!--shell-escape! 参数。
+
+%           如何添加编译参数呢？大家还记得之前设置的Tool \ref{subsec:recipe} 吗？也就是在工具链里面，添加参数。
+
+%           \begin{lstlisting}
+% "latex-workshop.latex.tools": [
+%     {
+%         "name": "xelatex",
+%         "command": "xelatex",
+%         "args": [
+%             "-synctex=1",
+%             "-interaction=nonstopmode",
+%             "-file-line-error",
+%             //0$需要添加的参数$
+%             "-shell-escape",
+%             "%DOC%"
+%         ],
+%         "env": {}
+%     },
+%     .
+%     ..
+% ]
+%         \end{lstlisting}
+
+
+
+%     \item 显示效果。
+% \begin{LTXexample}
+% \begin{lstlisting}[language=c]
+% int main() {
+%     printf("hello, world");
+%     return 0;
+% }
+% \end{lstlisting}
+% \end{LTXexample}
+
+% \end{enumerate}
 
 
 %* \subsection{如何在\LaTeX 中插入图片？}
@@ -2463,6 +2554,22 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 \end{lstlisting}
 
 
+\subsection{双栏模板下插入通栏公式和图片等}
+
+参考： \href{https://yuxtech.club/2019/10/06/tonglan/}{双栏模板下插入通栏公式和图片}
+
+
+
+
+\subsection{在LaTeX中自定义新目录}
+
+参考： \href{https://yuxtech.club/2019/09/09/table/}{双栏模板下插入通栏公式和图片}
+
+在\LaTeX{}中，有三个命令\verb!\tableofcontents，\listoftables，\listoffigures!， 别用来生成章节目录，表格目录和插图目录。但有时候我们需要生成其他目录，比如书籍中的例题目录，这个时候我们可以利用tocloft包自定义一个例题目录。tocloft包提供了\verb!\newlistof! 命令，其格式如下：
+
+\begin{lstlisting}
+    \newlistof[已有计数器count1]{计数器count2}{扩展名}{目录名称}
+\end{lstlisting}
 
 
 
