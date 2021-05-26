@@ -21,6 +21,8 @@
 \usepackage{ulem}         % 删除
 
 \usepackage{amsmath}      % 图表添加章节编号，数学公式多行一个tag
+\usepackage{cases}        % 数学的case环境
+\usepackage{empheq}       % 数学大块添加限定符环境
 
 % \usepackage[colorlinks=true]{hyperref}
 \usepackage{hyperref}
@@ -1730,15 +1732,253 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \subsection{如何插入数学公式？}
 
-\LaTeX 对数学和科学支持最好的排版系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。
+\LaTeX 对数学和科学支持最好的排版系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。 需要注意的是： 不想加 tag 可以添加 \verb!\notag! 的标记。当然。任何不加*的环境是不会添加 tag 的。 这个和\LaTeX 的其他环境一样。
 
 \subsubsection{行内公式}
 
 行内公式叫做 inline formula， 只需要 \$\ \$ 括起来，就是一个公式环境，比如\verb!$a+b$! 会得到 $a+b$，而不是a+b。
 
+\subsubsection{单块列表公式}
+较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 displayed formula。使用 equation （单行） 和gather\footnote{需要引用amsmath 宏包} （多行） 等环境方便输出。
+\begin{enumerate}
+    \item 环境1
+
+          单块行公式使用\verb!\[  \]! 进行包围。如\[\frac{a}{b}=c/d\] 这是单块行公式。
+    \item 环境2
+
+          可以使用\$\$\quad\$\$ 双美元进行包围。如 $$\frac{a}{b}=c/d$$
+    \item 环境3
+
+          也可以使用equation。 但是他会自动带tag
+          \begin{lstlisting}
+\begin{equation}
+\frac{a}{b}=c/d
+\end{quotation}
+          \end{lstlisting}
+
+          如:
+          \begin{equation}
+              \frac{a}{b}=c/d
+          \end{equation}
+\end{enumerate}
+
 \subsubsection{列表公式}
-较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 displayed formula。使用 equation （单行） 和gather\footnote{需要引用amsmath 宏包} （多行） 等环境方便输出。参考 \href{https://matnoble.me/tech/latex/multi-line-equations/}{各种样子的对齐数学公式的编写}。
-\par
+
+多行公式是必备的。以下是常用的例子。参考： \href{https://matnoble.me/tech/latex/multi-line-equations/}{公式}。
+
+\subsubsection{写不完的多行}
+
+一行写不下的，要写多行的用multiline
+\begin{LTXexample}
+    \begin{multline}
+        p = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\
+        + \sin{x} + \cos{y} + \tan{a} + e^{x+y} \\
+        - 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3
+    \end{multline}
+\end{LTXexample}
+
+\subsubsection{有对齐的的多行}
+
+多行的公式。而不是一行写不下的公式,使用align 环境 以\& 进行对齐
+\begin{LTXexample}
+\begin{align*}
+    X^{ABC}& = \int_a^b x \mathrm{d}x \\
+    1\times 2=2=4/2=8/4 & =16/8
+\end{align*}
+
+\begin{align}
+    a & = b + c\\
+      & = d + e \notag
+\end{align}
+\end{LTXexample}
+
+\begin{align}
+    a & = b + c \label{eq:eq1}
+    \\[3pt]
+      & = d + e  \label{eq:eq2}
+    \\[3pt]
+      & = d + e \notag
+\end{align}
+
+分别交叉引用，依旧是使用label。式 (\ref{eq:eq1}) 和式 (\ref{eq:eq2}) 采用 align 对齐环境。 使用notag取消编号。
+
+\subsubsection{多列对齐 align}
+
+\begin{LTXexample}
+\begin{align*} 
+  a &=1 & b &=2 & c &=3 \\ 
+  d &=-1 & e &=-2 & f &=-5 
+\end{align*}
+\end{LTXexample}
+
+
+\subsubsection{不对齐 gather}
+
+\begin{LTXexample}
+  \begin{gather} 
+    a = b + c \\ 
+    d = e + f + g \\ 
+    h + i = j + k \notag \\ 
+    l + m = n 
+  \end{gather}
+\end{LTXexample}
+
+\subsubsection{统一编号 equation}
+
+使用 aligned / gathered 环境，并且依赖 \verb!\begin{equation} \end{equation}!，若不须加编号则使用\verb!\begin{equation*} \end{equation*}!，或者\verb!\[ \]!包裹。
+
+\begin{LTXexample}
+\begin{equation}
+  \begin{aligned} 
+      a &= b + c \\
+      d &= e + f + g \\
+      h + i &= j + k \\
+      l + m &= n
+  \end{aligned}
+\end{equation}
+
+\begin{equation*}
+  \begin{aligned} 
+      a &= b + c \\
+      d &= e + f + g \\
+      h + i &= j + k \\
+      l + m &= n
+  \end{aligned}
+\end{equation*}
+
+\[
+  \begin{gathered}
+      a = b + c \\
+      d = e + f + g \\
+      h + i = j + k \\
+      l + m = n
+  \end{gathered}
+\]
+\end{LTXexample}
+
+\subsubsection{限定符}
+
+\begin{LTXexample}
+  \begin{equation}
+    \left\{
+      \begin{gathered}
+          a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+          \\[3pt]
+          a_{21} x_{1} + a_{22} x_{3} + a_{23} x_{3} = b_{2}
+      \end{gathered}
+    \right.
+  \end{equation}
+  
+  \begin{equation*}
+      \left\{
+        \begin{aligned}
+            a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+            \\[3pt]
+            a_{22} x_{3} + a_{23} x_{3} = b_{2}
+        \end{aligned}
+      \right.
+   \end{equation*}
+\end{LTXexample}
+
+\subsubsection{array 环境}
+
+\begin{LTXexample}
+\[
+  |x| = \left\{
+    \begin{array}{rl}
+      -x & \mbox{if } x < 0,\\ 
+      0 & \mbox{if } x = 0,\\ 
+      x & \mbox{if } x > 0. 
+    \end{array} \right.
+\]
+\end{LTXexample}
+
+\subsubsection{case 环境}
+
+统一编号：
+\begin{LTXexample}
+  \begin{equation} |x| =
+    \begin{cases}
+        -x & \mbox{if } x < 0,\\
+        0 & \mbox{if } x = 0,\\
+        x & \mbox{if } x > 0.
+    \end{cases}
+  \end{equation}
+\end{LTXexample}
+
+
+分别编号：
+需要在导言区载入 cases 宏包 usepackage{cases}，并且放在 amsmath 之后
+\begin{LTXexample}
+\begin{numcases} {|x| =}
+  -x & \mbox{if } x < 0 \label{eq:eq41},\\
+  0 & \mbox{if } x = 0,\\
+  x & \mbox{if } x > 0.
+\end{numcases}
+
+\begin{subnumcases} {\label{eq:eq42} |x| =}
+    -x & \mbox{if } x < 0,\\
+    0 & \mbox{if } x = 0\label{eq:eq43},\\
+    x & \mbox{if } x > 0.
+\end{subnumcases}
+\end{LTXexample}
+式 (\ref{eq:eq41}) 和 式 (\ref{eq:eq42}) 和 式 (\ref{eq:eq43})
+
+
+\subsubsection{empheq 环境}
+其与之前的都不同，它可以从整个公式(组)四周加载定界符。从左端、从右端，甚至是用一个盒子包住整个公式(组)
+
+首先在 导言区 载入 usepackage{empheq}。使用它的框架是这样:
+\begin{lstlisting}
+\usepackage{empheq}
+\begin{empheq}[markup instructions]{AMS env name}
+  < content AMS environment >
+\end{empheq}
+\end{lstlisting}
+
+
+\begin{LTXexample}
+\begin{empheq}[left=\empheqlbrace]{align*}
+  E & =mc^2
+  \\[3pt]
+  Y & = \sum_{n=1}^\infty \frac{1}{n^2}
+\end{empheq}
+\end{LTXexample}
+
+
+% 方法一：
+% $$
+% \frac{a}{a} =
+% \begin{cases}
+%     a case\\
+%     b case
+% \end{cases}
+% $$
+
+% $$ f(x)=\left\{
+% \begin{aligned}
+% x & = & \cos(t) \\
+% y & = & \sin(t) \\
+% z & = & \frac xy
+% \end{aligned}
+% \right.
+% $$
+
+% 方法二：
+% $$ F^{HLLC}=\left\{
+% \begin{array}{rcl}
+% F_L       &      & {0      <      S_L}\\
+% F^*_L     &      & {S_L \leq 0 < S_M}\\
+% F^*_R     &      & {S_M \leq 0 < S_R}\\
+% F_R       &      & {S_R \leq 0}
+% \end{array} \right. $$
+
+% 方法三:
+% $$f(x)=
+% \begin{cases}
+% 0& \text{x=0}\\
+% 1& \text{x!=0}
+% \end{cases}$$
 
 \begin{LTXexample}
 \begin{gather}
