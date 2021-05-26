@@ -622,11 +622,13 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 \subsubsection{命令的参数？}
 先看一个
+
 \begin{LTXexample}
 这是一个 \textbf{加粗}效果。
 \end{LTXexample}
 
 先看这个代码：这是一个引用，但是你会发现字号等等看起来和正文没有什么区别和变化。
+
 \begin{LTXexample}
 \begin{quote}
     孔子曰：人之初，性本善。
@@ -635,6 +637,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 
 再来看看这个代码。可以看到，我们添加 \verb!\zihao{-5}\kaishu! 改变了这个 quote 内部的字体大小和字体。
+
 \begin{LTXexample}
 \begin{quote}
 \zihao{-5}\kaishu 孔子曰：人之初，性本善。
@@ -1122,6 +1125,7 @@ https://latexstudio.net/index/details/index/mid/1275
     \item \verb!\usepackage{ulem}!;
 
     \item 使用方法和显示效果
+
           \begin{LTXexample}
 \sout{删除线}\\   %删除线
 \uwave{波浪线}\\  %波浪线
@@ -1270,6 +1274,7 @@ or go to the next url: \url{http://www.overleaf.com}
 \par
 
 \textbf{Linking local files}
+
 \begin{LTXexample}
 For further references see \href{http://www.overleaf.com}{Something Linky}
 or go to the next url: \url{http://www.overleaf.com} or open the next
@@ -1461,6 +1466,7 @@ chuwai)
 不同的字体不一样。 有些专业的字体会有很多，如 \verb!fb,fh,fj,ffb,ffh,ffj,ffk,ct,st,sp,Th,fi,fl! 等。具体看当时的编排效果。
 
 \subsubsection{省略号}
+
 \begin{LTXexample}
 英文文中。使用 i$\ldots$you.
 
@@ -1591,6 +1597,7 @@ Todo
 
 使用 itemize 可以生成序列表。
 代码：
+
 \begin{LTXexample}
 \begin{itemize}
     \item 第一个
@@ -1783,6 +1790,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsubsection{写不完的多行}
 
 一行写不下的，要写多行的用multiline。
+
 \begin{LTXexample}
 \begin{multline}
     p = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\
@@ -1913,6 +1921,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsubsection{case 环境}
 
 统一编号：
+
 \begin{LTXexample}
 \begin{equation} |x| =
 \begin{cases}
@@ -1926,6 +1935,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 分别编号：
 需要在导言区载入 cases 宏包 usepackage{cases}，并且放在 amsmath 之后
+
 \begin{LTXexample}
 \begin{numcases} {|x| =}
   -x & \mbox{if } x < 0 \label{eq:eq41},\\
@@ -2058,6 +2068,7 @@ amsmath 这个宏包的作用如下。
 
 \par
 对齐：
+
 \begin{LTXexample}
 %align和align*环境（用$对齐）
 \begin{align}
@@ -2068,6 +2079,7 @@ amsmath 这个宏包的作用如下。
 
 \par
 多行对齐：
+
 \begin{LTXexample}
 %split环境（用$对齐）(一个公式分为多行排版)
 \begin{equation}
@@ -2120,6 +2132,7 @@ code
 \begin{enumerate}
     \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
     \item 使用 verbatim
+
         \begin{LTXexample}
 \begin{verbatim}
 %this is code
@@ -2299,7 +2312,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \end{lstlisting}
 
     \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
-    
+
 \begin{figure}[H]
     \centering
     \setlength{\fboxrule}{1pt}
