@@ -273,7 +273,11 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{images/article_render.png}
+    \setlength{\fboxrule}{1pt}
+    \setlength{\fboxsep}{0cm}
+    \fbox{
+        \includegraphics[scale=0.7]{images/article_render.png}
+    }
     \caption{article 渲染效果}
     \label{Fig:article_render}
 \end{figure}
@@ -288,7 +292,11 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{images/ctexart_render.png}
+    \setlength{\fboxrule}{1pt}
+    \setlength{\fboxsep}{0cm}
+    \fbox{
+        \includegraphics[scale=0.7]{images/ctexart_render.png}
+    }
     \caption{ctexart 渲染效果}
     \label{Fig:ctexart_render}
 \end{figure}
@@ -319,8 +327,7 @@
 \section{测试}
 这是中文
 \end{document}
-        \end{lstlisting}
-    \item $\Box$ Why gbsn?
+\end{lstlisting}
     \item $\Box$ What is the difference between CJK and CJK-utf8?
 \end{enumerate}
 
@@ -482,6 +489,8 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
 插入代码： \href{https://zhuanlan.zhihu.com/p/65441079}{\LaTeX 里「添加程序代码」的完美解决方案}
 
 学习入门总结: \href{https://www.cnblogs.com/zyg123/p/10499744.html}{\LaTeX 学习系列之---\LaTeX 的总结}
+
+入门注意事项： \href{https://blog.csdn.net/simple_the_best/article/details/51244631}{\LaTeX{} 实战经验：新手须知}
 
 论坛社区： \href{https://latexstudio.net/}{\LaTeX{}工作室}
 
@@ -1119,7 +1128,7 @@ https://latexstudio.net/index/details/index/mid/1275
 \xout{斜删除线}\\   %斜删除线
 \uuline{双下划线}\\ %双下划线
           \end{LTXexample}
-          
+
 \end{enumerate}
 
 \subsection{段落缩进}
@@ -1733,7 +1742,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \subsection{如何插入数学公式？}
 
-\LaTeX 对数学和科学支持最好的排版系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。 
+\LaTeX 对数学和科学支持最好的排版系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。
 
 \begin{myquote}
     需要注意的是： 不想加 tag 可以添加 \verb!\notag! 的标记。当然。任何加 * 的环境是不会添加 tag 的。 这个和\LaTeX 的其他环境一样。
@@ -1811,9 +1820,9 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsubsection{多列对齐 align}
 
 \begin{LTXexample}
-\begin{align*} 
-  a &=1 & b &=2 & c &=3 \\ 
-  d &=-1 & e &=-2 & f &=-5 
+\begin{align*}
+  a &=1 & b &=2 & c &=3 \\
+  d &=-1 & e &=-2 & f &=-5
 \end{align*}
 \end{LTXexample}
 
@@ -1821,11 +1830,11 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsubsection{不对齐 gather}
 
 \begin{LTXexample}
-  \begin{gather} 
-    a = b + c \\ 
-    d = e + f + g \\ 
-    h + i = j + k \notag \\ 
-    l + m = n 
+  \begin{gather}
+    a = b + c \\
+    d = e + f + g \\
+    h + i = j + k \notag \\
+    l + m = n
   \end{gather}
 \end{LTXexample}
 
@@ -1835,7 +1844,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \begin{LTXexample}
 \begin{equation}
-  \begin{aligned} 
+  \begin{aligned}
       a &= b + c \\
       d &= e + f + g \\
       h + i &= j + k \\
@@ -1844,7 +1853,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \end{equation}
 
 \begin{equation*}
-  \begin{aligned} 
+  \begin{aligned}
       a &= b + c \\
       d &= e + f + g \\
       h + i &= j + k \\
@@ -1894,9 +1903,9 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \[
   |x| = \left\{
     \begin{array}{rl}
-      -x & \mbox{if } x < 0,\\ 
-      0 & \mbox{if } x = 0,\\ 
-      x & \mbox{if } x > 0. 
+      -x & \mbox{if } x < 0,\\
+      0 & \mbox{if } x = 0,\\
+      x & \mbox{if } x > 0.
     \end{array} \right.
 \]
 \end{LTXexample}
@@ -2244,19 +2253,28 @@ int main() {
           \begin{lstlisting}
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
     \centering %图片居中
-    \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    \setlength{\fboxrule}{1pt}
+    \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    }
     \caption{插入图片的demo} %最终文档中希望显示的图片标题
     \label{Fig.insert-one-png} %用于文内引用的标签
 \end{figure}
     \end{lstlisting}
 
     \item 最终效果，图\ref{Fig.insert-one-png}
-          \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-              \centering %图片居中
-              \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
-              \caption{插入图片的demo} %最终文档中希望显示的图片标题
-              \label{Fig.insert-one-png} %用于文内引用的标签
-          \end{figure}
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    \setlength{\fboxrule}{1pt}
+    \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    }
+    \caption{插入图片的demo} %最终文档中希望显示的图片标题
+    \label{Fig.insert-one-png} %用于文内引用的标签
+\end{figure}
 
     \item 双排设置
           \begin{lstlisting}
@@ -2281,13 +2299,18 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \end{lstlisting}
 
     \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
-          \begin{figure}[H]
-              \centering
-              %插入图片，[]中设置图片大小，{}中是图片文件名
-              \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
-              \caption{并排插入两个图片的效果}
-              \label{Fig.Insert_two_pic_demo}
-          \end{figure}
+    
+\begin{figure}[H]
+    \centering
+    \setlength{\fboxrule}{1pt}
+    \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        %插入图片，[]中设置图片大小，{}中是图片文件名
+        \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
+    }
+    \caption{并排插入两个图片的效果}
+    \label{Fig.Insert_two_pic_demo}
+\end{figure}
 
     \item 引用图片
 
