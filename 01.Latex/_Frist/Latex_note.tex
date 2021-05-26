@@ -261,6 +261,41 @@
     \label{tab:typeoflatex}
 \end{table}
 
+\subsubsection{article 渲染效果}
+
+使用 ctexart 文档内心进行渲染。
+\begin{lstlisting}
+    \documentclass[UTF8]{ctexart}
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{images/article_render.png}
+    \caption{article 渲染效果}
+    \label{Fig:article_render}
+\end{figure}
+
+
+\subsubsection{ctexart 渲染效果}
+
+使用 ctexart 文档内心进行渲染。
+\begin{lstlisting}
+    \documentclass[UTF8]{ctexart}
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{images/ctexart_render.png}
+    \caption{ctexart 渲染效果}
+    \label{Fig:ctexart_render}
+\end{figure}
+
+
+对比两者可以看到。 ctexart 针对缩进做了更改。而 article 只有 subparagraph 做了缩进， 但 ctexart 竟然是不缩进的。需要注意。
+
+
+
+%* \subsection{\LaTeX 编码问题}
 \subsection{\LaTeX 编码问题}
 % 引用一个跳转地址
 上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article（中文是 ctexbook， ctexrep ， ctexart。）。
