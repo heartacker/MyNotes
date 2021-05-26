@@ -25,10 +25,18 @@ module hellow():
 endmodule
 ```
 ## 学习Git
+
 ```bash
 > git add .
 > git commit -m "Init"
 > git push
+> # git push <远程主机名> <本地分支名>:<远程分支名>
+> # 如果当前分支是master。当前的默认远程是origin
+> git push
+> # 等价于
+> git push origin master
+> # 等价于
+> git push origin master:master
 ```
 
 ## 学习VSCode
