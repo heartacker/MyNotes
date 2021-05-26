@@ -1135,7 +1135,7 @@ https://latexstudio.net/index/details/index/mid/1275
 %* \subsection{如何设置参考文档（论文必备）？}
 \subsection{如何设置参考文档（论文必备）？}
 
-用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即说得的理念，让会让放弃探究背后机理和秘密。可以这么说，那时候对 Word 本身也不是很熟悉，而且也没有模板。另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。这也是 word 文档进行排版很烦恼的因素之一。
+用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对 Word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即所得的理念，会让写作者放弃探究背后机理和秘密的念头。 可以这么说，那时候作为学生对 Word 本身也不是很熟悉，而且也没有模板。 缺乏对排版系统的研究。 另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。 这也是 Word 文档进行排版很烦恼的因素之一。
 
 言归正传，我们在这里说论文参考文档的的事情。其实很简单。我们可以这样理解：
 \begin{enumerate}
@@ -1775,11 +1775,11 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 一行写不下的，要写多行的用multiline。
 \begin{LTXexample}
-    \begin{multline}
-        p = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\
-        + \sin{x} + \cos{y} + \tan{a} + e^{x+y} \\
-        - 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3
-    \end{multline}
+\begin{multline}
+    p = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\
+    + \sin{x} + \cos{y} + \tan{a} + e^{x+y} \\
+    - 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3
+\end{multline}
 \end{LTXexample}
 
 \subsubsection{有对齐的的多行}
@@ -1865,25 +1865,25 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsubsection{限定符}
 
 \begin{LTXexample}
-  \begin{equation}
+\begin{equation}
+\left\{
+    \begin{gathered}
+        a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+        \\[3pt]
+        a_{21} x_{1} + a_{22} x_{3} + a_{23} x_{3} = b_{2}
+    \end{gathered}
+\right.
+\end{equation}
+
+\begin{equation*}
     \left\{
-      \begin{gathered}
-          a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
-          \\[3pt]
-          a_{21} x_{1} + a_{22} x_{3} + a_{23} x_{3} = b_{2}
-      \end{gathered}
+    \begin{aligned}
+        a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+        \\[3pt]
+        a_{22} x_{3} + a_{23} x_{3} = b_{2}
+    \end{aligned}
     \right.
-  \end{equation}
-  
-  \begin{equation*}
-      \left\{
-        \begin{aligned}
-            a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
-            \\[3pt]
-            a_{22} x_{3} + a_{23} x_{3} = b_{2}
-        \end{aligned}
-      \right.
-   \end{equation*}
+\end{equation*}
 \end{LTXexample}
 
 \subsubsection{array 环境}
@@ -1905,13 +1905,13 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 统一编号：
 \begin{LTXexample}
-  \begin{equation} |x| =
-    \begin{cases}
-        -x & \mbox{if } x < 0,\\
-        0 & \mbox{if } x = 0,\\
-        x & \mbox{if } x > 0.
-    \end{cases}
-  \end{equation}
+\begin{equation} |x| =
+\begin{cases}
+    -x & \mbox{if } x < 0,\\
+    0 & \mbox{if } x = 0,\\
+    x & \mbox{if } x > 0.
+\end{cases}
+\end{equation}
 \end{LTXexample}
 
 
