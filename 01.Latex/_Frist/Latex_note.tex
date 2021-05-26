@@ -1219,6 +1219,67 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 
 
 
+\subsubsection{字体大小}
+
+\paragraph{西文中}
+\LaTeX 提供了10个简单的声明式调整文字大小的命令：
+
+\begin{table}[H]
+    \centering\begin{tabular}{cc}
+\hline
+\verb!\tiny!         & \tiny{tiny}                \\
+\verb!\scriptsize!   & \scriptsize{scriptszie}    \\
+\verb!\footnotesize! & \footnotesize{footnotesize}\\
+\verb!\small!        & \small{small}              \\
+\verb!\normalsize!   & \normalsize{normalsize}    \\
+\verb!\large!        & \large{large}              \\
+\verb!\Large!        & \Large{Large}              \\
+\verb!\LARGE!        & \LARGE{LARGE}              \\
+\verb!\huge!         & \huge{huge}                \\
+\verb!\Huge!         & \Huge{Huge}                \\
+\hline
+    \end{tabular}
+    \caption{西文字体大小的命令}
+    \label{tab:font_size_latin}
+\end{table}
+
+\begin{LTXexample}
+    This is \small{small} and \Large{Large}!
+\end{LTXexample}
+
+\paragraph{中文中}
+可以使用中文的字号进行设置。 
+\begin{table}[H]]
+    \centering\begin{tabular}{lcl}
+\hline
+命令               &大小（bp）  &意义                 \\
+\hline
+\verb!\zihao{0}!   &42       &{\zihao{0} 初号}  \\
+\verb!\zihao{-0}!  &36       &{\zihao{-0} 小初号}\\
+\verb!\zihao{1}!   &26       &{\zihao{1} 一号}  \\
+\verb!\zihao{-1}!  &24       &{\zihao{-1} 小一号}\\
+\verb!\zihao{2}!   &22       &{\zihao{2} 二号}  \\
+\verb!\zihao{-2}!  &18       &{\zihao{-2} 小二号}\\
+\verb!\zihao{3}!   &16       &{\zihao{3} 三号}  \\
+\verb!\zihao{-3}!  &15       &{\zihao{-3} 小三号}\\
+\verb!\zihao{4}!   &14       &{\zihao{4} 四号}  \\
+\verb!\zihao{-4}!  &12       &{\zihao{-4} 小四号}\\
+\verb!\zihao{5}!   &10.5     &{\zihao{5} 五号}  \\
+\verb!\zihao{-5}!  &9        &{\zihao{-5} 小五号}\\
+\verb!\zihao{6}!   &7.5      &{\zihao{6} 六号}  \\
+\verb!\zihao{-6}!  &6.5      &{\zihao{-6} 小六号}\\
+\verb!\zihao{7}!   &5.5      &{\zihao{7} 七号}  \\
+\verb!\zihao{8}!   &5        &{\zihao{8} 八号}  \\
+\hline
+    \end{tabular}
+    \caption{中文字号}
+    \label{tab:font_size_cjk}
+\end{table}
+
+\begin{LTXexample}
+    This is {\zihao{6} 六号} and {\zihao{0} 大号}!
+\end{LTXexample}
+
 \subsubsection{删除线}
 删除线比较复杂， 但是需要引用ulem的宏包。
 \begin{enumerate}
