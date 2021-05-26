@@ -1732,7 +1732,11 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \subsection{如何插入数学公式？}
 
-\LaTeX 对数学和科学支持最好的排版系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。 需要注意的是： 不想加 tag 可以添加 \verb!\notag! 的标记。当然。任何不加*的环境是不会添加 tag 的。 这个和\LaTeX 的其他环境一样。
+\LaTeX 对数学和科学支持最好的排版系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。 
+
+\begin{myquote}
+    需要注意的是： 不想加 tag 可以添加 \verb!\notag! 的标记。当然。任何加 * 的环境是不会添加 tag 的。 这个和\LaTeX 的其他环境一样。
+\end{myquote}
 
 \subsubsection{行内公式}
 
@@ -1764,11 +1768,11 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \subsubsection{列表公式}
 
-多行公式是必备的。以下是常用的例子。参考： \href{https://matnoble.me/tech/latex/multi-line-equations/}{公式}。
+多行公式是必备的。以下是常用的例子。参考： \href{https://matnoble.me/tech/latex/multi-line-equations/}{公式对齐设置}。
 
 \subsubsection{写不完的多行}
 
-一行写不下的，要写多行的用multiline
+一行写不下的，要写多行的用multiline。
 \begin{LTXexample}
     \begin{multline}
         p = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\
@@ -1779,7 +1783,8 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \subsubsection{有对齐的的多行}
 
-多行的公式。而不是一行写不下的公式,使用align 环境 以\& 进行对齐
+多行的公式。而不是一行写不下的公式,使用align 环境 以\& 进行对齐。
+
 \begin{LTXexample}
 \begin{align*}
     X^{ABC}& = \int_a^b x \mathrm{d}x \\
@@ -1825,7 +1830,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \subsubsection{统一编号 equation}
 
-使用 aligned / gathered 环境，并且依赖 \verb!\begin{equation} \end{equation}!，若不须加编号则使用\verb!\begin{equation*} \end{equation*}!，或者\verb!\[ \]!包裹。
+使用 aligned / gathered 环境，并且依赖 \verb!\begin{equation} \end{equation}!，\\若不须加编号则使用\verb!\begin{equation*} \end{equation*}!，或者\verb!\[ \]!包裹。
 
 \begin{LTXexample}
 \begin{equation}
@@ -1928,7 +1933,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 
 \subsubsection{empheq 环境}
-其与之前的都不同，它可以从整个公式(组)四周加载定界符。从左端、从右端，甚至是用一个盒子包住整个公式(组)
+其与之前的都不同，它可以从整个公式(组)四周加载定界符。从左端、从右端，甚至是用一个盒子包住整个公式(组)。
 
 首先在 导言区 载入 usepackage{empheq}。使用它的框架是这样:
 \begin{lstlisting}
