@@ -2268,22 +2268,23 @@ int main() {
 
 \paragraph{实现步骤}
 
-\subparagraph{宏包引用}
+\subparagraph{宏包引用}tcolorbox
+
 \begin{lstlisting}
     \usepackage[listings]{tcolorbox}
-    % 或者 \tcbuselibrary{listings}    
+    % 或者 \tcbuselibrary{listings}
 \end{lstlisting}
 
 
-\subparagraph{使用tcblisting包围}
+\subparagraph{使用 tcblisting 包围}代码:
 
 \begin{verbatim}
 \begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
     \begin{lstlisting}[language=Fortran,frame=single]
-        program main
-        implicit none
-        real(kind=8):: em,rmax,rkmax
-        end
+int main() {
+    printf("hello, world");
+    return 0;
+}
     \end{lstlisting}
 \end{tcblisting}
 \end{verbatim}
