@@ -21,6 +21,8 @@
 \usepackage{ulem}         % 删除
 
 \usepackage{amsmath}      % 图表添加章节编号，数学公式多行一个tag
+\usepackage{cases}        % 数学的case环境
+\usepackage{empheq}       % 数学大块添加限定符环境
 
 % \usepackage[colorlinks=true]{hyperref}
 \usepackage{hyperref}
@@ -35,42 +37,67 @@
 
 
 % ********************对比环境***************
-\usepackage{tcolorbox}
-\usepackage{minted}
-\tcbuselibrary{minted, skins}
+\usepackage[listings]{tcolorbox}
+% 在tcolorbox 可选listing 或者 \tcbuselibrary{listings}
+
+%& 使用showe_example
+\usepackage{showexpl}
+
+
+%& 使用 minnted
+% \usepackage{minted}
+% \tcbuselibrary{minted, skins}
 
 % 重定义环境用 \renewtcblisting
-\newtcblisting{example}{
-  skin=empty,
-  borderline horizontal={.4pt}{0pt}{black},
-  sidebyside
-}
+% \newtcblisting{example}{
+%   skin=empty,
+%   borderline horizontal={.4pt}{0pt}{black},
+%   sidebyside
+% }
+\usepackage{enumitem}
+\AddEnumerateCounter{\chinese}{\chinese}{}
 
-
+% 定义一个颜色
+\definecolor{codebg}{RGB}{240,240,240}
 
 %**********************边距设置****************************************
 
 % \geometry{a4paper,scale=0.8}
-\geometry{a4paper,left=1.5cm,right=1.5cm,top=2cm,bottom=1.5cm}
+\geometry{a4paper,left=1.5cm,right=1.5cm,top=2.0cm,bottom=2.0cm}
 
 %********************代码设置******************************************
 % 用来设置附录中代码的样式
 
+
 \lstset{
-    backgroundcolor     =   \color[RGB]{250,240,235},
-    basicstyle          =   \zihao{5}\ttfamily,                % sf/tt基本代码风格
-    keywordstyle        =   \bfseries,                % 关键字风格
-    commentstyle        =   \rmfamily\itshape,        % 注释的风格，斜体
-    stringstyle         =   \ttfamily,                % 字符串风格
-    flexiblecolumns,                                  % 别问为什么，加上这个
-    numbers             =   left,                     % 行号的位置在左边
-    showspaces          =   false,                    % 是否显示空格，显示了有点乱，所以不现实了
-    numberstyle         =   \zihao{-5}\ttfamily,      % 行号的样式，小五号，tt等宽字体
-    showstringspaces    =   false,
-    captionpos          =   t,                        % 这段代码的名字所呈现的位置，t指的是top上面
-    frame               =  lrtb,% lrtb,                     % 显示边框
-    breaklines          =  true,
+    backgroundcolor = \color[RGB]{240,240,240},
+    breaklines      = true,                % 自动换行
+    numbers         = left,                % 行号的位置在左边
+    basicstyle      = \zihao{-5}\ttfamily, % sf/tt基本代码风格
+    frame           = LtBr,                % 边框。lrbt，大写的则是双边框
+    framesep        = 1pt,                 % 代码和边框之间的margin
+    rulesep         = 6pt, %双框距离
+    % todo 解决边框问题
 }
+
+
+% \lstset{
+%     backgroundcolor     =   \color[RGB]{255,255,245},
+%     basicstyle          =   \zihao{5}\ttfamily,                % sf/tt基本代码风格
+%     keywordstyle        =   \bfseries,                % 关键字风格
+%     commentstyle        =   \rmfamily\itshape,        % 注释的风格，斜体
+%     stringstyle         =   \ttfamily,                % 字符串风格
+%     flexiblecolumns,                                  % 别问为什么，加上这个
+%     numbers             =   left,                     % 行号的位置在左边
+%     showspaces          =   false,                    % 是否显示空格，显示了有点乱，所以不现实了
+%     % numberstyle         =   \zihao{5}\ttfamily,      % 行号的样式，小五号，tt等宽字体
+%     numberstyle         =   \ttfamily,      % 行号的样式，小五号，tt等宽字体
+%     showstringspaces    =   false,
+%     captionpos          =   t,                        % 这段代码的名字所呈现的位置，t指的是top上面
+%     frame               =  rb,% lrtb,                     % 显示边框
+%     % frameround          =  fftt
+%     breaklines          =  true,
+% }
 
 \lstdefinestyle{Python}{
     language        =   Python,                       % 语言选Python
@@ -100,6 +127,14 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
+% *   目录
+% https://zhuanlan.zhihu.com/p/32712209
+\usepackage{titlesec} %自定义多级标题格式的宏包
+% \titleformat{\section}[block]{\LARGE\bfseries}{Sec.\arabic{section}}{1em}{Hello: }[]
+% \titleformat{\subsection}[block]{\Large\itshape\mdseries}{\arabic{section}.\arabic{subsection}}{1em}{}[]
+% \titleformat{\subsubsection}[block]{\normalsize\bfseries}{\arabic{subsection}-\alph{subsubsection}}{1em}{}[]
+\titleformat{\paragraph}[block]{\small\bfseries}{[\arabic{paragraph}]}{1em}{}[]
+
 \newtheorem{thm}{定理}
 
 %~ 定义一个环境
@@ -112,8 +147,7 @@
 %~ 定义一个命令
 \newcommand\degree{^\circ}
 
-% 定义一个颜色
-\definecolor{codebg}{RGB}{250,250,250}
+
 
 %^ \renewcommand\listoflistingscaption{List of source codes}
 
@@ -136,9 +170,9 @@
 
 \section*{版权声明}
 
-本文大部分内容、图案、文档、代码等来自互联网或者相关书籍，如有侵犯他人的权益，请及时联系本人修改，修正。
+本文大部分图案、文字、代码等来自互联网或者相关书籍，如有侵犯他人的权益，请及时联系本人进行修改，修正。
 
-本作品开放源代码，但作者保留所有的版权、内容相关的权益。 本文可以任意传播，但未经本作者同意，不得修改再版。 本文属于个人作品，任何内容仅供学习和研究所用，如将其作为商业用途，并因为本文的错误等任何原因导致的损失，本作者不负责任何责任。 有任何问题可以本作者联系。
+本作品开放源代码，但作者保留所有的内容相关的版权和权益。 本文可以任意传播，但未经本作者同意，不得修改再版，更不可以用于牟利。 本文属于个人作品，任何内容仅供学习和研究所用，如将其用作商业用途，并因为本文的错误等任何原因导致的损失，本作者不任何责任。 有任何问题可以与本作者联系。
 \clearpage
 
 % 本文的目录
@@ -198,8 +232,9 @@
 
 
 但是如何选择可以参考：
-
-\Checkmark 选择使用 \TeX /\LaTeX 的理由包括：
+% bbding
+\begin{itemize}
+    \item \Checkmark 选择使用 \TeX /\LaTeX 的理由包括：
 
 \begin{itemize}
     \item 免费软件；
@@ -208,22 +243,25 @@
     \item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
 \end{itemize}
 
-\Checkmark 不选择使用 \TeX/\LaTeX 的理由包括：
+\item \Checkmark 不选择使用 \TeX/\LaTeX 的理由包括：
 \begin{itemize}
     \item 需要相当精力学习；
     \item 图文混合排版能力弱；
     \item 仅流行于数学、物理、计算机等领域；
     \item 中文期刊的支持较差；
 \end{itemize}
+\end{itemize}
 
 \subsection{如何查询文档和学习？}
 对于这种非常陌生羞涩难懂的软件。你会觉得连查文档都很困难。不过如果你想对某个模块阅读文档，可以通过下面的命令打开英文文档。
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{shell}
-
+\begin{lstlisting}[language=bash]
 > texdoc 模块的名字
-> texdoc lstlisting
-\end{minted}
+> texdoc listings
+\end{lstlisting}
+
+比如如何设置代码显示的格式，我们都可以用哪个上面的方式。 找到listlings 的官方文档。 但是要求你对英语比较熟练啦。
+
 
 本文虽然只是给你讲解一些快速入门的东西。但是如果你想真正的学习好\LaTeX 那么，看一本书籍是必备的。
 推荐这本入门书籍\cite{latex_start} 。建议先看: \href{https://github.com/heartacker/MyNotes/blob/master/01.Latex/LaTeX_Docs_2014/04%20%E7%94%B5%E5%AD%90%E4%B9%A6/LaTeX%E5%85%A5%E9%97%A8%EF%BC%88%E5%88%98%E6%B5%B7%E6%B4%8B%EF%BC%89.pdf}{LaTeX入门（刘海洋）.pdf}
@@ -256,9 +294,75 @@
     \label{tab:typeoflatex}
 \end{table}
 
+
+\subsubsection{article 渲染效果}
+
+使用 ctexart 文档类型进行渲染。
+\begin{lstlisting}
+    \documentclass[UTF8]{ctexart}
+\end{lstlisting}
+\begin{center}
+\begin{figure}[H]
+    \centering
+    \setlength{\fboxrule}{0.1pt}
+    \setlength{\fboxsep}{0cm}
+    \fbox{
+        \includegraphics[scale=0.7]{images/article_render.png}
+    }
+    \caption{article 渲染效果}
+    \label{Fig:article_render}
+\end{figure}
+\end{center}
+
+
+\subsubsection{ctexart 渲染效果}
+
+使用 ctexart 文档类型进行渲染。
+\begin{lstlisting}
+    \documentclass[UTF8]{ctexart}
+\end{lstlisting}
+
+\begin{center}
+\begin{figure}[H]
+    \centering
+    \setlength{\fboxrule}{0.1pt}
+    \setlength{\fboxsep}{0cm}
+    \fbox{
+        \includegraphics[scale=0.7]{images/ctexart_render.png}
+    }
+    \caption{ctexart 渲染效果}
+    \label{Fig:ctexart_render}
+\end{figure}
+\end{center}
+
+
+对比两者可以看到。 ctexart 针对缩进做了更改。而 article 只有 subparagraph 做了缩进， 但 ctexart paragraph竟然是不缩进的。需要注意。
+
+\subsubsection{段落渲染}
+
+\paragraph{段落1} 段落1
+
+\subparagraph{子段落1} 子段落1
+
+\subparagraph{子段落2} 子段落2
+
+\paragraph{段落2} 段落2
+
+\subparagraph{子段落2} 子段落2
+
+
+% todo THIS IS 如何是下面的列表（任何其他而不仅仅是enumerate）。缩进更多？ 类似word 文档的 添加缩进
+% \begin{enumerate}
+%     \item 1
+%     \item 1
+%     \item 3
+%     \item 1
+% \end{enumerate}
+
+%* \subsection{\LaTeX 编码问题}
 \subsection{\LaTeX 编码问题}
 % 引用一个跳转地址
-上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article（中文是 ctexbook， ctexrep ， ctexart。）。
+上述 \hyperlink{Levelofdepth}{层次结构} 中, 我们知道有三类book, report, article（中文是 ctexbook， ctexrep ， ctexart）。
 但是如果我们需要在西文中插入中文要如何弄呢？
 这就需要引用xeCKJ 包了。 参考\href{https://liam.page/2017/09/17/LaTeX-multi-lingual/}{如何书写多国语言}。
 
@@ -266,8 +370,7 @@
     \item \Checkmark 引用包\verb!usepackage{exCJK}!
     \item \Checkmark 在需要的写入中文就好。
 
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+          \begin{lstlisting}
 \documentclass{article}
 \usepackage{xeCJK}
 \begin{document}
@@ -277,8 +380,8 @@
 \section{测试}
 这是中文
 \end{document}
-        \end{minted}
-    \item $\Box$ Why gbsn?
+\end{lstlisting}
+
     \item $\Box$ What is the difference between CJK and CJK-utf8?
 \end{enumerate}
 
@@ -313,22 +416,21 @@
 \begin{enumerate}
     \item  说明我要写说明文档,就是我要写什么;
 
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+          \begin{lstlisting}
 % cjk 使用utf-8,中文文章使用`ctexart`,article,report,...
 % 大意就是说我要写什么
 \documentclass[UTF8]{ctexart}
-        \end{minted}
+        \end{lstlisting}
     \item  说明我要用到的宏包,就是我要开始写;
 
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+          \begin{lstlisting}
 % 宏包，意思是我要开始写文档了。我会用什么工具。只有加了宏包才能写公式，做表格，放图片
 % 常用的有mathtools， amsmath， graphicx， array， geometry
 \usepackage{mathtools,booktabs}
-        \end{minted}
+        \end{lstlisting}
     \item  说明我要用到的环境,就是我正在写.
 
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+          \begin{lstlisting}
 
 % 这里是导言区
 \begin{document}% 这是一个文档的环境
@@ -340,7 +442,7 @@
         表格代码
     \end{table}
 \end{document}
-        \end{minted}
+        \end{lstlisting}
 \end{enumerate}
 
 
@@ -367,7 +469,7 @@ bib: bib文件是参考文献的库
 一般使用\verb!\bibliography{}!导入
 
 bib文件一般如下：
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 % 引用了一个文章
 @article{XXX,
     title={ABC},
@@ -383,13 +485,18 @@ bib文件一般如下：
     pages={a--b},
     year={20YY}
 }
-\end{minted}
+\end{lstlisting}
+
+如何组织自己的源代码可以参考：
+\href{https://blog.csdn.net/simple\_the\_best/article/details/52710688}{如何组织tex的文档}
+
+
 
 \subsubsection{\LaTeX 文件语法结构}
 
 假设在当前目录下有下列文件：main.tex、A.cls、B.sty、C.bst、D.bib,按照我们的文件格式\ref{subsec:filetype}。我们可以大致的了解真正的\LaTeX 的语法结构。
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 
 %main.tex文件
 \documentclass{A}     % 或者不使用自定义的排版文件时，使用最普通的\documentclass{article}
@@ -403,7 +510,7 @@ this is document
 \bibliography{D}      % 导入正文中引入文献的数据
 \bibliographystyle{C} % 导入参考文献的格式文件C.bst
 \end{document}
-\end{minted}
+\end{lstlisting}
 
 
 \subsection{常用的工具和资源链接}
@@ -442,6 +549,8 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
 
 学习入门总结: \href{https://www.cnblogs.com/zyg123/p/10499744.html}{\LaTeX 学习系列之---\LaTeX 的总结}
 
+入门注意事项： \href{https://blog.csdn.net/simple_the_best/article/details/51244631}{\LaTeX{} 实战经验：新手须知}
+
 论坛社区： \href{https://latexstudio.net/}{\LaTeX{}工作室}
 
 \subsubsection{编写、编译环境的安装准备步骤}
@@ -452,7 +561,7 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
     \item 安装 TexLive \footnote{安装时间挺久的}。
     \item 安装 VSCode。
     \item 在 VSCode 插件市场 安装\LaTeX \ Workshop 插件。
-    \item 按照 label{subsec:recipe} 配置插件。
+    \item 按照 \ref{subsec:recipe} 配置插件。
 \end{itemize}
 
 \subsubsection{常用宏包}
@@ -540,7 +649,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 以常见的文章结构为例:
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 \begin{document}
 % 这里是 document 的环境
 
@@ -554,7 +663,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 % 这里依旧是 document 环境。
 \end{document}
-\end{minted}
+\end{lstlisting}
 
 \subsubsection{什么是命令？}
 
@@ -572,38 +681,39 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 \subsubsection{命令的参数？}
 先看一个
-\begin{example}
-    这是一个 \textbf{加粗}效果。
-\end{example}
+
+\begin{LTXexample}
+这是一个 \textbf{加粗}效果。
+\end{LTXexample}
 
 先看这个代码：这是一个引用，但是你会发现字号等等看起来和正文没有什么区别和变化。
-\begin{example}
-    \begin{quote}
-        孔子曰：人之初，性本善。
-    \end{quote}
-\end{example}
+
+\begin{LTXexample}
+\begin{quote}
+    孔子曰：人之初，性本善。
+\end{quote}
+\end{LTXexample}
 
 
-再来看看这个代码。可以看到，我们添加 \verb!\zihao{-5}! 改变了这个 quote 内部的字体大小。
-\begin{example}
-    \begin{quote}
-        \zihao{-5} 孔子曰：人之初，性本善。
-    \end{quote}
-\end{example}
+再来看看这个代码。可以看到，我们添加 \verb!\zihao{-5}\kaishu! 改变了这个 quote 内部的字体大小和字体。
+
+\begin{LTXexample}
+\begin{quote}
+\zihao{-5}\kaishu 孔子曰：人之初，性本善。
+\end{quote}
+\end{LTXexample}
 
 上面我们知道。\verb!\textbf{加粗}! 只改变了"加粗"，但是为什么 \verb!\zihao{-5}! 改变了 quote 的所有内容呢？
 
 我们将类似\verb!\zihao{-5}! 这类命名称作声明(declaration)。其中 \textbf{分组} 限定了声明的范围。
 
-\subsubsection{分组}
-
+\subsubsection{什么是分组？}
 
 一个 \LaTeX 环境自然就是一个分组（Group），因此，前面的 \verb!\zihao{-5}! 会影响 quote 缩进。 其中，最大分组就是 document 了。不过也可以用 \{\ \} 产生一个分组。
 
 \LaTeX 的换进一般格式为：
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+\begin{lstlisting}
 \begin{<环境的名字>}
     环境的里面的内容。
 \end{<环境的名字>}
@@ -615,7 +725,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 \textit{花括号里面这里也是一个环境}
 
-\end{minted}
+\end{lstlisting}
 
 quote 是无参数的环境。
 
@@ -623,21 +733,18 @@ quote 是无参数的环境。
 
 在导言区域做定义：
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+\begin{lstlisting}
 \newtheorem{thm}{定理}
 \begin{document}
-\end{minted}
+\end{lstlisting}
 
 在需要的地方使用这个环境。
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+\begin{lstlisting}
 \begin{thm}[勾股定义]
     直角三角形的斜边的平方等于两腰的平方和。
     可以用符号语言表述为...
 \end{thm}
-
-\end{minted}
+\end{lstlisting}
 
 
 效果：
@@ -674,13 +781,14 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 绝大多数排版是是到导言区之前使用 命令定义 和参数设定 来对排版进行调整的。
 比如页边距。
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 \usepackage{geometry}
 \geometry{a4paper, scale=0.8}
 
 % 增加目录的项目，使用tocbibind  讲目录添加到目录本身。
 \usepackage[nottoc]{tocbibind}
-\end{minted}
+\end{lstlisting}
+
 
 \subsubsection{自定义环境}
 
@@ -688,30 +796,31 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 就以 quote 为例，我们在每个 quote 里面都进行调整格式是非常不方便的。
 我们可以自定义个环境。
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 %将这个放在导言区之前
 \newenvironment{myquote}
     {begin{quote}\zihao{5}\kaishu}
     {\end{quote}}
-\end{minted}
+\end{lstlisting}
 
 之后我们就可以使用这个环境进行编写了。
 
-\begin{example}
-    \begin{myquote}
-        这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
-    \end{myquote}
-\end{example}
+\begin{LTXexample}
+\begin{myquote}
+这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+\end{myquote}
+\end{LTXexample}
+
 这是渲染效果:
 \begin{myquote}
-    这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
 \end{myquote}
 之后只需要对myquote 进行设置就可以设置quote 的格式了。
 
 \subsubsection{自定义命令}
 类似的，比如公式的角度，我们输出比较麻烦，\verb!^\circ! 也很不直观。我们就可以使用 \verb!\newcommand{}{}! 进行定义。
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 %新建命令
 \newcommand\degree{^\circ}
 %
@@ -720,11 +829,11 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
     .
     .
 \end{docCommand}
-\end{minted}
+\end{lstlisting}
 
-\begin{example}
-    之后使用 $\degree$ 替代 $^\circ$ 了。
-\end{example}
+\begin{LTXexample}
+之后使用 $\degree$ 替代 $^\circ$ 了。
+\end{LTXexample}
 
 \par
 
@@ -792,12 +901,12 @@ xelatex命令：XeTeX程序中的命令，用来编译用LaTeX格式写的tex文
 
 附带参考文献的整个编译需要四步。
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{shell}
+\begin{lstlisting}
 (xe/pdf)latex main.tex   # 表示使用 latex, pdflatex 或 xelatex 编译，下同
 bibtex main.aux
 (xe/pdf)latex main.tex
 (xe/pdf)latex main.tex
-\end{minted}
+\end{lstlisting}
 
 第一步后生成main.aux、main.log和main.pdf文件。其中aux是引用标记记录文件，用于再次编译时生成参考文献和超链接。此时的pdf文件中没有包含参考文件，在正文中的引用后为[?]。
 
@@ -808,7 +917,7 @@ bibtex main.aux
 第四步同样更新了main.aux、main.log和main.pdf文件。并生成最终的pdf文件，此时正文中的引用后已经标记好了引用文献的序号[1]、[2]等。
 
 如果对这个编译流程非常熟悉的话，就可以自己编写脚本快速编译了。当然还是推荐使用 VSCode\ref{subsec:recipe}。
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{shell}
+\begin{lstlisting}
 @compile.bat文件
 
 @echo off
@@ -830,7 +939,7 @@ echo Compile  finished.
 echo ------------------------------------------------
 copy /Y ".\Tmp\%FileName%.pdf" ".\%FileName%.pdf"
 start  " " /max "./%FileName%.pdf"
-\end{minted}
+\end{lstlisting}
 
 
 
@@ -850,27 +959,28 @@ start  " " /max "./%FileName%.pdf"
 \subsubsection{什么是 Recipe?}
 
 
-一个 \LaTeX \space  recipe 是指在构建 \LaTeX \space 项目时，\LaTeX \space  Workshop 按顺序执行的一系列命令。它是由 latex-workshop.latex.recipes 定义的。默认情况下，\LaTeX \space  Workshop 包含由变量 latex-workshop.latex.recipes 和 latex-workshop.latex.tools 定义的两个基本 recipes。
+一个 \LaTeX \space  recipe 是指在构建 \LaTeX \space 项目时，\LaTeX \space  Workshop 按顺序执行的一系列命令。
 
-\paragraph*{latex-workshop.latex.recipes}
+它是由 \textbf{latex-workshop.latex.recipes} 定义的。
+
+\paragraph{latex-workshop.latex.recipes}
 用来定义编译流程。 您可以使用不同的工具创建多个 recipes。每个 recipe 都是配置列表中的一个对象，包含一个 name 字段和一个要在 recipe 中调用的 tools 列表。
 
-\paragraph*{latex-workshop.latex.tools}
+\paragraph{latex-workshop.latex.tools}
 用来定义每个编译的参数。recipes 中的 tools 可以在 latex-workshop.latex.tools 中定义，其中每个命令都是一个 tool。每个工具都是一个对象，包括一个 name、要生成的一个 command、参数(args)和一些特定的环境变量(env)。env 条目是一个字典。假设您想要在您的home项目中使用一个 texmf 子目录，只需编写：
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{json}
-
+\begin{lstlisting}
 "env": {
     "TEXMFHOME": "%DIR%/texmf"
 }
-\end{minted}
+\end{lstlisting}
 
 
 \subsubsection{VSCode LaTeX Workshop 插件关键两个配置}
 对于中文而言，大部分使用的是 xeLaTeX，但是这个插件默认没有把它添加到工具链中。对于大部分中文用户。则使用这两个居多。
 
 第一步，在工具链添加这个工具（latex-workshop.latex.tools）\footnote{第二步中会调用这个命令。}
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{json}
+\begin{lstlisting}
 {
     "name": "xelatex",
     "command": "xelatex",
@@ -883,10 +993,10 @@ start  " " /max "./%FileName%.pdf"
     ],
     "env": {}
 }
-\end{minted}
+\end{lstlisting}
 
 第二步，在recipes 添加这个组合（latex-workshop.latex.recipes）
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{json}
+\begin{lstlisting}
 // 针对有目录没bit引用的
 {
     "name": "xelatex`×2",
@@ -905,7 +1015,7 @@ start  " " /max "./%FileName%.pdf"
     "xelatex"
     ]
 }
-\end{minted}
+\end{lstlisting}
 
 
 
@@ -992,79 +1102,79 @@ start  " " /max "./%FileName%.pdf"
 不过，需要注意的是，在编译的时候，需要使用编译工具进行编译两次。第一次是初步编译，生成目录等临时文件，之后在将临时文件编译进去。比如第一次编译之后，生成的PDF文件是看不到目录的，之后再次编译，就可以把 .toc、.lof、.lot编译进去。
 
 
-\subsubsection{如何对某个定义对象进行编号?}
-% todo
-如，代码，摘要，附录。
-todo
+\subsubsection{如何对某个定义对象进行编号并生成目录?}
+
+
+除了表格。图片之外， 如何制作目录， 请参考\ref{subsec:insert_toc_of_define}。
 
 
 \subsection{如何让标题单独一个封面？}
 
 有些书籍封面是单独一个页面的，还配了图片。看起来非常舒服，这个该如何处理呢？可以参考以下代码:
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 %标题
 \begin{titlepage}
     \maketitle %将title 编译进来
     \centering
     \includegraphics[scale=1.5]{simaqian.png} % 顺便插入图片
 \end{titlepage}
-\end{minted}
+\end{lstlisting}
 
-% *\subsection{如何创建对比和渲染效果的"example" 环境?}
+% todo *\subsection{如何创建对比和渲染效果的"example" 环境?}
 \subsection{如何创建对比和渲染效果的 "example" 环境?}
 
 作为一个教学文章， 那么有例子和渲染对比，可以更加清晰明了的向读者阐明要点， 让读者一目了然的的知道代码和渲染效果对比。这也是我一开始就说这个很有难度的环境的原因之一。
 
-\subsubsection{使用tcolorbox}
-参考文档：
+% \subsubsection{使用tcolorbox}
+% 参考文档：
 
-https://liam.page/2016/07/22/using-the-tcolorbox-package-to-create-a-new-theorem-environment/
+% https://liam.page/2016/07/22/using-the-tcolorbox-package-to-create-a-new-theorem-environment/
 
-https://github.com/CTeX-org/forum/issues/113\#issuecomment-621120169
+% https://github.com/CTeX-org/forum/issues/113\#issuecomment-621120169
 
-https://tex.stackexchange.com/questions/124657/combine-minted-and-tcolorbox
+% https://tex.stackexchange.com/questions/124657/combine-minted-and-tcolorbox
 
 先来看看效果。
 
-\begin{example}
-    \begin{equation}
-        % notag 代码不添加tag
-        E=MC^2\notag
-    \end{equation}
-    \begin{equation}
-        E=MC^2
-    \end{equation}
-\end{example}
+\begin{LTXexample}
+\begin{equation}
+    % notag 代码不添加tag
+    E=MC^2\notag
+\end{equation}
+\begin{equation}
+    E=MC^2
+\end{equation}
+\end{LTXexample}
 
 
 \subsubsection{使用 showexpl}
 
-https://latexstudio.net/index/details/index/mid/1275
-
+如果有命令“和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对LATEX代码和格式化输出进行比较。
+showexpl 是一个用于进行比较的包，它基于包列表， 该列表提供了良好的排版源代码， 强调了关键字等等。
 
 %* \subsection{基础字体样式调节}
 \subsection{基础字体样式调节}
 
 \subsubsection{常用样式}
 
-\begin{example}
-    \emph{Italicized text} 斜体使用\\
-    \textbf{Bold text} 粗体使用\\
-    \underline{Underlined text} 下划线使用\\
-    \textit{Emphasising text} 强调使用\\
-    \textbf{\textit{Combine text} \underline{当然也可以组合起来}}
-\end{example}
+\begin{LTXexample}
+\emph{Italicized text} 斜体使用\\
+\textbf{Bold text} 粗体使用\\
+\underline{Underlined text} 下划线使用\\
+\textit{Emphasising text} 强调使用\\
+\textbf{\textit{Combine text} \underline{当然也可以组合起来}}
+\end{LTXexample}
 
 
 
 \subsubsection{中文的加粗}
 也不知道什么原因,参考，\href{https://www.zhihu.com/question/58456658}{xelatex编译加粗楷体为什么会失败？} 默认情况下，使用 \verb!\textbf{加粗}! 是不会加粗的。处理方法是，在启用 \verb!AutoFakeBold!。
 比如:
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 % 在class 里面启用 AutoFakeBold
 \documentclass[UTF8,AutoFakeBold]{ctexart}
-\end{minted}
+\end{lstlisting}
 
 
 
@@ -1076,12 +1186,13 @@ https://latexstudio.net/index/details/index/mid/1275
     \item \verb!\usepackage{ulem}!;
 
     \item 使用方法和显示效果
-          \begin{example}
-              \sout{删除线}\\   %删除线
-              \uwave{波浪线}\\  %波浪线
-              \xout{斜删除线}\\   %斜删除线
-              \uuline{双下划线}\\ %双下划线
-          \end{example}
+
+          \begin{LTXexample}
+\sout{删除线}\\   %删除线
+\uwave{波浪线}\\  %波浪线
+\xout{斜删除线}\\   %斜删除线
+\uuline{双下划线}\\ %双下划线
+          \end{LTXexample}
 
 \end{enumerate}
 
@@ -1090,16 +1201,15 @@ https://latexstudio.net/index/details/index/mid/1275
 在中文文章中。使用 ctexart 是默认首行缩进的。可以通过 \verb!\noindent ! 取消缩进。
 但是，在英文下，是不会缩进的。就需要使用宏包进行解决。
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+\begin{lstlisting}
 \usepackage{indentfirst}    %引用宏包
 \setlength{\parindent}{2em} %2em代表首行缩进两个字符
-\end{minted}
+\end{lstlisting}
 
 %* \subsection{如何设置参考文档（论文必备）？}
 \subsection{如何设置参考文档（论文必备）？}
 
-用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即说得的理念，让会让放弃探究背后机理和秘密。可以这么说，那时候对 Word 本身也不是很熟悉，而且也没有模板。另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。这也是 word 文档进行排版很烦恼的因素之一。
+用 Word 文档 写论文的时候，最烦的是不是做论文参考啊。哈哈哈。做论文参考就真的好烦，要不停的进行编号，进行调整。如果顺序搞错了，烦恼的不得了，当然，如果你对 Word 文档很熟悉的话，你其实也可以轻易的做到自动编排论文，但是，Word 这种所见即所得的理念，会让写作者放弃探究背后机理和秘密的念头。 可以这么说，那时候作为学生对 Word 本身也不是很熟悉，而且也没有模板。 缺乏对排版系统的研究。 另外就是有模板了，其实我们看不到模板后面的规则，所以也很容易把格式搞错而不自知。 这也是 Word 文档进行排版很烦恼的因素之一。
 
 言归正传，我们在这里说论文参考文档的的事情。其实很简单。我们可以这样理解：
 \begin{enumerate}
@@ -1114,7 +1224,7 @@ https://latexstudio.net/index/details/index/mid/1275
 按照这个步骤，我们可以开始去做，步骤可以参考\cite{latex_start}。
 
 第一步，创建一个 frist.bib 的文件。内容如下：
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 % encoding: UTF8
 
 % editor    = {高洪霞},
@@ -1124,12 +1234,11 @@ https://latexstudio.net/index/details/index/mid/1275
     publisher = {电子工业出版社},
     year      = {2013-6}
 }
-\end{minted}
+\end{lstlisting}
 
 第二步，引用在文档末尾设置引用论文的格式和论文的数据库\footnote{第一步创建的frist.bib的文件}。
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+\begin{lstlisting}
 % 如何隐藏格式 设置
 % plain 格式按照作者 日期 标题排序
 % unset 不排序
@@ -1143,18 +1252,17 @@ https://latexstudio.net/index/details/index/mid/1275
 % 注意是文档末尾
 \end{document}
 
-\end{minted}
+\end{lstlisting}
 
 第三步，在需要与引用参考文章的地方。添加$\backslash cite$\{数据编号\}，
 其中数据名字就是第一步创建的数据库里面的项目名字\textbf{$latex\_start$}。
-% 为什么直接书写bib的名字会报错呢？
 
-\begin{example}
 
-    .......按照这个步骤，我们可以开始去做，步骤可以参考\cite{latex_start}。
-    这本书 讲解的非常详细。值得大学习。
-
-\end{example}
+% todo 为什么直接书写bib的名字会报错呢？
+% \begin{LTXexample}
+% .......按照这个步骤，我们可以开始去做，步骤可以参考\cite\{latex_start\}。
+% 这本书 讲解的非常详细。值得大学习。
+% \end{LTXexample}
 
 第四步，使用\textbf{bibtex}进行编译。\ref{subsec:buildprocess}。
 一般情况下。中文文档需要使用xelate $\rightarrow$ bibtex $\rightarrow$ xelatex $\rightarrow$ xelatex 就可以编译完成。也就是比其他的多了一个xelatex 和 bibtex。
@@ -1184,7 +1292,7 @@ https://latexstudio.net/index/details/index/mid/1275
 目录的内容显示为红色，是因为 hyperref 宏包的 colorlinks 选项。我们以后将默认载入这个宏包，告诉大家这些红色的文字都是可以点击跳转的，这也是我非常喜欢的一个特性。
 
 当然也可以在配置里面进行配置。
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 \hypersetup{
     colorlinks  = true,
     linkcolor   = blue,
@@ -1193,7 +1301,7 @@ https://latexstudio.net/index/details/index/mid/1275
     pdftitle    = {Overleaf Example},
     pdfpagemode = FullScreen,
 }
-\end{minted}
+\end{lstlisting}
 
 \subsubsection{注意事项}
 
@@ -1219,35 +1327,35 @@ https://latexstudio.net/index/details/index/mid/1275
 
 \textbf{Linking web addresses}
 
-\begin{example}
-    For further references see \href{http://www.overleaf.com}{Something Linky}
-    or go to the next url: \url{http://www.overleaf.com}
-\end{example}
+\begin{LTXexample}
+For further references see \href{http://www.overleaf.com}{Something Linky}
+or go to the next url: \url{http://www.overleaf.com}
+\end{LTXexample}
 
 \par
 
 \textbf{Linking local files}
-\begin{example}
-    For further references see \href{http://www.overleaf.com}{Something Linky}
-    or go to the next url: \url{http://www.overleaf.com} or open the next
-    file \href{run:./file.txt}{File.txt}
-\end{example}
+
+\begin{LTXexample}
+For further references see \href{http://www.overleaf.com}{Something Linky}
+or go to the next url: \url{http://www.overleaf.com} or open the next
+file \href{run:./file.txt}{File.txt}
+\end{LTXexample}
 
 \par
 \textbf{Linking context addresses}
 
 这是一个文内的跳转方式。
 
-\begin{example}
+\begin{LTXexample}
+It's also possible to link directly any word
+or \hyperlink{thesentence}{any sentence} in you document.
 
-    It's also possible to link directly any word
-    or \hyperlink{thesentence}{any sentence} in you document.
+If you read this text, you will get no information.  Really?
+Is there no information?
 
-    If you read this text, you will get no information.  Really?
-    Is there no information?
-
-    For instance \hypertarget{thesentence}{this sentence}.
-\end{example}
+For instance \hypertarget{thesentence}{this sentence}.
+\end{LTXexample}
 
 
 \subsection{空格、换行、换段、换页、首行缩进？} % (fold)
@@ -1260,12 +1368,12 @@ https://latexstudio.net/index/details/index/mid/1275
 除外）(hanzi
 chuwai)
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 % 上述最后的原始代码，可以看出对比。
 单个换行相当于一个西文的空格。（汉字
 除外）(hanzi
 chuwai)
-\end{minted}
+\end{lstlisting}
 
 使用 xelatex 编译文档的时候，ctexart 文档类会调用 xeCJK 宏包，自动处理汉字于其他符号之间的距离，无论你有没有在他上面加上正确的空格。这是非常方便的。
 
@@ -1309,31 +1417,28 @@ chuwai)
               \item 使用\verb!$\backslash$!
               \item 使用代码
                     % 代码
-                    \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+                    \begin{lstlisting}
 \usepackage{verbatim}
 \begin{verbatim} % 使用代码的的形式显示
     \
 \end{verbatim}
-                    \end{minted}
+                    \end{lstlisting}
                     % 代码
           \end{enumerate}
 
     \item 标题中(不建议使用这个方法。会搞乱目录和书签)
           \begin{enumerate}
               \item 引用 cprotect 宏
-              \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+              \begin{lstlisting}
 \usepackage{cprotect}
 % 在标题中显示原始字符
-            \end{minted}
+            \end{lstlisting}
 
               \item 在 标题中插入
-                \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
-
+                \begin{lstlisting}
 \cprotect\section{This is a section heading with a verbatim \verb!\frac{1}{2}!}
 % 这是在标题中使用\verb
-                \end{minted}
+                \end{lstlisting}
           \end{enumerate}
 \end{enumerate}
 
@@ -1422,11 +1527,12 @@ chuwai)
 不同的字体不一样。 有些专业的字体会有很多，如 \verb!fb,fh,fj,ffb,ffh,ffj,ffk,ct,st,sp,Th,fi,fl! 等。具体看当时的编排效果。
 
 \subsubsection{省略号}
-\begin{example}
+
+\begin{LTXexample}
 英文文中。使用 i$\ldots$you.
 
 英文句尾，使用 i amd you \ldots.
-\end{example}
+\end{LTXexample}
 
 
 
@@ -1508,11 +1614,11 @@ t彩的世界，需要五彩斑斓的渲染。 box
 注脚\footnote{这是注脚的注脚}是很常用的功能\footnote[1]{这是第二个带号码的注脚}。
 
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 %代码
 注脚\footnote{这是注脚的注脚}是很常用的
 功能\footnote[1]{这是第二个带号码的注脚}。
-\end{minted}
+\end{lstlisting}
 
 \subsubsection{自定义注脚的样式}
 
@@ -1526,53 +1632,69 @@ Todo
 \subsubsection{有序列表}
 
 使用 enumerate 可以 生成有序列表。
-% todo 为什么无法使用自定义编号
 代码：
+\label{expl:enumerate}
+\begin{LTXexample}
+\begin{enumerate}
+    \item 第一个
+    \item 嵌套
+            \begin{enumerate}[label = \chinese*、]
+                \item 中
 
-\begin{example}
-    \begin{enumerate}
-        \item 第一个
-        \item 嵌套
-              \begin{enumerate}
-                  \item 编号i
-                  \item 编号ii
-              \end{enumerate}
-        \item 有序中无序
-              \begin{itemize}
-                  \item 第一个
-                  \item second
-                  \item 第三个
-              \end{itemize}
-        \item ...
-    \end{enumerate}
-\end{example}
+                    \begin{enumerate}
+                        \item 编号i
+                        \item 编号ii
+                    \end{enumerate}
+                \item 文
 
+                    \begin{enumerate}[label = \chinese*.]
+                        \item 编号i
+                        \item 编号ii
+                    \end{enumerate}
+                \item 编
+                \item 号
+            \end{enumerate}
+    \item 有序中无序
+            \begin{itemize}
+                \item 第一个
+                \item second
+                \item 第三个
+            \end{itemize}
+    \item ...
+\end{enumerate}
+\end{LTXexample}
+
+大家看看到没，其实还有中文编码的。 中文下一步还是会切换成英文。
 
 \subsubsection{无序列表}
 
 使用 itemize 可以生成序列表。
 代码：
-\begin{example}
-    \begin{itemize}
-        \item 第一个
-        \item second
-              \begin{itemize}
-                  \item a
-                  \item b
-                  \item c
-              \end{itemize}
-        \item 无序中有序
-              \begin{enumerate}
-                  \item number
-                  \item number
-              \end{enumerate}
-    \end{itemize}
-\end{example}
 
+\begin{LTXexample}
+\begin{itemize}
+    \item 第一个
+    \item second
+            \begin{itemize}
+                \item a
+                \item b
+                \item c
+            \end{itemize}
+    \item 无序中有序
+            \begin{enumerate}
+                \item number
+                \item number
+            \end{enumerate}
+\end{itemize}
+\end{LTXexample}
+
+\subsubsection{如何自定义编号和中文编号?}
+
+这属于高级技巧。 参考章节 \ref{sec:redefine_item}
 
 % *\subsection{如果在表格和图标之间插入章节信息。}
 \label{sec:insert_section_info}
-\subsection{如何在表格和图标之间插入章节信息。}
+\subsection{如何在表格和图标之间插入章节信息？}
 
 可以参考： \href{https://www.cnblogs.com/yifdu25/p/8330911.html}{Latex技巧：在图表序号中加入章节号（实现诸如“图1.1.2”这样的图表序号）} 。
 
@@ -1584,13 +1706,16 @@ Latex在默认情况下，Figure图像的编号是从Figure 1, Figure 2, Figure 
 \begin{enumerate}
     \item 引用宏包 \verb!\usepackage{amsmath}!
     \item 在\ document 之前添加这行代码。
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+          \begin{lstlisting}
 % https://blog.csdn.net/Canhui_WANG/article/details/87364800
 \numberwithin{figure}{section}   %对应图
 \numberwithin{table}{section}    %对应表
-        \end{minted}
+        \end{lstlisting}
 \end{enumerate}
 
+\subsubsection{如何自定义系列数字为中文？}
+
+参考\href{https://yuxtech.club/2021/01/18/enumerate/}{LaTeX中enumerate环境的使用技巧}
 
 \subsubsection{自动插入表图到引用？}
 
@@ -1610,7 +1735,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 
 使用以下的代码。显示效果参考 表\ref{Table.Demo0}
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 \begin{table}[H]
     \centering
     \caption{论文中常用符号释义}
@@ -1632,7 +1757,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
     不同的操作系统和编辑器之间很多是通用的。
 
 \end{table}
-\end{minted}
+\end{lstlisting}
 
 \subsubsection{效果显示}
 
@@ -1701,24 +1826,273 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
 
 
-\subsection{如何插入数学公式}
+\subsection{如何插入数学公式？}
 
 \LaTeX 对数学和科学支持最好的排版系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。
+
+\begin{myquote}
+    需要注意的是： 不想加 tag 可以添加 \verb!\notag! 的标记。当然。任何加 * 的环境是不会添加 tag 的。 这个和\LaTeX 的其他环境一样。
+\end{myquote}
 
 \subsubsection{行内公式}
 
 行内公式叫做 inline formula， 只需要 \$\ \$ 括起来，就是一个公式环境，比如\verb!$a+b$! 会得到 $a+b$，而不是a+b。
 
-\subsubsection{列表公式}
-较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 displayed formula。使用 equation （单行） 和gather\footnote{需要引用amsmath 宏包} （多行） 等环境方便输出。参考 \href{https://matnoble.me/tech/latex/multi-line-equations/}{各种样子的对齐数学公式的编写}。
+\subsubsection{单块列表公式}
+较长的公式或者大块公式，一般单独居中编写，为了方便引用，还要进行编号。我们一般叫 displayed formula。使用 equation （单行） 和gather\footnote{需要引用amsmath 宏包} （多行） 等环境方便输出。
+\begin{enumerate}
+    \item 环境1
 
-\begin{example}
-    \begin{gather}
-        f(x)= \int_a^b x dx    \notag \\ % \notag 代表不编号
-        % 度数竟然没有专门的符号^\circ
-        \angle CAB = 90^\circ =\pi / 2
-    \end{gather}
-\end{example}
+          单块行公式使用\verb!\[  \]! 进行包围。如\[\frac{a}{b}=c/d\] 这是单块行公式。
+    \item 环境2
+
+          可以使用\$\$\quad\$\$ 双美元进行包围。如 $$\frac{a}{b}=c/d$$
+    \item 环境3
+
+          也可以使用equation。 但是他会自动带tag
+          \begin{lstlisting}
+\begin{equation}
+\frac{a}{b}=c/d
+\end{quotation}
+          \end{lstlisting}
+
+          如:
+          \begin{equation}
+              \frac{a}{b}=c/d
+          \end{equation}
+\end{enumerate}
+
+\subsubsection{列表公式}
+
+多行公式是必备的。以下是常用的例子。参考： \href{https://matnoble.me/tech/latex/multi-line-equations/}{公式对齐设置}。
+
+\subsubsection{写不完的多行}
+
+一行写不下的，要写多行的用multiline。
+
+\begin{LTXexample}
+\begin{multline}
+    p = 3x^6 + 14x^5y + 590x^4y^2 + 19x^3y^3\\
+    + \sin{x} + \cos{y} + \tan{a} + e^{x+y} \\
+    - 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3
+\end{multline}
+\end{LTXexample}
+
+\subsubsection{有对齐的的多行}
+
+多行的公式。而不是一行写不下的公式,使用align 环境 以\& 进行对齐。
+
+\begin{LTXexample}
+\begin{align*}
+    X^{ABC}& = \int_a^b x \mathrm{d}x \\
+    1\times 2=2=4/2=8/4 & =16/8
+\end{align*}
+
+\begin{align}
+    a & = b + c\\
+      & = d + e \notag
+\end{align}
+\end{LTXexample}
+
+\begin{align}
+    a & = b + c \label{eq:eq1}
+    \\[3pt]
+      & = d + e  \label{eq:eq2}
+    \\[3pt]
+      & = d + e \notag
+\end{align}
+
+分别交叉引用，依旧是使用label。式 (\ref{eq:eq1}) 和式 (\ref{eq:eq2}) 采用 align 对齐环境。 使用notag取消编号。
+
+\subsubsection{多列对齐 align}
+
+\begin{LTXexample}
+\begin{align*}
+  a &=1 & b &=2 & c &=3 \\
+  d &=-1 & e &=-2 & f &=-5
+\end{align*}
+\end{LTXexample}
+
+
+\subsubsection{不对齐 gather}
+
+\begin{LTXexample}
+  \begin{gather}
+    a = b + c \\
+    d = e + f + g \\
+    h + i = j + k \notag \\
+    l + m = n
+  \end{gather}
+\end{LTXexample}
+
+\subsubsection{统一编号 equation}
+
+使用 aligned / gathered 环境，并且依赖 \verb!\begin{equation} \end{equation}!，\\若不须加编号则使用\verb!\begin{equation*} \end{equation*}!，或者\verb!\[ \]!包裹。
+
+\begin{LTXexample}
+\begin{equation}
+  \begin{aligned}
+      a &= b + c \\
+      d &= e + f + g \\
+      h + i &= j + k \\
+      l + m &= n
+  \end{aligned}
+\end{equation}
+
+\begin{equation*}
+  \begin{aligned}
+      a &= b + c \\
+      d &= e + f + g \\
+      h + i &= j + k \\
+      l + m &= n
+  \end{aligned}
+\end{equation*}
+
+\[
+  \begin{gathered}
+      a = b + c \\
+      d = e + f + g \\
+      h + i = j + k \\
+      l + m = n
+  \end{gathered}
+\]
+\end{LTXexample}
+
+\subsubsection{限定符}
+
+\begin{LTXexample}
+\begin{equation}
+\left\{
+    \begin{gathered}
+        a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+        \\[3pt]
+        a_{21} x_{1} + a_{22} x_{3} + a_{23} x_{3} = b_{2}
+    \end{gathered}
+\right.
+\end{equation}
+
+\begin{equation*}
+    \left\{
+    \begin{aligned}
+        a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+        \\[3pt]
+        a_{22} x_{3} + a_{23} x_{3} = b_{2}
+    \end{aligned}
+    \right.
+\end{equation*}
+\end{LTXexample}
+
+\subsubsection{array 环境}
+
+参考：\href{https://mirror.bjtu.edu.cn/ctan/macros/latex/required/tools/array.pdf}{A new implementation of LaTeX's tabular and array environment}
+
+\begin{LTXexample}
+\[
+  |x| = \left\{
+    \begin{array}{rl}
+      -x & \mbox{if } x < 0,\\
+      0 & \mbox{if } x = 0,\\
+      x & \mbox{if } x > 0.
+    \end{array} \right.
+\]
+\end{LTXexample}
+
+\subsubsection{case 环境}
+
+统一编号：
+
+\begin{LTXexample}
+\begin{equation} |x| =
+\begin{cases}
+    -x & \mbox{if } x < 0,\\
+    0 & \mbox{if } x = 0,\\
+    x & \mbox{if } x > 0.
+\end{cases}
+\end{equation}
+\end{LTXexample}
+
+
+分别编号：
+需要在导言区载入 cases 宏包 usepackage{cases}，并且放在 amsmath 之后
+
+\begin{LTXexample}
+\begin{numcases} {|x| =}
+  -x & \mbox{if } x < 0 \label{eq:eq41},\\
+  0 & \mbox{if } x = 0,\\
+  x & \mbox{if } x > 0.
+\end{numcases}
+
+\begin{subnumcases} {\label{eq:eq42} |x| =}
+    -x & \mbox{if } x < 0,\\
+    0 & \mbox{if } x = 0\label{eq:eq43},\\
+    x & \mbox{if } x > 0.
+\end{subnumcases}
+\end{LTXexample}
+式 (\ref{eq:eq41}) 和 式 (\ref{eq:eq42}) 和 式 (\ref{eq:eq43})
+
+
+\subsubsection{empheq 环境}
+其与之前的都不同，它可以从整个公式(组)四周加载定界符。从左端、从右端，甚至是用一个盒子包住整个公式(组)。
+
+首先在 导言区 载入 usepackage{empheq}。使用它的框架是这样:
+\begin{lstlisting}
+\usepackage{empheq}
+\begin{empheq}[markup instructions]{AMS env name}
+  < content AMS environment >
+\end{empheq}
+\end{lstlisting}
+
+
+\begin{LTXexample}
+\begin{empheq}[left=\empheqlbrace]{align*}
+  E & =mc^2
+  \\[3pt]
+  Y & = \sum_{n=1}^\infty \frac{1}{n^2}
+\end{empheq}
+\end{LTXexample}
+
+
+% 方法一：
+% $$
+% \frac{a}{a} =
+% \begin{cases}
+%     a case\\
+%     b case
+% \end{cases}
+% $$
+
+% $$ f(x)=\left\{
+% \begin{aligned}
+% x & = & \cos(t) \\
+% y & = & \sin(t) \\
+% z & = & \frac xy
+% \end{aligned}
+% \right.
+% $$
+
+% 方法二：
+% $$ F^{HLLC}=\left\{
+% \begin{array}{rcl}
+% F_L       &      & {0      <      S_L}\\
+% F^*_L     &      & {S_L \leq 0 < S_M}\\
+% F^*_R     &      & {S_M \leq 0 < S_R}\\
+% F_R       &      & {S_R \leq 0}
+% \end{array} \right. $$
+
+% 方法三:
+% $$f(x)=
+% \begin{cases}
+% 0& \text{x=0}\\
+% 1& \text{x!=0}
+% \end{cases}$$
+
+\begin{LTXexample}
+\begin{gather}
+    f(x)= \int_a^b x dx    \notag \\ % \notag 代表不编号
+    % 度数竟然没有专门的符号^\circ
+    \angle CAB = 90^\circ =\pi / 2
+\end{gather}
+\end{LTXexample}
 
 
 \subsubsection{常用数学宏 amsmath 推荐}
@@ -1736,7 +2110,7 @@ amsmath 这个宏包的作用如下。
 \end{enumerate}
 
 引用参数：
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 \usepackage[选项]{amsmath}
 % 选项：其中前者是默认的参数
 % centertags 或者 tabtags， split 环境种公式的编号的位置，左首右末
@@ -1745,59 +2119,73 @@ amsmath 这个宏包的作用如下。
 % namelimits 或者 nonameinlimits，积分符号上下限位置
 % reqno 或者leqno。公式编号位置
 % flenq， 行间公式居左对齐，默认是剧中对其。
-\end{minted}
+\end{lstlisting}
 
 参考下面的代码：
-\begin{example}
+编号：
 
-    % \usepackage{amsmath}
-    % \usepackage{amssymb}%花体字符
-    % \begin{document}
-    \begin{gather}%会产生编号
-        a+b=b+a\\
-        ab=ba
-    \end{gather}
+\begin{LTXexample}
+\usepackage{amsmath}
+\usepackage{amssymb}%花体字符
+\begin{document}
+\begin{gather}%会产生编号
+    a+b=b+a\\
+    ab=ba
+\end{gather}
 
-    \begin{gather*}%不会产生编号
-        a \times b=b \times a\\
-        ab=ba
-    \end{gather*}
+\begin{gather*}%不会产生编号
+    a \times b=b \times a\\
+    ab=ba
+\end{gather*}
 
-    \begin{gather}%会编号
-        a+b=b+a \notag \\%\notag阻止编号
-        ab=ba   \notag %\notag阻止编号
-    \end{gather}
+\begin{gather}%会编号
+    a+b=b+a \notag \\%\notag阻止编号
+    ab=ba   \notag %\notag阻止编号
+\end{gather}
+\end{document}
+\end{LTXexample}
 
-    %align和align*环境（用$对齐）
-    \begin{align}
-        x & = t + \cos t + 1 \\
-        y & = 2\sin t
-    \end{align}
+\par
+对齐：
 
-    %split环境（用$对齐）(一个公式分为多行排版)
-    \begin{equation}
-        \begin{split}
-            \cos 2x &= \cos^2 x - \sin^2 x\\
-            &= 2\cos^2 x - 1
-        \end{split}
-    \end{equation}
+\begin{LTXexample}
+%align和align*环境（用$对齐）
+\begin{align}
+    x & = t + \cos t + 1 \\
+    y & = 2\sin t
+\end{align}
+\end{LTXexample}
 
-    %case环境
-    %每行公式使用&分割成两部分
-    %通常表示值和后面的条件
-    \begin{equation}
-        D(x) = \begin{cases}
-            1, & \text{如果} x \in \mathbb{Q}                    \\%mathbb花体字符
-            0, & \text{如果} x \in \mathbb{R}\setminus\mathbb{Q}
-        \end{cases}%\text是为了在数学公式中处理中文
-    \end{equation}
-    % \end{document}
-\end{example}
+\par
+多行对齐：
+
+\begin{LTXexample}
+%split环境（用$对齐）(一个公式分为多行排版)
+\begin{equation}
+    \begin{split}
+        \cos 2x &= \cos^2 x - \sin^2 x\\
+        &= 2\cos^2 x - 1
+    \end{split}
+\end{equation}
+\end{LTXexample}
+\par
+
+\begin{LTXexample}
+%case环境
+%每行公式使用&分割成两部分
+%通常表示值和后面的条件
+\begin{equation}
+D(x) = \begin{cases}
+    1, & \text{如果} x \in \mathbb{Q}                    \\%mathbb花体字符
+    0, & \text{如果} x \in \mathbb{R}\setminus\mathbb{Q}
+\end{cases}%\text是为了在数学公式中处理中文
+\end{equation}
+\end{LTXexample}
 
 
 
 % * \subsection{如何在 \LaTeX 中插入代码} % (fold)
-\subsection{如何在 \LaTeX 中插入代码} % (fold)
+\subsection{如何插入代码？} % (fold)
 
 
 就像markdown一样，
@@ -1823,14 +2211,13 @@ code
 \begin{enumerate}
     \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
     \item 使用 verbatim
-        \begin{example}
 
+        \begin{LTXexample}
 \begin{verbatim}
 %this is code
 %very simple code
 \end{verbatim}
-
-        \end{example}
+        \end{LTXexample}
 
 \end{enumerate}
 
@@ -1843,7 +2230,7 @@ code
 \begin{enumerate}
     \item usepackage Listings： \verb!\usepackage{listingsutf8}!
     \item 设置代码的格式
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+          \begin{lstlisting}
 %********************代码设置******************************************
 % 用来设置附录中代码的样式
 
@@ -1851,86 +2238,172 @@ code
 \usepackage{xcolor}
 
 % step 2： 设置宏的参数
+
 \lstset{
-    backgroundcolor     =   \color[RGB]{250,240,235},    %代码款的背景颜色
-    basicstyle          =   \zihao{5}\ttfamily,                % sf/tt基本代码风格
-    keywordstyle        =   \bfseries,                % 关键字风格
-    commentstyle        =   \rmfamily\itshape,        % 注释的风格，斜体
-    stringstyle         =   \ttfamily,                % 字符串风格
-    flexiblecolumns,                                  % 别问为什么，加上这个
-    numbers             =   left,                     % 行号的位置在左边
-    showspaces          =   false,                    % 是否显示空格，显示了有点乱，所以不现实了
-    numberstyle         =   \zihao{-5}\ttfamily,      % 行号的样式，小五号，tt等宽字体
-    showstringspaces    =   false,
-    captionpos          =   t,                        % 这段代码的名字所呈现的位置，t指的是top上面
-    frame               =  lrtb,% lrtb,                     % 显示边框
-    breaklines          =  true,
+    backgroundcolor = \color[RGB]{240,240,240},
+    breaklines      = true,                % 自动换行
+    numbers         = left,                % 行号的位置在左边
+    basicstyle      = \zihao{-5}\ttfamily, % sf/tt基本代码风格
+    frame           = LtBr,                   % 边框。lrbt，大写的则是双边框
+    framesep        = 1pt,                 % 代码和边框之间的margin
+    rulesep         = 6pt, %双框距离
 }
-    \end{minted}
+    \end{lstlisting}
 
-    \item \label{Code.Insert_pic} 在指定的位置插入例子，可以看到有行号，有方框，有背景颜色。
-          \begin{example}
-\begin{lstlisting}[language=c]
-void mian(int argl,string[] args){
-    for(int i = 0;i<argl;)
-        cout<<args[i]<<cendl;// 输出
-}
-\end{lstlisting}
-          \end{example}
+    \item \label{lst:tcbdemo} 在指定的位置插入例子
 
-\end{enumerate}
-
-\subsubsection{终极代码显示和高亮}
-参考此文档： \href{https://blog.csdn.net/u014454538/article/details/104283898}{vscode配置latex的代码高亮（minted）} 。
-
-参考Overleaf的教学： \href{https://www.overleaf.com/learn/latex/Code\_Highlighting\_with\_minted}{Overleaf 使用minted 高亮代码}
-
-
-
-\begin{enumerate}
-    \item 引用 minted 包。\verb!\usepackage{minted}!。
-    \item 在xelatex 里面添加 \verb!--shell-escape! 参数。
-
-          如何添加编译参数呢？大家还记得之前设置的Tool \ref{subsec:recipe} 吗？也就是在工具链里面，添加参数。
-
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{json}
-
-"latex-workshop.latex.tools": [
-    {
-        "name": "xelatex",
-        "command": "xelatex",
-        "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            //0$需要添加的参数$
-            "-shell-escape",
-            "%DOC%"
-        ],
-        "env": {}
-    },
-    .
-    ..
-]
-\end{minted}
-
-
-
-    \item 显示效果。
-          \begin{example}
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{c++}
+\begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+\begin{lstlisting}[language=C,frame=single]
 int main() {
     printf("hello, world");
     return 0;
 }
-\end{minted}
-          \end{example}
+\end{lstlisting}
+\end{tcblisting}
+
+    \item  可以看到有行号，有方框，有背景颜色。
+    \begin{lstlisting}[language=C,frame=single]
+int main() {
+    printf("hello, world");
+    return 0;
+}
+    \end{lstlisting}
 
 \end{enumerate}
 
 
+
+\subsubsection{解决listing 嵌套的问题}
+
+参考：\href{https://yuxtech.club/2019/07/30/listings/}{解决listing 嵌套的问题}
+
+\paragraph{实现原理}
+
+如果使用两个lstlisting环境嵌套，会使得第一个\verb!\begin{lstlisting}!匹配到第一个\verb!\end{lstlisting}!而使得第二个报错。比较不错的解决方法就是把外层的摘录环境换成verbatim。
+
+\sout{不过由于个人比较喜欢listings包的风格，所以}这里采用tcolorbox包的listings库提供的tcblisting环境。tcblisting环境其实就是调用的listings包，它一方面接受listings包的设置，另一方面还接受tcolorbox包的设置，简直一举两得。默认情况下，摘录的同时还执行摘录的代码，所以这里添加了listing only选项，仅仅作摘录使用。 \footnote{https://yuxtech.club/2019/07/30/listings/}
+
+\paragraph{实现步骤}
+
+\subparagraph{宏包引用}tcolorbox
+
+\begin{lstlisting}
+    \usepackage[listings]{tcolorbox}
+    % 或者 \tcbuselibrary{listings}
+\end{lstlisting}
+
+
+\subparagraph{使用 tcblisting 包围}代码:
+
+\begin{verbatim}
+\begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+    \begin{lstlisting}[language=Fortran,frame=single]
+int main() {
+    printf("hello, world");
+    return 0;
+}
+    \end{lstlisting}
+\end{tcblisting}
+\end{verbatim}
+
+显示效果参考\ref{lst:tcbdemo}
+
+
+% *************DEMO *********
+% \documentclass{ctexart}
+% \usepackage{tcolorbox}
+% \tcbuselibrary{listings}
+% \lstdefinestyle{mystyle}{
+%   basicstyle=%
+%     \ttfamily
+%     \lst@ifdisplaystyle\small\fi
+% }
+
+% \lstset{basicstyle=\ttfamily,style=mystyle}
+
+% \definecolor{structurecolor}{RGB}{0,120,2}%
+% \definecolor{winered}{rgb}{0.5,0,0}
+% \definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+% \definecolor{frenchplum}{RGB}{190,20,83}
+% \lstset{language=[LaTeX]TeX,
+% 	texcsstyle=*\color{winered},
+% 	numbers=none,
+% 	breaklines=true,
+% 	keywordstyle=\color{winered},
+% 	commentstyle=\color{gray},
+% 	emph={main,none,fontenc,fontspec,xeCJK,FiraMono,xunicode,newtxmath,figure,fig,image,img,table,itemize,enumerate,newtxtext,newtxtt,ctex,microtype,description,times,newtx,booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,color,mode,lang,amsthm,tcolorbox,titlestyle,cite,marginnote,ctex,listings},
+% 	emphstyle={\color{frenchplum}},
+% 	morekeywords={main,DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont ,setCJKmainfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,hypersetup,mainmatter,tableofcontents,elegantpar,numbers,authoryear,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote},
+% 	frame=single,
+% 	tabsize=2,
+% 	rulecolor=\color{structurecolor},
+% 	framerule=0pt,
+% 	columns=flexible,
+% 	% backgroundcolor=\color{lightgrey}
+% }
+% \begin{document}
+% \begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+% \begin{lstlisting}[language=Fortran,frame=single]
+% program main
+% implicit none
+% real(kind=8):: em,rmax,rkmax
+% end
+% \end{lstlisting}
+% \end{tcblisting}
+% \end{document}
+
+
+% * deprecated
+% \subsubsection{终极代码显示和高亮}
+% 参考此文档： \href{https://blog.csdn.net/u014454538/article/details/104283898}{vscode配置latex的代码高亮（minted）} 。
+
+% 参考Overleaf的教学： \href{https://www.overleaf.com/learn/latex/Code\_Highlighting\_with\_minted}{Overleaf 使用minted 高亮代码}
+
+
+
+% \begin{enumerate}
+%     \item 引用 minted 包。\verb!\usepackage{minted}!。
+%     \item 在xelatex 里面添加 \verb!--shell-escape! 参数。
+
+%           如何添加编译参数呢？大家还记得之前设置的Tool \ref{subsec:recipe} 吗？也就是在工具链里面，添加参数。
+
+%           \begin{lstlisting}
+% "latex-workshop.latex.tools": [
+%     {
+%         "name": "xelatex",
+%         "command": "xelatex",
+%         "args": [
+%             "-synctex=1",
+%             "-interaction=nonstopmode",
+%             "-file-line-error",
+%             //0$需要添加的参数$
+%             "-shell-escape",
+%             "%DOC%"
+%         ],
+%         "env": {}
+%     },
+%     .
+%     ..
+% ]
+%         \end{lstlisting}
+
+
+
+%     \item 显示效果。
+% \begin{LTXexample}
+% \begin{lstlisting}[language=c]
+% int main() {
+%     printf("hello, world");
+%     return 0;
+% }
+% \end{lstlisting}
+% \end{LTXexample}
+
+% \end{enumerate}
+
+
 %* \subsection{如何在\LaTeX 中插入图片？}
-\subsection{如何在\LaTeX 中插入图片？}
+\subsection{如何在中插入图片？}
 
 \subsubsection{行内图片}
 
@@ -1941,11 +2414,11 @@ int main() {
 
 上面的代码：
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 行内插入图片会和文字混
 \includegraphics[width=5cm]{images/pic_inline.png}
 合在一起。
-\end{minted}
+\end{lstlisting}
 
 \subsubsection{图片环境}
 插入图片是比较麻烦的时候。不像Word文档那样所见所得。
@@ -1955,25 +2428,34 @@ int main() {
 \begin{enumerate}
     \item 插入代码，参考代码
 
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+          \begin{lstlisting}
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
     \centering %图片居中
-    \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    \setlength{\fboxrule}{0.1pt}
+    \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    }
     \caption{插入图片的demo} %最终文档中希望显示的图片标题
     \label{Fig.insert-one-png} %用于文内引用的标签
 \end{figure}
-    \end{minted}
+    \end{lstlisting}
 
     \item 最终效果，图\ref{Fig.insert-one-png}
-          \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-              \centering %图片居中
-              \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
-              \caption{插入图片的demo} %最终文档中希望显示的图片标题
-              \label{Fig.insert-one-png} %用于文内引用的标签
-          \end{figure}
-
+\begin{center}
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    \setlength{\fboxrule}{1pt}
+    \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    }
+    \caption{插入图片的demo} %最终文档中希望显示的图片标题
+    \label{Fig.insert-one-png} %用于文内引用的标签
+\end{figure}
+\end{center}
     \item 双排设置
-          \begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+          \begin{lstlisting}
 Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel demand of driving auto, and fig. \ref{Fig.sub.2} is the travel demand of park-and-ride.
 
 \begin{figure}[H]
@@ -1992,17 +2474,22 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
 \label{Fig.main}
 \end{figure}
-    \end{minted}
+    \end{lstlisting}
 
     \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
-          \begin{figure}[H]
-              \centering
-              %插入图片，[]中设置图片大小，{}中是图片文件名
-              \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
-              \caption{并排插入两个图片的效果}
-              \label{Fig.Insert_two_pic_demo}
-          \end{figure}
-
+\begin{center}
+\begin{figure}[H]
+    \centering
+    \setlength{\fboxrule}{0.1pt}
+    \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        %插入图片，[]中设置图片大小，{}中是图片文件名
+        \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
+    }
+    \caption{并排插入两个图片的效果}
+    \label{Fig.Insert_two_pic_demo}
+\end{figure}
+\end{center}
     \item 引用图片
 
           在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
@@ -2016,7 +2503,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
 
 
-\subsection{如何设置边距}
+\subsection{如何设置边距？}
 \subsubsection{操作步骤}
 \begin{enumerate}
     \item 引用geo 设置宏包
@@ -2031,7 +2518,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
                     \verb!\geometry{a4paper,scale=0.8}!
               \item 设置为绝对距离
 
-                    \verb!\geometry\{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm\}!
+                    \verb!\geometry{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm}!
           \end{enumerate}
     \item 效果不错
 
@@ -2087,7 +2574,7 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 当我们引用一个宏的时候，我们如何知道怎么配置这个宏呢？
 比如我们引用 hyperref 宏的时候。我是如何知道我可以配置一下的这些东西呢？
 
-\begin{minted}[frame=lines, bgcolor=codebg, linenos]{latex}
+\begin{lstlisting}
 \hypersetup{
     colorlinks  = true,
     linkcolor   = blue,
@@ -2096,16 +2583,48 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
     % pdftitle    = {Overleaf Example},
     % pdfpagemode = FullScreen,
 }
-\end{minted}
+\end{lstlisting}
+
+
+\subsection{双栏模板下插入通栏公式和图片等}
+
+参考： \href{https://yuxtech.club/2019/10/06/tonglan/}{双栏模板下插入通栏公式和图片}
 
 
 
 
+\subsection{如何添加自定义类型目录?}
+\label{subsec:insert_toc_of_define}
+
+参考： \href{https://yuxtech.club/2019/09/09/table/}{双栏模板下插入通栏公式和图片}
+
+在\LaTeX{}中，有三个命令\verb!\tableofcontents，\listoftables，\listoffigures!， 别用来生成章节目录，表格目录和插图目录。但有时候我们需要生成其他目录，比如书籍中的例题目录，这个时候我们可以利用tocloft包自定义一个例题目录。tocloft包提供了\verb!\newlistof! 命令，其格式如下：
+%todo 如何添加自定义类型目录
+\begin{lstlisting}
+    \newlistof[已有计数器count1]{计数器count2}{扩展名}{目录名称}
+\end{lstlisting}
 
 
+\subsection{如何自定义系列标头？}
+\label{sec:redefine_item}
 
+编号是需要计数器的，在标准的计数器中，只有\verb!\roman、\Roman、\arabic、\alph、\Alph!以及\verb!\fnsymbol!，其输出格式分别为i,ii、I,II、1,2、a,b、A,B、花体符号，现在如果需要输出一、二这种类型的编号，可以使用enumitem包提供的\verb!\AddEnumerateCounter!命令，同时利用ctex包提供的\verb!\chinese! 命令即可，一个minimal working example如下\footnote{https://yuxtech.club/2021/01/18/enumerate/}：
+\begin{LTXexample}
+\documentclass{ctexart}
+\usepackage[showframe]{geometry}
+\usepackage{enumitem}
+\AddEnumerateCounter{\chinese}{\chinese}{}
 
+\begin{document}
+\begin{enumerate}[label = \chinese*、]
+  \item 第一行
+  \item 第二行
+\end{enumerate}
+\end{document}
+\end{LTXexample}
+中文嵌套效果，可以看\ref{expl:enumerate}。
 
+\newpage
 
 % 如何隐藏格式 设置
 % plain 格式按照作者 日期 标题排序
