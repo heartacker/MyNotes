@@ -61,7 +61,7 @@
 \AddEnumerateCounter{\chinese}{\chinese}{}
 
 % 定义一个颜色
-\definecolor{codebg}{RGB}{240,240,240}
+\definecolor{codebg}{RGB}{250,250,250}
 
 %**********************边距设置****************************************
 
@@ -73,11 +73,11 @@
 
 
 \lstset{
-    backgroundcolor = \color[RGB]{240,240,240},
+    backgroundcolor = \color{codebg},
     breaklines      = true,                % 自动换行
     numbers         = left,                % 行号的位置在左边
     basicstyle      = \zihao{-5}\ttfamily, % rm/sf/tt基本代码风格
-    frame           = LtBr,                % 边框。lrbt，大写的则是双边框
+    frame           = lTbR,                % 边框。lrbt，大写的则是双边框
     framesep        = 1pt,                 % 代码和边框之间的margin
     rulesep         = 6pt, %双框距离
     % todo 解决边框问题
@@ -1199,7 +1199,7 @@ start  " " /max "./%FileName%.pdf"
 \end{LTXexample}
 
 
-\paragraph{使用 showexpl}
+\subsubsection{使用 showexpl}
 \begin{myquote}
     通过上面的例子，我们可以看到代码和渲染的效果。如果有“命令和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对\LaTeX{}代码和格式化输出进行比较。
 \end{myquote}
@@ -1230,6 +1230,13 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \]
 \end{LTXexample}
 
+
+\subsubsection{showexpl 渲染图位置设置}
+
+想要设置渲染图和代码之间关系可以通过\texttt{pos}进行配置。具体可以参考 showexpl的文档。命令行敲打 \fbox{texdoc showexpl} 打开showexpl的文档。
+
+pos 是可选参数。参数为lrtb，分别代表 l左边， r右边， t顶部和 b底部。 LRTB 大写则为双边框。大家还记得吗？可选参数是如何配置的？可选参数是[] 方括号，即[pos=r/l/t/b]。
+
 %* \subsection{基础字体样式调节}
 \subsection{基础字体样式调节}
 
@@ -1250,7 +1257,7 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 
 \subsubsection{常用样式}
 
-\begin{LTXexample}
+\begin{LTXexample}[pos=b, frame=single, framesep=0pt, numbers=none,vsep=0pt]
 \textup{up shape} 直立（roman shape）使用（upshape）\\
 \textsl{Italicized shape} 斜体使用（slshape）\\
 \textit{Italic shape}  意大利体  （itshape） \\
@@ -1324,7 +1331,7 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \end{table}
 
 % ! 这里为什么用[] 进行设置参数而不是{}，那是因为[]  是可选参数。
-\begin{LTXexample}[pos=r]
+\begin{LTXexample}
 This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
 \end{LTXexample}
 
@@ -2172,7 +2179,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 
 分别编号：
-需要在导言区载入 cases 宏包 usepackage{cases}，并且放在 amsmath 之后
+需要在导言区载入 cases 宏包 usepackage{cases}，并且放在 amsmath 之后。
 
 \begin{LTXexample}
 \begin{numcases} {|x| =}
@@ -2422,7 +2429,7 @@ int main() {
 \end{lstlisting}
 \end{tcblisting}
 
-    \item  可以看到有行号，有方框，有背景颜色。
+    \item  可以看到有行号，有方框，有背景颜色。(\textbf{看到下面的框框是单框是因为设置了\textnormal{frame=single}})
 
     \begin{lstlisting}[language=C,frame=single]
 int main() {
