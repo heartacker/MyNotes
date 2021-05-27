@@ -277,6 +277,7 @@
 
 \begin{table}[htbp]
     \centering
+    \label{tab:typeoflatex}
     \begin{tabular}{|c|c|c|c|c|}
         \hline
         层次深度 & 层次名        & book                      & report                    & article                   \\
@@ -291,7 +292,6 @@
         \hline
     \end{tabular}
     \caption{不同标准文类的章节命令与层次深度}
-    \label{tab:typeoflatex}
 \end{table}
 
 
@@ -303,6 +303,7 @@
 \end{lstlisting}
 \begin{center}
 \begin{figure}[H]
+    \label{Fig:article_render}
     \centering
     \setlength{\fboxrule}{0.1pt}
     \setlength{\fboxsep}{0cm}
@@ -310,7 +311,6 @@
         \includegraphics[scale=0.7]{images/article_render.png}
     }
     \caption{article 渲染效果}
-    \label{Fig:article_render}
 \end{figure}
 \end{center}
 
@@ -324,6 +324,7 @@
 
 \begin{center}
 \begin{figure}[H]
+    \label{Fig:ctexart_render}
     \centering
     \setlength{\fboxrule}{0.1pt}
     \setlength{\fboxsep}{0cm}
@@ -331,7 +332,6 @@
         \includegraphics[scale=0.7]{images/ctexart_render.png}
     }
     \caption{ctexart 渲染效果}
-    \label{Fig:ctexart_render}
 \end{figure}
 \end{center}
 
@@ -523,6 +523,7 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
 
 \begin{figure}[htbp]
     \centering
+    \label{Fig:install_tex_live_tip}
     \subfigure[本地离线安装]
     {
         \label{Fig:sub:install_tex_live_tip}
@@ -534,7 +535,6 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
         \includegraphics[scale=0.5]{images/notice_not_install_texworks.eps}
     }
     \caption{安装勾选示意图}
-    \label{Fig:install_tex_live_tip}
 \end{figure}
 
 软件配置教程: \href{https://zhuanlan.zhihu.com/p/38178015}{使用VSCode编写LaTeX}
@@ -1024,6 +1024,7 @@ start  " " /max "./%FileName%.pdf"
 对于命令里面的参数，可以查看下表\ref{tab.latex_args}:
 
 \begin{table}[htbp]
+    \label{tab.latex_args}
     \centering
     \begin{tabular}{|c|l|}
         \hline
@@ -1037,7 +1038,6 @@ start  " " /max "./%FileName%.pdf"
         \hline
     \end{tabular}
     \caption{\LaTeX\space Workshop tool 参数占位符}
-    \label{tab.latex_args}
 \end{table}
 
 
@@ -1051,10 +1051,10 @@ start  " " /max "./%FileName%.pdf"
 只要打开 \TeX 源代码，就可以在左边看到相关的 Build 的 操作。
 
 \begin{figure}[H]
+    \label{Fig:VScode_with_latex_demo}
     \centering
     \includegraphics[scale=0.6]{images/latex-workshop-demo-build.png}
     \caption{VSCode Latex WorkShop Demo}
-    \label{Fig:VScode_with_latex_demo}
 \end{figure}
 
 可以看到，这里支持多种 build 的形式。
@@ -1106,6 +1106,47 @@ start  " " /max "./%FileName%.pdf"
 
 
 除了表格。图片之外， 如何制作目录， 请参考\ref{subsec:insert_toc_of_define}。
+
+
+% * \subsection{如何使引用可以跳转？}
+\subsection{如何添加标签使引用可以跳转？}
+\label{sec:hyperreflink}
+
+\subsubsection{操作}
+
+一般情况下，我们希望目录是可以跳转的，图片的引用是可以鼠标点击跳转的。为了实现这个功能。我们可以使用$hyperref$。
+操作方式：
+
+1. 显示红框，可以点击：\verb!\usepackage{hyperref}!
+
+2. 显示红色，可以点击：\verb!\usepackage[colorlinks=true]{hyperref}!
+
+目录的内容显示为红色，是因为 hyperref 宏包的 colorlinks 选项。我们以后将默认载入这个宏包，告诉大家这些红色的文字都是可以点击跳转的，这也是我非常喜欢的一个特性。
+
+当然也可以在配置里面进行配置。
+\begin{lstlisting}
+\hypersetup{
+    colorlinks  = true,
+    linkcolor   = blue,
+    filecolor   = magenta,
+    urlcolor    = cyan,
+    pdftitle    = {Overleaf Example},
+    pdfpagemode = FullScreen,
+}
+\end{lstlisting}
+
+\subsubsection{注意事项}
+0. label 标签建议添加到换进的开始。否则点击的时候，跳转到标签出而使内容被挡住了。
+
+1. 图、表建议添加"\verb!\label{标签}!"
+
+2. 在需要添加引用的地方，输入"$\backslash$ref\{标签\}"
+
+3. 之后就可以看到红色的引用标签了。
+
+4. 如,$\backslash$ref\{sec:hyperreflink\}：\ref{sec:hyperreflink}
+
+5. 如果只想引用不想点击，可以$\backslash$ref*\{sec:hyperreflink\}：\ref*{sec:hyperreflink}
 
 
 \subsection{如何让标题单独一个封面？}
@@ -1185,6 +1226,7 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 西文中。预定义的字体族有3种： 罗马字体族（roman family，rmfamily）， 无衬字体族（sans serif，sf\/family），打字机字体族（typewriter family，ttfamily）。
 
 \begin{table}[H]
+    \label{tab:font_sender}
     \centering
     \begin{tabular}{l|l|l|l}
         字体族 & 带参数命令             & 声明命令               & 效果               \\
@@ -1194,7 +1236,6 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
         打字机 & \verb!\texttt{打字机}! & \verb!\ttfamily! & \texttt{typewrite 打字机}
     \end{tabular}
     \caption{基本字体的渲染}
-    \label{tab:font_sender}
 \end{table}
 
 \subsubsection{常用样式}
@@ -1252,6 +1293,7 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 
 \begin{table}[H]
     \centering
+    \label{tab:font_size_latin}
         \begin{tabular}{cc}
 \hline
 命令                  &  意义                      \\
@@ -1268,17 +1310,19 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \verb!\Huge!         & \Huge{Huge}                \\
 \hline
         \end{tabular}
-    \caption{西文字体大小的命令}
-    \label{tab:font_size_latin}
+        \caption{西文字体大小的命令}
 \end{table}
 
-\begin{LTXexample}
+% ! 这里为什么用[] 进行设置参数而不是{}，那是因为[]  是可选参数。
+\begin{LTXexample}[pos=r]
 This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
 \end{LTXexample}
 
+
 \paragraph{中文中}
 可以使用中文的字号进行设置。
-\begin{table}[H]]
+\begin{table}[H]
+    \label{tab:font_size_cjk}
     \centering
         \begin{tabular}{lcl}
 \hline
@@ -1303,7 +1347,6 @@ This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
 \hline
         \end{tabular}
     \caption{中文字号}
-    \label{tab:font_size_cjk}
 \end{table}
 
 \begin{LTXexample}
@@ -1413,48 +1456,6 @@ Tip:
 
 页眉页脚也是论文编写操作比较多的一点。
 %todo 页眉页脚 fancyhdr
-
-
-% * \subsection{如何使引用可以跳转？}
-\subsection{如何使引用可以跳转？}
-\label{sec:hyperreflink}
-
-\subsubsection{操作}
-
-一般情况下，我们希望目录是可以跳转的，图片的引用是可以鼠标点击跳转的。为了实现这个功能。我们可以使用$hyperref$。
-操作方式：
-
-1. 显示红框，可以点击：\verb!\usepackage{hyperref}!
-
-2. 显示红色，可以点击：\verb!\usepackage[colorlinks=true]{hyperref}!
-
-目录的内容显示为红色，是因为 hyperref 宏包的 colorlinks 选项。我们以后将默认载入这个宏包，告诉大家这些红色的文字都是可以点击跳转的，这也是我非常喜欢的一个特性。
-
-当然也可以在配置里面进行配置。
-\begin{lstlisting}
-\hypersetup{
-    colorlinks  = true,
-    linkcolor   = blue,
-    filecolor   = magenta,
-    urlcolor    = cyan,
-    pdftitle    = {Overleaf Example},
-    pdfpagemode = FullScreen,
-}
-\end{lstlisting}
-
-\subsubsection{注意事项}
-
-1. 图、表建议添加"\verb!\label{标签}!"
-
-2. 在需要添加引用的地方，输入"$\backslash$ref\{标签\}"
-
-3. 之后就可以看到红色的引用标签了。
-
-4. 如,$\backslash$ref\{sec:hyperreflink\}：\ref{sec:hyperreflink}
-
-5. 如果只想引用不想点击，可以$\backslash$ref*\{sec:hyperreflink\}：\ref*{sec:hyperreflink}
-
-
 
 
 \subsection{如何插入超链接？}
@@ -1700,7 +1701,9 @@ chuwai)
 
 
 \begin{table}[htbp]
-    \centering\begin{tabular}{|c|c|c|c|}
+    \centering
+    \label{tab.space_size}
+    \begin{tabular}{|c|c|c|c|}
         \hline
         描述     & 符号                    & 渲染效果   & 宽度         \\\hline
         quad空格 & \verb!a \qquad b! & a \qquad b & 两个m的宽度  \\
@@ -1713,7 +1716,6 @@ chuwai)
         \hline
     \end{tabular}
     \caption{空格大小的调整参考表}
-    \label{tab.space_size}
 \end{table}
 
 
@@ -1877,34 +1879,6 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \begin{lstlisting}
 \begin{table}[H]
     \centering
-
-    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
-        \hline
-        操作系统   & 发行版   & 编辑器    \\
-        \hline
-        Windows    & MikTeX   & TexMakerX \\
-        % \hline
-        Unix/Linux & teTeX    & Kile      \\
-        % \hline
-        Mac OS     & MacTeX   & TeXShop   \\
-        % \hline
-        通用       & TeX Live & TeXworks  \\
-        \hline
-    \end{tabular}
-    \caption{论文中常用符号释义}
-    \label{Table.Demo0}
-    \qquad
-    不同的操作系统和编辑器之间很多是通用的。
-
-\end{table}
-\end{lstlisting}
-
-\subsubsection{效果显示}
-
-显示效果:
-\begin{table}[H]
-    \centering
-    \caption{表格demo}
     \label{Table.Demo0}
     \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
         \hline
@@ -1922,7 +1896,33 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
     \qquad
     不同的操作系统和编辑器之间很多是通用的。
     推荐使用 TeX Live.
+    \caption{论文中常用符号释义}
+\end{table}
+\end{lstlisting}
 
+\subsubsection{效果显示}
+
+显示效果:
+\begin{table}[H]
+    \centering
+    \label{Table.Demo0}
+    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
+        \hline
+        操作系统   & 发行版   & 编辑器    \\
+        \hline
+        Windows    & MikTeX   & TexMakerX \\
+        % \hline
+        Unix/Linux & teTeX    & Kile      \\
+        % \hline
+        Mac OS     & MacTeX   & TeXShop   \\
+        % \hline
+        通用       & TeX Live & TeXworks  \\
+        \hline
+    \end{tabular}
+    \qquad
+    不同的操作系统和编辑器之间很多是通用的。
+    推荐使用 TeX Live.
+    \caption{论文中常用符号释义}
 \end{table}
 
 效果显示完毕。
@@ -1960,9 +1960,9 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \subsubsection{居中}
 有时候，用 \verb!\begin{center}-\end{center}! 来将 table 整体居中，
-但它的居中只是 居中了 \verb!\begin{table}-\end{table}! 这个环境 （把table想象成为盒子，相当于居中盒子，但不是将盒子里面的内容居中）；
+但它的居中只是居中了\linebreak \verb!\begin{table}-\end{table}! 这个环境 （把table想象成为盒子，相当于居中盒子，但不是将盒子里面的内容居中）；
 
-如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}-\end{tabular}! ，
+如果\verb!\begin{table}-\end{table}! 里面嵌套了\linebreak  \verb!\begin{tabular}-\end{tabular}! ，
 那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
 
 
@@ -2578,6 +2578,7 @@ int main() {
 
           \begin{lstlisting}
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \label{Fig.insert-one-png} %用于文内引用的标签
     \centering %图片居中
     \setlength{\fboxrule}{0.1pt}
     \setlength{\fboxsep}{0.5cm}
@@ -2585,13 +2586,13 @@ int main() {
         \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
     }
     \caption{插入图片的demo} %最终文档中希望显示的图片标题
-    \label{Fig.insert-one-png} %用于文内引用的标签
 \end{figure}
     \end{lstlisting}
 
     \item 最终效果，图\ref{Fig.insert-one-png}
 \begin{center}
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \label{Fig.insert-one-png} %用于文内引用的标签
     \centering %图片居中
     \setlength{\fboxrule}{1pt}
     \setlength{\fboxsep}{0.5cm}
@@ -2599,7 +2600,6 @@ int main() {
         \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
     }
     \caption{插入图片的demo} %最终文档中希望显示的图片标题
-    \label{Fig.insert-one-png} %用于文内引用的标签
 \end{figure}
 \end{center}
     \item 双排设置
@@ -2608,6 +2608,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
 \begin{figure}[H]
 \centering  %图片全局居中
+\label{Fig.main}
 \subfigure[name1]
 {
     \label{Fig.sub.1}
@@ -2619,14 +2620,13 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \includegraphics[width=0.45\textwidth]{P+R_demand}
 }
 \caption{Main name}
-
-\label{Fig.main}
 \end{figure}
     \end{lstlisting}
 
     \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
 \begin{center}
 \begin{figure}[H]
+    \label{Fig.Insert_two_pic_demo}
     \centering
     \setlength{\fboxrule}{0.1pt}
     \setlength{\fboxsep}{0.5cm}
@@ -2635,7 +2635,6 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
         \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
     }
     \caption{并排插入两个图片的效果}
-    \label{Fig.Insert_two_pic_demo}
 \end{figure}
 \end{center}
     \item 引用图片
@@ -2676,11 +2675,11 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 \subsubsection{页面边距设置概念}
 
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \label{Fig.page_border} %用于文内引用的标签
     \centering %图片居中
     %插入图片，[]中设置图片大小，{}中是图片文件名
     \includegraphics[scale=0.75]{images/geometry.png}
     \caption{页边距概念} %最终文档中希望显示的图片标题
-    \label{Fig.page_border} %用于文内引用的标签
 \end{figure}
 
 
