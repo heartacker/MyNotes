@@ -208,7 +208,8 @@
 			"yzhang.markdown-all-in-one",
 			"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
 			"cweijan.vscode-office",
-			"yutengjing.open-in-external-app"
+			"yutengjing.open-in-external-app",
+			"lw-lonely.latex-table-helper"
 		]
 	}
 }
