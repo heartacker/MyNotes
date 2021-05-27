@@ -1198,7 +1198,7 @@ start  " " /max "./%FileName%.pdf"
 \begin{myquote}
     通过上面的例子，我们可以看到代码和渲染的效果。如果有“命令和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对\LaTeX{}代码和格式化输出进行比较。
 \end{myquote}
-    
+
 showexpl 是一个用于进行比较的包，它基于包列表， 该列表提供了良好的排版源代码， 强调了关键字等等。
 
 使用 \textbf{showexpl} 首先需要先引用这个宏。之后，在需要演示的地方。并且使用 \textbf{LTXexample} 包围。
@@ -1361,7 +1361,7 @@ This is {\zihao{6} 六号 small} and {\zihao{0} 初号  Large}!
 \begin{myquote}
 Tip:
 
-从两个渲染图看。我们可以看到西文的大小和中文的字号是可以\textbf{同时} 作用中文和西文的。    
+从两个渲染图看。我们可以看到西文的大小和中文的字号是可以\textbf{同时} 作用中文和西文的。
 \end{myquote}
 
 
@@ -1511,7 +1511,7 @@ For instance \hypertarget{thesentence}{this sentence}.
 
 所以，“左\ 右 ” 会被渲染为“左 右”，“zuo you” 则依旧正常显示“zuo you” 。同时，单个换行相当于一个西文的空格。（汉字
 除外）(hanzi
-chuwai)
+chuwai)。
 
 \begin{lstlisting}
 % 上述最后的原始代码，可以看出对比。
@@ -1869,7 +1869,7 @@ Latex在默认情况下，Figure图像的编号是从Figure 1, Figure 2, Figure 
 todo
 
 % *\subsection{插入表格}
-\subsection{插入表格}
+\subsection{如何插入表格？}
 
 tabular 环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
 
@@ -1881,6 +1881,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 
 使用以下的代码。显示效果参考 表\ref{Table.Demo0}
+
 \begin{lstlisting}
 \begin{table}[H]
     \centering
@@ -2187,6 +2188,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 其与之前的都不同，它可以从整个公式(组)四周加载定界符。从左端、从右端，甚至是用一个盒子包住整个公式(组)。
 
 首先在 导言区 载入 usepackage{empheq}。使用它的框架是这样:
+
 \begin{lstlisting}
 \usepackage{empheq}
 \begin{empheq}[markup instructions]{AMS env name}
@@ -2382,6 +2384,7 @@ code
 \begin{enumerate}
     \item usepackage Listings： \verb!\usepackage{listingsutf8}!
     \item 设置代码的格式
+
           \begin{lstlisting}
 %********************代码设置******************************************
 % 用来设置附录中代码的样式
@@ -2414,6 +2417,7 @@ int main() {
 \end{tcblisting}
 
     \item  可以看到有行号，有方框，有背景颜色。
+
     \begin{lstlisting}[language=C,frame=single]
 int main() {
     printf("hello, world");
@@ -2584,10 +2588,10 @@ int main() {
           \begin{lstlisting}
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
     \centering %图片居中
-    \setlength{\fboxrule}{0.1pt}
-    \setlength{\fboxsep}{0.5cm}
+    % \setlength{\fboxrule}{1pt}
+    % \setlength{\fboxsep}{0.5cm}
     \fbox{
-        \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+        \includegraphics[]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
     }
     \caption{插入图片的demo} %最终文档中希望显示的图片标题
     \label{Fig.insert-one-png} %用于文内引用的标签
@@ -2595,18 +2599,17 @@ int main() {
     \end{lstlisting}
 
     \item 最终效果，图\ref{Fig.insert-one-png}
-\begin{center}
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
     \centering %图片居中
-    \setlength{\fboxrule}{1pt}
-    \setlength{\fboxsep}{0.5cm}
+    % \setlength{\fboxrule}{1pt}
+    % \setlength{\fboxsep}{0.5cm}
     \fbox{
-        \includegraphics[width=0.5\textwidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+        \includegraphics[]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
     }
     \caption{插入图片的demo} %最终文档中希望显示的图片标题
     \label{Fig.insert-one-png} %用于文内引用的标签
 \end{figure}
-\end{center}
+
     \item 双排设置
           \begin{lstlisting}
 Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel demand of driving auto, and fig. \ref{Fig.sub.2} is the travel demand of park-and-ride.
@@ -2647,6 +2650,73 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
           在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
 
 \end{enumerate}
+
+
+% * subsubsection{图片过大如何超过边距居中？}
+\subsubsection{图片过大如何超过边距居中？}
+
+参考：\href{https://zhuanlan.zhihu.com/p/56435541}{LaTeX入门(八)——图片}
+
+
+有时候我们的图片会显示的过大。但是图片会按照左边距进行开始排版，这会导致排版偏右，甚至超出界面。参考图\ref{Fig:VScode_with_latex_demo}，我们可以看到这个图占用比较多的空间。左边已经超出了左边界。但是这样看起来会好很多。
+
+要想解决这个问题， 可以使用 adjustbox 解决。
+首先需要在导言区域添加宏包引用。
+\begin{lstlisting}
+    % 宏包
+    \usepackage[export]{adjustbox}
+\end{lstlisting}
+
+之后，在图片的代码中添加 \textbf{center}。
+
+\begin{lstlisting}{keywords=center}
+    % 将 \includegraphics[xxx]{pic.png}
+    % 改成：
+    \includegraphics[center,xxxx]{pic.png}
+\end{lstlisting}
+
+
+\subsubsection{如何设置图片缩放到刚好等于行宽?}
+
+参考: \href{https://liam.page/2017/03/22/floats-in-LaTeX-handle-overfull-floats/}{\LaTeX 中的浮动体：处理超宽问题}
+
+图\ref{Fig.insert-one-png}，我们可以看到他只是占用了一部分。
+
+假如我想让他占用整个列宽，可以把大小的设置设置为行宽。 还可以设置为行宽的倍数。
+
+\begin{lstlisting}{keywords=center}
+    % 设置宽度为行宽
+    \includegraphics[width = \linewidth]{pic.png}
+    % 也可以设置为行宽的倍数。比如[width = 0.2\linewidth]代表只有行的0.2行宽
+    \includegraphics[width = 0.2\linewidth]{pic.png}
+\end{lstlisting}
+
+重新排版后的图\ref{Fig.insert-one-png}：
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    \setlength{\fboxrule}{0.1pt}
+    % \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        \includegraphics[width = 1\linewidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    }
+    \caption{图片缩放等于行宽} %最终文档中希望显示的图片标题
+    \label{Fig.insert-one2-png} %用于文内引用的标签
+\end{figure}
+
+只有行的0.2行宽的图片：
+
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    \setlength{\fboxrule}{0.1pt}
+    % \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        \includegraphics[width = 0.2\linewidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    }
+    \caption{图片缩放0.2行宽} %最终文档中希望显示的图片标题
+    \label{Fig.insert-one3-png} %用于文内引用的标签
+\end{figure}
+
 
 
 
