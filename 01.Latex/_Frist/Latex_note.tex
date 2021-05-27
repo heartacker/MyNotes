@@ -1498,6 +1498,8 @@ Tip:
 
 \textbf{Linking web addresses}
 
+使用 \verb!\href{url}{text}! 或者 \verb!\url{URL}! 
+
 \begin{LTXexample}
 For further references see \href{http://www.overleaf.com}{Something Linky}
 or go to the next url: \url{http://www.overleaf.com}
@@ -1506,6 +1508,7 @@ or go to the next url: \url{http://www.overleaf.com}
 \par
 
 \textbf{Linking local files}
+使用 \verb!\href{run:url}{text}!
 
 \begin{LTXexample}
 For further references see \href{http://www.overleaf.com}{Something Linky}
@@ -1517,6 +1520,7 @@ file \href{run:./file.txt}{File.txt}
 \textbf{Linking context addresses}
 
 这是一个文内的跳转方式。
+使用 \verb!\hypertarget{Target}{Text}! 结合 \verb!\uhyperlinkrl{Target}! 
 
 \begin{LTXexample}
 It's also possible to link directly any word
