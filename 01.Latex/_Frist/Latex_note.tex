@@ -1210,9 +1210,9 @@ start  " " /max "./%FileName%.pdf"
 
 \subsubsection{使用 showexpl}
 
-通过上面的例子，我们可以看到代码和渲染的效果。如果有“命令和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对\LaTeX{}代码和格式化输出进行比较。
+通过上面的例子，我们可以看到代码和渲染的效果。如果有 \LaTeX “命令和环境”的使用示例，那么 \LaTeX 宏包的文档就更容易读懂。最好的方法是对 \LaTeX 代码和格式化输出进行比较。
 
-showexpl 是一个用于进行比较的包，它基于包列表， 该列表提供了良好的排版源代码， 强调了关键字等等。
+\textbf{showexpl} 是一个用于进行比较的包，它基于包列表， 该列表提供了良好的排版源代码， 强调了关键字等等。
 使用 \textbf{showexpl} 首先需要先引用这个宏。之后，在需要演示的地方。并且使用 \textbf{LTXexample} 包围。
 
 
@@ -1875,7 +1875,7 @@ Todo
 \subsection{如何在表格和图标之间插入章节信息？}
 \label{sec:insert_section_info}
 
-可以参考： \href{https://www.cnblogs.com/yifdu25/p/8330911.html}{Latex技巧：在图表序号中加入章节号（实现诸如“图1.1.2”这样的图表序号）} 。
+参考链接： \href{https://www.cnblogs.com/yifdu25/p/8330911.html}{\LaTeX 技巧：在图表序号中加入章节号（实现诸如“图1.1.2”这样的图表序号）} 。
 
 \subsubsection{插入章节编号}
 如何插入表格和图片还没有讲解。但是这里先教一下如何插入章节信息在图表中。
@@ -2453,7 +2453,7 @@ int main() {
 
 \end{enumerate}
 
-当然，大家看到的本文很多代码是双边框的。为什么呢？ 因为有一个设置是 frame ， 有效值是 lrtb 和 LRTB。 大写则为双边框。大家还记得 \ref{sec:command} 吗？ 可选参数是如何配置的？可选参数是[] 方括号，即 \verb!\begin{lstlisting}!后面可以写[frame = r/l/t/b/L/R/T/B]。
+当然，大家看到的本文很多代码是双边框的。为什么呢？ 因为有一个设置是 frame ， 有效值是 lrtb 和 LRTB， single 等。 大写则为双边框。大家还记得 \ref{sec:command} 吗？ 可选参数是如何配置的？可选参数是[] 方括号，即 \verb!\begin{lstlisting}!后面可以写\verb![frame = xxxx]!。
 
 
 \subsubsection{解决 listing 嵌套的问题}
