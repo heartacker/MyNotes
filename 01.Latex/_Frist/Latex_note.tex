@@ -832,7 +832,8 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \end{myquote}
 之后只需要对myquote 进行设置就可以设置quote 的格式了。
 
-\subsubsection{自定义命令}
+\subsubsection{自定义命令} 
+\label{subsubsec:degreedefine} 
 类似的，比如公式的角度，我们输出比较麻烦，\verb!^\circ! 也很不直观。我们就可以使用 \verb!\newcommand{}{}! 进行定义。
 
 \begin{lstlisting}
@@ -847,7 +848,7 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \end{lstlisting}
 
 \begin{LTXexample}
-之后使用 $\degree$ 替代 $^\circ$ 了。
+之后就可以使用 $\degree$ 替代 $^\circ$ 了。
 \end{LTXexample}
 
 \par
@@ -2015,24 +2016,25 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \begin{enumerate}
     \item 环境1
 
-          单块行公式使用\verb!\[  \]! 进行包围。如\[\frac{a}{b}=c/d\] 这是单块行公式。
+          单块行公式使用\verb!\[  \]! 进行包围。如\verb!\[\frac{a}{b}=c/d\]!: \[\frac{a}{b}=c/d\] 这是单块行公式。
     \item 环境2
 
-          可以使用\$\$\quad\$\$ 双美元进行包围。如 $$\frac{a}{b}=c/d$$
+          可以使用\$\$\quad\$\$ 双美元进行包围。如\verb!$$\frac{a}{b}=c/d$$!: $$\frac{a}{b}=c/d$$
     \item 环境3
 
-          也可以使用equation。 但是他会自动带tag
+          也可以使用 equation 。 但是他会自动带tag
           \begin{lstlisting}
 \begin{equation}
-\frac{a}{b}=c/d
-\end{quotation}
+    \angle CAB = 90^\circ =\pi / 2
+\end{equation}
           \end{lstlisting}
 
           如:
-          \begin{equation}
-              \frac{a}{b}=c/d
-          \end{equation}
-\end{enumerate}
+            \begin{equation}
+            \angle CAB = 90^\circ =90\degree=\pi / 2
+            \end{equation}
+    插播一下，还记得之前定义的degree \ref{subsubsec:degreedefine} 吗？ 这里用上了。
+\end{enumerate}   
 
 \subsubsection{列表公式}
 
@@ -2265,15 +2267,6 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 % 0& \text{x=0}\\
 % 1& \text{x!=0}
 % \end{cases}$$
-
-\begin{LTXexample}
-\begin{gather}
-    f(x)= \int_a^b x dx    \notag \\ % \notag 代表不编号
-    % 度数竟然没有专门的符号^\circ
-    \angle CAB = 90^\circ =\pi / 2
-\end{gather}
-\end{LTXexample}
-
 
 \subsubsection{常用数学宏 amsmath 推荐}
 
