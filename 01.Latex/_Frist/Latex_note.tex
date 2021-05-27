@@ -12,6 +12,9 @@
 \usepackage{graphicx}     % 插入图片的宏包
 \usepackage{float}        % 设置图片浮动位置的宏包
 \usepackage{subfigure}    % 插入多图时用子图显示的宏包
+\usepackage[export]{adjustbox} % 图片过宽居中
+
+
 \usepackage{listings}     % 代码
 \usepackage{xcolor}       % 代码高亮
 
@@ -282,6 +285,7 @@
         层次深度 & 层次名        & book                      & report                    & article                   \\
         \hline
         -1       & part          & $\backslash$part          & $\backslash$part          &                           \\
+        \hline
         0        & chapter       & $\backslash$chapter       & $\backslash$chapter       & $\backslash$part          \\
         1        & section       & $\backslash$section       & $\backslash$section       & $\backslash$section       \\
         2        & subsection    & $\backslash$subsection    & $\backslash$subsection    & $\backslash$subsection    \\
@@ -307,7 +311,7 @@
     \setlength{\fboxrule}{0.1pt}
     \setlength{\fboxsep}{0cm}
     \fbox{
-        \includegraphics[scale=0.7]{images/article_render.png}
+        \includegraphics[scale=0.6]{images/article_render.png}
     }
     \caption{article 渲染效果}
     \label{Fig:article_render}
@@ -328,7 +332,7 @@
     \setlength{\fboxrule}{0.1pt}
     \setlength{\fboxsep}{0cm}
     \fbox{
-        \includegraphics[scale=0.7]{images/ctexart_render.png}
+        \includegraphics[scale=0.6]{images/ctexart_render.png}
     }
     \caption{ctexart 渲染效果}
     \label{Fig:ctexart_render}
@@ -1049,10 +1053,10 @@ start  " " /max "./%FileName%.pdf"
 安装好了 TexLive 并配置好VSCode之后，结合上面几个描述，很快你就可以使用VSCode 进行编译了。下图就是配置好之后最终的效果。
 
 只要打开 \TeX 源代码，就可以在左边看到相关的 Build 的 操作。
-
+% \usepackage[export]{adjustbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.6]{images/latex-workshop-demo-build.png}
+    \includegraphics[center,scale=0.8]{images/latex-workshop-demo-build.png}
     \caption{VSCode Latex WorkShop Demo}
     \label{Fig:VScode_with_latex_demo}
 \end{figure}
@@ -2632,7 +2636,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \setlength{\fboxsep}{0.5cm}
     \fbox{
         %插入图片，[]中设置图片大小，{}中是图片文件名
-        \includegraphics[width=1.0\textwidth]{images/insert-two-pic.jpg}
+        \includegraphics[width=0.9\textwidth]{images/insert-two-pic.jpg}
     }
     \caption{并排插入两个图片的效果}
     \label{Fig.Insert_two_pic_demo}
