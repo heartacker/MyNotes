@@ -1160,15 +1160,15 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 
 \begin{table}[H]
     \centering
-\begin{tabular}{l|l|l|l}
-    字体族 & 带参数命令             & 声明命令               & 效果               \\
-    \hline
-    罗马   & \verb!\textrm{罗马}! & \verb!\rmfamily! & \textrm{roman 罗马}        \\
-    无衬线 & \verb!\textsf{无衬线}! & \verb!\sffamily! & \textsf{sans serif 无衬线} \\
-    打字机 & \verb!\texttt{打字机}! & \verb!\ttfamily! & \texttt{typewrite 打字机}
-\end{tabular}
-\caption{基本字体的渲染}
-\label{tab:font_sender}
+    \begin{tabular}{l|l|l|l}
+        字体族 & 带参数命令             & 声明命令               & 效果               \\
+        \hline
+        罗马   & \verb!\textrm{罗马}! & \verb!\rmfamily! & \textrm{roman 罗马}        \\
+        无衬线 & \verb!\textsf{无衬线}! & \verb!\sffamily! & \textsf{sans serif 无衬线} \\
+        打字机 & \verb!\texttt{打字机}! & \verb!\ttfamily! & \texttt{typewrite 打字机}
+    \end{tabular}
+    \caption{基本字体的渲染}
+    \label{tab:font_sender}
 \end{table}
 
 \subsubsection{常用样式}
@@ -1225,7 +1225,8 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \LaTeX 提供了10个简单的声明式调整文字大小的命令：
 
 \begin{table}[H]
-    \centering\begin{tabular}{cc}
+    \centering
+        \begin{tabular}{cc}
 \hline
 \verb!\tiny!         & \tiny{tiny}                \\
 \verb!\scriptsize!   & \scriptsize{scriptszie}    \\
@@ -1238,7 +1239,7 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \verb!\huge!         & \huge{huge}                \\
 \verb!\Huge!         & \Huge{Huge}                \\
 \hline
-    \end{tabular}
+        \end{tabular}
     \caption{西文字体大小的命令}
     \label{tab:font_size_latin}
 \end{table}
@@ -1250,7 +1251,8 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \paragraph{中文中}
 可以使用中文的字号进行设置。 
 \begin{table}[H]]
-    \centering\begin{tabular}{lcl}
+    \centering
+        \begin{tabular}{lcl}
 \hline
 命令               &大小（bp）  &意义                 \\
 \hline
@@ -1271,7 +1273,7 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \verb!\zihao{7}!   &5.5      &{\zihao{7} 七号}  \\
 \verb!\zihao{8}!   &5        &{\zihao{8} 八号}  \\
 \hline
-    \end{tabular}
+        \end{tabular}
     \caption{中文字号}
     \label{tab:font_size_cjk}
 \end{table}
@@ -1652,8 +1654,8 @@ chuwai)
 \subsubsection{句号后面的空白}
 句号圆点，可以表示句子结束，也可以表示缩写。在小写字母后面圆点表示句子结束，但是为了表示缩写，需在圆点后空格加上倒斜线，即“\verb!\!”，表示缩写后面可以分行;在Latex中，大写字母后的圆点看做是一个缩写而不是句号。有时大写字母后面圆点表示成句号，可以在圆点前加上\verb!\@.!，即“\@.”
 
-\label{subsubsec:space}
 \subsubsection{空格}
+\label{subsubsec:space}
 
 使用一个“反斜杠+一个空格”（“\verb!\ !”）表示1个空\ 格，space \ space。 多个同理，但是不推荐这样使用。
 
@@ -1734,7 +1736,7 @@ Todo
 
 使用 enumerate 可以 生成有序列表。
 代码：
-\label{expl:enumerate}
+
 \begin{LTXexample}
 \begin{enumerate}
     \item 第一个
@@ -1764,6 +1766,7 @@ Todo
     \item ...
 \end{enumerate}
 \end{LTXexample}
+\label{expl:enumerate}
 
 大家看看到没，其实还有中文编码的。 中文下一步还是会切换成英文。
 
@@ -1794,8 +1797,8 @@ Todo
 这属于高级技巧。 参考章节 \ref{sec:redefine_item}
 
 % *\subsection{如果在表格和图标之间插入章节信息。}
-\label{sec:insert_section_info}
 \subsection{如何在表格和图标之间插入章节信息？}
+\label{sec:insert_section_info}
 
 可以参考： \href{https://www.cnblogs.com/yifdu25/p/8330911.html}{Latex技巧：在图表序号中加入章节号（实现诸如“图1.1.2”这样的图表序号）} 。
 
@@ -1839,8 +1842,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \begin{lstlisting}
 \begin{table}[H]
     \centering
-    \caption{论文中常用符号释义}
-    \label{编译器}
+
     \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
         \hline
         操作系统   & 发行版   & 编辑器    \\
@@ -1854,6 +1856,8 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
         通用       & TeX Live & TeXworks  \\
         \hline
     \end{tabular}
+    \caption{论文中常用符号释义}
+    \label{Table.Demo0}
     \qquad
     不同的操作系统和编辑器之间很多是通用的。
 
@@ -2704,7 +2708,7 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 \subsection{如何添加自定义类型目录?}
 \label{subsec:insert_toc_of_define}
 
-参考： \href{https://yuxtech.club/2019/09/09/table/}{双栏模板下插入通栏公式和图片}
+参考： \href{https://yuxtech.club/2019/09/09/table/}{在\LaTeX{} 中自定义新目录}
 
 在\LaTeX{}中，有三个命令\verb!\tableofcontents，\listoftables，\listoffigures!， 别用来生成章节目录，表格目录和插图目录。但有时候我们需要生成其他目录，比如书籍中的例题目录，这个时候我们可以利用tocloft包自定义一个例题目录。tocloft包提供了\verb!\newlistof! 命令，其格式如下：
 %todo 如何添加自定义类型目录
