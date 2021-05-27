@@ -57,6 +57,12 @@
 %   borderline horizontal={.4pt}{0pt}{black},
 %   sidebyside
 % }
+
+
+
+\usepackage{multicol} % 分栏目
+
+%设置枚举的计数器
 \usepackage{enumitem}
 \AddEnumerateCounter{\chinese}{\chinese}{}
 
@@ -1302,8 +1308,15 @@ pos 是可选参数。参数为lrtb，分别代表 l左边， r右边， t顶部
 \end{lstlisting}
 
 
-
+\clearpage
 \subsubsection{字体大小}
+
+% 分栏
+\begin{multicols}{2}
+
+一般情况下，我们很少进行独立的字体配置。 文档的总体字体风格和大小在一开始就设置了全局的字体。
+
+但是如果还是需要独立调节字体的大小， 可以参考以下的设置和命令。
 
 \paragraph{西文中}
 \LaTeX 提供了10个简单的声明式调整文字大小的命令：
@@ -1330,12 +1343,13 @@ pos 是可选参数。参数为lrtb，分别代表 l左边， r右边， t顶部
     \label{tab:font_size_latin}
 \end{table}
 
+\paragraph{实例}
 % ! 这里为什么用[] 进行设置参数而不是{}，那是因为[]  是可选参数。
-\begin{LTXexample}
+\begin{LTXexample}[pos=b,frame=single,numbers=none,vsep=0pt]
 This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
 \end{LTXexample}
 
-
+\columnbreak %强制分栏
 \paragraph{中文中}
 可以使用中文的字号进行设置。
 \begin{table}[H]
@@ -1366,9 +1380,11 @@ This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
     \label{tab:font_size_cjk}
 \end{table}
 
-\begin{LTXexample}
+\paragraph{实例}:
+\begin{LTXexample}[pos=b,frame=single,numbers=none,vsep=0pt]
 This is {\zihao{6} 六号 small} and {\zihao{0} 初号  Large}!
 \end{LTXexample}
+\end{multicols}
 
 \begin{myquote}
 Tip:
