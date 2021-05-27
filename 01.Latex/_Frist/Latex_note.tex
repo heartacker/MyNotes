@@ -2450,25 +2450,26 @@ int main() {
 
 \subsubsection{解决 listing 嵌套的问题}
 
-参考：\href{https://yuxtech.club/2019/07/30/listings/}{解决listing 嵌套的问题}
+参考链接：\href{https://yuxtech.club/2019/07/30/listings/}{解决listing 嵌套的问题}
 
 \paragraph{实现原理}
 
-如果使用两个lstlisting环境嵌套，会使得第一个\verb!\begin{lstlisting}!匹配到第一个\verb!\end{lstlisting}!而使得第二个报错。比较不错的解决方法就是把外层的摘录环境换成verbatim。
+如果使用两个 lstlisting 环境嵌套，会使得第一个 \verb!\begin{lstlisting}! 匹配到第一个 \verb!\end{lstlisting}! 而使得第二个报错。比较不错的解决方法就是把外层的摘录环境换成 verbatim。
 
-\sout{不过由于个人比较喜欢listings包的风格，所以}这里采用tcolorbox包的listings库提供的tcblisting环境。tcblisting环境其实就是调用的listings包，它一方面接受listings包的设置，另一方面还接受tcolorbox包的设置，简直一举两得。默认情况下，摘录的同时还执行摘录的代码，所以这里添加了listing only选项，仅仅作摘录使用。 \footnote{https://yuxtech.club/2019/07/30/listings/}
+\sout{不过由于个人比较喜欢 listings 包的风格，所以}这里采用 tcolorbox 包的 listings 库提供的 tcblisting 环境。tcblisting 环境其实就是调用的listings 包，它一方面接受 listings 包的设置，另一方面还接受 tcolorbox 包的设置，简直一举两得。默认情况下，摘录的同时还执行摘录的代码\footnote{就是说会同时把代码也渲染出来当作例子}， 所以这里添加了 \textsl{listing only} 选项，仅仅作摘录使用。 \footnote{https://yuxtech.club/2019/07/30/listings/}
 
 \paragraph{实现步骤}
 
-\subparagraph{宏包引用}tcolorbox
-
+\subparagraph{宏包引用 tcolorbox}
+% https://www.latex4technics.com/?note=DZN
+% https://www.latexstudio.net/index/details/index/mid/1439.html
 \begin{lstlisting}
     \usepackage[listings]{tcolorbox}
     % 或者 \tcbuselibrary{listings}
 \end{lstlisting}
 
 
-\subparagraph{使用 tcblisting 包围}代码:
+\subparagraph{使用 tcblisting 包围代码}
 
 \begin{verbatim}
 \begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
@@ -2480,10 +2481,17 @@ int main() {
     \end{lstlisting}
 \end{tcblisting}
 \end{verbatim}
-这里需要注意的是，一定要使用{\bfseries listling only} 参数。 同事为了防止边框重叠。添加一些边框参数。总体要添加{\rmfamily \{listing only,boxrule=-1pt,colback=white\}}
+这里需要注意的是，一定要使用 {\slshape listling only} 参数。 同时为了防止边框重叠。添加一些边框参数。总体要添加{\rmfamily \{listing only,boxrule=-1pt,colback=white\}}。显示效果参考\ref{lst:tcbdemo}
 
-显示效果参考\ref{lst:tcbdemo}
+% todo 为什么 tcblisting
+% \begin{tcblisting}
+% % {listing only,boxrule=-1pt,colback=white}
+% \begin{enumerate}
+%     \item  a
+%     \item aa
+% \end{enumerate}
 
+% \end{tcblisting}
 
 % *************DEMO *********
 % \documentclass{ctexart}
