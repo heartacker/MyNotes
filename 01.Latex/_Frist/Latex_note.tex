@@ -82,7 +82,7 @@
     backgroundcolor = \color{codebg},
     breaklines      = true,                % 自动换行
     numbers         = left,                % 行号的位置在左边
-    basicstyle      = \zihao{-5}\ttfamily, % rm/sf/tt基本代码风格
+    basicstyle      = \zihao{5}\ttfamily,  % rm/sf/tt基本代码风格
     frame           = lTbR,                % 边框。lrbt，大写的则是双边框
     framesep        = 1pt,                 % 代码和边框之间的margin
     rulesep         = 6pt, %双框距离
@@ -163,7 +163,7 @@
 %**********导言区******************
 \begin{document}
 \title{ \LaTeX 入门手册}
-\author{ \href{liuding.xin}{Liuding.xin}$\heartsuit$}
+\author{ \href{http://www.liuding.xin}{Liuding.xin}$\heartsuit$}
 \date{2021-05-20}
 
 
@@ -173,7 +173,7 @@
     % todo 想知道如何设置为背景图
     \begin{figure}[htbp]
         \centering
-        \includegraphics[scale=0.4,angle=-50]{images/1200px_LaTeX_project_logo_bird.svg.png}
+        \includegraphics[center, scale=0.5, angle=-50]{images/1200px_LaTeX_project_logo_bird.svg.png}
     \end{figure}
 \end{titlepage}
 
@@ -688,8 +688,8 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 \begin{itemize}
     \item 无参数: \textbf{$\backslash$command}
-    \item 有参数: \textbf{$\backslash$command}<arg1><arg2>...<argn>
-    \item 无参数: \textbf{$\backslash$command[}<arg$_{opt}$ >\textbf{]} <arg1><arg2>...<argn>
+    \item 有参数: \textbf{$\backslash$command}\{<arg1><arg2>...<argn>\}
+    \item 无参数: \textbf{$\backslash$command[}<arg$_{opt}$ >\textbf{]} \{<arg1><arg2>...<argn>\}
 \end{itemize}
 
 
@@ -1067,7 +1067,7 @@ start  " " /max "./%FileName%.pdf"
 % \usepackage[export]{adjustbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[center,scale=0.8]{images/latex-workshop-demo-build.png}
+    \includegraphics[center,scale=0.7]{images/latex-workshop-demo-build.png}
     \caption{VSCode Latex WorkShop Demo}
     \label{Fig:VScode_with_latex_demo}
 \end{figure}
@@ -1145,8 +1145,8 @@ start  " " /max "./%FileName%.pdf"
     linkcolor   = blue,
     filecolor   = magenta,
     urlcolor    = cyan,
-    pdftitle    = {Overleaf Example},
-    pdfpagemode = FullScreen,
+    % pdftitle    = {Overleaf Example},
+    % pdfpagemode = FullScreen,
 }
 \end{lstlisting}
 
@@ -1206,12 +1206,10 @@ start  " " /max "./%FileName%.pdf"
 
 
 \subsubsection{使用 showexpl}
-\begin{myquote}
-    通过上面的例子，我们可以看到代码和渲染的效果。如果有“命令和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对\LaTeX{}代码和格式化输出进行比较。
-\end{myquote}
+
+通过上面的例子，我们可以看到代码和渲染的效果。如果有“命令和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对\LaTeX{}代码和格式化输出进行比较。
 
 showexpl 是一个用于进行比较的包，它基于包列表， 该列表提供了良好的排版源代码， 强调了关键字等等。
-
 使用 \textbf{showexpl} 首先需要先引用这个宏。之后，在需要演示的地方。并且使用 \textbf{LTXexample} 包围。
 
 
@@ -1263,12 +1261,11 @@ pos 是可选参数。参数为lrtb，分别代表 l左边， r右边， t顶部
 
 \subsubsection{常用样式}
 
-\begin{LTXexample}[pos=b, frame=single, framesep=0pt, numbers=none,vsep=0pt]
+\begin{LTXexample}[pos=b, frame=single, framesep=1pt, numbers=none, vsep=0pt]
 \textup{up shape} 直立（roman shape）使用（upshape）\\
 \textsl{Italicized shape} 斜体使用（slshape）\\
 \textit{Italic shape}  意大利体  （itshape） \\
-\textsc{Small capital} 小型大写（scshape）      \\
-\\
+\textsc{Small capital} 小型大写（scshape）   \\  \\
 \textbf{Bold text} 粗体使用（bfseries）      \\
 \textmd{Medium series} 中等加宽（mdseries）  \\
 \underline{Underlined text} 下划线使用      \\
@@ -1308,7 +1305,7 @@ pos 是可选参数。参数为lrtb，分别代表 l左边， r右边， t顶部
 \end{lstlisting}
 
 
-\clearpage
+% \clearpage
 \subsubsection{字体大小}
 
 % 分栏
