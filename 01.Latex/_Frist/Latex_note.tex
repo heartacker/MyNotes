@@ -681,7 +681,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 \end{lstlisting}
 
 \subsubsection{什么是命令？}
-
+\label{sec:command}
 上面以$\backslash$ 开头的代码。就是 \TeX 命令。
 
 一个 \TeX 命令（也就是所谓的宏）的格式为：
@@ -832,8 +832,8 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \end{myquote}
 之后只需要对myquote 进行设置就可以设置quote 的格式了。
 
-\subsubsection{自定义命令} 
-\label{subsubsec:degreedefine} 
+\subsubsection{自定义命令}
+\label{subsubsec:degreedefine}
 类似的，比如公式的角度，我们输出比较麻烦，\verb!^\circ! 也很不直观。我们就可以使用 \verb!\newcommand{}{}! 进行定义。
 
 \begin{lstlisting}
@@ -1242,7 +1242,7 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 
 想要设置渲染图和代码之间关系可以通过\texttt{pos}进行配置。具体可以参考 showexpl的文档。命令行敲打 \fbox{texdoc showexpl} 打开showexpl的文档。
 
-pos 是可选参数。参数为lrtb，分别代表 l左边， r右边， t顶部和 b底部。 LRTB 大写则为双边框。大家还记得吗？可选参数是如何配置的？可选参数是[] 方括号，即[pos=r/l/t/b]。
+pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶部和 b底部。
 
 %* \subsection{基础字体样式调节}
 \subsection{基础字体样式调节}
@@ -1500,7 +1500,7 @@ Tip:
 
 \textbf{Linking web addresses}
 
-使用 \verb!\href{url}{text}! 或者 \verb!\url{URL}! 
+使用 \verb!\href{url}{text}! 或者 \verb!\url{URL}!
 
 \begin{LTXexample}
 For further references see \href{http://www.overleaf.com}{Something Linky}
@@ -1524,7 +1524,7 @@ file \href{run:./file.txt}{File.txt}
 
 这是一个文内的跳转方式。
 
-使用 \verb!\hypertarget{Target}{Text}! 结合 \verb!\uhyperlinkrl{Target}! 
+使用 \verb!\hypertarget{Target}{Text}! 结合 \verb!\uhyperlinkrl{Target}!
 
 \begin{LTXexample}
 It's also possible to link directly any word
@@ -1720,7 +1720,7 @@ chuwai)
 \begin{itemize}
     \item 一个连字号"-"表示一个连字号\verb!“-”!。 如 latex-A。
     \item 连续用两个连字号"\verb!--!"表示数字范围符号--($\sim$:\verb\sim$!)。不过中文喜欢用中文符号 \verb!“~”! 表示范围。
-    \item 连续用三个连字号"\verb!---!" 表示---破折号。 
+    \item 连续用三个连字号"\verb!---!" 表示---破折号。
 \end{itemize}
 
 
@@ -2041,7 +2041,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
             \angle CAB = 90^\circ =90\degree=\pi / 2
             \end{equation}
     插播一下，还记得之前定义的degree \ref{subsubsec:degreedefine} 吗？ 这里用上了。
-\end{enumerate}   
+\end{enumerate}
 
 \subsubsection{列表公式}
 
@@ -2374,10 +2374,10 @@ D(x) = \begin{cases}
 
 2. 通过进行多行显示原始代码。
 \begin{verbatim}
-```
-code
-code
-```
+        ```
+        code
+        code
+        ```
 \end{verbatim}
 
 
@@ -2453,6 +2453,7 @@ int main() {
 
 \end{enumerate}
 
+当然，大家看到的本文很多代码是双边框的。为什么呢？ 因为有一个设置是 frame ， 有效值是 lrtb 和 LRTB。 大写则为双边框。大家还记得 \ref{sec:command} 吗？ 可选参数是如何配置的？可选参数是[] 方括号，即 \verb!\begin{lstlisting}!后面可以写[frame = r/l/t/b/L/R/T/B]。
 
 
 \subsubsection{解决 listing 嵌套的问题}
