@@ -194,6 +194,7 @@
 			}
 		],
 		"latex-workshop.bibtex-format.trailingComma": true,
+		"latex-workshop.latex.autoBuild.run": "never",
 	},
 	"extensions": {
 		"recommendations": [
