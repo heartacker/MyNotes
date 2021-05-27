@@ -1122,7 +1122,7 @@ start  " " /max "./%FileName%.pdf"
 \end{lstlisting}
 
 % todo *\subsection{如何创建对比和渲染效果的"example" 环境?}
-\subsection{如何创建对比和渲染效果的 "example" 环境?}
+\subsection{如何创建代码和渲染效果可对比的 "example" 环境?}
 
 作为一个教学文章， 那么有例子和渲染对比，可以更加清晰明了的向读者阐明要点， 让读者一目了然的的知道代码和渲染效果对比。这也是我一开始就说这个很有难度的环境的原因之一。
 
@@ -1148,10 +1148,36 @@ start  " " /max "./%FileName%.pdf"
 \end{LTXexample}
 
 
-\subsubsection{使用 showexpl}
-
-如果有命令“和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对LATEX代码和格式化输出进行比较。
+\paragraph{使用 showexpl}
+\begin{myquote}
+    通过上面的例子，我们可以看到代码和渲染的效果。如果有“命令和环境”的使用示例，那么LATEX包的文档就更容易读懂。最好的方法是对\LaTeX{}代码和格式化输出进行比较。
+\end{myquote}
+    
 showexpl 是一个用于进行比较的包，它基于包列表， 该列表提供了良好的排版源代码， 强调了关键字等等。
+
+使用 \textbf{showexpl} 首先需要先引用这个宏。之后，在需要演示的地方。并且使用 \textbf{LTXexample} 包围。
+
+
+% !{listing only,boxrule=-1pt,colback=white}
+\begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+\begin{LTXexample}
+\usepackage{showexpl}
+% 源代码
+\[
+    E=MC^2
+\]
+\end{LTXexample}
+\end{tcblisting}
+
+之后，我们就可以得到一个渲染图。这个图包含渲染效果和源代码。 读者很清晰的就可以看到对比。清晰的理解作者的用意。
+
+\begin{LTXexample}
+\usepackage{showexpl}
+% 源代码
+\[
+    E=MC^2
+\]
+\end{LTXexample}
 
 %* \subsection{基础字体样式调节}
 \subsection{基础字体样式调节}
@@ -1228,6 +1254,8 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
     \centering
         \begin{tabular}{cc}
 \hline
+命令                  &  意义                      \\
+\hline
 \verb!\tiny!         & \tiny{tiny}                \\
 \verb!\scriptsize!   & \scriptsize{scriptszie}    \\
 \verb!\footnotesize! & \footnotesize{footnotesize}\\
@@ -1245,11 +1273,11 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \end{table}
 
 \begin{LTXexample}
-    This is \small{small} and \Large{Large}!
+This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
 \end{LTXexample}
 
 \paragraph{中文中}
-可以使用中文的字号进行设置。 
+可以使用中文的字号进行设置。
 \begin{table}[H]]
     \centering
         \begin{tabular}{lcl}
@@ -1279,8 +1307,15 @@ showexpl 是一个用于进行比较的包，它基于包列表， 该列表提�
 \end{table}
 
 \begin{LTXexample}
-    This is {\zihao{6} 六号} and {\zihao{0} 大号}!
+This is {\zihao{6} 六号 small} and {\zihao{0} 初号  Large}!
 \end{LTXexample}
+
+\begin{myquote}
+Tip:
+
+从两个渲染图看。我们可以看到西文的大小和中文的字号是可以\textbf{同时} 作用中文和西文的。    
+\end{myquote}
+
 
 \subsubsection{删除线}
 删除线比较复杂， 但是需要引用ulem的宏包。
@@ -2385,7 +2420,7 @@ int main() {
 
 
 
-\subsubsection{解决listing 嵌套的问题}
+\subsubsection{解决 listing 嵌套的问题}
 
 参考：\href{https://yuxtech.club/2019/07/30/listings/}{解决listing 嵌套的问题}
 
@@ -2417,6 +2452,7 @@ int main() {
     \end{lstlisting}
 \end{tcblisting}
 \end{verbatim}
+这里需要注意的是，一定要使用{\bfseries listling only} 参数。 同事为了防止边框重叠。添加一些边框参数。总体要添加{\rmfamily \{listing only,boxrule=-1pt,colback=white\}}
 
 显示效果参考\ref{lst:tcbdemo}
 
