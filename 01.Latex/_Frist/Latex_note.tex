@@ -1125,17 +1125,19 @@ start  " " /max "./%FileName%.pdf"
 
 
 % * \subsection{如何使引用可以跳转？}
-\subsection{如何添加标签使引用可以跳转？}
+\subsection{如何使标签、目录、引用可以跳转？}
 \label{sec:hyperreflink}
+
+一般情况下，我们希望目录是可以跳转的，图片的引用是可以鼠标点击跳转的。
 
 \subsubsection{操作}
 
-一般情况下，我们希望目录是可以跳转的，图片的引用是可以鼠标点击跳转的。为了实现这个功能。我们可以使用$hyperref$。
+为了实现这个功能。我们可以使用\verb!hyperref!。
 操作方式：
 
-1. 显示红框，可以点击：\verb!\usepackage{hyperref}!
+1. 引用宏包，这样会默认在链接上显示红框：\verb!\usepackage{hyperref}!
 
-2. 显示红色，可以点击：\verb!\usepackage[colorlinks=true]{hyperref}!
+2. 引用宏包，这样会在链接上字体显示为红色\verb!\usepackage[colorlinks=true]{hyperref}!
 
 目录的内容显示为红色，是因为 hyperref 宏包的 colorlinks 选项。我们以后将默认载入这个宏包，告诉大家这些红色的文字都是可以点击跳转的，这也是我非常喜欢的一个特性。
 
