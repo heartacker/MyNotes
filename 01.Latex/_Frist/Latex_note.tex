@@ -1597,16 +1597,16 @@ chuwai)
 \begin{quotation}
     \zihao{5}\kaishu Tip:
 
-    \textbf{西文}单词用空格隔开，\LaTeX 中的连续多个空格在编译排版时被看做一个空格。 但是“$\backslash$ ”一定会是认为一个空格。
+    \textbf{西文}单词用空格隔开，\LaTeX 中的连续多个空格在编译排版时被看做一个空格。 但是“\verb!\ !”一定会是认为一个空格。
 
     \textbf{中文(cjk)}（\verb!ctexart!）中,空格不算空格。很奇怪！\verb!你 好! 会被渲染为“你 好”，而不是"你\ 好"。
 
-    另外，中英文混编:
+    另外，中英文混编(大家可以用光标移动看看是不是):
     \begin{enumerate}
         \item 中文紧随着英文会自动添加一个空格。如你好hello！ “你好”和“hello”之间是有空格的。
-        \item 西文紧随中文也会添加空格。
-        \item 中文标点符号紧随的应为不会自动添加空格。如你好，hello！ “你好”和“hello”之间是没有有空格的。
-        \item 英文之间符合西文。就是一个或者多个算一个空格。hi  hello，hi和hello之间是有一个空格的。
+        \item 西文xiwen紧随中文也会添加空格。
+        \item 中文标点符号紧随的应为不会自动添加空格。如你好，hello！ “你好”和“hello”之间是没有空格的。
+        \item 英文之间符合西文。就是一个或者多个算一个空格。\verb!hi  hello! 显示为hi  hello，hi和hello之间是有一个空格的。
         \item \textbf{任何时候，中西文混编都推荐在中西文之间添加空格，这样是符合规范的}, “space 你好space你好 space”。
     \end{enumerate}
 \end{quotation}
@@ -1622,11 +1622,11 @@ chuwai)
 
 \verb!\\! : 换行。
 
-\verb!\\[offset]! : 换行，并且与下一行的行间距为原来行间距 + offset。
+\verb!\\[offset]! : 换行，并且与下一行的行间距为原来行间距 + offset。 如何 \verb!\\[20pt]! 显示为\\[20pt]这个样子， 中间间距很大。
 
 \verb!\newline!  : 与\verb!\\!相同。
 
-\verb!\linebreak! : 强制换行，与\verb!\newline!的区别为:\linebreak \verb!\linebreak!的当前行分散对齐。(就是说上一行会自动占满整整一行，但是没有更换段落，看到此行没。)
+\verb!\linebreak! : 强制换行，与\verb!\newline!的区别为:\verb!\linebreak! 的当前行分散对 \linebreak 齐。(就是说上一行会自动占满整整一行，但是没有更换段落，看看这行的效果)
 
 
 \subsubsection{分段命令}
