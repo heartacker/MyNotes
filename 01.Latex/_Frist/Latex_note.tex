@@ -1808,62 +1808,61 @@ Todo
 \subsection{有序和无序列表}
 \begin{multicols}{2}
 
-\subsubsection{有序列表}
-
-使用 enumerate 可以 生成有序列表。
-代码：
-
-\begin{LTXexample}[pos=t,frame=single,numbers=none,vsep=0pt,basicstyle=\zihao{5}\ttfamily]
-    \begin{enumerate}
-        \item 第一个
-        \item 嵌套
-              \begin{enumerate}[label = \chinese*、]
-                  \item 中文
-                        \begin{enumerate}
-                            \item 编号i
-                            \item 编号ii
-                        \end{enumerate}
-                  \item 编号
-              \end{enumerate}
-        \item 有序中无序
-              \begin{itemize}
-                  \item 第一个
-                  \item second
-                  \item 第三个
-              \end{itemize}
-    \end{enumerate}
-\end{LTXexample}
-\label{expl:enumerate}
-
-大家看看到没，其实还有中文编码的。 中文下一步还是会切换成英文。
-\columnbreak
-
-
-
 \subsubsection{无序列表}
 
-使用 itemize 可以生成序列表。
-代码：
+使用 itemize 可以生成序列表，当然也可以和 enumerate 嵌套使用。代码：
 
-\begin{LTXexample}[pos=t,frame=single,numbers=none,vsep=0pt,basicstyle=\zihao{5}\ttfamily]
+\begin{LTXexample}[pos=t,frame=ltbr,numbers=none,basicstyle=\zihao{5}\ttfamily]
+\begin{itemize}
+  \item 第一个
+  \item second
+    \begin{itemize}
+        \item a
+        \item b
+    \end{itemize}
+  \item 无序中有序
+    \begin{enumerate}[label = \chinese*、]
+        \item 中文
+        \item 编码
+            \begin{enumerate}
+                \item 有序
+                \item 嵌套
+            \end{enumerate}
+    \end{enumerate}
+\end{itemize}
+\end{LTXexample}
+
+大家看看到没，其实还有 {\bfseries 中文编码} 的。 中文下一步还是会切换成英文。
+\columnbreak
+
+\subsubsection{有序列表}
+
+使用 enumerate 可以生成有序列表，但是也可以和 itemize 嵌套使用。代码：
+
+\begin{LTXexample}[pos=t,frame=ltbr,numbers=none,basicstyle=\zihao{5}\ttfamily]
+\begin{enumerate}
+  \item 第一个
+  \item 嵌套
+    \begin{enumerate}[label = \chinese*:]
+        \item 中文
+            \begin{enumerate}
+                \item 编号i
+                \item 编号ii
+            \end{enumerate}
+        \item 编号
+    \end{enumerate}
+  \item 有序中无序
     \begin{itemize}
         \item 第一个
         \item second
-              \begin{itemize}
-                  \item a
-                  \item b
-                  \item c
-              \end{itemize}
-        \item 无序中有序
-              \begin{enumerate}
-                  \item number
-                  \item number
-              \end{enumerate}
+        \item 第三个
     \end{itemize}
+\end{enumerate}
 \end{LTXexample}
+\label{expl:enumerate}
 
 \end{multicols}
-\subsubsection{如何自定义编号和中文编号?}
+\subsubsection{如何自定义编号或者使用中文编号?}
 
 这属于高级技巧。 参考章节 \ref{sec:redefine_item}
 
