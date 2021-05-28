@@ -253,20 +253,20 @@
 \begin{itemize}
     \item \Checkmark 选择使用 \TeX /\LaTeX 的理由包括：
 
-\begin{itemize}
-    \item 免费软件；
-    \item 专业的排版效果；
-    \item 是事实上的专业数学排版标准；
-    \item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
-\end{itemize}
+          \begin{itemize}
+              \item 免费软件；
+              \item 专业的排版效果；
+              \item 是事实上的专业数学排版标准；
+              \item 广泛的西文期刊接收甚或只接收 LaTeX 格式的投稿；
+          \end{itemize}
 
-\item \Checkmark 不选择使用 \TeX/\LaTeX 的理由包括：
-\begin{itemize}
-    \item 需要相当精力学习；
-    \item 图文混合排版能力弱；
-    \item 仅流行于数学、物理、计算机等领域；
-    \item 中文期刊的支持较差；
-\end{itemize}
+    \item \Checkmark 不选择使用 \TeX/\LaTeX 的理由包括：
+          \begin{itemize}
+              \item 需要相当精力学习；
+              \item 图文混合排版能力弱；
+              \item 仅流行于数学、物理、计算机等领域；
+              \item 中文期刊的支持较差；
+          \end{itemize}
 \end{itemize}
 
 \subsection{如何查询文档和学习？}
@@ -320,16 +320,16 @@
     \documentclass[UTF8]{ctexart}
 \end{lstlisting}
 \begin{center}
-\begin{figure}[H]
-    \centering
-    \setlength{\fboxrule}{0.1pt}
-    \setlength{\fboxsep}{0cm}
-    \fbox{
-        \includegraphics[scale=0.6]{images/article_render.png}
-    }
-    \caption{article 渲染效果}
-    \label{Fig:article_render}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \setlength{\fboxrule}{0.1pt}
+        \setlength{\fboxsep}{0cm}
+        \fbox{
+            \includegraphics[scale=0.6]{images/article_render.png}
+        }
+        \caption{article 渲染效果}
+        \label{Fig:article_render}
+    \end{figure}
 \end{center}
 
 
@@ -341,16 +341,16 @@
 \end{lstlisting}
 
 \begin{center}
-\begin{figure}[H]
-    \centering
-    \setlength{\fboxrule}{0.1pt}
-    \setlength{\fboxsep}{0cm}
-    \fbox{
-        \includegraphics[scale=0.6]{images/ctexart_render.png}
-    }
-    \caption{ctexart 渲染效果}
-    \label{Fig:ctexart_render}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \setlength{\fboxrule}{0.1pt}
+        \setlength{\fboxsep}{0cm}
+        \fbox{
+            \includegraphics[scale=0.6]{images/ctexart_render.png}
+        }
+        \caption{ctexart 渲染效果}
+        \label{Fig:ctexart_render}
+    \end{figure}
 \end{center}
 
 
@@ -713,24 +713,24 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 先看一个
 
 \begin{LTXexample}
-这是一个 \textbf{加粗}效果。
+    这是一个 \textbf{加粗}效果。
 \end{LTXexample}
 
 先看这个代码：这是一个引用，但是你会发现字号等等看起来和正文没有什么区别和变化。
 
 \begin{LTXexample}
-\begin{quote}
-    孔子曰：人之初，性本善。
-\end{quote}
+    \begin{quote}
+        孔子曰：人之初，性本善。
+    \end{quote}
 \end{LTXexample}
 
 
 再来看看这个代码。可以看到，我们添加 \verb!\zihao{-5}\kaishu! 改变了这个 quote 内部的字体大小和字体。
 
 \begin{LTXexample}
-\begin{quote}
-\zihao{-5}\kaishu 孔子曰：人之初，性本善。
-\end{quote}
+    \begin{quote}
+        \zihao{-5}\kaishu 孔子曰：人之初，性本善。
+    \end{quote}
 \end{LTXexample}
 
 上面我们知道。\verb!\textbf{加粗}! 只改变了"加粗"，但是为什么 \verb!\zihao{-5}! 改变了 quote 的所有内容呢？
@@ -836,14 +836,14 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 之后我们就可以使用这个环境进行编写了。
 
 \begin{LTXexample}
-\begin{myquote}
-这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
-\end{myquote}
+    \begin{myquote}
+        这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+    \end{myquote}
 \end{LTXexample}
 
 这是渲染效果:
 \begin{myquote}
-这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
+    这是使用myquote 自定义环境的一个引用。我在这里设置了 字号和字体。
 \end{myquote}
 之后只需要对myquote 进行设置就可以设置quote 的格式了。
 
@@ -863,7 +863,7 @@ LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，�
 \end{lstlisting}
 
 \begin{LTXexample}
-之后就可以使用 $\degree$ 替代 $^\circ$ 了。
+    之后就可以使用 $\degree$ 替代 $^\circ$ 了。
 \end{LTXexample}
 
 \par
@@ -1214,13 +1214,13 @@ start  " " /max "./%FileName%.pdf"
 先来看看效果。
 
 \begin{LTXexample}
-\begin{equation}
-    % notag 代码不添加tag
-    E=MC^2\notag
-\end{equation}
-\begin{equation}
-    E=MC^2
-\end{equation}
+    \begin{equation}
+        % notag 代码不添加tag
+        E=MC^2\notag
+    \end{equation}
+    \begin{equation}
+        E=MC^2
+    \end{equation}
 \end{LTXexample}
 
 
@@ -1234,23 +1234,23 @@ start  " " /max "./%FileName%.pdf"
 
 % !{listing only,boxrule=-1pt,colback=white}
 \begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
-\begin{LTXexample}
-\usepackage{showexpl}
-% 源代码
-\[
-    E=MC^2
-\]
-\end{LTXexample}
+    \begin{LTXexample}
+        \usepackage{showexpl}
+        % 源代码
+        \[
+            E=MC^2
+        \]
+    \end{LTXexample}
 \end{tcblisting}
 
 之后，我们就可以得到一个渲染图。这个图包含渲染效果和源代码。 读者很清晰的就可以看到对比。清晰的理解作者的用意。
 
 \begin{LTXexample}
-\usepackage{showexpl}
-% 源代码
-\[
-    E=MC^2
-\]
+    \usepackage{showexpl}
+    % 源代码
+    \[
+        E=MC^2
+    \]
 \end{LTXexample}
 
 
@@ -1268,7 +1268,7 @@ pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶�
 \begin{table}[H]
     \centering
     \begin{tabular}{l|l|l|l}
-        字体族 & 带参数命令             & 声明命令               & 效果               \\
+        字体族 & 带参数命令              & 声明命令                & 效果                       \\
         \hline
         罗马   & \verb!\textrm{罗马}! & \verb!\rmfamily! & \textrm{roman 罗马}        \\
         无衬线 & \verb!\textsf{无衬线}! & \verb!\sffamily! & \textsf{sans serif 无衬线} \\
@@ -1281,24 +1281,24 @@ pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶�
 \subsubsection{常用样式}
 
 \begin{LTXexample}[pos=b, frame=single, framesep=1pt, numbers=none, vsep=0pt]
-\textup{up shape} 直立（roman shape）使用（upshape）\\
-\textsl{Italicized shape} 斜体使用（slshape）\\
-\textit{Italic shape}  意大利体  （itshape） \\
-\textsc{Small capital} 小型大写（scshape）   \\  \\
-\textbf{Bold text} 粗体使用（bfseries）      \\
-\textmd{Medium series} 中等加宽（mdseries）  \\
-\underline{Underlined text} 下划线使用      \\
-\emph{Emphasising} 强调使用 （就是和当前的字体表现得不一样）\\
-\textbf{\textit{Combine text} \underline{当然也可以组合起来}}\\
-{\bfseries this is \textnormal{normal} text}\\
-{\ttfamily this is \normalfont{normal} font}
+    \textup{up shape} 直立（roman shape）使用（upshape）\\
+    \textsl{Italicized shape} 斜体使用（slshape）\\
+    \textit{Italic shape}  意大利体  （itshape） \\
+    \textsc{Small capital} 小型大写（scshape）   \\  \\
+    \textbf{Bold text} 粗体使用（bfseries）      \\
+    \textmd{Medium series} 中等加宽（mdseries）  \\
+    \underline{Underlined text} 下划线使用      \\
+    \emph{Emphasising} 强调使用 （就是和当前的字体表现得不一样）\\
+    \textbf{\textit{Combine text} \underline{当然也可以组合起来}}\\
+    {\bfseries this is \textnormal{normal} text}\\
+    {\ttfamily this is \normalfont{normal} font}
 \end{LTXexample}
 
 其中 textnormal 和 normalfont 可以恢复默认的字体和样式。
 
 \begin{LTXexample}
-{\heiti 这是黑体\normalfont{恢复默认}}。  \\
-{\kaishu 这是楷书{\normalfont{恢复默认}}}。
+    {\heiti 这是黑体\normalfont{恢复默认}}。  \\
+    {\kaishu 这是楷书{\normalfont{恢复默认}}}。
 \end{LTXexample}
 
 中文没有过多复杂的变体。主要是不同的字体族进行区分。
@@ -1311,7 +1311,7 @@ pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶�
 
 另外，
 \begin{LTXexample}
-\rmfamily 西文的 rmfamily (罗马体家族) 正常对应的分别是\textnormal{宋体}:{\songti 宋体},加粗则是\textbf{黑体}：{\heiti 黑体}， 意大利则对应 \textit{楷书}：{\kaishu 楷书}。
+    \rmfamily 西文的 rmfamily (罗马体家族) 正常对应的分别是\textnormal{宋体}:{\songti 宋体},加粗则是\textbf{黑体}：{\heiti 黑体}， 意大利则对应 \textit{楷书}：{\kaishu 楷书}。
 \end{LTXexample}
 
 
@@ -1330,81 +1330,81 @@ pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶�
 % 分栏
 \begin{multicols}{2}
 
-一般情况下，我们很少进行独立的字体配置。 文档的总体字体风格和大小在一开始就设置了全局的字体。
+    一般情况下，我们很少进行独立的字体配置。 文档的总体字体风格和大小在一开始就设置了全局的字体。
 
-但是如果还是需要独立调节字体的大小， 可以参考以下的设置和命令。
+    但是如果还是需要独立调节字体的大小， 可以参考以下的设置和命令。
 
-\paragraph{西文中}
-\LaTeX 提供了10个简单的声明式调整文字大小的命令：
+    \paragraph{西文中}
+    \LaTeX 提供了10个简单的声明式调整文字大小的命令：
 
-\begin{table}[H]
-    \centering
+    \begin{table}[H]
+        \centering
         \begin{tabular}{cc}
-\hline
-命令                  &  意义                      \\
-\hline
-\verb!\tiny!         & \tiny{tiny}                \\
-\verb!\scriptsize!   & \scriptsize{scriptszie}    \\
-\verb!\footnotesize! & \footnotesize{footnotesize}\\
-\verb!\small!        & \small{small}              \\
-\verb!\normalsize!   & \normalsize{normalsize}    \\
-\verb!\large!        & \large{large}              \\
-\verb!\Large!        & \Large{Large}              \\
-\verb!\LARGE!        & \LARGE{LARGE}              \\
-\verb!\huge!         & \huge{huge}                \\
-\verb!\Huge!         & \Huge{Huge}                \\
-\hline
+            \hline
+            命令                    & 意义                        \\
+            \hline
+            \verb!\tiny! & \tiny{tiny}                 \\
+            \verb!\scriptsize! & \scriptsize{scriptszie}     \\
+            \verb!\footnotesize! & \footnotesize{footnotesize} \\
+            \verb!\small! & \small{small}               \\
+            \verb!\normalsize! & \normalsize{normalsize}     \\
+            \verb!\large! & \large{large}               \\
+            \verb!\Large! & \Large{Large}               \\
+            \verb!\LARGE! & \LARGE{LARGE}               \\
+            \verb!\huge! & \huge{huge}                 \\
+            \verb!\Huge! & \Huge{Huge}                 \\
+            \hline
         \end{tabular}
         \caption{西文字体大小的命令}
-    \label{tab:font_size_latin}
-\end{table}
+        \label{tab:font_size_latin}
+    \end{table}
 
-\paragraph{实例}
-% ! 这里为什么用[] 进行设置参数而不是{}，那是因为[]  是可选参数。
-\begin{LTXexample}[pos=b,frame=single,numbers=none,vsep=0pt]
-This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
-\end{LTXexample}
+    \paragraph{实例}
+    % ! 这里为什么用[] 进行设置参数而不是{}，那是因为[]  是可选参数。
+    \begin{LTXexample}[pos=b,frame=single,numbers=none,vsep=0pt]
+        This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
+    \end{LTXexample}
 
-\columnbreak %强制分栏
-\paragraph{中文中}
-可以使用中文的字号进行设置。
-\begin{table}[H]
-    \centering
+    \columnbreak %强制分栏
+    \paragraph{中文中}
+    可以使用中文的字号进行设置。
+    \begin{table}[H]
+        \centering
         \begin{tabular}{lcl}
-\hline
-命令               &大小（bp）  &意义                 \\
-\hline
-\verb!\zihao{0}!   &42       &{\zihao{0} 初号}  \\
-\verb!\zihao{-0}!  &36       &{\zihao{-0} 小初号}\\
-\verb!\zihao{1}!   &26       &{\zihao{1} 一号}  \\
-\verb!\zihao{-1}!  &24       &{\zihao{-1} 小一号}\\
-\verb!\zihao{2}!   &22       &{\zihao{2} 二号}  \\
-\verb!\zihao{-2}!  &18       &{\zihao{-2} 小二号}\\
-\verb!\zihao{3}!   &16       &{\zihao{3} 三号}  \\
-\verb!\zihao{-3}!  &15       &{\zihao{-3} 小三号}\\
-\verb!\zihao{4}!   &14       &{\zihao{4} 四号}  \\
-\verb!\zihao{-4}!  &12       &{\zihao{-4} 小四号}\\
-\verb!\zihao{5}!   &10.5     &{\zihao{5} 五号}  \\
-\verb!\zihao{-5}!  &9        &{\zihao{-5} 小五号}\\
-\verb!\zihao{6}!   &7.5      &{\zihao{6} 六号}  \\
-\verb!\zihao{-6}!  &6.5      &{\zihao{-6} 小六号}\\
-\verb!\zihao{7}!   &5.5      &{\zihao{7} 七号}  \\
-\verb!\zihao{8}!   &5        &{\zihao{8} 八号}  \\
-\hline
+            \hline
+            命令                    & 大小（bp） & 意义                \\
+            \hline
+            \verb!\zihao{0}! & 42         & {\zihao{0} 初号}    \\
+            \verb!\zihao{-0}! & 36         & {\zihao{-0} 小初号} \\
+            \verb!\zihao{1}! & 26         & {\zihao{1} 一号}    \\
+            \verb!\zihao{-1}! & 24         & {\zihao{-1} 小一号} \\
+            \verb!\zihao{2}! & 22         & {\zihao{2} 二号}    \\
+            \verb!\zihao{-2}! & 18         & {\zihao{-2} 小二号} \\
+            \verb!\zihao{3}! & 16         & {\zihao{3} 三号}    \\
+            \verb!\zihao{-3}! & 15         & {\zihao{-3} 小三号} \\
+            \verb!\zihao{4}! & 14         & {\zihao{4} 四号}    \\
+            \verb!\zihao{-4}! & 12         & {\zihao{-4} 小四号} \\
+            \verb!\zihao{5}! & 10.5       & {\zihao{5} 五号}    \\
+            \verb!\zihao{-5}! & 9          & {\zihao{-5} 小五号} \\
+            \verb!\zihao{6}! & 7.5        & {\zihao{6} 六号}    \\
+            \verb!\zihao{-6}! & 6.5        & {\zihao{-6} 小六号} \\
+            \verb!\zihao{7}! & 5.5        & {\zihao{7} 七号}    \\
+            \verb!\zihao{8}! & 5          & {\zihao{8} 八号}    \\
+            \hline
         \end{tabular}
-    \caption{中文字号}
-    \label{tab:font_size_cjk}
-\end{table}
+        \caption{中文字号}
+        \label{tab:font_size_cjk}
+    \end{table}
 
-\paragraph{实例}:
-\begin{LTXexample}[pos=b,frame=single,numbers=none,vsep=0pt]
-This is {\zihao{6} 六号 small} and {\zihao{0} 初号  Large}!
-\end{LTXexample}
+    \paragraph{实例}:
+    \begin{LTXexample}[pos=b,frame=single,numbers=none,vsep=0pt]
+        This is {\zihao{6} 六号 small} and {\zihao{0} 初号  Large}!
+    \end{LTXexample}
 \end{multicols}
 
 \begin{myquote}
-Tip:
-从两个渲染图看。我们可以看到西文的大小和中文的字号是可以\textbf{同时} 作用中文和西文的。
+    Tip:
+    从两个渲染图看。我们可以看到西文的大小和中文的字号是可以\textbf{同时} 作用中文和西文的。
 \end{myquote}
 
 
@@ -1418,10 +1418,10 @@ Tip:
     \item 使用方法和显示效果
 
           \begin{LTXexample}
-\sout{删除线}\\   %删除线
-\uwave{波浪线}\\  %波浪线
-\xout{斜删除线}\\   %斜删除线
-\uuline{双下划线}\\ %双下划线
+              \sout{删除线}\\   %删除线
+              \uwave{波浪线}\\  %波浪线
+              \xout{斜删除线}\\   %斜删除线
+              \uuline{双下划线}\\ %双下划线
           \end{LTXexample}
 
 \end{enumerate}
@@ -1518,8 +1518,8 @@ Tip:
 使用 \verb!\href{url}{text}! 或者 \verb!\url{URL}!
 
 \begin{LTXexample}
-For further references see \href{http://www.overleaf.com}{Something Linky}
-or go to the next url: \url{http://www.overleaf.com}
+    For further references see \href{http://www.overleaf.com}{Something Linky}
+    or go to the next url: \url{http://www.overleaf.com}
 \end{LTXexample}
 
 \par
@@ -1529,9 +1529,9 @@ or go to the next url: \url{http://www.overleaf.com}
 使用 \verb!\href{run:url}{text}!
 
 \begin{LTXexample}
-For further references see \href{http://www.overleaf.com}{Something Linky}
-or go to the next url: \url{http://www.overleaf.com} or open the next
-file \href{run:./file.txt}{File.txt}
+    For further references see \href{http://www.overleaf.com}{Something Linky}
+    or go to the next url: \url{http://www.overleaf.com} or open the next
+    file \href{run:./file.txt}{File.txt}
 \end{LTXexample}
 
 \par
@@ -1542,13 +1542,13 @@ file \href{run:./file.txt}{File.txt}
 使用 \verb!\hypertarget{Target}{Text}! 结合 \verb!\hyperlink{Target}!
 
 \begin{LTXexample}
-It's also possible to link directly any word
-or \hyperlink{thesentence}{any sentence} in you document.
+    It's also possible to link directly any word
+    or \hyperlink{thesentence}{any sentence} in you document.
 
-If you read this text, you will get no information.  Really?
-Is there no information?
+    If you read this text, you will get no information.  Really?
+    Is there no information?
 
-For instance \hypertarget{thesentence}{this sentence}.
+    For instance \hypertarget{thesentence}{this sentence}.
 \end{LTXexample}
 
 
@@ -1571,7 +1571,48 @@ chuwai)
 
 使用 xelatex 编译文档的时候，ctexart 文档类会调用 xeCJK 宏包，自动处理汉字于其他符号之间的距离，无论你有没有在他上面加上正确的空格。这是非常方便的。
 
-但是你想要一定加一个空格。参见\ref{subsubsec:space}。
+使用一个“反斜杠+一个空格”（“\verb!\ !”）表示1个空\ 格，space \ space。 多个同理，但是不推荐这样使用。
+表\ref{tab.space_size} 是空格大小的调整方式。
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        描述     & 符号                    & 渲染效果   & 宽度         \\\hline
+        quad空格 & \verb!a \qquad b! & a \qquad b & 两个m的宽度  \\
+        quad空格 & \verb!a \quad b! & a \quad b  & 一个m的宽度  \\
+        大空格   & \verb!a\ b! & a\ b       & 1/3m宽度     \\
+        中等空格 & \verb!a\;b! & a\;b       & 2/7m宽度     \\
+        小空格   & \verb!a\,b! & a\,b       & 1/6m宽度     \\
+        没有空格 & ab                      & ab         &              \\
+        紧贴     & a$\backslash$!b         & a\!b       & 缩进1/6m宽度 \\
+        \hline
+    \end{tabular}
+    \label{tab.space_size}
+    \caption{空格大小的调整参考表}
+\end{table}
+
+
+
+\begin{quotation}
+    \zihao{5}\kaishu Tip:
+
+    \textbf{西文}单词用空格隔开，\LaTeX 中的连续多个空格在编译排版时被看做一个空格。 但是“$\backslash$ ”一定会是认为一个空格。
+
+    \textbf{中文(cjk)}（\verb!ctexart!）中,空格不算空格。很奇怪！\verb!你 好! 会被渲染为“你 好”，而不是"你\ 好"。
+
+    另外，中英文混编:
+    \begin{enumerate}
+        \item 中文紧随着英文会自动添加一个空格。如你好hello！ “你好”和“hello”之间是有空格的。
+        \item 西文紧随中文也会添加空格。
+        \item 中文标点符号紧随的应为不会自动添加空格。如你好，hello！ “你好”和“hello”之间是没有有空格的。
+        \item 英文之间符合西文。就是一个或者多个算一个空格。hi  hello，hi和hello之间是有一个空格的。
+        \item \textbf{任何时候，中西文混编都推荐在中西文之间添加空格，这样是符合规范的}, “space 你好space你好 space”。
+    \end{enumerate}
+\end{quotation}
+
+\subsubsection{句号后面的空白}
+句号圆点，可以表示句子结束，也可以表示缩写。在小写字母后面圆点表示句子结束，但是为了表示缩写，需在圆点后空格加上倒斜线\verb!\!，表示缩写后面可以分行;在\LaTeX{}中，大写字母后的圆点看做是一个缩写而不是句号。有时大写字母后面圆点表示成句号，可以在圆点前加上"\verb!\@.!"，即显示为“\@.”。
 
 \subsubsection{换行命令}
 
@@ -1623,13 +1664,13 @@ chuwai)
     \item 标题中(不建议使用这个方法。会搞乱目录和书签)
           \begin{enumerate}
               \item 引用 cprotect 宏
-              \begin{lstlisting}
+                    \begin{lstlisting}
 \usepackage{cprotect}
 % 在标题中显示原始字符
             \end{lstlisting}
 
               \item 在 标题中插入
-                \begin{lstlisting}
+                    \begin{lstlisting}
 \cprotect\section{This is a section heading with a verbatim \verb!\frac{1}{2}!}
 % 这是在标题中使用\verb
                 \end{lstlisting}
@@ -1710,19 +1751,18 @@ chuwai)
     英文的双引号极少使用。常常用作其他用处。
 \end{myquote}
 
-\subsubsection{连体号}
-在 \LaTeX 中，把fi这样的字母组合，当成一个连体号排版出来的，而不是分开来的。如要将两者分开，应在两者中间加入“$\backslash$/”,即“\verb!f\/i!”，就可以显示“f\/i”,而不是“fi”。
-
-不同的字体不一样。 有些专业的字体会有很多，如 \verb!fb,fh,fj,ffb,ffh,ffj,ffk,ct,st,sp,Th,fi,fl! 等。具体看当时的编排效果。
 
 \subsubsection{省略号}
 使用\verb!\ldots!。
 \begin{LTXexample}
-英文文中。使用 i$\ldots$you.    \\
-英文句尾，使用 i amd you \ldots.
+    英文文中。使用 i$\ldots$you.    \\
+    英文句尾，使用 i amd you \ldots.
 \end{LTXexample}
 
+\subsubsection{连体号}
+在 \LaTeX 中，把fi这样的字母组合，当成一个连体号排版出来的，而不是分开来的。如要将两者分开，应在两者中间加入“$\backslash$/”,即“\verb!f\/i!”，就可以显示“f\/i”,而不是“fi”。
 
+不同的字体不一样。 有些专业的字体会有很多，如 \verb!fb,fh,fj,ffb,ffh,ffj,ffk,ct,st,sp,Th,fi,fl! 等。具体看当时的编排效果。
 
 
 \subsubsection{连字号、破折号}
@@ -1733,58 +1773,6 @@ chuwai)
     \item 连续用三个连字号"\verb!---!" 表示---破折号。
 \end{itemize}
 
-
-
-
-\subsubsection{句号后面的空白}
-句号圆点，可以表示句子结束，也可以表示缩写。在小写字母后面圆点表示句子结束，但是为了表示缩写，需在圆点后空格加上倒斜线\verb!\!，表示缩写后面可以分行;在\LaTeX{}中，大写字母后的圆点看做是一个缩写而不是句号。有时大写字母后面圆点表示成句号，可以在圆点前加上"\verb!\@.!"，即显示为“\@.”。
-
-\subsubsection{空格}
-\label{subsubsec:space}
-
-使用一个“反斜杠+一个空格”（“\verb!\ !”）表示1个空\ 格，space \ space。 多个同理，但是不推荐这样使用。
-
-
-
-表\ref{tab.space_size} 是空格大小的调整方式。
-
-
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{|c|c|c|c|}
-        \hline
-        描述     & 符号                    & 渲染效果   & 宽度         \\\hline
-        quad空格 & \verb!a \qquad b! & a \qquad b & 两个m的宽度  \\
-        quad空格 & \verb!a \quad b! & a \quad b  & 一个m的宽度  \\
-        大空格   & \verb!a\ b! & a\ b       & 1/3m宽度     \\
-        中等空格 & \verb!a\;b! & a\;b       & 2/7m宽度     \\
-        小空格   & \verb!a\,b! & a\,b       & 1/6m宽度     \\
-        没有空格 & ab                      & ab         &              \\
-        紧贴     & a$\backslash$!b         & a\!b       & 缩进1/6m宽度 \\
-        \hline
-    \end{tabular}
-    \label{tab.space_size}
-    \caption{空格大小的调整参考表}
-\end{table}
-
-
-
-\begin{quotation}
-    \zihao{5}\kaishu Tip:
-
-    \textbf{西文}单词用空格隔开，\LaTeX 中的连续多个空格在编译排版时被看做一个空格。 但是“$\backslash$ ”一定会是认为一个空格。
-
-    \textbf{中文(cjk)}（\verb!ctexart!）中,空格不算空格。很奇怪！\verb!你 好! 会被渲染为“你 好”，而不是"你\ 好"。
-
-    另外，中英文混编:
-    \begin{enumerate}
-        \item 中文紧随着英文会自动添加一个空格。如你好hello！ “你好”和“hello”之间是有空格的。
-        \item 西文紧随中文也会添加空格。
-        \item 中文标点符号紧随的应为不会自动添加空格。如你好，hello！ “你好”和“hello”之间是没有有空格的。
-        \item 英文之间符合西文。就是一个或者多个算一个空格。hi  hello，hi和hello之间是有一个空格的。
-        \item \textbf{任何时候，中西文混编都推荐在中西文之间添加空格，这样是符合规范的}, “space 你好space你好 space”。
-    \end{enumerate}
-\end{quotation}
 
 
 % *\subsection{颜色}
@@ -1823,33 +1811,33 @@ Todo
 代码：
 
 \begin{LTXexample}
-\begin{enumerate}
-    \item 第一个
-    \item 嵌套
-            \begin{enumerate}[label = \chinese*、]
-                \item 中
+    \begin{enumerate}
+        \item 第一个
+        \item 嵌套
+              \begin{enumerate}[label = \chinese*、]
+                  \item 中
 
-                    \begin{enumerate}
-                        \item 编号i
-                        \item 编号ii
-                    \end{enumerate}
-                \item 文
+                        \begin{enumerate}
+                            \item 编号i
+                            \item 编号ii
+                        \end{enumerate}
+                  \item 文
 
-                    \begin{enumerate}[label = \chinese*.]
-                        \item 编号i
-                        \item 编号ii
-                    \end{enumerate}
-                \item 编
-                \item 号
-            \end{enumerate}
-    \item 有序中无序
-            \begin{itemize}
-                \item 第一个
-                \item second
-                \item 第三个
-            \end{itemize}
-    \item ...
-\end{enumerate}
+                        \begin{enumerate}[label = \chinese*.]
+                            \item 编号i
+                            \item 编号ii
+                        \end{enumerate}
+                  \item 编
+                  \item 号
+              \end{enumerate}
+        \item 有序中无序
+              \begin{itemize}
+                  \item 第一个
+                  \item second
+                  \item 第三个
+              \end{itemize}
+        \item ...
+    \end{enumerate}
 \end{LTXexample}
 \label{expl:enumerate}
 
@@ -1861,20 +1849,20 @@ Todo
 代码：
 
 \begin{LTXexample}
-\begin{itemize}
-    \item 第一个
-    \item second
-            \begin{itemize}
-                \item a
-                \item b
-                \item c
-            \end{itemize}
-    \item 无序中有序
-            \begin{enumerate}
-                \item number
-                \item number
-            \end{enumerate}
-\end{itemize}
+    \begin{itemize}
+        \item 第一个
+        \item second
+              \begin{itemize}
+                  \item a
+                  \item b
+                  \item c
+              \end{itemize}
+        \item 无序中有序
+              \begin{enumerate}
+                  \item number
+                  \item number
+              \end{enumerate}
+    \end{itemize}
 \end{LTXexample}
 
 \subsubsection{如何自定义编号和中文编号?}
@@ -2044,10 +2032,10 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
           \end{lstlisting}
 
           如:
-            \begin{equation}
-            \angle CAB = 90^\circ =90\degree=\pi / 2
-            \end{equation}
-    插播一下，还记得之前定义的degree \ref{subsubsec:degreedefine} 吗？ 这里用上了。
+          \begin{equation}
+              \angle CAB = 90^\circ =90\degree=\pi / 2
+          \end{equation}
+          插播一下，还记得之前定义的degree \ref{subsubsec:degreedefine} 吗？ 这里用上了。
 \end{enumerate}
 
 \begin{myquote}
@@ -2063,11 +2051,11 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 一行写不下的，要写多行的，用 multiline 。
 
 \begin{LTXexample}
-\begin{multline}
-p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
-+ \sin{x} +\cos{y} +\tan{a} +e^{x+y}\\
-- 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3
-\end{multline}
+    \begin{multline}
+        p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
+        + \sin{x} +\cos{y} +\tan{a} +e^{x+y}\\
+        - 12x^2y^4 - 12xy^5 + 2y^6 - a^3b^3
+    \end{multline}
 \end{LTXexample}
 
 \subsubsection{有对齐的的多行}
@@ -2075,15 +2063,15 @@ p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
 多行的公式。而不是一行写不下的公式,使用align 环境 以\& 进行对齐。
 
 \begin{LTXexample}
-\begin{align*}
-    X^{ABC}& = \int_a^b x \mathrm{d}x \\
-    1\times 2=2=4/2=8/4 & =16/8
-\end{align*}
+    \begin{align*}
+        X^{ABC}             & = \int_a^b x \mathrm{d}x \\
+        1\times 2=2=4/2=8/4 & =16/8
+    \end{align*}
 
-\begin{align}
-    a & = b + c\\
-      & = d + e \notag
-\end{align}
+    \begin{align}
+        a & = b + c        \\
+          & = d + e \notag
+    \end{align}
 \end{LTXexample}
 
 \begin{align}
@@ -2099,22 +2087,22 @@ p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
 \subsubsection{多列对齐 align}
 
 \begin{LTXexample}
-\begin{align*}
-  a &=1 & b &=2 & c &=3 \\
-  d &=-1 & e &=-2 & f &=-5
-\end{align*}
+    \begin{align*}
+        a & =1  & b & =2  & c & =3  \\
+        d & =-1 & e & =-2 & f & =-5
+    \end{align*}
 \end{LTXexample}
 
 
 \subsubsection{不对齐 gather}
 
 \begin{LTXexample}
-  \begin{gather}
-    a = b + c \\
-    d = e + f + g \\
-    h + i = j + k \notag \\
-    l + m = n
-  \end{gather}
+    \begin{gather}
+        a = b + c \\
+        d = e + f + g \\
+        h + i = j + k \notag \\
+        l + m = n
+    \end{gather}
 \end{LTXexample}
 
 \subsubsection{统一编号 equation}
@@ -2123,62 +2111,62 @@ p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
 
 \paragraph{equation}
 \begin{LTXexample}
-\begin{equation}
-  \begin{aligned}
-      a &= b + c \\
-      d &= e + f + g \\
-      h + i &= j + k \\
-      l + m &= n
-  \end{aligned}
-\end{equation}
+    \begin{equation}
+        \begin{aligned}
+            a     & = b + c     \\
+            d     & = e + f + g \\
+            h + i & = j + k     \\
+            l + m & = n
+        \end{aligned}
+    \end{equation}
 \end{LTXexample}
 
 \paragraph{equation*}
 \begin{LTXexample}
-\begin{equation*}
-  \begin{aligned}
-      a &= b + c \\
-      d &= e + f + g \\
-      h + i &= j + k \\
-      l + m &= n
-  \end{aligned}
-\end{equation*}
+    \begin{equation*}
+        \begin{aligned}
+            a     & = b + c     \\
+            d     & = e + f + g \\
+            h + i & = j + k     \\
+            l + m & = n
+        \end{aligned}
+    \end{equation*}
 \end{LTXexample}
 
 \paragraph{$\backslash$[}
 \begin{LTXexample}
-\[
-  \begin{gathered}
-      a = b + c \\
-      d = e + f + g \\
-      h + i = j + k \\
-      l + m = n
-  \end{gathered}
-\]
+    \[
+        \begin{gathered}
+            a = b + c \\
+            d = e + f + g \\
+            h + i = j + k \\
+            l + m = n
+        \end{gathered}
+    \]
 \end{LTXexample}
 
 \subsubsection{限定符}
 
 \begin{LTXexample}
-\begin{equation}
-\left\{
-    \begin{gathered}
-        a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
-        \\[3pt]
-        a_{21} x_{1} + a_{22} x_{3} + a_{23} x_{3} = b_{2}
-    \end{gathered}
-\right.
-\end{equation}
+    \begin{equation}
+        \left\{
+        \begin{gathered}
+            a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+            \\[3pt]
+            a_{21} x_{1} + a_{22} x_{3} + a_{23} x_{3} = b_{2}
+        \end{gathered}
+        \right.
+    \end{equation}
 
-\begin{equation*}
-    \left\{
-    \begin{aligned}
-        a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
-        \\[3pt]
-        a_{22} x_{3} + a_{23} x_{3} = b_{2}
-    \end{aligned}
-    \right.
-\end{equation*}
+    \begin{equation*}
+        \left\{
+        \begin{aligned}
+            a_{11} x_{1} + a_{12} x_{2} + a_{13} x_{2} = b_{1}
+            \\[3pt]
+            a_{22} x_{3} + a_{23} x_{3} = b_{2}
+        \end{aligned}
+        \right.
+    \end{equation*}
 \end{LTXexample}
 
 \subsubsection{array 环境}
@@ -2186,14 +2174,14 @@ p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
 参考：\href{https://mirror.bjtu.edu.cn/ctan/macros/latex/required/tools/array.pdf}{A new implementation of LaTeX's tabular and array environment}
 
 \begin{LTXexample}
-\[
-  |x| = \left\{
-    \begin{array}{rl}
-      -x & \mbox{if } x < 0,\\
-      0 & \mbox{if } x = 0,\\
-      x & \mbox{if } x > 0.
-    \end{array} \right.
-\]
+    \[
+        |x| = \left\{
+        \begin{array}{rl}
+            -x & \mbox{if } x < 0, \\
+            0  & \mbox{if } x = 0, \\
+            x  & \mbox{if } x > 0.
+        \end{array} \right.
+    \]
 \end{LTXexample}
 
 \subsubsection{case 环境}
@@ -2201,13 +2189,13 @@ p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
 统一编号：
 
 \begin{LTXexample}
-\begin{equation} |x| =
-\begin{cases}
-    -x & \mbox{if } x < 0,\\
-    0 & \mbox{if } x = 0,\\
-    x & \mbox{if } x > 0.
-\end{cases}
-\end{equation}
+    \begin{equation} |x| =
+        \begin{cases}
+            -x & \mbox{if } x < 0, \\
+            0  & \mbox{if } x = 0, \\
+            x  & \mbox{if } x > 0.
+        \end{cases}
+    \end{equation}
 \end{LTXexample}
 
 
@@ -2215,17 +2203,17 @@ p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
 需要在导言区载入 cases 宏包 usepackage{cases}，并且放在 amsmath 之后。
 
 \begin{LTXexample}
-\begin{numcases} {|x| =}
-  -x & \mbox{if } x < 0 \label{eq:eq41},\\
-  0 & \mbox{if } x = 0,\\
-  x & \mbox{if } x > 0.
-\end{numcases}
+    \begin{numcases} {|x| =}
+        -x & \mbox{if } x < 0 \label{eq:eq41},\\
+        0 & \mbox{if } x = 0,\\
+        x & \mbox{if } x > 0.
+    \end{numcases}
 
-\begin{subnumcases} {\label{eq:eq42} |x| =}
-    -x & \mbox{if } x < 0,\\
-    0 & \mbox{if } x = 0\label{eq:eq43},\\
-    x & \mbox{if } x > 0.
-\end{subnumcases}
+    \begin{subnumcases} {\label{eq:eq42} |x| =}
+        -x & \mbox{if } x < 0,\\
+        0 & \mbox{if } x = 0\label{eq:eq43},\\
+        x & \mbox{if } x > 0.
+    \end{subnumcases}
 \end{LTXexample}
 % 式 (\ref{eq:eq41}) 和 式 (\ref{eq:eq42}) 和 式 (\ref{eq:eq43})
 
@@ -2244,11 +2232,11 @@ p = 4x^5y + 590x^4y^2 + 19x^3y^3    \\
 
 
 \begin{LTXexample}
-\begin{empheq}[left=\empheqlbrace]{align*}
-  E & =mc^2
-  \\[3pt]
-  Y & = \sum_{n=1}^\infty \frac{1}{n^2}
-\end{empheq}
+    \begin{empheq}[left=\empheqlbrace]{align*}
+        E & =mc^2
+        \\[3pt]
+        Y & = \sum_{n=1}^\infty \frac{1}{n^2}
+    \end{empheq}
 \end{LTXexample}
 
 
@@ -2316,61 +2304,61 @@ amsmath 这个宏包的作用如下。
 编号：
 
 \begin{LTXexample}
-\usepackage{amsmath}
-\usepackage{amssymb}%花体字符
-\begin{document}
-\begin{gather}%会产生编号
-    a+b=b+a\\
-    ab=ba
-\end{gather}
+    \usepackage{amsmath}
+    \usepackage{amssymb}%花体字符
+    \begin{document}
+    \begin{gather}%会产生编号
+        a+b=b+a\\
+        ab=ba
+    \end{gather}
 
-\begin{gather*}%不会产生编号
-    a \times b=b \times a\\
-    ab=ba
-\end{gather*}
+    \begin{gather*}%不会产生编号
+        a \times b=b \times a\\
+        ab=ba
+    \end{gather*}
 
-\begin{gather}%会编号
-    a+b=b+a \notag \\%\notag阻止编号
-    ab=ba   \notag %\notag阻止编号
-\end{gather}
-\end{document}
+    \begin{gather}%会编号
+        a+b=b+a \notag \\%\notag阻止编号
+        ab=ba   \notag %\notag阻止编号
+    \end{gather}
+    \end{document}
 \end{LTXexample}
 
 \par
 对齐：
 
 \begin{LTXexample}
-%align和align*环境（用$对齐）
-\begin{align}
-    x & = t + \cos t + 1 \\
-    y & = 2\sin t
-\end{align}
+    %align和align*环境（用$对齐）
+    \begin{align}
+        x & = t + \cos t + 1 \\
+        y & = 2\sin t
+    \end{align}
 \end{LTXexample}
 
 \par
 多行对齐：
 
 \begin{LTXexample}
-%split环境（用$对齐）(一个公式分为多行排版)
-\begin{equation}
-    \begin{split}
-        \cos 2x &= \cos^2 x - \sin^2 x\\
-        &= 2\cos^2 x - 1
-    \end{split}
-\end{equation}
+    %split环境（用$对齐）(一个公式分为多行排版)
+    \begin{equation}
+        \begin{split}
+            \cos 2x &= \cos^2 x - \sin^2 x\\
+            &= 2\cos^2 x - 1
+        \end{split}
+    \end{equation}
 \end{LTXexample}
 \par
 
 \begin{LTXexample}
-%case环境
-%每行公式使用&分割成两部分
-%通常表示值和后面的条件
-\begin{equation}
-D(x) = \begin{cases}
-    1, & \text{如果} x \in \mathbb{Q}                    \\%mathbb花体字符
-    0, & \text{如果} x \in \mathbb{R}\setminus\mathbb{Q}
-\end{cases}%\text是为了在数学公式中处理中文
-\end{equation}
+    %case环境
+    %每行公式使用&分割成两部分
+    %通常表示值和后面的条件
+    \begin{equation}
+        D(x) = \begin{cases}
+            1, & \text{如果} x \in \mathbb{Q}                    \\%mathbb花体字符
+            0, & \text{如果} x \in \mathbb{R}\setminus\mathbb{Q}
+        \end{cases}%\text是为了在数学公式中处理中文
+    \end{equation}
 \end{LTXexample}
 
 
@@ -2403,12 +2391,12 @@ D(x) = \begin{cases}
     \item 使用代码的$\backslash$verb!code!,进行简单的标识。但是中间不要太多“!” 号
     \item 使用 verbatim
 
-        \begin{LTXexample}
-\begin{verbatim}
+          \begin{LTXexample}
+              \begin{verbatim}
 %this is code
 %very simple code
 \end{verbatim}
-        \end{LTXexample}
+          \end{LTXexample}
 
 \end{enumerate}
 
@@ -2444,18 +2432,18 @@ D(x) = \begin{cases}
 
     \item \label{lst:tcbdemo} 在指定的位置插入例子
 
-\begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
-\begin{lstlisting}[language=C,frame=single]
+          \begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+              \begin{lstlisting}[language=C,frame=single]
 int main() {
     printf("hello, world");
     return 0;
 }
 \end{lstlisting}
-\end{tcblisting}
+          \end{tcblisting}
 
     \item  可以看到有行号， 有方框， 有背景颜色。(\textsl{看到下面的框框是单框的,是因为设置了\textbf{frame=single}})
 
-    \begin{lstlisting}[language=C,frame=single]
+          \begin{lstlisting}[language=C,frame=single]
 int main() {
     printf("hello, world");
     return 0;
@@ -2645,16 +2633,16 @@ int main() {
     \end{lstlisting}
 
     \item 最终效果，图\ref{Fig.insert-one-png}
-\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-    \centering %图片居中
-    % \setlength{\fboxrule}{1pt}
-    % \setlength{\fboxsep}{0.5cm}
-    \fbox{
-        \includegraphics[]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
-    }
-    \caption{插入图片的demo} %最终文档中希望显示的图片标题
-    \label{Fig.insert-one-png} %用于文内引用的标签
-\end{figure}
+          \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+              \centering %图片居中
+              % \setlength{\fboxrule}{1pt}
+              % \setlength{\fboxsep}{0.5cm}
+              \fbox{
+                  \includegraphics[]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+              }
+              \caption{插入图片的demo} %最终文档中希望显示的图片标题
+              \label{Fig.insert-one-png} %用于文内引用的标签
+          \end{figure}
 
     \item 双排设置
           \begin{lstlisting}
@@ -2678,19 +2666,19 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \end{lstlisting}
 
     \item 双排效果显示,图 \ref{Fig.Insert_two_pic_demo}
-\begin{center}
-\begin{figure}[H]
-    \centering
-    \setlength{\fboxrule}{0.1pt}
-    \setlength{\fboxsep}{0.5cm}
-    \fbox{
-        %插入图片，[]中设置图片大小，{}中是图片文件名
-        \includegraphics[width=0.9\textwidth]{images/insert-two-pic.jpg}
-    }
-    \caption{并排插入两个图片的效果}
-    \label{Fig.Insert_two_pic_demo}
-\end{figure}
-\end{center}
+          \begin{center}
+              \begin{figure}[H]
+                  \centering
+                  \setlength{\fboxrule}{0.1pt}
+                  \setlength{\fboxsep}{0.5cm}
+                  \fbox{
+                      %插入图片，[]中设置图片大小，{}中是图片文件名
+                      \includegraphics[width=0.9\textwidth]{images/insert-two-pic.jpg}
+                  }
+                  \caption{并排插入两个图片的效果}
+                  \label{Fig.Insert_two_pic_demo}
+              \end{figure}
+          \end{center}
     \item 引用图片
 
           在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
@@ -2884,17 +2872,17 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 
 编号是需要计数器的，在标准的计数器中，只有\verb!\roman、\Roman、\arabic、\alph、\Alph!以及\verb!\fnsymbol!，其输出格式分别为i,ii、I,II、1,2、a,b、A,B、花体符号，现在如果需要输出一、二这种类型的编号，可以使用enumitem包提供的\verb!\AddEnumerateCounter!命令，同时利用ctex包提供的\verb!\chinese! 命令即可，一个minimal working example如下\footnote{https://yuxtech.club/2021/01/18/enumerate/}：
 \begin{LTXexample}
-\documentclass{ctexart}
-\usepackage[showframe]{geometry}
-\usepackage{enumitem}
-\AddEnumerateCounter{\chinese}{\chinese}{}
+    \documentclass{ctexart}
+    \usepackage[showframe]{geometry}
+    \usepackage{enumitem}
+    \AddEnumerateCounter{\chinese}{\chinese}{}
 
-\begin{document}
-\begin{enumerate}[label = \chinese*、]
-  \item 第一行
-  \item 第二行
-\end{enumerate}
-\end{document}
+    \begin{document}
+    \begin{enumerate}[label = \chinese*、]
+        \item 第一行
+        \item 第二行
+    \end{enumerate}
+    \end{document}
 \end{LTXexample}
 中文嵌套效果，可以看\ref{expl:enumerate}。
 
