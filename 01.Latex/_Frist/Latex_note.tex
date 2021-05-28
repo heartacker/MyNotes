@@ -1896,111 +1896,6 @@ Latex在默认情况下，Figure图像的编号是从Figure 1, Figure 2, Figure 
 % todo
 todo
 
-% *\subsection{插入表格}
-\subsection{如何插入表格？}
-
-tabular 环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
-
-一般情况下，tabular 会嵌入到 table 的环境中。
-
-table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tabular 进行绘制。
-
-\subsubsection{操作步骤}
-
-
-使用以下的代码。显示效果参考 表\ref{Table.Demo0}
-
-\begin{lstlisting}
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
-        \hline
-        操作系统   & 发行版   & 编辑器    \\
-        \hline
-        Windows    & MikTeX   & TexMakerX \\
-        % \hline
-        Unix/Linux & teTeX    & Kile      \\
-        % \hline
-        Mac OS     & MacTeX   & TeXShop   \\
-        % \hline
-        通用       & TeX Live & TeXworks  \\
-        \hline
-    \end{tabular}
-    \qquad
-    不同的操作系统和编辑器之间很多是通用的。
-    推荐使用 TeX Live.
-    \caption{不同操作系统对应的发行版和编辑器}
-    \label{Table.Demo0}
-\end{table}
-\end{lstlisting}
-
-\subsubsection{效果显示}
-
-显示效果:
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
-        \hline
-        操作系统   & 发行版   & 编辑器    \\
-        \hline
-        Windows    & MikTeX   & TexMakerX \\
-        % \hline
-        Unix/Linux & teTeX    & Kile      \\
-        % \hline
-        Mac OS     & MacTeX   & TeXShop   \\
-        % \hline
-        通用       & TeX Live & TeXworks  \\
-        \hline
-    \end{tabular}
-    \qquad
-    不同的操作系统和编辑器之间很多是通用的。
-    推荐使用 TeX Live.
-    \caption{不同操作系统对应的发行版和编辑器}
-    \label{Table.Demo0}
-\end{table}
-
-效果显示完毕。
-
-\begin{quotation}
-    \zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!）。
-\end{quotation}
-
-当然这样写表格肯定很麻烦。也可以参考链接\ref{ref:table_of_generate} 的在线表格生成器。
-
-% \begin{table}[H]
-% \centering
-% \caption{论文中常用符号释义\protect\footnotemark[1]}
-%     \begin{tabular}{rl}
-%     \hline
-%     \multicolumn{1}{l}{符号} & 含义 \bigstrut\\
-%     \hline
-%         $\bm{p}$  & 充电器依次经历的节点号，即充电器的移动路径 \bigstrut[t]\\
-%         $d(i,j)$ & 节点$i,j$之间的距离 \\
-%     $T$& 充电器往返充电一次，所花费的时间 \\
-%         $v$   & 充电器的移动速度 \\
-%         $R_i$  & 节点$i$的耗电速率 \\
-%         $r$  & 充电器的充电速率 \\
-%         $t_{rtes}$  & 充电器在路上损耗的时间 \\
-%         $t_{crg}$  & 充电器总的充电时间 \\
-%         $W_i^\prime$  & 节点$i$在充电时刻的剩余电量 \\
-%         $W_i$  & 节点$i$的电池容量 \\
-%         $Q_i$  & 节点$i$当前时的剩余电量 \\
-%         $\Delta t_i$  & 节点$i$充满电所需要的时间 \bigstrut[b]\\
-%     \hline
-%     \end{tabular}%
-% \label{tab:addlabel}%
-
-% \end{table}%
-% \footnotetext[1]{这里只展示论文的部分符号。符号首次出现时，本文将详细地说明其含义}
-
-\subsubsection{居中}
-有时候，用 \verb!\begin{center}-\end{center}! 来将 table 整体居中，
-但它的居中只是居中了\linebreak \verb!\begin{table}-\end{table}! 这个环境 （把table想象成为盒子，相当于居中盒子，但不是将盒子里面的内容居中）；
-
-如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}! - \verb!\end{tabular}! ，
-那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
-
-
 \subsection{如何插入数学公式？}
 
 \LaTeX 对数学和科学支持最好的排版系统。这也是为什么科技工作者、科研人员、计算机科学家等非常喜欢使用 \LaTeX 写文章的原因。
@@ -2764,6 +2659,109 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 \end{figure}
 
 
+% *\subsection{插入表格}
+\subsection{如何插入表格？}
+
+tabular 环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
+
+一般情况下，tabular 会嵌入到 table 的环境中。
+
+table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tabular 进行绘制。
+
+\subsubsection{操作步骤}
+
+
+使用以下的代码。显示效果参考 表\ref{Table.Demo0}
+
+\begin{lstlisting}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
+        \hline
+        操作系统   & 发行版   & 编辑器    \\
+        \hline
+        Windows    & MikTeX   & TexMakerX \\
+        % \hline
+        Unix/Linux & teTeX    & Kile      \\
+        % \hline
+        Mac OS     & MacTeX   & TeXShop   \\
+        % \hline
+        通用       & TeX Live & TeXworks  \\
+        \hline
+    \end{tabular}
+    \qquad
+    不同的操作系统和编辑器之间很多是通用的。
+    推荐使用 TeX Live.
+    \caption{不同操作系统对应的发行版和编辑器}
+    \label{Table.Demo0}
+\end{table}
+\end{lstlisting}
+
+\subsubsection{效果显示}
+
+显示效果:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|lr|} % 这里三个字母clr 代表三列。竖线代表画出竖边框
+        \hline
+        操作系统   & 发行版   & 编辑器    \\
+        \hline
+        Windows    & MikTeX   & TexMakerX \\
+        % \hline
+        Unix/Linux & teTeX    & Kile      \\
+        % \hline
+        Mac OS     & MacTeX   & TeXShop   \\
+        % \hline
+        通用       & TeX Live & TeXworks  \\
+        \hline
+    \end{tabular}
+    \qquad
+    不同的操作系统和编辑器之间很多是通用的。
+    推荐使用 TeX Live.
+    \caption{不同操作系统对应的发行版和编辑器}
+    \label{Table.Demo0}
+\end{table}
+
+效果显示完毕。
+
+\begin{quotation}
+    \zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!）。
+\end{quotation}
+
+当然这样写表格肯定很麻烦。也可以参考链接\ref{ref:table_of_generate} 的在线表格生成器。
+
+% \begin{table}[H]
+% \centering
+% \caption{论文中常用符号释义\protect\footnotemark[1]}
+%     \begin{tabular}{rl}
+%     \hline
+%     \multicolumn{1}{l}{符号} & 含义 \bigstrut\\
+%     \hline
+%         $\bm{p}$  & 充电器依次经历的节点号，即充电器的移动路径 \bigstrut[t]\\
+%         $d(i,j)$ & 节点$i,j$之间的距离 \\
+%     $T$& 充电器往返充电一次，所花费的时间 \\
+%         $v$   & 充电器的移动速度 \\
+%         $R_i$  & 节点$i$的耗电速率 \\
+%         $r$  & 充电器的充电速率 \\
+%         $t_{rtes}$  & 充电器在路上损耗的时间 \\
+%         $t_{crg}$  & 充电器总的充电时间 \\
+%         $W_i^\prime$  & 节点$i$在充电时刻的剩余电量 \\
+%         $W_i$  & 节点$i$的电池容量 \\
+%         $Q_i$  & 节点$i$当前时的剩余电量 \\
+%         $\Delta t_i$  & 节点$i$充满电所需要的时间 \bigstrut[b]\\
+%     \hline
+%     \end{tabular}%
+% \label{tab:addlabel}%
+
+% \end{table}%
+% \footnotetext[1]{这里只展示论文的部分符号。符号首次出现时，本文将详细地说明其含义}
+
+\subsubsection{居中}
+有时候，用 \verb!\begin{center}-\end{center}! 来将 table 整体居中，
+但它的居中只是居中了\linebreak \verb!\begin{table}-\end{table}! 这个环境 （把table想象成为盒子，相当于居中盒子，但不是将盒子里面的内容居中）；
+
+如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}! - \verb!\end{tabular}! ，
+那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
 
 
 
