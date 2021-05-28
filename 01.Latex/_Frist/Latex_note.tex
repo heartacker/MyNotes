@@ -2652,14 +2652,11 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \label{Fig.insert-one3-png} %用于文内引用的标签
 \end{figure}
 
-占用行宽的图片效果。
+刚好占用行宽的图片效果，可以看出，整个图片占用整个段落的行宽:
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
     \centering %图片居中
-    \setlength{\fboxrule}{0.1pt}
-    % \setlength{\fboxsep}{0.5cm}
-    \fbox{
-        \includegraphics[width = 1\linewidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
-    }
+    \includegraphics[width = 1\linewidth]{images/fireworks_1.png}
+
     \caption{图片缩放等于行宽} %最终文档中希望显示的图片标题
     \label{Fig.insert-one2-png} %用于文内引用的标签
 \end{figure}
