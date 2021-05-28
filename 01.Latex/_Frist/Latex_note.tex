@@ -548,7 +548,7 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
     \subfigure[取消安装TeXworks]
     {
         \label{Fig:sub:install_tex_live_tip2}
-        \includegraphics[scale=0.5]{images/notice_not_install_texworks.eps}
+        \includegraphics[scale=0.5\textwidth]{images/notice_not_install_texworks.eps}
     }
     \caption{安装勾选示意图}
     \label{Fig:install_tex_live_tip}
@@ -2611,7 +2611,7 @@ int main() {
 \subsubsection{图片环境}
 插入图片是比较麻烦的时候。不像Word文档那样所见所得。
 
-参考：\href{https://blog.csdn.net/chichoxian/article/details/52588833}{Latex中插图总结}
+参考链接：\href{https://blog.csdn.net/chichoxian/article/details/52588833}{\LaTeX 中插图总结}
 
 \begin{enumerate}
     \item 插入代码，参考代码
@@ -2670,7 +2670,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
                   \setlength{\fboxsep}{0.5cm}
                   \fbox{
                       %插入图片，[]中设置图片大小，{}中是图片文件名
-                      \includegraphics[width=0.9\textwidth]{images/insert-two-pic.jpg}
+                      \includegraphics[width=0.7\textwidth]{images/insert-two-pic.jpg}
                   }
                   \caption{并排插入两个图片的效果}
                   \label{Fig.Insert_two_pic_demo}
@@ -2678,18 +2678,33 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
           \end{center}
     \item 引用图片
 
-          在文档中使用$\backslash$ref\{标签\}，如\verb!\ref{Fig.insert-one-png}!
+          在文档中使用$\backslash$ref\{标签\}，如图\verb!\ref{Fig.Insert_two_pic_demo}! 显示为：图\ref{Fig.Insert_two_pic_demo}。
 
+    \item begin\{figure\}[H] 这个H 参数，可以设置为以下几个，H为当前位置，!htb为忽略美学标准，htbp为浮动图形。 这个参数具体是怎么回事，什么原理，后面在讲解。
+    % todo 浮动讲解
 \end{enumerate}
 
 
 % * subsubsection{图片过大如何超过边距居中？}
-\subsubsection{图片过大如何超过边距居中？}
+\subsubsection{图片过大如何超过边距进行居中？}
 
-参考：\href{https://zhuanlan.zhihu.com/p/56435541}{LaTeX入门(八)——图片}
+参考链接：\href{https://zhuanlan.zhihu.com/p/56435541}{\LaTeX 入门(八)——图片}
 
 
-有时候我们的图片会显示的过大。但是图片会按照左边距进行开始排版，这会导致排版偏右，甚至超出界面。参考图\ref{Fig:VScode_with_latex_demo}，我们可以看到这个图占用比较多的空间。左边已经超出了左边界。但是这样看起来会好很多。
+有时候我们的图片会显示的过大。但是图片会按照左边距进行开始排版，这会导致排版偏右，甚至超出界面。
+
+\begin{figure}[H]
+    \centering
+    \setlength{\fboxrule}{0.1pt}
+    \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        \includegraphics[width=0.8\linewidth]{images/pic_outof_range.png}
+    }
+    \caption{图片过大超出版面}
+    \label{Fig:pic_outof_range}
+\end{figure}
+
+图 \ref{Fig:pic_outof_range} 是一个图片超出缩进范围的渲染图，导致图片偏向页面右边。 参考图\ref{Fig:VScode_with_latex_demo}，我们可以看到这个图占用比较多的空间，但居中了，看起来会好很多。
 
 要想解决这个问题， 可以使用 adjustbox 解决。
 首先需要在导言区域添加宏包引用。
