@@ -173,7 +173,10 @@
     % todo 想知道如何设置为背景图
     \begin{figure}[htbp]
         \centering
-        \includegraphics[center, scale=0.5, angle=-50]{images/1200px_LaTeX_project_logo_bird.svg.png}
+        % \includegraphics[center, scale=0.4, angle=-30]{images/1200px_LaTeX_project_logo_bird.svg.png}
+        \includegraphics[center, scale=0.4]{images/vscode_latex.jpg}
+        % \caption{VSCode\_\LaTeX}
+        \label{cover_pic}
     \end{figure}
 \end{titlepage}
 
@@ -225,6 +228,11 @@
 \subsection{什么是\LaTeX？}
 \TeX 是高老师编写的非常流行的排版软件。\LaTeX 是基于 \TeX 之后，集合更多宏包的再发行版本。\LaTeX 更加简单更流行，但是还是很难入门，因为他们都是使用markup语言进行编写，而不是类似 MicroSoft Word 那样所见即所得。所以门槛非常高。
 但是一旦学习并熟悉，\emph{对论文的编写是非常有用的}。尤其是他的模板功能。而且任何东西都是可以细粒的控制的。正是因为门槛很高，导致学习非常陡峭，让很多人想入手都不知道如何入手。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[center, scale=0.25]{images/1200px_LaTeX_project_logo_bird.svg.png}
+\end{figure}
 
 本人也是折腾了很久之后，终于找到了学习方法和技巧。后续将会简单的给大家讲解如何上手。
 
@@ -507,7 +515,6 @@ bib文件一般如下：
 假设在当前目录下有下列文件：main.tex、A.cls、B.sty、C.bst、D.bib,按照我们的文件格式\ref{subsec:filetype}。我们可以大致的了解真正的\LaTeX 的语法结构。
 
 \begin{lstlisting}
-
 %main.tex文件
 \documentclass{A}     % 或者不使用自定义的排版文件时，使用最普通的\documentclass{article}
 \usepackage{B}        % 以及导入一些其他常用的宏文件，如amsmath、amssymb、amsthm等数学相关的宏文件
@@ -577,7 +584,15 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
     \item 安装 VSCode。
     \item 在 VSCode 插件市场 安装\LaTeX \ Workshop 插件。
     \item 按照 \ref{subsec:recipe} 配置插件。
+    \item Happy Writing~
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{images/vscode_latex.jpg}
+    \caption{VSCode\_\LaTeX}
+    \label{fig:vscode_latex}
+\end{figure}
 
 \subsubsection{常用宏包}
 
