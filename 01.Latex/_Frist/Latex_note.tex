@@ -2627,24 +2627,13 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 假如我想让他占用整个列宽，可以把大小的设置设置为行宽。 还可以设置为行宽的倍数。
 
 \begin{lstlisting}{keywords=center}
-    % 设置宽度为行宽
-    \includegraphics[width = \linewidth]{pic.png}
     % 也可以设置为行宽的倍数。比如[width = 0.2\linewidth]代表只有行的0.2行宽
     \includegraphics[width = 0.2\linewidth]{pic.png}
+    % 设置宽度为行宽
+    \includegraphics[width = \linewidth]{pic.png}
 \end{lstlisting}
 
 重新排版后的图\ref{Fig.insert-one-png}：
-
-\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
-    \centering %图片居中
-    \setlength{\fboxrule}{0.1pt}
-    % \setlength{\fboxsep}{0.5cm}
-    \fbox{
-        \includegraphics[width = 1\linewidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
-    }
-    \caption{图片缩放等于行宽} %最终文档中希望显示的图片标题
-    \label{Fig.insert-one2-png} %用于文内引用的标签
-\end{figure}
 
 只有行的0.2行宽的图片：
 
@@ -2659,6 +2648,17 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \label{Fig.insert-one3-png} %用于文内引用的标签
 \end{figure}
 
+占用行宽的图片效果。
+\begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
+    \centering %图片居中
+    \setlength{\fboxrule}{0.1pt}
+    % \setlength{\fboxsep}{0.5cm}
+    \fbox{
+        \includegraphics[width = 1\linewidth]{images/insert-png.png} %插入图片，[]中设置图片大小，{}中是图片文件名
+    }
+    \caption{图片缩放等于行宽} %最终文档中希望显示的图片标题
+    \label{Fig.insert-one2-png} %用于文内引用的标签
+\end{figure}
 
 % *\subsection{插入表格}
 \subsection{如何插入表格？}
