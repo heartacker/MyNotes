@@ -2510,9 +2510,9 @@ int main() {
 \end{lstlisting}
 
 \subsubsection{图片环境}
-插入图片是比较麻烦的时候。不像Word文档那样所见所得。
+插入图片是比较麻烦的时候。不像Word文档那样所见所得。 更多更详细的可以参考CTex链接：\href{http://www.ctex.org/documents/latex/graphics/index.html}{\LaTeXe 插图指南}
 
-参考链接：\href{https://blog.csdn.net/chichoxian/article/details/52588833}{\LaTeX 中插图总结}
+另外一个参考链接：\href{https://blog.csdn.net/chichoxian/article/details/52588833}{\LaTeX 中插图总结}
 
 \begin{enumerate}
     \item 插入代码，参考代码
@@ -2581,7 +2581,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
           在文档中使用$\backslash$ref\{标签\}，如图\verb!\ref{Fig.Insert_two_pic_demo}! 显示为：图\ref{Fig.Insert_two_pic_demo}。
 
-    \item begin\{figure\}[H] 这个H 参数，可以设置为以下几个，H为当前位置，!htb为忽略美学标准，htbp为浮动图形。 这个参数具体是怎么回事，什么原理，后面在讲解。
+    \item begin\{figure\}[H] 这个H 参数，可以设置为以下几个，H为当前位置，!htb为忽略美学标准，htbp为浮动图形。 这个参数具体是怎么回事，什么原理，请看章节 \ref{sec:box_positon} 讲解。
     % todo 浮动讲解
 \end{enumerate}
 
@@ -2727,7 +2727,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 效果显示完毕。
 
 \begin{quotation}
-    \zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!）。
+    \zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!） 参考章节 \ref{sec:box_positon}。
 \end{quotation}
 
 当然这样写表格肯定很麻烦。也可以参考链接\ref{ref:table_of_generate} 的在线表格生成器。
@@ -2767,10 +2767,6 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 
 
-
-
-
-
 \subsection{如何设置边距？}
 \subsubsection{操作步骤}
 \begin{enumerate}
@@ -2803,6 +2799,32 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
     \label{Fig.page_border} %用于文内引用的标签
 \end{figure}
 
+\subsection{显示盒（box）的浮动美学设置}
+\label{sec:box_positon}
+
+很明显，\LaTeX 把很多内容当作一个 \fbox{ Box } 进行显示，也是就是划定一个区域（Box）出来，你可以在这个区域里面进行绘制， 但是里面如何绘制是这个盒子的事情，那么这个盒子有要放在哪里呢？
+
+我们可以图片和表格等内容当作为一个Box，那么我们就可以按照 \LaTeX 对盒子的美学排版进行设置这个盒子的配置。 看表 \ref{tab:position_of_box}，你会很好奇，为什么这个表跑到上面去了，因为我在绘制表的时候，没有设置参数，那么就是默认的[tbp]，也就是顶部，所以他报道顶部了。
+
+参考CTex链接：\href{http://www.ctex.org/documents/latex/graphics/node64.html}{图形的放置}
+\begin{table}
+    \centering
+    \begin{tabular}{c|l}
+        % \toprule
+        \hline
+        参数&内容\\
+        % \midrule
+        \hline
+        h &当前位置。 放置在 正文文本中给出该图形环境的地方。\newline 如果本页所剩的页面不够， 此参数不起作用。\\
+        t &顶部。 将图形放置在页面的顶部。\\
+        b &底部。 将图形放置在页面的底部 16.1。\\
+        p &浮动页。 将图形放置在一只允许 有浮动对象的页面上。\\
+        % \bottomrule
+        \hline
+    \end{tabular}\caption{浮动的位置参数}\label{tab:position_of_box}
+\end{table}
+
+默认情况下是 tbp, 同时需要注意的是，\LaTeX 总是尝试以 h-t-b-p 的顺序来确定图形的位置。 当然，加一个！ 可以强制按照指定的顺序来执行。 如!bpt 则会先考虑b，在考虑p，之后考虑t， 而不默认的htbp。
 
 
 \newpage
