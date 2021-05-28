@@ -704,7 +704,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 \begin{itemize}
     \item 无参数: \textbf{$\backslash$command}
     \item 有参数: \textbf{$\backslash$command}\{<arg1><arg2>...<argn>\}
-    \item 无参数: \textbf{$\backslash$command[}<arg$_{opt}$ >\textbf{]} \{<arg1><arg2>...<argn>\}
+    \item 可选参数: \textbf{$\backslash$command[}<arg$_{opt}$ >\textbf{]} \{<arg1><arg2>...<argn>\}
 \end{itemize}
 
 
@@ -741,7 +741,7 @@ environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了�
 
 一个 \LaTeX 环境自然就是一个分组（Group），因此，前面的 \verb!\zihao{-5}! 会影响 quote 缩进。 其中，最大分组就是 document 了。不过也可以用 \{\ \} 产生一个分组。
 
-\LaTeX 的换进一般格式为：
+\LaTeX 的环境一般格式为：
 
 \begin{lstlisting}
 \begin{<环境的名字>}
@@ -800,10 +800,10 @@ quote 是无参数的环境。
 
 如果我们按照基本格式。按部就班的写文档。这是没有问题的。
 
-但是，TeX 的精神是精益求精的。也不要枉费高老师\footnote{高老师为了有一个美好的排版，中间花费了很多时间开发排版软件，中止写书。直到接近10年之后，才回来重新写书} 为
+但是，\TeX 的精神是精益求精的。也不要枉费高老师\footnote{高老师为了有一个美好的排版，中间花费了很多时间开发排版软件，中止写书。直到接近10年之后，才回来重新写书} 为
 大家做出来的努力。
 
-LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，都需要精益求精。
+\LeX 毕竟是标记语言的排版系统。因此，就像软件工程一样，都需要精益求精。
 优秀的结构设计，让文档排版事半功倍。
 
 \subsubsection{导言区}
@@ -977,9 +977,9 @@ start  " " /max "./%FileName%.pdf"
 \subsection{使用VSCode+\LaTeX \space WorkShop 进行编译}
 \label{subsec:recipe}
 
-\href{https://www.zhihu.com/question/31850346}{\LaTeX （\LaTeXe ）写的文档如何一键转为word？}
+\href{https://www.zhihu.com/question/31850346}{\LaTeX （\LaTeXe ）写的文档如何一键转为 Word？}
 
-通过上述编译流程\ref{subsec:buildprocess}, 对于简单的xeLaTeX 进行编译，只需要编译一次就够了。但是如果需要生成目录等文档，就需要使用xeLaTeX进行编译两次。如果还要使用bibTex 进行引用的话，还需要使用bibtex 进行编译，之后在用xeLaTeX进行编译两次。
+通过上述编译流程\ref{subsec:buildprocess}, 对于简单的xeLaTeX 进行编译，只需要编译一次就够了。但是如果需要生成目录等文档，就需要使用 xeLaTeX 进行编译两次。如果还要使用 bibTeX 进行引用的话，还需要使用 bibTeX 进行编译，之后在用 xeLaTeX 进行编译两次。
 
 对于不同的编译流程，就是所谓的 recipe。不同的文档类型有不同的编译流程。
 
@@ -1114,7 +1114,7 @@ start  " " /max "./%FileName%.pdf"
     \zihao{5}\kaishu Tip: 只要生成了目录,之后生成的PDF 就会包含书签。
 \end{quotation}
 
-目录对于图表而言也是可以用的。如果你的文档中有很多图表，也可以专门为它们建目录。对应的命令是 \verb!\listoffigures! 和 \verb!\listoftables! 。它会收集对应图表中的标题来产生图表的目录。图表的插入我们将在下一期中介绍。
+目录对于图表而言也是可以用的。如果你的文档中有很多图表，也可以专门为它们建目录。对应的命令是 \verb!\listoffigures! 和 \verb!\listoftables! 。它会收集对应图表中的标题来产生图表的目录。 图表的插入我们将在 章节\ref{sec:insert_pic} 和 章节\ref{sec:insert_table}  中介绍。
 
 注意，这会在目录下生成\verb!.toc!，\verb!.lof!， \verb!.lot!  文件，分别对应【目录】、【图像】、【表格】。
 
@@ -1136,7 +1136,7 @@ start  " " /max "./%FileName%.pdf"
 \subsubsection{如何对某个定义对象进行编号并生成目录?}
 
 
-除了表格。图片之外， 如何制作目录， 请参考\ref{subsec:insert_toc_of_define}。
+除了表格。图片之外， 如何制作目录， 请参考 \ref{subsec:insert_toc_of_define}。
 
 
 % * \subsection{如何使引用可以跳转？}
@@ -1150,9 +1150,9 @@ start  " " /max "./%FileName%.pdf"
 为了实现这个功能。我们可以使用\verb!hyperref!。
 操作方式：
 
-1. 引用宏包，这样会默认在链接上显示红框：\verb!\usepackage{hyperref}!
+1. 引用宏包，\verb!\usepackage{hyperref}!，这样会默认在链接上显示红框。
 
-2. 引用宏包，这样会在链接上字体显示为红色\verb!\usepackage[colorlinks=true]{hyperref}!
+2. 引用宏包，\verb!\usepackage[colorlinks=true]{hyperref}!，这样会在链接上字体显示为红色。
 
 目录的内容显示为红色，是因为 hyperref 宏包的 colorlinks 选项。我们以后将默认载入这个宏包，告诉大家这些红色的文字都是可以点击跳转的，这也是我非常喜欢的一个特性。
 
@@ -1169,9 +1169,10 @@ start  " " /max "./%FileName%.pdf"
 \end{lstlisting}
 
 \subsubsection{注意事项}
-0. 图、表建议添加"\verb!\label{标签}!"
 
-1. label 图表建议添加label到环境的后面。否则标号不对。
+0. 图、表建议添加"\verb!\label{标签}!"。
+
+1. label 图表建议添加label到环境的后面，也就是 caption  后面，否则标号不对。
 % 否则点击的时候，跳转到标签出而使内容被挡住了。
 
 2. 在需要添加引用的地方，输入"$\backslash$ref\{标签\}"
@@ -1226,7 +1227,7 @@ start  " " /max "./%FileName%.pdf"
 
 \subsubsection{使用 showexpl}
 
-通过上面的例子，我们可以看到代码和渲染的效果。如果有 \LaTeX “命令和环境”的使用示例，那么 \LaTeX 宏包的文档就更容易读懂。最好的方法是对 \LaTeX 代码和格式化输出进行比较。
+通过上面的例子，我们可以看到代码和渲染的效果。 其中左边是渲染，右边是源代码。 如果有 \LaTeX “命令和环境”的使用示例，那么 \LaTeX 宏包的文档就更容易读懂。最好的方法是对 \LaTeX 代码和格式化输出进行比较。
 
 \textbf{showexpl} 是一个用于进行比较的包，它基于包列表， 该列表提供了良好的排版源代码， 强调了关键字等等。
 使用 \textbf{showexpl} 首先需要先引用这个宏。之后，在需要演示的地方。并且使用 \textbf{LTXexample} 包围。
@@ -1234,7 +1235,7 @@ start  " " /max "./%FileName%.pdf"
 
 % !{listing only,boxrule=-1pt,colback=white}
 \begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
-    \begin{LTXexample}
+    \begin{LTXexample}[pos=r]
         \usepackage{showexpl}
         % 源代码
         \[
@@ -1245,7 +1246,7 @@ start  " " /max "./%FileName%.pdf"
 
 之后，我们就可以得到一个渲染图。这个图包含渲染效果和源代码。 读者很清晰的就可以看到对比。清晰的理解作者的用意。
 
-\begin{LTXexample}
+\begin{LTXexample}[pos=r]
     \usepackage{showexpl}
     % 源代码
     \[
@@ -1257,8 +1258,7 @@ start  " " /max "./%FileName%.pdf"
 \subsubsection{showexpl 渲染图位置设置}
 
 想要设置渲染图和代码之间关系可以通过\texttt{pos}进行配置。具体可以参考 showexpl的文档。命令行敲打 \fbox{texdoc showexpl} 打开showexpl的文档。
-
-pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶部和 b底部。
+我们可以看到，这一次，渲染图在右边。而之前的在左边。 那是因为我们使用了[pos=r]。 pos 是可选参数， 参数可为 lrtb，分别代表 l左边， r右边， t顶部和 b底部。
 
 %* \subsection{基础字体样式调节}
 \subsection{基础字体样式调节}
@@ -1495,7 +1495,7 @@ pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶�
 % \end{LTXexample}
 
 第四步，使用\textbf{bibtex}进行编译。\ref{subsec:buildprocess}。
-一般情况下。中文文档需要使用xelate $\rightarrow$ bibtex $\rightarrow$ xelatex $\rightarrow$ xelatex 就可以编译完成。也就是比其他的多了一个xelatex 和 bibtex。
+一般情况下。中文文档需要使用 xelate $\rightarrow$ bibtex $\rightarrow$ xelatex $\rightarrow$ xelatex 就可以编译完成。也就是比其他的多了一个xelatex 和 bibtex。
 
 第五步，显示效果, 直接看论文最后的参考文献 \ref{endofdocument}。
 
@@ -1506,14 +1506,18 @@ pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶�
 %todo 页眉页脚 fancyhdr
 
 
-\subsection{如何插入超链接？}
+\subsection{如何插入标签、超链接、文内链接？}
 
 超链接分好几种。比如目录，比如图片引用等\ref{sec:hyperreflink}。
 
 这里着重讨论其他外部连接。
 
 
-\textbf{Linking web addresses}
+\textbf{label 标签}
+
+使用 \verb!\label{text}! 。
+
+\textbf{Linking web addresses 超链接}
 
 使用 \verb!\href{url}{text}! 或者 \verb!\url{URL}!
 
@@ -1524,7 +1528,7 @@ pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶�
 
 \par
 
-\textbf{Linking local files}
+\textbf{Linking local files 超链接}
 
 使用 \verb!\href{run:url}{text}!
 
@@ -1535,7 +1539,7 @@ pos 是可选参数。参数为 lrtb，分别代表 l左边， r右边， t顶�
 \end{LTXexample}
 
 \par
-\textbf{Linking context addresses}
+\textbf{Linking context addresses 文内连接}
 
 这是一个文内的跳转方式。
 
@@ -1588,8 +1592,8 @@ chuwai)
         紧贴     & a$\backslash$!b         & a\!b       & 缩进1/6m宽度 \\
         \hline
     \end{tabular}
-    \label{tab.space_size}
     \caption{空格大小的调整参考表}
+    \label{tab.space_size}
 \end{table}
 
 
@@ -1866,8 +1870,8 @@ Todo
 
 这属于高级技巧。 参考章节 \ref{sec:redefine_item}
 
-% *\subsection{如果在表格和图标之间插入章节信息。}
-\subsection{如何在表格和图标之间插入章节信息？}
+% *\subsection{如何在表格和图表之间插入章节信息？}
+\subsection{如何在表格和图表之间插入章节信息？}
 \label{sec:insert_section_info}
 
 参考链接： \href{https://www.cnblogs.com/yifdu25/p/8330911.html}{\LaTeX 技巧：在图表序号中加入章节号（实现诸如“图1.1.2”这样的图表序号）} 。
@@ -2489,7 +2493,7 @@ int main() {
 
 %* \subsection{如何在\LaTeX 中插入图片？}
 \subsection{如何在中插入图片？}
-
+\label{sec:insert_pic}
 \subsubsection{行内图片}
 
 一般情况下，很少在行内插入图片。
@@ -2662,7 +2666,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
 % *\subsection{插入表格}
 \subsection{如何插入表格？}
-
+\label{sec:inert_table}
 tabular 环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
 
 一般情况下，tabular 会嵌入到 table 的环境中。
