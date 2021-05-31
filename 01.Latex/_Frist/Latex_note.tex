@@ -2802,11 +2802,13 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 \subsection{显示盒（box）的浮动美学设置}
 \label{sec:box_positon}
 
-很明显，\LaTeX 把很多内容当作一个 \fbox{ Box } 进行显示，也是就是划定一个区域（Box）出来，你可以在这个区域里面进行绘制， 但是里面如何绘制是这个盒子的事情，那么这个盒子有要放在哪里呢？
+很明显，\LaTeX 把很多内容当作一个 \fbox{ Box } 进行显示，也是就是划定一个区域（Box）出来，你可以在这个区域里面进行绘制， 但是里面如何绘制是这个盒子的事情，那么这个盒子又要放在哪里呢？
 
-我们可以图片和表格等内容当作为一个Box，那么我们就可以按照 \LaTeX 对盒子的美学排版进行设置这个盒子的配置。 看表 \ref{tab:position_of_box}，你会很好奇，为什么这个表跑到上面去了，因为我在绘制表的时候，没有设置参数，那么就是默认的[tbp]，也就是顶部，所以他报道顶部了。
+我们可以图片和表格等内容当作为一个Box，那么我们就可以按照 \LaTeX 对盒子的美学排版进行设置这个盒子的配置。 看表 \ref{tab:position_of_box}，你会很好奇，为什么这个表跑到上面去了，因为我在绘制表的时候，没有设置参数，那么就是默认的[tbp]，也就是顶部，所以他跑到顶部去了。
 
 参考CTex链接：\href{http://www.ctex.org/documents/latex/graphics/node64.html}{图形的放置}
+
+\fbox{我是在这里放置表  \ref{tab:position_of_box}的。但是他在本页的最上面显示了。}
 \begin{table}
     \centering
     \begin{tabular}{c|l}
@@ -2824,7 +2826,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
     \end{tabular}\caption{浮动的位置参数}\label{tab:position_of_box}
 \end{table}
 
-默认情况下是 tbp, 同时需要注意的是，\LaTeX 总是尝试以 h-t-b-p 的顺序来确定图形的位置。 当然，加一个！ 可以强制按照指定的顺序来执行。 如!bpt 则会先考虑b，在考虑p，之后考虑t， 而不默认的htbp。
+默认情况下是 tbp, 同时需要注意的是，\LaTeX 总是尝试以  \textbf{h-t-b-p} 的顺序来确定图形的位置。 当然，加一个"!" （感叹号）， 可以强制按照指定的顺序来执行。 如"!bpt"则会先考虑b，在考虑p，之后考虑t， 而不默认的htbp。
 
 
 \newpage
