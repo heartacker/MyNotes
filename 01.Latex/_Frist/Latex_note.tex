@@ -6,8 +6,8 @@
 
 \usepackage{xeCJK}        % 在 article,book,report 支持 CJK 编码
 
-\setCJKmonofont{宋体}         % 设置CJK等宽字体设置
 \setmonofont{Consolas}        % 设置英文打印机字体
+\setCJKmonofont{宋体}         % 设置CJK等宽字体设置
 
 
 \usepackage[]{color}
@@ -1267,15 +1267,18 @@ start  " " /max "./%FileName%.pdf"
 \subsection{基础字体样式调节}
 
 西文中。预定义的字体族有3种： 罗马字体族（roman family，rmfamily）， 无衬字体族（sans serif，sf\/family），打字机字体族（typewriter family，ttfamily）。
+\begin{myquote}
+    Tips: 如果设置了全局字体，那么下表的渲染就是按照全局字体渲染的。比如 typewrite 的渲染就是等宽字体。所以可能看到的和默认是有差别的
+\end{myquote}
 
 \begin{table}[H]
     \centering
     \begin{tabular}{l|l|l|l}
         字体族 & 带参数命令              & 声明命令                & 效果                       \\
         \hline
-        罗马   & \verb!\textrm{罗马}! & \verb!\rmfamily! & \textrm{roman 罗马}        \\
-        无衬线 & \verb!\textsf{无衬线}! & \verb!\sffamily! & \textsf{sans serif 无衬线} \\
-        打字机 & \verb!\texttt{打字机}! & \verb!\ttfamily! & \texttt{typewrite 打字机}
+        罗马   & \verb!\textrm{罗马}! & \verb!\rmfamily! & \normalfont{\textrm{roman 罗马}}        \\
+        无衬线 & \verb!\textsf{无衬线}! & \verb!\sffamily! & \normalfont{\textsf{sans serif 无衬线}} \\
+        打字机 & \verb!\texttt{打字机}! & \verb!\ttfamily! & \normalfont{\texttt{typewrite 打字机}}
     \end{tabular}
     \caption{基本字体的渲染}
     \label{tab:font_sender}
@@ -1300,8 +1303,8 @@ start  " " /max "./%FileName%.pdf"
 其中 textnormal 和 normalfont 可以恢复默认的字体和样式。
 
 \begin{LTXexample}
-    {\heiti 这是黑体\normalfont{恢复默认}}。  \\
-    {\kaishu 这是楷书{\normalfont{恢复默认}}}。
+{\heiti 这是黑体，\normalfont{恢复默认}}。  \\
+{\kaishu 这是楷书，{\normalfont{恢复默认}}}。
 \end{LTXexample}
 
 中文没有过多复杂的变体。主要是不同的字体族进行区分。
@@ -1309,12 +1312,12 @@ start  " " /max "./%FileName%.pdf"
 中文的字体族根据不同的系统各有不同。Windows Ctex 默认情况下有四种字体族。分别是 song{\songti 宋体}， hei{\heiti 黑体}， kai{\kaishu 楷书}， fs{\fangsong 仿宋}。
 
 \begin{LTXexample}
-    song{\songti 宋体}、hei{\heiti 黑体}，kai{\kaishu 楷书}， fs{\fangsong 仿宋}。
+song{\songti 宋体}、hei{\heiti 黑体}，kai{\kaishu 楷书}， fs{\fangsong 仿宋}。
 \end{LTXexample}
 
 另外，
 \begin{LTXexample}
-    \rmfamily 西文的 rmfamily (罗马体家族) 正常对应的分别是\textnormal{宋体}:{\songti 宋体},加粗则是\textbf{黑体}：{\heiti 黑体}， 意大利则对应 \textit{楷书}：{\kaishu 楷书}。
+\rmfamily 西文的 rmfamily (罗马体家族) 正常对应的分别是\textnormal{宋体}:{\songti 宋体},加粗则是\textbf{黑体}：{\heiti 黑体}， 意大利则对应 \textit{楷书}：{\kaishu 楷书}。
 \end{LTXexample}
 
 
@@ -1365,7 +1368,7 @@ start  " " /max "./%FileName%.pdf"
     \paragraph{实例}
     % ! 这里为什么用[] 进行设置参数而不是{}，那是因为[]  是可选参数。
     \begin{LTXexample}[pos=b,frame=single,numbers=none,vsep=0pt]
-        This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
+This is \small{small 小} and \Large{Large 大} and \Huge{Huge 巨大}!
     \end{LTXexample}
 
     \columnbreak %强制分栏
@@ -1401,7 +1404,7 @@ start  " " /max "./%FileName%.pdf"
 
     \paragraph{实例}:
     \begin{LTXexample}[pos=b,frame=single,numbers=none,vsep=0pt]
-        This is {\zihao{6} 六号 small} and {\zihao{0} 初号  Large}!
+This is {\zihao{6} 六号 small} and {\zihao{0} 初号  Large}!
     \end{LTXexample}
 \end{multicols}
 
@@ -1431,17 +1434,21 @@ start  " " /max "./%FileName%.pdf"
 
 \subsection{全局字体设置}
 
+上面我们知道，系统自带三个字体族，分别是衬线字体，无衬线字体，打字机（等宽）字体。
+我们可以通过以下的方式，在导言区，设置全局字体。
+
 \begin{lstlisting}
     
-    %%%%%%中文字体设置%%%%%%
-    \setCJKmainfont{方正书宋简体}%设置CJK衬线字体设置
-    \setCJKsansfont{方正黑体简体}%设置CJK无衬线字体设置
-    \setCJKmonofont{方正仿宋简体}%设置CJK等宽字体设置
-    %%%%%%英文字体设置%%%%%%
-    \setmainfont{Times New Roman}%设置英文衬线字体
-    \setsansfont{Calibri}%备选Arial,设置英文无衬线字体
-    \setmonofont{Courier}%设置英文打印机字体
-    
+%%%%%%中文字体设置%%%%%%
+\setCJKmainfont{方正书宋简体}%设置CJK衬线字体设置
+\setCJKsansfont{方正黑体简体}%设置CJK无衬线字体设置
+\setCJKmonofont{方正仿宋简体}%设置CJK等宽字体设置(对应的是西文的打字机字体)
+
+%%%%%%英文字体设置%%%%%%
+\setmainfont{Times New Roman}%设置英文衬线字体
+\setsansfont{Calibri}%备选Arial,设置英文无衬线字体
+\setmonofont{Courier}%设置英文打印机字体
+
 \end{lstlisting}
 
 
@@ -2702,11 +2709,8 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
         操作系统   & 发行版   & 编辑器    \\
         \hline
         Windows    & MikTeX   & TexMakerX \\
-        % \hline
         Unix/Linux & teTeX    & Kile      \\
-        % \hline
         Mac OS     & MacTeX   & TeXShop   \\
-        % \hline
         通用       & TeX Live & TeXworks  \\
         \hline
     \end{tabular}
@@ -2784,6 +2788,9 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 如果\verb!\begin{table}-\end{table}! 里面嵌套了 \verb!\begin{tabular}! - \verb!\end{tabular}! ，
 那么表格还是不会居中。要使得表格居中，则需要在 \verb!\begin{table}! 后面附加 \verb!\centering!，才能使得表格整体居中。
 
+\subsubsection{合并表格如何设置？}
+
+属于高级技巧，参考 \ref{sec:combine_cell}
 
 
 \subsection{如何设置边距？}
@@ -2940,6 +2947,11 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
     \end{document}
 \end{LTXexample}
 中文嵌套效果，可以看\ref{expl:enumerate}。
+
+
+\subsection{如何合并表格的单元格？}
+\label{sec:combine_cell}
+https://blog.csdn.net/u011439796/article/details/78539678
 
 \newpage
 
