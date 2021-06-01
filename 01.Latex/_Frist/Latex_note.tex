@@ -4,8 +4,11 @@
 %! 请使用XeLaTex 进行排版
 %! 需要编译两次，才能更新 TOC 哦
 
-
 \usepackage{xeCJK}        % 在 article,book,report 支持 CJK 编码
+
+\setCJKmonofont{宋体}         % 设置CJK等宽字体设置
+\setmonofont{Consolas}        % 设置英文打印机字体
+
 
 \usepackage[]{color}
 
@@ -82,7 +85,7 @@
     backgroundcolor = \color{codebg},
     breaklines      = true,                % 自动换行
     numbers         = left,                % 行号的位置在左边
-    basicstyle      = \zihao{5}\ttfamily,  % rm/sf/tt基本代码风格
+    basicstyle      = \zihao{-5}\ttfamily,  % rm/sf/tt基本代码风格
     frame           = lTbR,                % 边框。lrbt，大写的则是双边框
     framesep        = 1pt,                 % 代码和边框之间的margin
     rulesep         = 4pt, %双框距离
@@ -1114,7 +1117,7 @@ start  " " /max "./%FileName%.pdf"
     \zihao{5}\kaishu Tip: 只要生成了目录,之后生成的PDF 就会包含书签。
 \end{quotation}
 
-目录对于图表而言也是可以用的。如果你的文档中有很多图表，也可以专门为它们建目录。对应的命令是 \verb!\listoffigures! 和 \verb!\listoftables! 。它会收集对应图表中的标题来产生图表的目录。 图表的插入我们将在 章节\ref{sec:insert_pic} 和 章节\ref{sec:insert_table}  中介绍。
+目录对于图表而言也是可以用的。如果你的文档中有很多图表，也可以专门为它们建目录。对应的命令是 \verb!\listoffigures! 和 \verb!\listoftables! 。它会收集对应图表中的标题来产生图表的目录。 图表的插入我们将在 章节\ref{sec:insert_pic} 和 章节 \ref{sec:insert_table}  中介绍。
 
 注意，这会在目录下生成\verb!.toc!，\verb!.lof!， \verb!.lot!  文件，分别对应【目录】、【图像】、【表格】。
 
@@ -1425,6 +1428,22 @@ start  " " /max "./%FileName%.pdf"
           \end{LTXexample}
 
 \end{enumerate}
+
+\subsection{全局字体设置}
+
+\begin{lstlisting}
+    
+    %%%%%%中文字体设置%%%%%%
+    \setCJKmainfont{方正书宋简体}%设置CJK衬线字体设置
+    \setCJKsansfont{方正黑体简体}%设置CJK无衬线字体设置
+    \setCJKmonofont{方正仿宋简体}%设置CJK等宽字体设置
+    %%%%%%英文字体设置%%%%%%
+    \setmainfont{Times New Roman}%设置英文衬线字体
+    \setsansfont{Calibri}%备选Arial,设置英文无衬线字体
+    \setmonofont{Courier}%设置英文打印机字体
+    
+\end{lstlisting}
+
 
 \subsection{段落缩进}
 
@@ -2663,7 +2682,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 
 % *\subsection{插入表格}
 \subsection{如何插入表格？}
-\label{sec:inert_table}
+\label{sec:insert_table}
 tabular 环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
 
 一般情况下，tabular 会嵌入到 table 的环境中。
@@ -2826,7 +2845,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
     \end{tabular}\caption{浮动的位置参数}\label{tab:position_of_box}
 \end{table}
 
-默认情况下是 tbp, 同时需要注意的是，\LaTeX 总是尝试以  \textbf{h-t-b-p} 的顺序来确定图形的位置。 当然，加一个"!" （感叹号）， 可以强制按照指定的顺序来执行。 如"!bpt"则会先考虑b，在考虑p，之后考虑t， 而不默认的htbp。
+默认情况下是 tbp, 同时需要注意的是，\LaTeX 总是尝试以  \textbf{h-t-b-p} 的顺序来确定图形的位置。 当然，加一个“!” （感叹号）， 可以强制按照指定的顺序来执行。 如“!bpt”则会先考虑b， 在考虑p， 之后考虑t， 而不默认的htbp。
 
 
 \newpage
