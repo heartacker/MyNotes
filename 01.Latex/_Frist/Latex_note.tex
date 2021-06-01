@@ -63,9 +63,14 @@
 
 
 
-\usepackage{multicol} % 分栏目
+% ********************分栏目
+\usepackage{multicol}
+\setlength{\columnsep}{0.5cm}
+\setlength{\columnseprule}{0.5pt}     % 设置分割线的宽度
+\def\columnseprulecolor{\color{gray}} %定义分割线的颜色
+% https://softlab.sdut.edu.cn/blog/xuqianhui/2017/06/26/latex设置多栏正文/
 
-%设置枚举的计数器
+%***************************设置枚举的计数器
 \usepackage{enumitem}
 \AddEnumerateCounter{\chinese}{\chinese}{}
 
@@ -1438,7 +1443,7 @@ This is {\zihao{6} 六号 small} and {\zihao{0} 初号  Large}!
 我们可以通过以下的方式，在导言区，设置全局字体。
 
 \begin{lstlisting}
-    
+
 %%%%%%中文字体设置%%%%%%
 \setCJKmainfont{方正书宋简体}%设置CJK衬线字体设置
 \setCJKsansfont{方正黑体简体}%设置CJK无衬线字体设置
@@ -1778,9 +1783,11 @@ chuwai)
 
 中文中，引号分别是‘\ 和\ ’表示。单引号用一遍，双引号直接用中文的双引号，“nihao”。
 \begin{myquote}
+    Tips:
+
     英文的双引号极少使用。常常用作其他用处。
-    
-    另外，中文文章中显示的英文'\, ' 都是逗号方向的样子，而不是左右对称的。 这个看起来不是很舒服。所有中文文章中建议使用中文的‘\ ’,而不是英文的'\ '。
+
+    另外，中文文章中显示的英文\textbf{'\, '} 都是逗号方向的样子，而不是左右对称的。 这个看起来不是很舒服。所以 中文文章中建议使用中文的‘\ ’,而不是英文的'\ '。
 \end{myquote}
 
 
@@ -2033,7 +2040,7 @@ todo
 
 使用 aligned / gathered 环境，并且依赖 \verb!\begin{equation} \end{equation}!，\\若不须加编号则使用\verb!\begin{equation*} \end{equation*}!，或者\verb!\[ \]!包裹。
 
-\paragraph{equation}
+\paragraph{1. equation}
 \begin{LTXexample}
     \begin{equation}
         \begin{aligned}
@@ -2045,7 +2052,7 @@ todo
     \end{equation}
 \end{LTXexample}
 
-\paragraph{equation*}
+\paragraph{2. equation*}
 \begin{LTXexample}
     \begin{equation*}
         \begin{aligned}
@@ -2057,7 +2064,7 @@ todo
     \end{equation*}
 \end{LTXexample}
 
-\paragraph{$\backslash$[}
+\paragraph{3. $\backslash$[}
 \begin{LTXexample}
     \[
         \begin{gathered}
@@ -2342,7 +2349,6 @@ amsmath 这个宏包的作用如下。
 \usepackage{xcolor}
 
 % step 2： 设置宏的参数
-
 \lstset{
     backgroundcolor = \color[RGB]{240,240,240},
     breaklines      = true,                % 自动换行
@@ -2356,7 +2362,7 @@ amsmath 这个宏包的作用如下。
 
     \item \label{lst:tcbdemo} 在指定的位置插入例子
 
-          \begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
+\begin{tcblisting}{listing only,boxrule=-1pt,colback=white}
               \begin{lstlisting}[language=C,frame=single]
 int main() {
     printf("hello, world");
@@ -2414,17 +2420,7 @@ int main() {
     \end{lstlisting}
 \end{tcblisting}
 \end{verbatim}
-这里需要注意的是，一定要使用 {\slshape listling only} 参数。 同时为了防止边框重叠。添加一些边框参数。总体要添加{\rmfamily \{listing only,boxrule=-1pt,colback=white\}}。显示效果参考\ref{lst:tcbdemo}
-
-% todo 为什么 tcblisting
-% \begin{tcblisting}
-% % {listing only,boxrule=-1pt,colback=white}
-% \begin{enumerate}
-%     \item  a
-%     \item aa
-% \end{enumerate}
-
-% \end{tcblisting}
+这里需要注意的是，一定要使用 {\slshape listling only} 参数。 同时为了防止边框重叠。添加一些边框参数。总体要添加{\ttfamily \{listing only,boxrule=-1pt,colback=white\}}。显示效果参考 \ref{lst:tcbdemo}
 
 % *************DEMO *********
 % \documentclass{ctexart}
@@ -2610,7 +2606,6 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
           在文档中使用$\backslash$ref\{标签\}，如图\verb!\ref{Fig.Insert_two_pic_demo}! 显示为：图\ref{Fig.Insert_two_pic_demo}。
 
     \item begin\{figure\}[H] 这个H 参数，可以设置为以下几个，H为当前位置，!htb为忽略美学标准，htbp为浮动图形。 这个参数具体是怎么回事，什么原理，请看章节 \ref{sec:box_positon} 讲解。
-    % todo 浮动讲解
 \end{enumerate}
 
 
@@ -2680,7 +2675,7 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
     \label{Fig.insert-one3-png} %用于文内引用的标签
 \end{figure}
 
-刚好占用行宽的图片效果，可以看出，整个图片占用整个段落的行宽:
+下图是刚好占用行宽的图片效果，可以看出，整个图片占用整个段落的行宽:
 \begin{figure}[H] %H为当前位置，!htb为忽略美学标准，htbp为浮动图形
     \centering %图片居中
     \includegraphics[width = 1\linewidth]{images/fireworks_1.png}
@@ -2743,19 +2738,20 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
         \hline
     \end{tabular}
     \qquad
-    不同的操作系统和编辑器之间很多是通用的。
+    不同的操作系统和编辑器之间很多是通用的。\\
     推荐使用 TeX Live.
     \caption{不同操作系统对应的发行版和编辑器}
     \label{Table.Demo0}
 \end{table}
 
-效果显示完毕。
+当然这样写表格肯定很麻烦。也可以参考链接\ref{ref:table_of_generate} 的在线表格生成器。
 
 \begin{quotation}
+    Tips:
+
     \zihao{5}\kaishu 表格和图一样是浮动环境。所以图片要在 figure 里面引用。而 table 会浮动到其他地去。 在\verb!\begin{table}! 后面加入[H]，代表不允许浮动，其中[H] 是float 宏包提供的。（注意请导入:\verb!\usepackage{float}!） 参考章节 \ref{sec:box_positon}。
 \end{quotation}
 
-当然这样写表格肯定很麻烦。也可以参考链接\ref{ref:table_of_generate} 的在线表格生成器。
 
 % \begin{table}[H]
 % \centering
@@ -2792,7 +2788,7 @@ table 环境和 figure 环境类似。也是提供一个浮动的 box 供给 tab
 
 \subsubsection{合并表格如何设置？}
 
-属于高级技巧，参考 \ref{sec:combine_cell}
+属于高级技巧，参考 \ref{sec:combine_cell}。
 
 
 \subsection{如何设置边距？}
@@ -2906,11 +2902,98 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 \end{lstlisting}
 
 
-
-
 \subsection{如何设置多栏并列显示？}
 参考：\href{http://softlab.sdut.edu.cn/blog/xuqianhui/设置多栏正文/}{latex设置多栏正文}
-% todo 如何设置多栏
+
+很多科技文章，整体都是双栏进行显示的。这样做出来的效果会比较专业和上档次。
+
+为什么会这样？看过这类文章之后，你会发现排版比较密集，内容密度高，信息关联清晰。那么该如何设置这个呢？
+
+\subsubsection{模板}
+
+一般情况下，会在 document 环境里面，套一层分栏来进行全局的分栏设置。
+
+首先需要引用宏 \verb!\usepackage{multicol}! ，之后我们就可以使用 multicol 的环境了。此环境有必要参数，默认需要传入一个分栏的个数，如需要分两栏就传入2，需要分三栏，就传入3。如下面的例子：
+
+
+\begin{lstlisting}
+\documentclass[UTF8]{ctexart}
+\usepackage{multicol}
+
+%文档
+\begin{document}
+
+    % 开始全局的分栏模式。
+    \begin{multicols}{2}
+    正文。
+    \end{multicols}
+
+\end{document}
+\end{lstlisting}
+
+\subsubsection{文内}
+
+如果不是全局的分栏，也可以在指定的地方分栏，使用方法和上面的一模一样。
+
+
+\begin{LTXexample}
+\begin{multicols}{2}
+这是第一栏的内容，这是第一栏的内容，这是第一栏的内容，这是第一栏的内容，这是第一栏的内容，这是第一栏的内容，\textbf{这是大概是第二栏的内容}，这是第二栏的内容，这是第二栏的内容，
+\begin{multicols} {2}
+这是第二栏里面的分栏。栏内栏。栏内栏。栏内栏。栏内栏。栏内栏。
+\end{multicols}
+这是第二栏的内容，
+这是第二栏的内容，
+这是第二栏的内容，
+\end{multicols}
+\end{LTXexample}
+
+可以看到，通过这个方式，我们可以将这个任务栏分成两栏。 当内容超过一页的时候，他会在下一页继续分栏。 另外还可以在分栏里面继续分栏。
+
+\subsubsection{按照指定的位置分栏}
+
+\begin{multicols}{3}
+
+当我们想在指定的页面分栏的时候，我们可以添加标记 \verb!\columnbreak! 强制分栏。这样，标记之前的就会占满左边的页面，即使左边的内容或者右边的内容没有占满页面，也会进行分栏处理。 那么可以在指定的位置添加 \verb!\columnbreak!。
+
+\columnbreak
+
+现在我添加了\verb!\columnbreak!，现在已经换栏了，而且这里的内容比左边少。
+\columnbreak
+
+现在我又添加了\verb!\columnbreak!。
+\textbf{\zihao{-4}需要注意的是，分栏一定是要在段落之间，而不能在段落内，否则无法在指定的位置分栏。}
+这里是第三栏。内容很少哦。
+
+\end{multicols}
+
+
+\subsubsection{分栏的一些设置}
+
+\begin{multicols}{3}
+
+\paragraph{分栏的间距} 分栏之间的间距可以通过以下进行配置。
+\begin{lstlisting}[numbers=none]
+% 设置分栏之间的宽度。
+\setlength{\columnsep}{0.5cm}
+\end{lstlisting}
+\columnbreak
+
+\paragraph{分栏分割线宽度} 分栏线的宽度可以通过以下进行配置。
+\begin{lstlisting}[numbers=none]
+% 设置分割线的宽度
+\setlength{\columnseprule}{0.5pt} 
+\end{lstlisting}
+\columnbreak
+
+\paragraph{分栏分割线的颜色} 分栏线的颜色可以通过以下进行配置。
+\begin{lstlisting}[numbers=none]
+%定义分割线的颜色
+\def\columnseprulecolor{\color{gray}} 
+\end{lstlisting}
+
+\end{multicols}
+
 
 \subsection{双栏模板下插入通栏公式和图片等}
 
@@ -2953,7 +3036,7 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 
 \subsection{如何合并表格的单元格？}
 \label{sec:combine_cell}
-https://blog.csdn.net/u011439796/article/details/78539678
+\url{https://blog.csdn.net/u011439796/article/details/78539678}
 
 \newpage
 
