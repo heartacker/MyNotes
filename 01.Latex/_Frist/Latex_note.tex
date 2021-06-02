@@ -46,6 +46,9 @@
 \usepackage{diagbox}    % 单元格画斜线
 
 
+
+\usepackage{scrextend}   % 特殊清单
+
 % ********************对比环境***************
 \usepackage[listings]{tcolorbox}
 % 在tcolorbox 可选listing 或者 \tcbuselibrary{listings}
@@ -199,20 +202,20 @@
 本作品开放源代码，但作者保留所有的内容相关的版权和权益。 本文可以任意传播，但未经本作者同意，不得修改再版，更不可以用于牟利。 本文属于个人作品，任何内容仅供学习和研究所用，如将其用作商业用途，并因为本文的错误等任何原因导致的损失，本作者不任何责任。 有任何问题可以与本作者联系。
 \clearpage
 \begin{multicols}{2}
-    
+
     % 本文的目录
     \tableofcontents
-    
+
     %图标的目录
     \listoffigures
-    
+
     %表格的目录
     \listoftables
-    
+
     %^ \listoflistingscaption
 
 \end{multicols}
-    
+
 \clearpage
 
 \section*{前言}
@@ -568,26 +571,19 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
     \label{Fig:install_tex_live_tip}
 \end{figure}
 
-软件配置教程: \href{https://zhuanlan.zhihu.com/p/38178015}{使用VSCode编写LaTeX}
+\begin{labeling}{alligator}
+\item [软件配置教程:] \href{https://zhuanlan.zhihu.com/p/38178015}{使用VSCode编写LaTeX}
+\item [软件配置教程2：] \href{https://blog.csdn.net/qq_23599965/article/details/103022215}{用于 Visual Studio Code 的 LaTeX Workshop}
+\item [手写识别：] \href{http://detexify.kirelabs.org/classify.html}{手写体符号识别工具}。
+\item [在线表格工具：] \href{https://tableconvert.com/?output=latex}{在线表格工具}\label{ref:table_of_generate}
+\item [在线表格工具：] \href{https://www.tablesgenerator.com/}{在线表格工具2}
+\item [在线公式编辑器：] \href{https://latexlive.com/}{在线 \LaTeX 公式编辑器}, 支持导出多个格式。
+\item [插入代码：]  \href{https://zhuanlan.zhihu.com/p/65441079}{\LaTeX 里「添加程序代码」的完美解决方案}
+\item [学习入门总结：] \href{https://www.cnblogs.com/zyg123/p/10499744.html}{\LaTeX 学习系列之---\LaTeX 的总结}
+\item [入门注意事项：]  \href{https://blog.csdn.net/simple_the_best/article/details/51244631}{\LaTeX{} 实战经验：新手须知}
+\item [论坛社区：]  \href{https://latexstudio.net/}{\LaTeX{}工作室}
+\end{labeling}
 
-软件配置教程2: \href{https://blog.csdn.net/qq_23599965/article/details/103022215}{用于 Visual Studio Code 的 LaTeX Workshop}
-
-手写识别: \href{http://detexify.kirelabs.org/classify.html}{手写体符号识别工具}。
-
-在线表格工具：\href{https://tableconvert.com/?output=latex}{在线表格工具}
-\label{ref:table_of_generate}
-
-在线表格工具：\href{https://www.tablesgenerator.com/}{在线表格工具2}
-
-在线公式编辑器: \href{https://latexlive.com/}{在线 \LaTeX 公式编辑器}, 支持导出多个格式。
-
-插入代码： \href{https://zhuanlan.zhihu.com/p/65441079}{\LaTeX 里「添加程序代码」的完美解决方案}
-
-学习入门总结: \href{https://www.cnblogs.com/zyg123/p/10499744.html}{\LaTeX 学习系列之---\LaTeX 的总结}
-
-入门注意事项： \href{https://blog.csdn.net/simple_the_best/article/details/51244631}{\LaTeX{} 实战经验：新手须知}
-
-论坛社区： \href{https://latexstudio.net/}{\LaTeX{}工作室}
 
 \subsubsection{编写、编译环境的安装准备步骤}
 
@@ -619,73 +615,65 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
 
 
 \paragraph{中文支持。}
-
-ctex - 封装好的中文支持和版式调整工具，定义了许多方便的工具
-
-xeCJK - XeLaTeX 下的中文字体选择和禁则、压缩的处理
-
-fontspec - XeLaTeX 下的西文字体选择
+\begin{labeling}{alligator}
+    \item [ctex] - 封装好的中文支持和版式调整工具，定义了许多方便的工具
+    \item [xeCJK] - XeLaTeX 下的中文字体选择和禁则、压缩的处理
+    \item [fontspec] - XeLaTeX 下的西文字体选择
+\end{labeling}
 
 
 \paragraph{页面布局类。}
 
-geometry - 调整页面大小、页边距等尺寸
-
-fancyhdr - 设计页眉页脚
-
-titlesec - 设计章节标题格式
-
-titletoc - 设计目录格式
+\begin{labeling}{alligator}
+\item [geometry] - 调整页面大小、页边距等尺
+\item [fancyhdr] - 设计页眉页
+\item [titlesec] - 设计章节标题格
+\item [titletoc] - 设计目录格
+\end{labeling}
 
 
 \paragraph{超链接和PDF 的各种功能。}
 
-hyperref - 超链接，PDF 书签，PDF 表单，PDF 元信息……
-
-media9 - 插入 Flash、视频等
+\begin{labeling}{alligator}
+\item [hyperref] - 超链接，PDF 书签，PDF 表单，PDF 元信息……
+\item [media9] - 插入 Flash、视频等
+\end{labeling}
 
 
 \paragraph{图表和浮动体。}
 
-graphicx - 插图
+\begin{labeling}{alligator}
 
-xcolor - 颜色
-
-tikz - 绘图
-
-booktabs - 三线表
-
-multirow - 列合并单元格（cell）
-
-makecell - 在单元格内手动换行
-
-longtable - 换页表格
-
-tabu - 封装了各种接口的表格宏包，制表强烈推荐
-
-threeparttable - 在表格中使用脚标，和 tabu 有冲突，补丁：https://gist.github.com/157a703e0ed8804e7696
-
-diagbox - 斜线表头（作者： @刘海洋）
-
-float - 提供了 H 选项，禁止浮动体浮动（除非必要，不建议这么干）
-
-placeins - 提供了 \verb!\FloatBarrier! 命令，限制浮动体浮动范围
+\item [graphicx] - 插图
+\item [xcolor] - 颜色
+\item [tikz] - 绘图
+\item [booktabs] - 三线表
+\item [multirow] - 列合并单元格（cell）
+\item [makecell] - 在单元格内手动换行
+\item [longtable] - 换页表格
+\item [tabu] - 封装了各种接口的表格宏包，制表强烈推荐
+\item [threeparttable] - 在表格中使用脚标，和 tabu 有冲突，补丁：https://gist.github.com/157a703e0ed8804e7696
+\item [diagbox] - 斜线表头（作者： @刘海洋）
+\item [float] - 提供了 H 选项，禁止浮动体浮动（除非必要，不建议这么干）
+\item [placeins] - 提供了 \verb!\FloatBarrier! 命令，限制浮动体浮动范围
+\end{labeling}
 
 \paragraph{列表环境。}
 
-enumitem - 修改列表环境的各种间距、label 样式等的不二法门
+\begin{labeling}{alligator}
+\item [enumitem] - 修改列表环境的各种间距、label 样式等的不二法门
+\item [scrextend] -  提供特殊的清单
+\end{labeling}
+
 
 \paragraph{其他一些工具。}
 
-nag - 检查你是否使用了过时的宏包和命令的宏包
-
-etoolbox - 主要是针对宏包和文档类开发者，不过提供了一些对环境的钩子，有时候很有用
-
-xpatch - 修补命令用的
-
-environ - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了一些花括号不匹配导致的问题
-
-
+\begin{labeling}{alligator}
+\item [nag] - 检查你是否使用了过时的宏包和命令的宏包
+\item [etoolbox] - 主要是针对宏包和文档类开发者，不过提供了一些对环境的钩子，有时候很有用
+\item [xpatch] - 修补命令用的
+\item [environ] - 增强了 LaTeX 本来的 \verb!\newenvironment!的功能，解决了一些花括号不匹配导致的问题
+\end{labeling}
 
 
 \subsection{TeX 的环境的命令环境和参数}
@@ -1909,7 +1897,14 @@ Todo
 \label{expl:enumerate}
 
 \end{multicols}
+
+
 \subsubsection{如何自定义编号或者使用中文编号?}
+
+这属于高级技巧。 参考章节 \ref{sec:redefine_item}
+
+\subsubsection{特殊清单}
+参考链接：\url{http://softlab.sdut.edu.cn/blog/xuqianhui/2017/06/20/latex特殊的列表清单/}
 
 这属于高级技巧。 参考章节 \ref{sec:redefine_item}
 
