@@ -42,8 +42,8 @@
 \usepackage{amssymb}
 
 
-\usepackage{multirow}
-
+\usepackage{multirow}   % 单元格多行合并
+\usepackage{diagbox}    % 单元格画斜线
 
 
 % ********************对比环境***************
@@ -3045,6 +3045,7 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 
 \subsection{如何合并表格的单元格？}
 \label{sec:combine_cell}
+
 参考连接：\url{https://blog.csdn.net/u011439796/article/details/78539678}
 
 参考连接：\url{https://blog.csdn.net/yhl_leo/article/details/50066137}
@@ -3071,12 +3072,13 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
         \hline
     \end{tabular}
     \caption[]{合并单元格和划线}
+    \label{tab:combin_cell_of_table}
 \end{table}
 \end{LTXexample}
 
 \subsubsection{纵向多行合并}
 
-纵向多行合并，我们使用 multirow 进行合并。 
+纵向多行合并，我们使用 multirow 进行合并。
 
 当我们需要占用几行的时候。 我们就用这个 multirow 先占用合并的首行， 然后其他行用 “\~{}” 替代。 如下面的代码：
 
@@ -3087,7 +3089,7 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 \end{lstlisting}
 
 
-\subsubsection{横向多列合并} 
+\subsubsection{横向多列合并}
 
 表格们是使用\& 进行分列的。 当我们需要占用多列的时候。我们可以用 multicolumn 占用要合并的列。 就不用在添加\& 号了。 如下面的代码：
 
@@ -3098,7 +3100,7 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 \end{lstlisting}
 
 
-\subsubsection{多行多列合并} 
+\subsubsection{多行多列合并}
 
 同理，我们需要多行列的时候，我们可以先用  multicolumn 占用要合并的列。 同时嵌套 multirow ，占用 需要合并的行，同样，其他行用 “\~{}” 替代。 当然，因为这里 multirow 占用了两行， 所以。第二行，还是要把 multicolumn 加上，同时里面的内容为 “\~{}”。
 如下面的代码：
@@ -3108,20 +3110,61 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 1         &            2         &      3   &....\\
 \end{lstlisting}
 
-\subsubsection{多行合并后的横线 hline 问题} 
+\begin{myquote}
+    Tips:
+    这里在第二行采用 multicolumn 来进行空白占位，这样可以避免一些奇怪的划线行为，如果直接采用\~{} \& \~{} \& ... 的方式来占位， 会受到表格划线方式\{|c|c|c|c|\}的影响而多划一条竖线。
+\end{myquote}
+
+\subsubsection{多行合并后的横线 hline 问题}
 
 行合并之后，我们的划线就不能直接穿越合并的单元格了， 所以是用 hline 会在合并的单元格添加 横向线条，我们可以用 cline 进行替代。
 
 cline 支持传入列的范围进行划线。 如 \verb!\cline{1-2}!, 代表第一列和第二列单元格进行划线。 \verb!\cline{5-5}! 代表只划第五个列。 这样连起来，就相当于不画第三个列 和 第四个列。
 
-如下面的代码：
+如下面的代码，显示效果参考 \ref{tab:combin_cell_of_table}
 \begin{lstlisting}
 1 & \multicolumn{2}{|c|}{\multirow{2}*{合并两行两列}} & 4 \\
 \cline{1-1}        \cline{4-4}  % 这里进行格列划线。
 1 & \multicolumn{2}{|c|}{~}                         & 4 \\
 \end{lstlisting}
 
+\subsection{如何在表头单元格里面添加斜线？}
+\label{sec:div_cell}
 
+如何在单元格里面添加斜线？ 如何分割单元格？ 我想很多使用 Excel 或者 Word 的人都不太会。 结果我们在这里使用 \LaTeX{} 啃这个硬骨头。 废话不多说， 我们来看看代码和效果：
+
+\begin{lstlisting}
+\usepackage{diagbox}
+\begin{table}
+    \centering
+    \begin{tabular}{|l|ccc|}
+        \hline
+        \diagbox{Time}{Room}{Day} & Mon & Tue & Wed \\
+        \hline
+        Morning & used & used & \\
+        Afternoon & & used & used \\
+        \hline
+    \end{tabular}
+    \caption{表头分格，画斜线}
+    \label{tab:div_cell}
+\end{table}
+\end{lstlisting}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|ccc|}
+        \hline
+        \diagbox{Time}{Room}{Day} & Mon & Tue & Wed \\
+        \hline
+        Morning & used & used & \\
+        Afternoon & & used & used \\
+        \hline
+    \end{tabular}
+    \caption{表头分格，画斜线}
+    \label{tab:div_cell}
+\end{table}
+
+我们使用宏 diagbox 进行分割。 只要将 diagbox 占用某个单元格即可。 分割几个，我们就传入几个表头。 顺序按照顺时针进行添加。 如实例 \ref{tab:div_cell} 中的 \verb!\diagbox{Time}{Room}{Day}!。
 
 \newpage
 
