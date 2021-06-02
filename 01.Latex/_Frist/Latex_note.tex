@@ -159,7 +159,8 @@
 % \titleformat{\subsubsection}[block]{\normalsize\bfseries}{\arabic{subsection}-\alph{subsubsection}}{1em}{}[]
 \titleformat{\paragraph}[block]{\small\bfseries}{[\arabic{paragraph}]}{1em}{}[]
 
-\newtheorem{thm}{定理}
+%* 定义一个新的定理环境，名字叫做thm。 标记为 我的定理
+\newtheorem{thm}{我的定理}
 
 %~ 定义一个环境
 \newenvironment{myquote}
@@ -761,12 +762,12 @@ TexLive 安装: \href{https://zhuanlan.zhihu.com/p/136931926}{TexLive 2020 安�
 
 quote 是无参数的环境。
 
-下面是一个自定义分组。这个分组我们叫做【定理】
+下面是一个自定义分组。这个分组我们叫做【我的定理】
 
 在导言区域做定义：
 
 \begin{lstlisting}
-\newtheorem{thm}{定理}
+\newtheorem{thm}{我的定理}
 \begin{document}
 \end{lstlisting}
 
@@ -790,7 +791,7 @@ quote 是无参数的环境。
     等边三角形的三边边长是相等。
 \end{thm}
 
-可以看到，文本不但添加了定理，还自动编号。对名字添加了括号。
+可以看到，文本不但添加了 “我的定理”， 还自动编号。对名字添加了括号。
 
 这就是分组和环境的效果。
 
@@ -3030,12 +3031,12 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
     \usepackage{enumitem}
     \AddEnumerateCounter{\chinese}{\chinese}{}
 
-    \begin{document}
+    % \begin{document}
     \begin{enumerate}[label = \chinese*、]
         \item 第一行
         \item 第二行
     \end{enumerate}
-    \end{document}
+    % \end{document}
 \end{LTXexample}
 中文嵌套效果，可以看\ref{expl:enumerate}。
 
