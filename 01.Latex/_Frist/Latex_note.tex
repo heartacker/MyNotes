@@ -42,6 +42,10 @@
 \usepackage{amssymb}
 
 
+\usepackage{multirow}
+
+
+
 % ********************对比环境***************
 \usepackage[listings]{tcolorbox}
 % 在tcolorbox 可选listing 或者 \tcbuselibrary{listings}
@@ -1735,7 +1739,7 @@ chuwai)
 \begin{myquote}
 
     \textit{不过中文还是建议使用中文符号。}
-
+\begin{multicols}{3}
     逗号，
 
     句号。
@@ -1746,7 +1750,7 @@ chuwai)
 
     感叹号！
 
-    波浪号~
+    波浪号 \~{}
 
     冒号：
 
@@ -1773,6 +1777,8 @@ chuwai)
     六角括号〔〕
 
     圆括号 ( )
+\end{multicols}
+
 \end{myquote}
 
 
@@ -1871,7 +1877,7 @@ Todo
 \end{itemize}
 \end{LTXexample}
 
-大家看看到没，其实还有 {\bfseries 中文编码} 的。 中文下一步还是会切换成英文。
+大家看到没，其实还有 {\bfseries 中文编码} 的。 中文编码之后的嵌套系列还是会会切换成英文。
 \columnbreak
 
 \subsubsection{有序列表}
@@ -2687,6 +2693,9 @@ Figure \ref{Fig.main} has two sub figures, fig. \ref{Fig.sub.1} is the travel de
 % *\subsection{插入表格}
 \subsection{如何插入表格？}
 \label{sec:insert_table}
+
+参考连接: \url{https://blog.csdn.net/yhl_leo/article/details/50066137}
+
 tabular 环境提供了最简单的表格功能。它用\verb!\hline!命令表示横线，|表示竖线；用\&来分列，用\verb!\\!来换行；每列可以采用居中、居左、居右等横向对齐方式，分别用l、c、r 来表示。
 
 一般情况下，tabular 会嵌入到 table 的环境中。
@@ -2982,14 +2991,14 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 \paragraph{分栏分割线宽度} 分栏线的宽度可以通过以下进行配置。
 \begin{lstlisting}[numbers=none]
 % 设置分割线的宽度
-\setlength{\columnseprule}{0.5pt} 
+\setlength{\columnseprule}{0.5pt}
 \end{lstlisting}
 \columnbreak
 
 \paragraph{分栏分割线的颜色} 分栏线的颜色可以通过以下进行配置。
 \begin{lstlisting}[numbers=none]
 %定义分割线的颜色
-\def\columnseprulecolor{\color{gray}} 
+\def\columnseprulecolor{\color{gray}}
 \end{lstlisting}
 
 \end{multicols}
@@ -3036,7 +3045,83 @@ CTAN （Comprehensive TeX Archive Network） 是干什么的，各位从它的�
 
 \subsection{如何合并表格的单元格？}
 \label{sec:combine_cell}
-\url{https://blog.csdn.net/u011439796/article/details/78539678}
+参考连接：\url{https://blog.csdn.net/u011439796/article/details/78539678}
+
+参考连接：\url{https://blog.csdn.net/yhl_leo/article/details/50066137}
+
+合并单元格也是比较常见的。这里简单的介绍一下横项合并，纵向合并和多行多列合并。
+
+先看看下面的例子，我们可以看到，我们有两行一列的合并，有一行两列的合并， 有两行两列的合并。
+感觉看起来非常好麻烦。
+
+\begin{LTXexample}[pos=b, frame=single, breaklines=true, numbers=none, vsep=0pt]
+\begin{table}
+    \centering
+    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+        \hline
+        I & II & III & IIII \\
+        \hline
+        \multirow{2}*{合并两行一列} & a & 三 & 四   \\
+        \cline{2-4}
+        ~ & b & \multicolumn{2}{|c|}{合并两列} \\
+        \hline
+        1 & \multicolumn{2}{|c|}{\multirow{2}*{合并两行两列}} & 4 \\
+        \cline{1-1}        \cline{4-4}  % 这里进行格列划线。
+        1 & \multicolumn{2}{|c|}{~} & 4 \\
+        \hline
+    \end{tabular}
+    \caption[]{合并单元格和划线}
+\end{table}
+\end{LTXexample}
+
+\subsubsection{纵向多行合并}
+
+纵向多行合并，我们使用 multirow 进行合并。 
+
+当我们需要占用几行的时候。 我们就用这个 multirow 先占用合并的首行， 然后其他行用 “\~{}” 替代。 如下面的代码：
+
+\begin{lstlisting}
+\multirow{3}*{合并三行}&....\\
+~                      &....\
+~                      &....\
+\end{lstlisting}
+
+
+\subsubsection{横向多列合并} 
+
+表格们是使用\& 进行分列的。 当我们需要占用多列的时候。我们可以用 multicolumn 占用要合并的列。 就不用在添加\& 号了。 如下面的代码：
+
+\begin{lstlisting}
+\multicolumn{3}*{合并三列} &....\\
+1    &    2    &    3     &....\\
+1    &    2    &    3     &....\\
+\end{lstlisting}
+
+
+\subsubsection{多行多列合并} 
+
+同理，我们需要多行列的时候，我们可以先用  multicolumn 占用要合并的列。 同时嵌套 multirow ，占用 需要合并的行，同样，其他行用 “\~{}” 替代。 当然，因为这里 multirow 占用了两行， 所以。第二行，还是要把 multicolumn 加上，同时里面的内容为 “\~{}”。
+如下面的代码：
+\begin{lstlisting}
+\multicolumn{3}*{ \multirow{2}*{合并两行} } &....\\
+\multicolumn{3}*{          ~          }     &....\\
+1         &            2         &      3   &....\\
+\end{lstlisting}
+
+\subsubsection{多行合并后的横线 hline 问题} 
+
+行合并之后，我们的划线就不能直接穿越合并的单元格了， 所以是用 hline 会在合并的单元格添加 横向线条，我们可以用 cline 进行替代。
+
+cline 支持传入列的范围进行划线。 如 \verb!\cline{1-2}!, 代表第一列和第二列单元格进行划线。 \verb!\cline{5-5}! 代表只划第五个列。 这样连起来，就相当于不画第三个列 和 第四个列。
+
+如下面的代码：
+\begin{lstlisting}
+1 & \multicolumn{2}{|c|}{\multirow{2}*{合并两行两列}} & 4 \\
+\cline{1-1}        \cline{4-4}  % 这里进行格列划线。
+1 & \multicolumn{2}{|c|}{~}                         & 4 \\
+\end{lstlisting}
+
+
 
 \newpage
 
