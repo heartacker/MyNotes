@@ -13,6 +13,7 @@
         "cweijan.vscode-office",
         "yutengjing.open-in-external-app",
         "lw-lonely.latex-table-helper",
-        "orangex4.latex-sympy-calculator"
+        "orangex4.latex-sympy-calculator",
+        "valentjn.vscode-ltex"
     ]
 }

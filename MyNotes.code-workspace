@@ -195,6 +195,7 @@
 		],
 		"latex-workshop.bibtex-format.trailingComma": true,
 		"latex-workshop.latex.autoBuild.run": "never",
+		"ltex.language": "zh-CN",
 	},
 	"extensions": {
 		"recommendations": [
@@ -210,7 +211,8 @@
 			"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
 			"cweijan.vscode-office",
 			"yutengjing.open-in-external-app",
-			"lw-lonely.latex-table-helper"
+			"lw-lonely.latex-table-helper",
+			"valentjn.vscode-ltex"
 		]
 	}
 }
