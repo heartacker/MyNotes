@@ -1,0 +1,11 @@
+{"rule":"wa5","sentence":"^\\Q设置纸张大小，\\E$"}
+{"rule":"wa5","sentence":"^\\Q这里是第三栏。\\E$"}
+{"rule":"wa5","sentence":"^\\Q需要分三栏，\\E$"}
+{"rule":"wb4","sentence":"^\\Q是一个用于进行比较的包，\\E$"}
+{"rule":"wa5","sentence":"^\\Q条目是一个字典。\\E$"}
+{"rule":"wa5","sentence":"^\\Q而上一章节中说的编码，\\E$"}
+{"rule":"wb4","sentence":"^\\Q语言的新的实现，\\E$"}
+{"rule":"wb4","sentence":"^\\Q有一定的了解。\\E$"}
+{"rule":"wb4","sentence":"^\\Q该列表提供了良好的排版源代码，\\E$"}
+{"rule":"wb4","sentence":"^\\Q对数学和科学支持最好的排版系统。\\E$"}
+{"rule":"wb2","sentence":"^\\Q我这里找了一个关于\\E$"}
