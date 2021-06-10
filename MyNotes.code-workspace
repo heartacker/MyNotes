@@ -13,6 +13,12 @@
 			// // "**/**.log": true,
 			// "**/**.synctex**": true,
 		},
+		// for "Dictionary Completion"
+		"editor.quickSuggestions": {
+			"other": true,
+			"comments": true,
+			"strings": true
+		},
 		"makefile.extensionOutputFolder": "./.vscode",
 		"latex-workshop.latex.recipe.default": "lastUsed",
 		"latex-workshop.latex.autoBuild.interval": 10000,
@@ -212,6 +218,7 @@
 			"cweijan.vscode-office",
 			"yutengjing.open-in-external-app",
 			"lw-lonely.latex-table-helper",
+			"pkief.material-icon-theme",
 			"valentjn.vscode-ltex"
 		]
 	}
