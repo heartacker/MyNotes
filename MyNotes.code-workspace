@@ -202,6 +202,35 @@
 		"latex-workshop.bibtex-format.trailingComma": true,
 		"latex-workshop.latex.autoBuild.run": "never",
 		"ltex.language": "zh-CN",
+		"textmarker.savedHighlights": [
+			{
+				"pattern": {
+					"type": "string",
+					"expression": "\\exam",
+					"ignoreCase": false,
+					"wholeMatch": true
+				},
+				"color": "darkgoldenrod"
+			},
+			{
+				"pattern": {
+					"type": "string",
+					"expression": "\\theexam",
+					"ignoreCase": false,
+					"wholeMatch": true
+				},
+				"color": "darkmagenta"
+			},
+			{
+				"pattern": {
+					"type": "string",
+					"expression": "\\listofexam",
+					"ignoreCase": false,
+					"wholeMatch": true
+				},
+				"color": "darkolivegreen"
+			}
+		],
 	},
 	"extensions": {
 		"recommendations": [

@@ -1,0 +1,34 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{tocloft}
+\newcommand\listexamplename{例题目录}
+
+\newlistof[section]{exam}{ex}{\listexamplename}
+
+\newenvironment{example}{
+ 		\refstepcounter{exam}
+ }{\par}
+
+
+\newcommand{\exam}[1]{%
+\par\noindent\textbf{例 \theexam. #1}
+\addcontentsline{ex}{exam}{\protect\numberline{\theexam}#1}\par
+}
+
+\usepackage[colorlinks]{hyperref}
+
+\begin{document}
+\listofexam
+\section{第一节}
+\begin{example}\exam{勾股}
+    勾股定理是什么
+\end{example}
+\section{第二节}
+\begin{example}\exam{歌德}
+    哥德巴赫猜想
+\end{example}
+\section{第三节}
+\begin{example}\exam{黎曼}
+    黎曼猜想
+\end{example}
+
+\end{document}
