@@ -1,0 +1,58 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, appendix, bm, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{论文标题}}
+\author{Dylaaan}
+\date{\today}
+\linespread{1.5}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{example}[theorem]{例}
+\newtheorem{proposition}[theorem]{命题}
+\renewcommand{\abstractname}{\Large\textbf{摘要}}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{page}{0}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+    这里是摘要. 
+    \par\textbf{关键词：}这里是关键词; 这里是关键词. 
+\end{abstract}
+
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\section{一级标题}
+
+\subsection{二级标题}
+
+这里是正文. 
+
+\newpage
+
+\begin{thebibliography}{99}
+    \bibitem{a}作者. \emph{文献}[M]. 地点:出版社,年份.
+    \bibitem{b}作者. \emph{文献}[M]. 地点:出版社,年份.
+\end{thebibliography}
+
+\newpage
+
+\begin{appendices}
+    \renewcommand{\thesection}{\Alph{section}}
+    \section{附录标题}
+        这里是附录. 
+\end{appendices}
+
+\end{document}
