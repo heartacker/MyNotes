@@ -231,6 +231,7 @@
 				"color": "darkolivegreen"
 			}
 		],
+		"RTT_Studio.Build.Parallel_Jobs": "8",
 	},
 	"extensions": {
 		"recommendations": [
