@@ -236,7 +236,6 @@
 	"extensions": {
 		"recommendations": [
 			"janjoerke.align-by-regex",
-			"coenraads.bracket-pair-colorizer-2",
 			"parthr2031.colorful-comments",
 			"intellsmi.comment-translate",
 			"yzhang.dictionary-completion",
